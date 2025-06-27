@@ -9,7 +9,7 @@ items = README.Items(
     [
         {
             "name": "image classifier",
-            "marquee": "https://github.com/kamangir/assets/raw/main/fruits-365-2025-06-27-9h7ksc/grid.png?raw=true",
+            "marquee": "https://github.com/kamangir/assets/raw/main/fruits-365-2025-06-27-97buak/grid.png?raw=true",
             "description": "an image classifier.",
             "url": "./bluer_algo/docs/image-classifier.md",
         }

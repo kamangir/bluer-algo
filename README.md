@@ -8,7 +8,7 @@ pip install bluer-algo
 
 |   |
 | --- |
-| [`image classifier`](./bluer_algo/docs/image-classifier.md) [![image](https://github.com/kamangir/assets/raw/main/fruits-365-2025-06-27-9h7ksc/grid.png?raw=true)](./bluer_algo/docs/image-classifier.md) an image classifier. |
+| [`image classifier`](./bluer_algo/docs/image-classifier.md) [![image](https://github.com/kamangir/assets/raw/main/fruits-365-2025-06-27-97buak/grid.png?raw=true)](./bluer_algo/docs/image-classifier.md) an image classifier. |
 
 ---
 
@@ -19,4 +19,4 @@ pip install bluer-algo
 
 [![pylint](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/bluer-algo.svg)](https://pypi.org/project/bluer-algo/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/bluer-algo)](https://pypistats.org/packages/bluer-algo)
 
-built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.88.1`](https://github.com/kamangir/bluer-algo).
+built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.89.1`](https://github.com/kamangir/bluer-algo).
