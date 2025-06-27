@@ -20,8 +20,8 @@ def ingest(
         )
     )
 
-    success, fruit_types = get_types(type_count=type_count)
-    if not success:
-        return success
+    fruit_types = get_types(type_count=type_count)
+    if not fruit_types:
+        return False
 
     return True
