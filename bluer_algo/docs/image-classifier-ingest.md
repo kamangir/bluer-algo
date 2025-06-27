@@ -15,7 +15,7 @@
 ```
 
 
-[fruits-365-2025-06-27-9x6jtq](TBA/fruits-365-2025-06-27-9x6jtq.tar.gz)
+[fruits-365-2025-06-27-9x6jtq](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-9x6jtq.tar.gz)
 
 ```yaml
 dataset:
