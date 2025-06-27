@@ -2,6 +2,7 @@
 
 function bluer_algo_image_classifier_ingest() {
     local options=$1
+    local count=$(bluer_ai_option_int "$options" count 100)
     local do_clone=$(bluer_ai_option_int "$options" clone 0)
     local ingest_source=$(python3 -m bluer_algo.image_classifier.ingest get_source --index 0)
     ingest_source=$(bluer_ai_option "$options" source $ingest_source)
@@ -16,6 +17,7 @@ function bluer_algo_image_classifier_ingest() {
     bluer_ai_eval dryrun=$do_dryrun \
         python3 -m bluer_algo.image_classifier.ingest.$ingest_source \
         ingest \
+        --count $count \
         --object_name $object_name \
         "${@:3}"
     [[ $? -ne 0 ]] && return 1

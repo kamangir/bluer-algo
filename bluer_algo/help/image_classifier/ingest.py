@@ -11,7 +11,7 @@ def help_ingest(
 ) -> str:
     options = "".join(
         [
-            "clone,source={}".format("|".join(ingest_sources)),
+            "clone,count=<100>,source={}".format("|".join(ingest_sources)),
             xtra(",upload", mono=mono),
         ]
     )

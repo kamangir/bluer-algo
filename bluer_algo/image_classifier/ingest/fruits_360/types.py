@@ -1,5 +1,6 @@
 import os
 from typing import Dict
+import random
 
 from blueness import module
 from bluer_options.logger import log_list
@@ -16,6 +17,7 @@ NAME = module.name(__file__, NAME)
 
 def get_types(
     type_count: int = -1,
+    shuffle: bool = True,
 ) -> Dict[str, int]:
     logger.info(
         "{}.get_types{}".format(
@@ -27,9 +29,15 @@ def get_types(
     training_path = os.path.join(BLUER_ALGO_FRUITS_360_REPO_PATH, "Training")
     logger.info(f"reading {training_path} ...")
 
-    list_of_types = sorted([path.name(path_) for path_ in path.list_of(training_path)])
+    list_of_types = [path.name(path_) for path_ in path.list_of(training_path)]
+
+    if shuffle:
+        random.shuffle(list_of_types)
+
     if type_count != -1:
         list_of_types = list_of_types[:type_count]
+
+    list_of_types = sorted(list_of_types)
     log_list(
         logger,
         "found",

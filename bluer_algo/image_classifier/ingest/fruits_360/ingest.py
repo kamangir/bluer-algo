@@ -10,6 +10,7 @@ NAME = module.name(__file__, NAME)
 
 def ingest(
     object_name: str,
+    count: int = 100,
     type_count: int = -1,
 ) -> bool:
     logger.info(
@@ -20,7 +21,9 @@ def ingest(
         )
     )
 
-    fruit_types = get_types(type_count=type_count)
+    fruit_types = get_types(
+        type_count=count if type_count == -1 else type_count,
+    )
     if not fruit_types:
         return False
 

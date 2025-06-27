@@ -24,12 +24,18 @@ parser.add_argument(
     type=int,
     default=-1,
 )
+parser.add_argument(
+    "--count",
+    type=int,
+    default=100,
+)
 args = parser.parse_args()
 
 success = False
 if args.task == "ingest":
     success = ingest(
         object_name=args.object_name,
+        count=args.count,
         type_count=args.type_count,
     )
 else:
