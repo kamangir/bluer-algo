@@ -11,7 +11,7 @@ items = README.Items(
             "name": "image classifier",
             "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
             "description": "an image classifier.",
-            "url": "./bluer_algo/docs/image_classifier.md",
+            "url": "./bluer_algo/docs/image-classifier.md",
         }
     ]
 )
@@ -29,7 +29,7 @@ def build():
         )
         for readme in [
             {"items": items, "path": ".."},
-            {"path": "docs/image_classifier.md"},
-            {"path": "docs/image_classifier_ingest.md"},
+            {"path": "docs/image-classifier.md"},
+            {"path": "docs/image-classifier-ingest.md"},
         ]
     )

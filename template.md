@@ -1,6 +1,6 @@
-# 🌀 bluer-algo
+# 🪄 bluer-algo
 
-🌀 `@algo` carries AI algo.  
+🪄 `@algo` carries AI algo.  
 
 ```bash
 pip install bluer-algo
