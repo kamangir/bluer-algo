@@ -16,7 +16,7 @@
     extensions=png,push .
 ```
 
-set:::object_name fruits-365-2025-06-27-jvb4m9
+set:::object_name fruits-365-2025-06-27-9h7ksc
 
 assets:::get:::object_name/grid.png
 

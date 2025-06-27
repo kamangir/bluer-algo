@@ -39,13 +39,12 @@ def ingest(
             object_name,
         )
     )
-    logger.info(
-        "ratios: train={:.2f}, eval={:.2f}, test={:.2f}".format(
-            train_ratio,
-            eval_ratio,
-            test_ratio,
-        )
+    ratio_log = "ratios: train={:.2f}, eval={:.2f}, test={:.2f}".format(
+        train_ratio,
+        eval_ratio,
+        test_ratio,
     )
+    logger.info(ratio_log)
 
     dict_of_classes = get_classes(
         class_count=count if class_count == -1 else class_count,
@@ -107,16 +106,15 @@ def ingest(
                 "title": f"#{class_index}: {record_class} @ {record_subset}",
             }
 
-    logger.info(
-        "subsets: {}".format(
-            ", ".join(
-                [
-                    f"{subset}: {subset_count}"
-                    for subset, subset_count in dict_of_subsets.items()
-                ]
-            )
+    subset_log = "{}".format(
+        ", ".join(
+            [
+                f"{subset}: {subset_count}"
+                for subset, subset_count in dict_of_subsets.items()
+            ]
         )
     )
+    logger.info(f"subsets: {subset_log}")
 
     if not file.save_csv(
         objects.path_of(
@@ -153,6 +151,15 @@ def ingest(
             filename="grid.png",
         ),
         shuffle=True,
+        header=[
+            ratio_log,
+            f"count: {count}",
+            subset_log,
+            "{} class(es): {}".format(
+                len(dict_of_classes),
+                ", ".join(dict_of_classes.values()),
+            ),
+        ],
         footer=signature(),
         log=verbose,
         relative_path=True,

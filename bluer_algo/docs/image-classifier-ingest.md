@@ -17,24 +17,24 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-jvb4m9/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-9h7ksc/grid.png?raw=true)
 
-[fruits-365-2025-06-27-jvb4m9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-jvb4m9.tar.gz)
+[fruits-365-2025-06-27-9h7ksc](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-9h7ksc.tar.gz)
 
 ```yaml
 dataset:
   class_count: 10
   classes:
-    0: Cherry 4
-    1: Nut 4
-    2: Pear Monster 1
-    3: Strawberry 1
-    4: Tangelo 1
-    5: Tomato 10
-    6: Tomato 4
-    7: Tomato 8
-    8: Tomato Cherry Maroon 1
-    9: Tomato Cherry Yellow 1
+    0: Apple Granny Smith 1
+    1: Apple Red 3
+    2: Blackberrie 2
+    3: Cabbage red 1
+    4: Cherry Wax Black 1
+    5: Clementine 1
+    6: Corn Husk 1
+    7: Salak 1
+    8: Strawberry Wedge 1
+    9: Tomato 5
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -42,9 +42,9 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 7
-    test: 16
-    train: 77
+    eval: 6
+    test: 7
+    train: 87
 
 ```
 
