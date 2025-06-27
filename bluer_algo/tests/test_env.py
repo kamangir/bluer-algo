@@ -10,4 +10,4 @@ def test_required_env():
 
 
 def test_bluer_algo_env():
-    assert env.BLUER_ALGO_CONFIG
+    assert env.BLUER_ALGO_FRUITS_360_REPO_ADDRESS
