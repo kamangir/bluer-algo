@@ -20,7 +20,7 @@ parser.add_argument(
     type=str,
 )
 parser.add_argument(
-    "--type_count",
+    "--class_count",
     type=int,
     default=-1,
 )
@@ -46,7 +46,7 @@ if args.task == "ingest":
     success = ingest(
         object_name=args.object_name,
         count=args.count,
-        type_count=args.type_count,
+        class_count=args.class_count,
         test_ratio=args.test_ratio,
         train_ratio=args.train_ratio,
     )

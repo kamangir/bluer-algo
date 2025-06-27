@@ -17,9 +17,9 @@ def help_ingest(
     )
 
     args = [
+        "[--class_count -1]",
         "[--test_ratio 0.1]",
         "[--train_ratio 0.8]",
-        "[--type_count -1]",
     ]
 
     return show_usage(

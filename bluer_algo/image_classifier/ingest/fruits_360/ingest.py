@@ -1,11 +1,13 @@
 import os
 from tqdm import trange, tqdm
+import pandas as pd
 
 from blueness import module
-from bluer_objects import path, objects, file
+from bluer_objects import objects, file
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
-from bluer_algo.image_classifier.ingest.fruits_360.types import get_types
+from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
 from bluer_algo.logger import logger
 
@@ -16,7 +18,7 @@ NAME = module.name(__file__, NAME)
 def ingest(
     object_name: str,
     count: int = 100,
-    type_count: int = -1,
+    class_count: int = -1,
     test_ratio: float = 0.1,
     train_ratio: float = 0.8,
     verbose: bool = True,
@@ -29,7 +31,7 @@ def ingest(
     logger.info(
         "{}.ingest -{}{}> {}".format(
             NAME,
-            "" if type_count == -1 else f"{type_count}-type(s)-",
+            "" if class_count == -1 else f"{class_count}-class(es)-",
             f"{count}-record(s)-",
             object_name,
         )
@@ -42,27 +44,35 @@ def ingest(
         )
     )
 
-    fruit_types = get_types(
-        type_count=count if type_count == -1 else type_count,
+    dict_of_classes = get_classes(
+        class_count=count if class_count == -1 else class_count,
     )
-    if type_count == -1:
-        type_count = len(fruit_types)
+    if class_count == -1:
+        class_count = len(dict_of_classes)
 
-    record_count_per_type = int(count / type_count)
-    for type_index in trange(type_count):
-        record_type = fruit_types[type_index]
+    df = pd.DataFrame(
+        columns=[
+            "filename",
+            "class_index",
+            "subset",
+        ]
+    )
 
-        logger.info(f"ingesting {record_type}")
+    record_count_per_class = int(count / class_count)
+    for class_index in trange(class_count):
+        record_class = dict_of_classes[class_index]
+
+        logger.info(f"ingesting {record_class}")
 
         list_of_filenames = file.list_of(
             os.path.join(
                 BLUER_ALGO_FRUITS_360_REPO_PATH,
                 "Training",
-                record_type,
+                record_class,
                 "*.jpg",
             )
         )
-        list_of_filenames = list_of_filenames[:record_count_per_type]
+        list_of_filenames = list_of_filenames[:record_count_per_class]
 
         for filename in tqdm(list_of_filenames):
             if not file.copy(
@@ -75,6 +85,34 @@ def ingest(
             ):
                 return False
 
-    ...
+            df.loc[len(df)] = {
+                "filename": file.name_and_extension(filename),
+                "class_index": class_index,
+                "subset": "train",
+            }
 
-    return True
+    if not file.save_csv(
+        objects.path_of(
+            object_name=object_name,
+            filename="metadata.csv",
+        ),
+        df,
+        log=verbose,
+    ):
+        return False
+
+    return post_to_object(
+        object_name,
+        "dataset",
+        {
+            "classes": dict_of_classes,
+            "class_count": class_count,
+            "count": count,
+            "ratios": {
+                "eval": eval_ratio,
+                "test": test_ratio,
+                "train": train_ratio,
+            },
+            "source": "fruits_360",
+        },
+    )
