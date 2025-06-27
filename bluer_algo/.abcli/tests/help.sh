@@ -20,8 +20,6 @@ function test_bluer_algo_help() {
         "@algo image_classifier" \
         "@algo image_classifier ingest" \
         \
-        "@algo task" \
-        \
         "@image_classifier" \
         "@image_classifier ingest" \
         \
