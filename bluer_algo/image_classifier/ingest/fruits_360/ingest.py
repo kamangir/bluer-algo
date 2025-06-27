@@ -1,4 +1,5 @@
 import os
+import random
 from tqdm import trange, tqdm
 import pandas as pd
 
@@ -58,6 +59,9 @@ def ingest(
         ]
     )
 
+    list_of_record_subsets = ["train", "test", "eval"]
+    dict_of_subsets = {record_subset: 0 for record_subset in list_of_record_subsets}
+
     record_count_per_class = int(count / class_count)
     for class_index in trange(class_count):
         record_class = dict_of_classes[class_index]
@@ -85,11 +89,30 @@ def ingest(
             ):
                 return False
 
+            record_subset = random.choices(
+                population=list_of_record_subsets,
+                weights=[train_ratio, test_ratio, eval_ratio],
+                k=1,
+            )[0]
+
+            dict_of_subsets[record_subset] += 1
+
             df.loc[len(df)] = {
                 "filename": file.name_and_extension(filename),
                 "class_index": class_index,
-                "subset": "train",
+                "subset": record_subset,
             }
+
+    logger.info(
+        "subsets: {}".format(
+            ", ".join(
+                [
+                    f"{subset}: {subset_count}"
+                    for subset, subset_count in dict_of_subsets.items()
+                ]
+            )
+        )
+    )
 
     if not file.save_csv(
         objects.path_of(
@@ -114,5 +137,6 @@ def ingest(
                 "train": train_ratio,
             },
             "source": "fruits_360",
+            "subsets": dict_of_subsets,
         },
     )
