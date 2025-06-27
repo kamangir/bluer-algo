@@ -80,12 +80,17 @@ def ingest(
         )
         list_of_filenames = list_of_filenames[:record_count_per_class]
 
-        for filename in tqdm(list_of_filenames):
+        for source_filename in tqdm(list_of_filenames):
+            destination_filename = "{}-{}".format(
+                class_index,
+                file.name_and_extension(source_filename),
+            )
+
             if not file.copy(
-                filename,
+                source_filename,
                 objects.path_of(
                     object_name=object_name,
-                    filename=file.name_and_extension(filename),
+                    filename=destination_filename,
                 ),
                 log=verbose,
             ):
@@ -100,7 +105,7 @@ def ingest(
             dict_of_subsets[record_subset] += 1
 
             df.loc[len(df)] = {
-                "filename": file.name_and_extension(filename),
+                "filename": file.name_and_extension(destination_filename),
                 "class_index": class_index,
                 "subset": record_subset,
                 "title": f"#{class_index}: {record_class} @ {record_subset}",
