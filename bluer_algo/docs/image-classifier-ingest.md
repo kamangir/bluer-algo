@@ -17,17 +17,17 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-wvbvme/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-97buak/grid.png?raw=true)
 
-[fruits-365-2025-06-27-wvbvme](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-wvbvme.tar.gz)
+[fruits-365-2025-06-27-97buak](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-97buak.tar.gz)
 
 ```yaml
 dataset:
   class_count: 3
   classes:
-    0: Corn 1
-    1: Pear Kaiser 1
-    2: Pomegranate 1
+    0: Dates 1
+    1: Ginger Root 1
+    2: Melon Piel de Sapo 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -35,9 +35,9 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 7
-    test: 6
-    train: 86
+    eval: 5
+    test: 12
+    train: 82
 
 ```
 
