@@ -15,22 +15,22 @@
 ```
 
 
-[fruits-365-2025-06-27-ualwd6](TBA/fruits-365-2025-06-27-ualwd6.tar.gz)
+[fruits-365-2025-06-27-9x6jtq](TBA/fruits-365-2025-06-27-9x6jtq.tar.gz)
 
 ```yaml
 dataset:
   class_count: 10
   classes:
-    0: Cabbage white 1
-    1: Eggplant long 1
-    2: Nectarine 1
-    3: Orange 1
-    4: Pear Red 1
-    5: Pear Stone 1
-    6: Pear Williams 1
-    7: Pepper Green 1
+    0: Apple Core 1
+    1: Avocado 1
+    2: Cherry Rainier 2
+    3: Cucumber 3
+    4: Fig 1
+    5: Nut Forest 1
+    6: Onion Red Peeled 1
+    7: Pear Monster 1
     8: Raspberry 1
-    9: Strawberry Wedge 1
+    9: Tomato Maroon 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -38,9 +38,9 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 7
+    eval: 17
     test: 14
-    train: 79
+    train: 69
 
 ```
 

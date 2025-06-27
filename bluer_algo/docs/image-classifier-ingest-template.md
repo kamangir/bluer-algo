@@ -14,7 +14,7 @@
 @upload public,zip .
 ```
 
-set:::object_name fruits-365-2025-06-27-ualwd6
+set:::object_name fruits-365-2025-06-27-9x6jtq
 
 object:::get:::object_name
 
