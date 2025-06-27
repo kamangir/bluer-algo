@@ -7,6 +7,7 @@ from bluer_objects import path
 from bluer_objects.env import abcli_path_git
 
 from bluer_algo import NAME
+from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
 from bluer_algo.logger import logger
 
 
@@ -23,10 +24,10 @@ def get_types(
         )
     )
 
-    repo_path = os.path.join(abcli_path_git, "fruits-360-100x100/Training")
-    logger.info(f"reading {repo_path} ...")
+    training_path = os.path.join(BLUER_ALGO_FRUITS_360_REPO_PATH, "Training")
+    logger.info(f"reading {training_path} ...")
 
-    list_of_types = sorted([path.name(path_) for path_ in path.list_of(repo_path)])
+    list_of_types = sorted([path.name(path_) for path_ in path.list_of(training_path)])
     if type_count != -1:
         list_of_types = list_of_types[:type_count]
     log_list(

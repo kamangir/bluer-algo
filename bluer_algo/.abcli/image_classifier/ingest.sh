@@ -11,7 +11,7 @@ function bluer_algo_image_classifier_ingest() {
 
     [[ "$do_clone" == 1 ]] &&
         bluer_ai_git_clone \
-            https://github.com/fruits-360/fruits-360-100x100.git
+            $BLUER_ALGO_FRUITS_360_REPO_ADDRESS
 
     bluer_ai_eval dryrun=$do_dryrun \
         python3 -m bluer_algo.image_classifier.ingest.$ingest_source \
