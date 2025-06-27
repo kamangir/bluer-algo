@@ -6,6 +6,7 @@ import pandas as pd
 from blueness import module
 from bluer_objects import objects, file
 from bluer_objects.metadata import post_to_object
+from bluer_objects.logger.image import log_image_grid
 
 from bluer_algo import NAME
 from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
@@ -56,6 +57,7 @@ def ingest(
             "filename",
             "class_index",
             "subset",
+            "title",
         ]
     )
 
@@ -101,6 +103,7 @@ def ingest(
                 "filename": file.name_and_extension(filename),
                 "class_index": class_index,
                 "subset": record_subset,
+                "title": f"#{class_index}: {record_class} @ {record_subset}",
             }
 
     logger.info(
@@ -124,7 +127,7 @@ def ingest(
     ):
         return False
 
-    return post_to_object(
+    if not post_to_object(
         object_name,
         "dataset",
         {
@@ -139,4 +142,15 @@ def ingest(
             "source": "fruits_360",
             "subsets": dict_of_subsets,
         },
+    ):
+        return False
+
+    return log_image_grid(
+        df,
+        objects.path_of(
+            object_name=object_name,
+            filename="grid.png",
+        ),
+        shuffle=True,
+        log=verbose,
     )
