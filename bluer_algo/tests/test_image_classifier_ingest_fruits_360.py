@@ -11,7 +11,7 @@ def test_image_classifier_ingest_fruits_360(fruits_360_checkout):
 
     success = ingest(
         object_name=object_name,
-        type_count=5,
+        class_count=5,
     )
 
     assert success

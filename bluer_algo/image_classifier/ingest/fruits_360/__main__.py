@@ -20,7 +20,7 @@ parser.add_argument(
     type=str,
 )
 parser.add_argument(
-    "--type_count",
+    "--class_count",
     type=int,
     default=-1,
 )
@@ -29,6 +29,16 @@ parser.add_argument(
     type=int,
     default=100,
 )
+parser.add_argument(
+    "--test_ratio",
+    type=float,
+    default=0.1,
+)
+parser.add_argument(
+    "--train_ratio",
+    type=float,
+    default=0.8,
+)
 args = parser.parse_args()
 
 success = False
@@ -36,7 +46,9 @@ if args.task == "ingest":
     success = ingest(
         object_name=args.object_name,
         count=args.count,
-        type_count=args.type_count,
+        class_count=args.class_count,
+        test_ratio=args.test_ratio,
+        train_ratio=args.train_ratio,
     )
 else:
     success = None

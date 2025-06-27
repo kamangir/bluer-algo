@@ -6,7 +6,7 @@
 ```bash
 @algo image_classifier ingest \
     count=100 - \
-    --type_count 10
+    --class_count 10
 ```
 
 
