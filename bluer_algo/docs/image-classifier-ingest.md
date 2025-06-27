@@ -12,25 +12,29 @@
 
 @upload filename=metadata.yaml .
 @upload public,zip .
+@assets publish \
+    extensions=png,push .
 ```
 
 
-[fruits-365-2025-06-27-9x6jtq](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-9x6jtq.tar.gz)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-jvb4m9/grid.png?raw=true)
+
+[fruits-365-2025-06-27-jvb4m9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-jvb4m9.tar.gz)
 
 ```yaml
 dataset:
   class_count: 10
   classes:
-    0: Apple Core 1
-    1: Avocado 1
-    2: Cherry Rainier 2
-    3: Cucumber 3
-    4: Fig 1
-    5: Nut Forest 1
-    6: Onion Red Peeled 1
-    7: Pear Monster 1
-    8: Raspberry 1
-    9: Tomato Maroon 1
+    0: Cherry 4
+    1: Nut 4
+    2: Pear Monster 1
+    3: Strawberry 1
+    4: Tangelo 1
+    5: Tomato 10
+    6: Tomato 4
+    7: Tomato 8
+    8: Tomato Cherry Maroon 1
+    9: Tomato Cherry Yellow 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -38,9 +42,9 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 17
-    test: 14
-    train: 69
+    eval: 7
+    test: 16
+    train: 77
 
 ```
 

@@ -12,9 +12,13 @@
 
 @upload filename=metadata.yaml .
 @upload public,zip .
+@assets publish \
+    extensions=png,push .
 ```
 
-set:::object_name fruits-365-2025-06-27-9x6jtq
+set:::object_name fruits-365-2025-06-27-jvb4m9
+
+assets:::get:::object_name/grid.png
 
 object:::get:::object_name
 

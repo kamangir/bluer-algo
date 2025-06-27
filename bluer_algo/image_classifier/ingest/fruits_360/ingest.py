@@ -9,6 +9,7 @@ from bluer_objects.metadata import post_to_object
 from bluer_objects.logger.image import log_image_grid
 
 from bluer_algo import NAME
+from bluer_algo.host import signature
 from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
 from bluer_algo.logger import logger
@@ -152,5 +153,7 @@ def ingest(
             filename="grid.png",
         ),
         shuffle=True,
+        footer=signature(),
         log=verbose,
+        relative_path=True,
     )
