@@ -17,6 +17,8 @@ def help_ingest(
     )
 
     args = [
+        "[--test_ratio 0.1]",
+        "[--train_ratio 0.8]",
         "[--type_count -1]",
     ]
 

@@ -5,7 +5,6 @@ import random
 from blueness import module
 from bluer_options.logger import log_list
 from bluer_objects import path
-from bluer_objects.env import abcli_path_git
 
 from bluer_algo import NAME
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
@@ -47,7 +46,7 @@ def get_types(
     )
 
     return {
-        fruit_type: fruit_index
+        fruit_index: fruit_type
         for fruit_type, fruit_index in zip(
             list_of_types,
             range(len(list_of_types)),
