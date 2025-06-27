@@ -20,4 +20,6 @@ function bluer_algo_image_classifier_ingest() {
 
     [[ "$do_upload" == 1 ]] &&
         bluer_objects_upload - $object_name
+
+    return 0
 }
