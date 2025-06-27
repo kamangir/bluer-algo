@@ -14,9 +14,10 @@ def ingest(
     type_count: int = -1,
 ) -> bool:
     logger.info(
-        "{}.ingest -{}> {}".format(
+        "{}.ingest -{}{}> {}".format(
             NAME,
             "" if type_count == -1 else f"{type_count}-type(s)-",
+            f"{count}-record(s)-",
             object_name,
         )
     )
@@ -24,7 +25,7 @@ def ingest(
     fruit_types = get_types(
         type_count=count if type_count == -1 else type_count,
     )
-    if not fruit_types:
-        return False
+    if type_count == -1:
+        type_count = len(fruit_types)
 
     return True
