@@ -1,3 +1,5 @@
 # [image classifier](./image-classifier.md): ingest
 
-🔥
+- continues https://github.com/kamangir/image-classifier-2.
+- uses https://github.com/fruits-360/fruits-360-100x100
+- 🔥
