@@ -7,7 +7,7 @@ def help_ingest(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "clone"
+    options = "clone,upload"
 
     return show_usage(
         [
