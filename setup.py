@@ -13,6 +13,8 @@ setup(
         f"{NAME}.help",
         f"{NAME}.help.image_classifier",
         f"{NAME}.image_classifier",
+        f"{NAME}.image_classifier.ingest",
+        f"{NAME}.image_classifier.ingest.fruits_360",
     ],
     include_package_data=True,
     package_data={
