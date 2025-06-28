@@ -15,6 +15,7 @@ setup(
         f"{NAME}.image_classifier",
         f"{NAME}.image_classifier.ingest",
         f"{NAME}.image_classifier.ingest.fruits_360",
+        f"{NAME}.image_classifier.train",
     ],
     include_package_data=True,
     package_data={

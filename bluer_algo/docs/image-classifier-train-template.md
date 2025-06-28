@@ -6,10 +6,10 @@ uses [ingest](./image-classifier-ingest.md).
 @select fruits-365-dataset-2025-06-28-rtpost
 @select fruits-365-model-$(@@timestamp)
 
-🔥
-
 @algo image_classifier train \
-    TBA .. .
+    - .. .
+
+🔥
 
 @upload filename=metadata.yaml .
 @upload public,zip .
