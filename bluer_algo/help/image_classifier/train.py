@@ -2,8 +2,7 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
-from bluer_plugin import ALIAS
-from bluer_plugin.help.node.functions import help_functions as help_node
+from bluer_algo import ALIAS
 
 
 def help_train(
