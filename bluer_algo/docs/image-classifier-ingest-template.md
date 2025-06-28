@@ -8,13 +8,17 @@
 
 @algo image_classifier ingest \
     clone,count=100,source=fruits_360 . \
-    --class_count 10
+    --class_count 3
 
 @upload filename=metadata.yaml .
 @upload public,zip .
+@assets publish \
+    extensions=png,push .
 ```
 
-set:::object_name fruits-365-2025-06-27-9x6jtq
+set:::object_name fruits-365-2025-06-27-97buak
+
+assets:::get:::object_name/grid.png
 
 object:::get:::object_name
 

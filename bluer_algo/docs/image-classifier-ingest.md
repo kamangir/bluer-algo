@@ -8,29 +8,26 @@
 
 @algo image_classifier ingest \
     clone,count=100,source=fruits_360 . \
-    --class_count 10
+    --class_count 3
 
 @upload filename=metadata.yaml .
 @upload public,zip .
+@assets publish \
+    extensions=png,push .
 ```
 
 
-[fruits-365-2025-06-27-9x6jtq](TBA/fruits-365-2025-06-27-9x6jtq.tar.gz)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-97buak/grid.png?raw=true)
+
+[fruits-365-2025-06-27-97buak](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-97buak.tar.gz)
 
 ```yaml
 dataset:
-  class_count: 10
+  class_count: 3
   classes:
-    0: Apple Core 1
-    1: Avocado 1
-    2: Cherry Rainier 2
-    3: Cucumber 3
-    4: Fig 1
-    5: Nut Forest 1
-    6: Onion Red Peeled 1
-    7: Pear Monster 1
-    8: Raspberry 1
-    9: Tomato Maroon 1
+    0: Dates 1
+    1: Ginger Root 1
+    2: Melon Piel de Sapo 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -38,9 +35,9 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 17
-    test: 14
-    train: 69
+    eval: 5
+    test: 12
+    train: 82
 
 ```
 

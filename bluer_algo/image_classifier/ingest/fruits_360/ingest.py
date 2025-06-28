@@ -6,8 +6,10 @@ import pandas as pd
 from blueness import module
 from bluer_objects import objects, file
 from bluer_objects.metadata import post_to_object
+from bluer_objects.logger.image import log_image_grid
 
 from bluer_algo import NAME
+from bluer_algo.host import signature
 from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
 from bluer_algo.logger import logger
@@ -37,13 +39,12 @@ def ingest(
             object_name,
         )
     )
-    logger.info(
-        "ratios: train={:.2f}, eval={:.2f}, test={:.2f}".format(
-            train_ratio,
-            eval_ratio,
-            test_ratio,
-        )
+    ratio_log = "ratios: train={:.2f}, eval={:.2f}, test={:.2f}".format(
+        train_ratio,
+        eval_ratio,
+        test_ratio,
     )
+    logger.info(ratio_log)
 
     dict_of_classes = get_classes(
         class_count=count if class_count == -1 else class_count,
@@ -56,6 +57,7 @@ def ingest(
             "filename",
             "class_index",
             "subset",
+            "title",
         ]
     )
 
@@ -78,12 +80,17 @@ def ingest(
         )
         list_of_filenames = list_of_filenames[:record_count_per_class]
 
-        for filename in tqdm(list_of_filenames):
+        for source_filename in tqdm(list_of_filenames):
+            destination_filename = "{}-{}".format(
+                class_index,
+                file.name_and_extension(source_filename),
+            )
+
             if not file.copy(
-                filename,
+                source_filename,
                 objects.path_of(
                     object_name=object_name,
-                    filename=file.name_and_extension(filename),
+                    filename=destination_filename,
                 ),
                 log=verbose,
             ):
@@ -98,21 +105,21 @@ def ingest(
             dict_of_subsets[record_subset] += 1
 
             df.loc[len(df)] = {
-                "filename": file.name_and_extension(filename),
+                "filename": file.name_and_extension(destination_filename),
                 "class_index": class_index,
                 "subset": record_subset,
+                "title": f"#{class_index}: {record_class} @ {record_subset}",
             }
 
-    logger.info(
-        "subsets: {}".format(
-            ", ".join(
-                [
-                    f"{subset}: {subset_count}"
-                    for subset, subset_count in dict_of_subsets.items()
-                ]
-            )
+    subset_log = "{}".format(
+        ", ".join(
+            [
+                f"{subset}: {subset_count}"
+                for subset, subset_count in dict_of_subsets.items()
+            ]
         )
     )
+    logger.info(f"subsets: {subset_log}")
 
     if not file.save_csv(
         objects.path_of(
@@ -124,7 +131,7 @@ def ingest(
     ):
         return False
 
-    return post_to_object(
+    if not post_to_object(
         object_name,
         "dataset",
         {
@@ -139,4 +146,26 @@ def ingest(
             "source": "fruits_360",
             "subsets": dict_of_subsets,
         },
+    ):
+        return False
+
+    return log_image_grid(
+        df,
+        objects.path_of(
+            object_name=object_name,
+            filename="grid.png",
+        ),
+        shuffle=True,
+        header=[
+            ratio_log,
+            f"count: {count}",
+            subset_log,
+            "{} class(es): {}".format(
+                len(dict_of_classes),
+                ", ".join(dict_of_classes.values()),
+            ),
+        ],
+        footer=signature(),
+        log=verbose,
+        relative_path=True,
     )
