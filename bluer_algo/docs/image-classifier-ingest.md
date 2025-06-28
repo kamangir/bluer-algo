@@ -4,7 +4,7 @@
 - uses https://github.com/fruits-360/fruits-360-100x100
 
 ```bash
-@select fruits-365-$(@@timestamp)
+@select fruits-365-dataset-$(@@timestamp)
 
 @algo image_classifier ingest \
     clone,count=100,source=fruits_360 . \
@@ -17,17 +17,17 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-2025-06-27-97buak/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-06-28-rtpost/grid.png?raw=true)
 
-[fruits-365-2025-06-27-97buak](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-2025-06-27-97buak.tar.gz)
+[fruits-365-dataset-2025-06-28-rtpost](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-06-28-rtpost.tar.gz)
 
 ```yaml
 dataset:
   class_count: 3
   classes:
-    0: Dates 1
-    1: Ginger Root 1
-    2: Melon Piel de Sapo 1
+    0: Apple Granny Smith 1
+    1: Lychee 1
+    2: Tomato Cherry Maroon 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -35,10 +35,8 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 5
-    test: 12
-    train: 82
+    eval: 14
+    test: 11
+    train: 74
 
 ```
-
-- 🔥
