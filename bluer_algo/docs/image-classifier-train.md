@@ -3,7 +3,7 @@
 uses [ingest](./image-classifier-ingest.md).
 
 ```bash
-@select fruits-365-dataset-2025-06-28-rtpost
+@select $BLUER_ALGO_FRUITS_360_TEST_DATASET
 @select fruits-365-model-$(@@timestamp)
 
 @algo image_classifier train \
@@ -18,9 +18,9 @@ uses [ingest](./image-classifier-ingest.md).
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/TBA/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/env?raw=true)
 
-[TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz)
+[env](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/env.tar.gz)
 
 ```yaml
 {}

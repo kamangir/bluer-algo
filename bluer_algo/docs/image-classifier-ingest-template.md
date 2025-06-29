@@ -10,13 +10,13 @@
     clone,count=100,source=fruits_360 . \
     --class_count 3
 
-@upload filename=metadata.yaml .
+@upload - .
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
 
-set:::object_name fruits-365-dataset-2025-06-28-rtpost
+set:::object_name env:::BLUER_ALGO_FRUITS_360_TEST_DATASET
 
 assets:::get:::object_name/grid.png
 
