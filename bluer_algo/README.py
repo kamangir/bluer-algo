@@ -31,5 +31,6 @@ def build():
             {"items": items, "path": ".."},
             {"path": "docs/image-classifier.md"},
             {"path": "docs/image-classifier-ingest.md"},
+            {"path": "docs/image-classifier-train.md"},
         ]
     )

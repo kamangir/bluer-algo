@@ -57,7 +57,6 @@ def ingest(
             "filename",
             "class_index",
             "subset",
-            "title",
         ]
     )
 
@@ -108,7 +107,6 @@ def ingest(
                 "filename": file.name_and_extension(destination_filename),
                 "class_index": class_index,
                 "subset": record_subset,
-                "title": f"#{class_index}: {record_class} @ {record_subset}",
             }
 
     subset_log = "{}".format(
@@ -148,6 +146,15 @@ def ingest(
         },
     ):
         return False
+
+    df["title"] = df.apply(
+        lambda row: "#{}: {} @ {}".format(
+            row["class_index"],
+            dict_of_classes[row["class_index"]],
+            row["subset"],
+        ),
+        axis=1,
+    )
 
     return log_image_grid(
         df,

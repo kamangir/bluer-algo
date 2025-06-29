@@ -4,7 +4,7 @@
 - uses https://github.com/fruits-360/fruits-360-100x100
 
 ```bash
-@select fruits-365-$(@@timestamp)
+@select fruits-365-dataset-$(@@timestamp)
 
 @algo image_classifier ingest \
     clone,count=100,source=fruits_360 . \
@@ -16,12 +16,10 @@
     extensions=png,push .
 ```
 
-set:::object_name fruits-365-2025-06-27-97buak
+set:::object_name fruits-365-dataset-2025-06-28-rtpost
 
 assets:::get:::object_name/grid.png
 
 object:::get:::object_name
 
 metadata:::get:::object_name
-
-- 🔥

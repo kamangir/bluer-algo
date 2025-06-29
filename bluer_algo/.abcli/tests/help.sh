@@ -19,9 +19,11 @@ function test_bluer_algo_help() {
         \
         "@algo image_classifier" \
         "@algo image_classifier ingest" \
+        "@algo image_classifier train" \
         \
         "@image_classifier" \
         "@image_classifier ingest" \
+        "@image_classifier train" \
         \
         "bluer_algo"; do
         bluer_ai_eval ,$options \
