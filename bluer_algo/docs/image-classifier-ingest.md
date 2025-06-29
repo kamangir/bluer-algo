@@ -10,24 +10,24 @@
     clone,count=100,source=fruits_360 . \
     --class_count 3
 
-@upload filename=metadata.yaml .
+@upload - .
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-06-28-rtpost/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-06-29-822zia/grid.png?raw=true)
 
-[fruits-365-dataset-2025-06-28-rtpost](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-06-28-rtpost.tar.gz)
+[fruits-365-dataset-2025-06-29-822zia](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-06-29-822zia.tar.gz)
 
 ```yaml
 dataset:
   class_count: 3
   classes:
-    0: Apple Granny Smith 1
-    1: Lychee 1
-    2: Tomato Cherry Maroon 1
+    0: Cabbage white 1
+    1: Cherry Wax Black 1
+    2: Kiwi 1
   count: 100
   ratios:
     eval: 0.09999999999999998
@@ -35,8 +35,8 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 14
+    eval: 9
     test: 11
-    train: 74
+    train: 79
 
 ```

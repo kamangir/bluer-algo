@@ -8,6 +8,6 @@ function test_bluer_algo_image_classifier_train() {
     bluer_ai_eval ,$options \
         bluer_algo_image_classifier_train \
         ,$options \
-        fruits-365-dataset-2025-06-28-rtpost \
+        $BLUER_ALGO_FRUITS_360_TEST_DATASET \
         $model_object_name
 }

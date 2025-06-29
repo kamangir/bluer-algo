@@ -3,7 +3,7 @@
 uses [ingest](./image-classifier-ingest.md).
 
 ```bash
-@select fruits-365-dataset-2025-06-28-rtpost
+@select $BLUER_ALGO_FRUITS_360_TEST_DATASET
 @select fruits-365-model-$(@@timestamp)
 
 @algo image_classifier train \
@@ -17,7 +17,7 @@ uses [ingest](./image-classifier-ingest.md).
     extensions=png,push .
 ```
 
-set:::object_name TBA
+set:::object_name env:::BLUER_ALGO_FRUITS_360_TEST_MODEL
 
 assets:::get:::object_name/grid.png
 
