@@ -3,7 +3,7 @@
 function bluer_algo_image_classifier_dataset() {
     local task=$1
 
-    local function_name=bluer_algo_dataset_$task
+    local function_name=bluer_algo_image_classifier_dataset_$task
     if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
         return
