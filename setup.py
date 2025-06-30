@@ -13,6 +13,7 @@ setup(
         f"{NAME}.help",
         f"{NAME}.help.image_classifier",
         f"{NAME}.image_classifier",
+        f"{NAME}.image_classifier.dataset",
         f"{NAME}.image_classifier.ingest",
         f"{NAME}.image_classifier.ingest.fruits_360",
         f"{NAME}.image_classifier.train",
