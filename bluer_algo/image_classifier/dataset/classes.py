@@ -167,7 +167,7 @@ class ImageClassifierDataset:
     def save(
         self,
         object_name: str,
-        metadata: Dict,
+        metadata: Dict = {},
         log: bool = True,
     ) -> bool:
         logger.info(self.as_str("subsets"))
