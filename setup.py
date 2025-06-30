@@ -14,9 +14,9 @@ setup(
         f"{NAME}.help.image_classifier",
         f"{NAME}.image_classifier",
         f"{NAME}.image_classifier.dataset",
-        f"{NAME}.image_classifier.ingest",
-        f"{NAME}.image_classifier.ingest.fruits_360",
-        f"{NAME}.image_classifier.train",
+        f"{NAME}.image_classifier.dataset.ingest",
+        f"{NAME}.image_classifier.dataset.ingest.fruits_360",
+        f"{NAME}.image_classifier.model",
     ],
     include_package_data=True,
     package_data={

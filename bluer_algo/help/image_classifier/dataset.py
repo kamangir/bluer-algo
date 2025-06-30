@@ -2,7 +2,7 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
-from bluer_algo.image_classifier.ingest import sources as ingest_sources
+from bluer_algo.image_classifier.dataset.ingest import sources as ingest_sources
 
 
 def help_ingest(
@@ -25,16 +25,37 @@ def help_ingest(
     return show_usage(
         [
             "@image_classifier",
+            "dataset",
             "ingest",
             f"[{options}]",
             "[-|<object-name>]",
         ]
         + args,
-        "ingest for image classifier.",
+        "ingest -> <object-name>.",
+        mono=mono,
+    )
+
+
+def help_review(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = xtra("~download,upload", mono=mono)
+
+    return show_usage(
+        [
+            "@image_classifier",
+            "dataset",
+            "review",
+            f"[{options}]",
+            "[.|<object-name>]",
+        ],
+        "review <object-name>.",
         mono=mono,
     )
 
 
 help_functions = {
     "ingest": help_ingest,
+    "review": help_review,
 }

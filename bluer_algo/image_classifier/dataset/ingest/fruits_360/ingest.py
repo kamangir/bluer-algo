@@ -7,7 +7,7 @@ from bluer_objects import objects, file
 
 from bluer_algo import NAME
 from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
-from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
+from bluer_algo.image_classifier.dataset.ingest.fruits_360.classes import get_classes
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_REPO_PATH
 from bluer_algo.logger import logger
 
@@ -80,7 +80,7 @@ def ingest(
                 return False
 
             record_subset = random.choices(
-                population=dataset.list_of_record_subsets,
+                population=dataset.list_of_subsets,
                 weights=[train_ratio, test_ratio, eval_ratio],
                 k=1,
             )[0]

@@ -19,6 +19,7 @@ def help_train(
     return show_usage(
         [
             "@image_classifier",
+            "model",
             "train",
             f"[{options}]",
             "[.|<dataset-object-name>]",
