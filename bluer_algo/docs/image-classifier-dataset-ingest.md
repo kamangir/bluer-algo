@@ -17,17 +17,17 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-06-30-g9i5jy/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-06-30-vjuif8/grid.png?raw=true)
 
-[fruits-365-dataset-2025-06-30-g9i5jy](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-06-30-g9i5jy.tar.gz)
+[fruits-365-dataset-2025-06-30-vjuif8](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-06-30-vjuif8.tar.gz)
 
 ```yaml
 dataset:
   class_count: 3
   classes:
-    0: Cactus fruit 1
-    1: Pear Forelle 1
-    2: Plum 2
+    0: Cucumber 5
+    1: Grape White 3
+    2: Pineapple 1
   count: 99
   ratios:
     eval: 0.09999999999999998
@@ -35,8 +35,8 @@ dataset:
     train: 0.8
   source: fruits_360
   subsets:
-    eval: 13
-    test: 6
-    train: 80
+    eval: 10
+    test: 10
+    train: 79
 
 ```
