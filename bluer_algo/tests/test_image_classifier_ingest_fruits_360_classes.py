@@ -1,4 +1,4 @@
-from bluer_algo.image_classifier.ingest.fruits_360.classes import get_classes
+from bluer_algo.image_classifier.dataset.ingest.fruits_360.classes import get_classes
 from bluer_algo.tests.fruits_360 import fruits_360_checkout
 
 

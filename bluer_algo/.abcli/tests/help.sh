@@ -18,12 +18,16 @@ function test_bluer_algo_help() {
         "@algo test list" \
         \
         "@algo image_classifier" \
-        "@algo image_classifier ingest" \
-        "@algo image_classifier train" \
+        "@algo image_classifier dataset" \
+        "@algo image_classifier dataset ingest" \
+        "@algo image_classifier model" \
+        "@algo image_classifier model train" \
         \
         "@image_classifier" \
-        "@image_classifier ingest" \
-        "@image_classifier train" \
+        "@image_classifier dataset" \
+        "@image_classifier dataset ingest" \
+        "@image_classifier model" \
+        "@image_classifier model train" \
         \
         "bluer_algo"; do
         bluer_ai_eval ,$options \

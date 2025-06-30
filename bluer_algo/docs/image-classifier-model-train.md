@@ -1,6 +1,6 @@
-# [image classifier](./image-classifier.md): train
+# [image classifier](./image-classifier.md): model: train
 
-uses [ingest](./image-classifier-ingest.md).
+uses [ingest](./image-classifier-dataset-ingest.md).
 
 ```bash
 @select $BLUER_ALGO_FRUITS_360_TEST_DATASET

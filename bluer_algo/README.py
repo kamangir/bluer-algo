@@ -30,7 +30,8 @@ def build():
         for readme in [
             {"items": items, "path": ".."},
             {"path": "docs/image-classifier.md"},
-            {"path": "docs/image-classifier-ingest.md"},
-            {"path": "docs/image-classifier-train.md"},
+            {"path": "docs/image-classifier-dataset-ingest.md"},
+            {"path": "docs/image-classifier-dataset-review.md"},
+            {"path": "docs/image-classifier-model-train.md"},
         ]
     )

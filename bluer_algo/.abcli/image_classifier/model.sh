@@ -1,14 +1,15 @@
 #! /usr/bin/env bash
 
-function bluer_plugin_node() {
+function bluer_algo_image_classifier_model() {
     local task=$1
 
-    local function_name=bluer_plugin_node_$task
+    local function_name=bluer_algo_model_$task
     if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
         return
     fi
-    bluer_ai_log "bluer-plugin: node: 🌀"
+
+    python3 -m bluer_algo.image_classifier_model "$@"
 }
 
-bluer_ai_source_caller_suffix_path /node
+bluer_ai_source_caller_suffix_path /model

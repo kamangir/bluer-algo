@@ -2,7 +2,7 @@ import pytest
 
 from bluer_objects.objects import unique_object
 
-from bluer_algo.image_classifier.ingest.fruits_360.ingest import ingest
+from bluer_algo.image_classifier.dataset.ingest.fruits_360.ingest import ingest
 from bluer_algo.tests.fruits_360 import fruits_360_checkout
 
 

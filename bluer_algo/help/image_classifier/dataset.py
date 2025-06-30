@@ -2,7 +2,7 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
-from bluer_algo.image_classifier.ingest import sources as ingest_sources
+from bluer_algo.image_classifier.dataset.ingest import sources as ingest_sources
 
 
 def help_ingest(

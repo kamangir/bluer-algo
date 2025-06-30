@@ -4,7 +4,7 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
-from bluer_algo.image_classifier.ingest import sources as ingest_sources
+from bluer_algo.image_classifier.dataset.ingest import sources as ingest_sources
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
