@@ -1,5 +1,3 @@
-import pytest
-
 from bluer_objects.objects import unique_object
 
 from bluer_algo.image_classifier.dataset.ingest.fruits_360.ingest import ingest
