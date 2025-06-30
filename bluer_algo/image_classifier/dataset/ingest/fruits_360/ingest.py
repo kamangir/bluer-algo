@@ -80,7 +80,7 @@ def ingest(
                 return False
 
             record_subset = random.choices(
-                population=dataset.list_of_record_subsets,
+                population=dataset.list_of_subsets,
                 weights=[train_ratio, test_ratio, eval_ratio],
                 k=1,
             )[0]
