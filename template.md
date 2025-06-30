@@ -12,9 +12,9 @@ items:::
 graph LR
     image_classifier_dataset_ingest["@image_classifier dataset ingest count=<100>,source=fruits_360 <dataset-object-name>"]
 
-    image_classifier_dataset_review["@image_classifier dataset review - <dataset-object-name>"]
+    image_classifier_dataset_review["@image_classifier dataset review~~- <dataset-object-name>"]
 
-    image_classifier_model_train["@image_classifier model train - <dataset-object-name> <model-object-name>"]
+    image_classifier_model_train["@image_classifier model train~~- <dataset-object-name> <model-object-name>"]
 
     fruits_360["🛜 fruits_360"]:::folder
     dataset_object["📂 dataset object"]:::folder

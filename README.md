@@ -14,9 +14,9 @@ pip install bluer-algo
 graph LR
     image_classifier_dataset_ingest["@image_classifier<br>dataset<br>ingest<br>count=&lt;100&gt;,source=fruits_360<br>&lt;dataset-object-name&gt;"]
 
-    image_classifier_dataset_review["@image_classifier<br>dataset<br>review<br>-<br>&lt;dataset-object-name&gt;"]
+    image_classifier_dataset_review["@image_classifier<br>dataset<br>review -<br>&lt;dataset-object-name&gt;"]
 
-    image_classifier_model_train["@image_classifier<br>model<br>train<br>-<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
+    image_classifier_model_train["@image_classifier<br>model<br>train -<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
 
     fruits_360["🛜 fruits_360"]:::folder
     dataset_object["📂 dataset object"]:::folder
@@ -42,4 +42,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/bluer-algo.svg)](https://pypi.org/project/bluer-algo/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/bluer-algo)](https://pypistats.org/packages/bluer-algo)
 
-built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.122.1`](https://github.com/kamangir/bluer-algo).
+built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.123.1`](https://github.com/kamangir/bluer-algo).
