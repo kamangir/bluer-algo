@@ -5,8 +5,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```bash
 @select $BLUER_ALGO_FRUITS_360_TEST_DATASET
 
-@algo image_classifier dataset review \
-    ~download .
+@algo image_classifier dataset review - .
 
 @assets publish \
     extensions=png,push .
