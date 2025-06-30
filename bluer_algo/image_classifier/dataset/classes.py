@@ -118,7 +118,6 @@ class ImageClassifierDataset:
         )
         dataset.dict_of_classes = metadata["classes"]
 
-        logger.info(f"loaded {dataset.count} record(s) from {object_name}.")
         logger.info(dataset.as_str("subsets"))
         logger.info(dataset.as_str("classes"))
 
