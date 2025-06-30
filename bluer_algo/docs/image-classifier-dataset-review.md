@@ -1,7 +1,5 @@
 # [image classifier](./image-classifier.md): dataset: review
 
-🔥
-
 uses [ingest](./image-classifier-dataset-ingest.md).
 
 ```bash
