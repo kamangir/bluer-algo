@@ -114,6 +114,7 @@ def train(
     model.eval()
     correct = total = 0
     log_items = []
+    confusion_matrix = np.zeros((dataset.class_count, dataset.class_count))
     with torch.no_grad():
         for images, labels in tqdm(eval_loader):
             images, labels = images.to(device), labels.to(device)
@@ -123,6 +124,8 @@ def train(
             correct += (predicted == labels).sum().item()
 
             for image, label, prediction in zip(images, labels, predicted):
+                confusion_matrix[int(label), int(prediction)] += 1
+
                 if len(log_items) >= LOG_IMAGE_GRID_COLS * LOG_IMAGE_GRID_ROWS:
                     continue
                 log_items.append(
@@ -142,6 +145,7 @@ def train(
     eval_accuracy = correct / total
     logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
 
+    # prep for visualization
     header = (
         objects.signature(object_name=dataset_object_name)
         + dataset.signature()
@@ -151,6 +155,67 @@ def train(
             f"eval_accuracy: {100*eval_accuracy:.2f}%",
         ]
     )
+
+    # confusion_matrix.png
+    confusion_matrix = confusion_matrix / confusion_matrix.sum(
+        axis=1,
+        keepdims=True,
+    )
+    confusion_matrix = np.nan_to_num(confusion_matrix)
+    fig, ax = plt.subplots(figsize=(10, 10))
+    cax = ax.imshow(
+        confusion_matrix,
+        interpolation="nearest",
+        cmap=plt.cm.Blues,
+    )
+    fig.colorbar(cax)
+    ax.set_title(
+        justify_text(
+            " | ".join(header),
+            line_width=line_width,
+            return_str=True,
+        )
+    )
+    ax.set_xlabel(
+        justify_text(
+            " | ".join(["prediction"] + signature()),
+            line_width=line_width,
+            return_str=True,
+        )
+    )
+    ax.set_ylabel("Label")
+    ax.set_xticks(np.arange(dataset.class_count))
+    ax.set_yticks(np.arange(dataset.class_count))
+    ax.set_xticklabels(
+        [dataset.dict_of_classes[value] for value in np.arange(dataset.class_count)],
+        rotation=45,
+        ha="right",
+    )
+    ax.set_yticklabels(
+        [dataset.dict_of_classes[value] for value in np.arange(dataset.class_count)]
+    )
+    thresh = confusion_matrix.max() / 2.0
+    for i in range(confusion_matrix.shape[0]):
+        for j in range(confusion_matrix.shape[1]):
+            ax.text(
+                j,
+                i,
+                f"{100*confusion_matrix[i, j]:.1f}%",
+                ha="center",
+                va="center",
+                color="white" if confusion_matrix[i, j] > thresh else "black",
+            )
+    plt.tight_layout()
+    if not file.save_fig(
+        objects.path_of(
+            object_name=model_object_name,
+            filename="confusion_matrix.png",
+        ),
+        log=log,
+    ):
+        return False
+
+    # evaluation.png
     if not log_image_grid(
         items=log_items,
         filename=objects.path_of(
@@ -163,7 +228,7 @@ def train(
     ):
         return False
 
-    # plotting
+    # loss.png
     plt.figure(figsize=(10, 5))
     plt.plot(
         range(num_epochs),
