@@ -18,6 +18,8 @@ set:::object_name env:::BLUER_ALGO_FRUITS_360_TEST_MODEL
 
 assets:::get:::object_name/loss.png
 
+assets:::get:::object_name/evaluation.png
+
 object:::get:::object_name
 
 metadata:::get:::object_name

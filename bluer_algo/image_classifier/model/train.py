@@ -6,12 +6,18 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm, trange
 from typing import List
 import matplotlib.pyplot as plt
+import numpy as np
 
 from blueness import module
 from bluer_objects import objects
 from bluer_objects.metadata import post_to_object
 from bluer_objects import file
 from bluer_objects.graphics.signature import justify_text
+from bluer_objects.logger.image import (
+    log_image_grid,
+    LOG_IMAGE_GRID_COLS,
+    LOG_IMAGE_GRID_ROWS,
+)
 
 from bluer_algo import NAME
 from bluer_algo.host import signature
@@ -67,10 +73,16 @@ def train(
     eval_set = ImageDataset(eval_df, object_path, transform)
 
     train_loader = DataLoader(
-        train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers
+        train_set,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=num_workers,
     )
     eval_loader = DataLoader(
-        eval_set, batch_size=batch_size, shuffle=False, num_workers=num_workers
+        eval_set,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
     )
 
     model = TinyCNN(num_classes=dataset.class_count).to(device)
@@ -101,6 +113,7 @@ def train(
     logger.info("evaluating...")
     model.eval()
     correct = total = 0
+    log_items = []
     with torch.no_grad():
         for images, labels in tqdm(eval_loader):
             images, labels = images.to(device), labels.to(device)
@@ -109,8 +122,45 @@ def train(
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
+            for image, label, prediction in zip(images, labels, predicted):
+                if len(log_items) >= LOG_IMAGE_GRID_COLS * LOG_IMAGE_GRID_ROWS:
+                    continue
+                log_items.append(
+                    {
+                        "image": np.transpose(image, (1, 2, 0)),
+                        "title": (
+                            dataset.dict_of_classes[int(label)]
+                            if label == prediction
+                            else "{} <> {}".format(
+                                dataset.dict_of_classes[int(label)],
+                                dataset.dict_of_classes[int(prediction)],
+                            )
+                        ),
+                    }
+                )
     eval_accuracy = correct / total
     logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
+
+    header = (
+        objects.signature(object_name=dataset_object_name)
+        + dataset.signature()
+        + [
+            f"batch_size: {batch_size}",
+            f"num_epochs: {num_epochs}",
+            f"eval_accuracy: {100*eval_accuracy:.2f}%",
+        ]
+    )
+    if not log_image_grid(
+        items=log_items,
+        filename=objects.path_of(
+            object_name=model_object_name,
+            filename="evaluation.png",
+        ),
+        header=header,
+        footer=signature(),
+        log=log,
+    ):
+        return False
 
     # plotting
     plt.figure(figsize=(10, 5))
@@ -129,15 +179,7 @@ def train(
     plt.ylabel("Loss")
     plt.title(
         justify_text(
-            " | ".join(
-                objects.signature(object_name=dataset_object_name)
-                + dataset.signature()
-                + [
-                    f"batch_size: {batch_size}",
-                    f"num_epochs: {num_epochs}",
-                    f"eval_accuracy: {100*eval_accuracy:.2f}%",
-                ]
-            ),
+            " | ".join(header),
             line_width=line_width,
             return_str=True,
         )

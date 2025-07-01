@@ -17,6 +17,8 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 
 ![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-9wm886/loss.png?raw=true)
 
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-9wm886/evaluation.png?raw=true)
+
 [fruits-365-model-2025-07-01-9wm886](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-9wm886.tar.gz)
 
 ```yaml
@@ -33,21 +35,21 @@ model:
     - 100
     - 3
   evaluation:
-    eval_accuracy: 0.6363636363636364
+    eval_accuracy: 0.9090909090909091
   inputs:
     batch_size: 16
     num_epochs: 10
   training:
     loss:
-    - 1.0935780930231853
-    - 1.0560941782342381
-    - 0.9956620285309941
-    - 0.9361136189426285
-    - 0.8835492313626301
-    - 0.778554870421628
-    - 0.6616675702922316
-    - 0.578948836728751
-    - 0.505560634366001
-    - 0.4718829784766737
+    - 1.0965443964464119
+    - 1.0777758460447013
+    - 1.0312952937850033
+    - 0.9516922235488892
+    - 0.8368437153747282
+    - 0.6827004510595138
+    - 0.5461112695286073
+    - 0.48642386657645903
+    - 0.44807900937206774
+    - 0.423772053187152
 
 ```
