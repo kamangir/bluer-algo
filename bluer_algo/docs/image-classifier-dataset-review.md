@@ -12,4 +12,4 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-gn9up7/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-uy29tb/grid.png?raw=true)
