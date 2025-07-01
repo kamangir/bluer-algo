@@ -132,8 +132,8 @@ def train(
                             dataset.dict_of_classes[int(label)]
                             if label == prediction
                             else "{} <> {}".format(
-                                dataset.dict_of_classes[int(label)],
                                 dataset.dict_of_classes[int(prediction)],
+                                dataset.dict_of_classes[int(label)],
                             )
                         ),
                         "color": "black" if label == prediction else "red",
