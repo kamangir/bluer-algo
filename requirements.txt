@@ -1,4 +1,5 @@
 bluer_ai
 
 kaggle
+torch
 opencv-python
