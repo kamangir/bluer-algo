@@ -44,7 +44,8 @@ def ingest(
     dataset = ImageClassifierDataset(
         dict_of_classes=get_classes(
             class_count=count if class_count == -1 else class_count,
-        )
+        ),
+        object_name=object_name,
     )
 
     record_count_per_class = int(count / dataset.class_count)
@@ -92,7 +93,6 @@ def ingest(
             )
 
     return dataset.save(
-        object_name=object_name,
         metadata={
             "ratios": {
                 "eval": eval_ratio,

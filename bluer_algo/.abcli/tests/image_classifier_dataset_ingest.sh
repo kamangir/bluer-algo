@@ -7,6 +7,7 @@ function test_bluer_algo_image_classifier_dataset_ingest() {
 
     bluer_ai_eval ,$options \
         bluer_algo_image_classifier_dataset_ingest \
-        clone,count=10 \
-        $object_name
+        clone,count=15 \
+        $object_name \
+        --class_count 5
 }
