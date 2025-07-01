@@ -119,7 +119,6 @@ def train(
         epoch_loss_list,
         marker="o",
     )
-    plt.title("Epoch Loss")
     plt.xlabel(
         justify_text(
             " | ".join(["Epoch"] + signature()),
