@@ -81,7 +81,7 @@ def train(
     eval_loader = DataLoader(
         eval_set,
         batch_size=batch_size,
-        shuffle=False,
+        shuffle=True,
         num_workers=num_workers,
     )
 
