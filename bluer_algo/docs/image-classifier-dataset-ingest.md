@@ -7,10 +7,9 @@
 @select fruits-365-dataset-$(@@timestamp)
 
 @algo image_classifier dataset ingest \
-    clone,count=100,source=fruits_360 . \
+    clone,count=100,source=fruits_360,upload . \
     --class_count 3
 
-@upload - .
 @upload public,zip .
 @assets publish \
     extensions=png,push .

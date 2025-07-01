@@ -143,7 +143,22 @@ def train(
                     }
                 )
     eval_accuracy = correct / total
-    logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
+
+    confusion_matrix = confusion_matrix / confusion_matrix.sum(
+        axis=1,
+        keepdims=True,
+    )
+    confusion_matrix = np.nan_to_num(confusion_matrix)
+
+    logger.info("accuracy:")
+    logger.info(f" - eval: {100 * eval_accuracy:.2f}%")
+    for class_index in range(dataset.class_count):
+        logger.info(
+            " - {}: {:.2f}%".format(
+                dataset.dict_of_classes[class_index],
+                100 * confusion_matrix[class_index, class_index],
+            )
+        )
 
     # prep for visualization
     header = (
@@ -157,11 +172,6 @@ def train(
     )
 
     # confusion_matrix.png
-    confusion_matrix = confusion_matrix / confusion_matrix.sum(
-        axis=1,
-        keepdims=True,
-    )
-    confusion_matrix = np.nan_to_num(confusion_matrix)
     fig, ax = plt.subplots(figsize=(10, 10))
     cax = ax.imshow(
         confusion_matrix,
@@ -289,6 +299,10 @@ def train(
             },
             "evaluation": {
                 "eval_accuracy": eval_accuracy,
+                "class_accuracy": {
+                    class_index: float(confusion_matrix[class_index, class_index])
+                    for class_index in range(dataset.class_count)
+                },
             },
         },
     )
