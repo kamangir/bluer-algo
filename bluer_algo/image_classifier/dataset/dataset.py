@@ -1,6 +1,6 @@
 import copy
 import pandas as pd
-from typing import Dict, Tuple
+from typing import Dict, Tuple, List
 
 from bluer_options import string
 from bluer_objects import objects, file
@@ -248,3 +248,11 @@ class ImageClassifierDataset:
         )
 
         return True
+
+    def signature(self) -> List[str]:
+        return [
+            f"{self.count} record(s)",
+            self.as_str("subsets"),
+            self.as_str("classes"),
+            "shape: {}".format(string.pretty_shape(self.shape)),
+        ]

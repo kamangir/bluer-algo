@@ -2,7 +2,7 @@ import pytest
 
 from bluer_algo.env import BLUER_ALGO_FRUITS_360_TEST_DATASET
 from bluer_objects import storage
-from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
+from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 
 
 @pytest.mark.parametrize(
@@ -38,3 +38,5 @@ def test_ImageClassifierDataset(object_name: str):
     assert dataset.log_image_grid()
 
     assert dataset.save()
+
+    assert isinstance(dataset.signature(), list)

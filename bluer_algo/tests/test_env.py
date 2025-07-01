@@ -15,3 +15,4 @@ def test_bluer_algo_env():
     assert env.BLUER_ALGO_FRUITS_360_TEST_DATASET
 
     assert env.BLUER_ALGO_FRUITS_360_TEST_MODEL
+    assert env.BLUER_ALGO_FRUITS_360_TEST_MODEL_2000

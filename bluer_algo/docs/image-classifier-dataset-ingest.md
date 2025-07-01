@@ -7,27 +7,26 @@
 @select fruits-365-dataset-$(@@timestamp)
 
 @algo image_classifier dataset ingest \
-    clone,count=100,source=fruits_360 . \
+    clone,count=100,source=fruits_360,upload . \
     --class_count 3
 
-@upload - .
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-uy29tb/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-gn9up7/grid.png?raw=true)
 
-[fruits-365-dataset-2025-07-01-uy29tb](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-07-01-uy29tb.tar.gz)
+[fruits-365-dataset-2025-07-01-gn9up7](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-07-01-gn9up7.tar.gz)
 
 ```yaml
 dataset:
   class_count: 3
   classes:
-    0: Apple 6
-    1: Apple Golden 2
-    2: Cherry 1
+    0: Apple 8
+    1: Blackberrie 2
+    2: Cherry Wax Red 1
   count: 99
   ratios:
     eval: 0.09999999999999998
@@ -39,8 +38,8 @@ dataset:
   - 3
   source: fruits_360
   subsets:
-    eval: 13
-    test: 10
-    train: 76
+    eval: 11
+    test: 5
+    train: 83
 
 ```
