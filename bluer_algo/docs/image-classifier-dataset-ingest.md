@@ -17,11 +17,30 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-fhexyt/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-uy29tb/grid.png?raw=true)
 
-[fruits-365-dataset-2025-07-01-fhexyt](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-07-01-fhexyt.tar.gz)
+[fruits-365-dataset-2025-07-01-uy29tb](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-07-01-uy29tb.tar.gz)
 
 ```yaml
-{}
+dataset:
+  class_count: 3
+  classes:
+    0: Apple 6
+    1: Apple Golden 2
+    2: Cherry 1
+  count: 99
+  ratios:
+    eval: 0.09999999999999998
+    test: 0.1
+    train: 0.8
+  shape:
+  - 100
+  - 100
+  - 3
+  source: fruits_360
+  subsets:
+    eval: 13
+    test: 10
+    train: 76
 
 ```
