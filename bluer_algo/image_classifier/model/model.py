@@ -3,7 +3,7 @@ from torch import nn
 
 class TinyCNN(nn.Module):
     def __init__(self, num_classes):
-        super(TinyCNN, self).__init__()
+        super().__init__()
         self.net = nn.Sequential(
             nn.Conv2d(3, 16, 3, padding=1),
             nn.ReLU(),
