@@ -6,12 +6,9 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 @select $BLUER_ALGO_FRUITS_360_TEST_DATASET
 @select fruits-365-model-$(@@timestamp)
 
-@algo image_classifier train \
-    - .. .
+@algo image_classifier model train \
+    ~download,upload .. .
 
-🔥
-
-@upload filename=metadata.yaml .
 @upload public,zip .
 @assets publish \
     extensions=png,push .
@@ -19,7 +16,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 
 set:::object_name env:::BLUER_ALGO_FRUITS_360_TEST_MODEL
 
-assets:::get:::object_name/grid.png
+assets:::get:::object_name/loss.png
 
 object:::get:::object_name
 
