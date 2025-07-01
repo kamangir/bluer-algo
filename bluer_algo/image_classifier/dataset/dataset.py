@@ -251,6 +251,7 @@ class ImageClassifierDataset:
 
     def signature(self) -> List[str]:
         return [
+            f"{self.count} record(s)",
             self.as_str("subsets"),
             self.as_str("classes"),
             "shape: {}".format(string.pretty_shape(self.shape)),

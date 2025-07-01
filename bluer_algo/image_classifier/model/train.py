@@ -15,7 +15,7 @@ from bluer_objects.graphics.signature import justify_text
 
 from bluer_algo import NAME
 from bluer_algo.host import signature
-from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
+from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 from bluer_algo.image_classifier.model.dataset import ImageDataset
 from bluer_algo.image_classifier.model.model import TinyCNN
 from bluer_algo.logger import logger

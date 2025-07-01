@@ -1,7 +1,7 @@
 from blueness import module
 
 from bluer_algo import NAME
-from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
+from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 from bluer_algo.logger import logger
 
 
