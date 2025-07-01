@@ -38,3 +38,5 @@ def test_ImageClassifierDataset(object_name: str):
     assert dataset.log_image_grid()
 
     assert dataset.save()
+
+    assert isinstance(dataset.signature(), list)

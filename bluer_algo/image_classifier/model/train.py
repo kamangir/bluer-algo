@@ -4,12 +4,17 @@ from torch import optim
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from tqdm import tqdm, trange
+from typing import List
+import matplotlib.pyplot as plt
 
 from blueness import module
 from bluer_objects import objects
 from bluer_objects.metadata import post_to_object
+from bluer_objects import file
+from bluer_objects.graphics.signature import justify_text
 
 from bluer_algo import NAME
+from bluer_algo.host import signature
 from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
 from bluer_algo.image_classifier.model.dataset import ImageDataset
 from bluer_algo.image_classifier.model.model import TinyCNN
@@ -24,6 +29,9 @@ def train(
     model_object_name: str,
     batch_size: int = 16,
     num_epochs: int = 10,
+    log: bool = True,
+    verbose: bool = False,
+    line_width: int = 80,
 ) -> bool:
     logger.info(
         "{}.train: {} -> {}".format(
@@ -71,6 +79,7 @@ def train(
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     logger.info("training...")
+    epoch_loss_list: List[float] = []
     for epoch in trange(num_epochs):
         model.train()
         running_loss = 0.0
@@ -85,9 +94,48 @@ def train(
 
             running_loss += loss.item() * images.size(0)
 
-        logger.info(
-            f"Epoch {epoch+1}, Loss: {running_loss / len(train_loader.dataset):.4f}"
+        epoch_loss = float(running_loss / len(train_loader.dataset))
+        epoch_loss_list.append(epoch_loss)
+        logger.info(f"epoch #{epoch+1}, loss: {epoch_loss:.4f}")
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(
+        range(num_epochs),
+        epoch_loss_list,
+        marker="o",
+    )
+    plt.title("Epoch Loss")
+    plt.xlabel(
+        justify_text(
+            " | ".join(["Epoch"] + signature()),
+            line_width=line_width,
+            return_str=True,
         )
+    )
+    plt.ylabel("Loss")
+    plt.title(
+        justify_text(
+            " | ".join(
+                objects.signature(object_name=dataset_object_name)
+                + dataset.signature()
+                + [
+                    f"batch_size: {batch_size}",
+                    f"num_epochs: {num_epochs}",
+                ]
+            ),
+            line_width=line_width,
+            return_str=True,
+        )
+    )
+    plt.grid(True)
+    if not file.save_fig(
+        objects.path_of(
+            object_name=model_object_name,
+            filename="loss.png",
+        ),
+        log=log,
+    ):
+        return False
 
     logger.info("evaluating...")
     model.eval()
@@ -110,6 +158,9 @@ def train(
             "inputs": {
                 "batch_size": batch_size,
                 "num_epochs": num_epochs,
+            },
+            "training": {
+                "loss": epoch_loss_list,
             },
             "evaluation": {
                 "eval_accuracy": eval_accuracy,
