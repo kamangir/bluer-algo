@@ -98,6 +98,21 @@ def train(
         epoch_loss_list.append(epoch_loss)
         logger.info(f"epoch #{epoch+1}, loss: {epoch_loss:.4f}")
 
+    logger.info("evaluating...")
+    model.eval()
+    correct = total = 0
+    with torch.no_grad():
+        for images, labels in tqdm(eval_loader):
+            images, labels = images.to(device), labels.to(device)
+            outputs = model(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+
+    eval_accuracy = correct / total
+    logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
+
+    # plotting
     plt.figure(figsize=(10, 5))
     plt.plot(
         range(num_epochs),
@@ -121,6 +136,7 @@ def train(
                 + [
                     f"batch_size: {batch_size}",
                     f"num_epochs: {num_epochs}",
+                    f"eval_accuracy: {100*eval_accuracy:.2f}%",
                 ]
             ),
             line_width=line_width,
@@ -136,20 +152,6 @@ def train(
         log=log,
     ):
         return False
-
-    logger.info("evaluating...")
-    model.eval()
-    correct = total = 0
-    with torch.no_grad():
-        for images, labels in tqdm(eval_loader):
-            images, labels = images.to(device), labels.to(device)
-            outputs = model(images)
-            _, predicted = torch.max(outputs.data, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-
-    eval_accuracy = correct / total
-    logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
 
     return post_to_object(
         object_name=model_object_name,

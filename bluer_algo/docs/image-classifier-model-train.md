@@ -7,7 +7,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 @select fruits-365-model-$(@@timestamp)
 
 @algo image_classifier model train \
-    ~download,upload .. .
+    upload .. .
 
 @upload public,zip .
 @assets publish \
@@ -22,21 +22,21 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```yaml
 model:
   evaluation:
-    eval_accuracy: 1.0
+    eval_accuracy: 0.8181818181818182
   inputs:
     batch_size: 16
     num_epochs: 10
   training:
     loss:
-    - 1.1087961972477924
-    - 1.0843626777809787
-    - 1.054258179951863
-    - 1.0159300307193435
-    - 0.9257770791111222
-    - 0.8263094008687031
-    - 0.6913913912083729
-    - 0.5560306870793722
-    - 0.478118322699903
-    - 0.3973728978490255
+    - 1.0977213124194778
+    - 1.0572264101131852
+    - 1.0020845467785755
+    - 0.9194808185818684
+    - 0.8026711258543543
+    - 0.6851499109383089
+    - 0.5528762584709259
+    - 0.488377235201468
+    - 0.451668375945953
+    - 0.45595045190259637
 
 ```
