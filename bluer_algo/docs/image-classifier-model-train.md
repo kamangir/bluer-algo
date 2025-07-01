@@ -15,11 +15,11 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-9wm886/loss.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-37oo7u/loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-9wm886/evaluation.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-37oo7u/evaluation.png?raw=true)
 
-[fruits-365-model-2025-07-01-9wm886](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-9wm886.tar.gz)
+[fruits-365-model-2025-07-01-37oo7u](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-37oo7u.tar.gz)
 
 ```yaml
 model:
@@ -41,15 +41,15 @@ model:
     num_epochs: 10
   training:
     loss:
-    - 1.0965443964464119
-    - 1.0777758460447013
-    - 1.0312952937850033
-    - 0.9516922235488892
-    - 0.8368437153747282
-    - 0.6827004510595138
-    - 0.5461112695286073
-    - 0.48642386657645903
-    - 0.44807900937206774
-    - 0.423772053187152
+    - 1.0855879625642155
+    - 1.0342322882399502
+    - 0.9717982389840735
+    - 0.8900117960320898
+    - 0.7992160413638655
+    - 0.666177623243217
+    - 0.5520243529813835
+    - 0.4854717886591532
+    - 0.4435853994036295
+    - 0.44440222827784986
 
 ```

@@ -136,6 +136,7 @@ def train(
                                 dataset.dict_of_classes[int(prediction)],
                             )
                         ),
+                        "color": "black" if label == prediction else "red",
                     }
                 )
     eval_accuracy = correct / total
