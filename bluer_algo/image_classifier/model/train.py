@@ -3,10 +3,11 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
 from torch.utils.data import DataLoader
-from tqdm import tqdm
+from tqdm import tqdm, trange
 
 from blueness import module
 from bluer_objects import objects
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
 from bluer_algo.image_classifier.dataset.classes import ImageClassifierDataset
@@ -70,7 +71,7 @@ def train(
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     logger.info("training...")
-    for epoch in range(num_epochs):
+    for epoch in trange(num_epochs):
         model.train()
         running_loss = 0.0
         for images, labels in train_loader:
@@ -99,6 +100,19 @@ def train(
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
-    logger.info(f"eval accuracy: {100 * correct / total:.2f}%")
+    eval_accuracy = correct / total
+    logger.info(f"eval accuracy: {100 * eval_accuracy:.2f}%")
 
-    return True
+    return post_to_object(
+        object_name=model_object_name,
+        key="model",
+        value={
+            "inputs": {
+                "batch_size": batch_size,
+                "num_epochs": num_epochs,
+            },
+            "evaluation": {
+                "eval_accuracy": eval_accuracy,
+            },
+        },
+    )
