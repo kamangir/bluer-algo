@@ -35,6 +35,6 @@ def test_ImageClassifierDataset(object_name: str):
 
     assert isinstance(dataset.dict_of_subsets, dict)
 
-    assert dataset.log_image_grid(object_name=object_name)
+    assert dataset.log_image_grid()
 
-    assert dataset.save(object_name=object_name)
+    assert dataset.save()
