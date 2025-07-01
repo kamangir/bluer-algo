@@ -17,13 +17,13 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/loss.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-ltzxw0/loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/evaluation.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-ltzxw0/evaluation.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/confusion_matrix.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-ltzxw0/confusion_matrix.png?raw=true)
 
-[fruits-365-model-2025-07-01-g0ffa9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-g0ffa9.tar.gz)
+[fruits-365-model-2025-07-01-ltzxw0](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-ltzxw0.tar.gz)
 
 ```yaml
 model:
@@ -39,26 +39,22 @@ model:
     - 100
     - 3
   evaluation:
-    class_accuracy:
-      0: 0.6666666666666666
-      1: 1.0
-      2: 1.0
-    eval_accuracy: 0.9090909090909091
+    eval_accuracy: 0.6363636363636364
   inputs:
     batch_size: 16
     num_epochs: 10
   training:
     loss:
-    - 1.0955626404429057
-    - 1.065239673637482
-    - 1.0129518164209572
-    - 0.9348489347710667
-    - 0.8087216572589185
-    - 0.6532617714031633
-    - 0.5209052735064403
-    - 0.46322603038994664
-    - 0.4511759938245796
-    - 0.39809396468013164
+    - 1.0920882842626916
+    - 1.0682448723230018
+    - 1.024236264717148
+    - 0.9647200509726283
+    - 0.8594309630164181
+    - 0.7342140818216715
+    - 0.6408237829265824
+    - 0.5509795618344502
+    - 0.502587627933686
+    - 0.47540893396699285
 
 ```
 
@@ -82,47 +78,47 @@ model:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/loss.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main//loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/evaluation.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main//evaluation.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/confusion_matrix.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main//confusion_matrix.png?raw=true)
 
-[fruits-365-model-2000-2025-07-01-0f5c3i](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2000-2025-07-01-0f5c3i.tar.gz)
+[](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/.tar.gz)
 
 ```yaml
-model:
-  dataset:
-    class_count: 3
-    classes:
-      0: Apple Red Yellow 1
-      1: Dates 1
-      2: Fig 1
-    count: 1684
-    shape:
-    - 100
-    - 100
-    - 3
-  evaluation:
-    class_accuracy:
-      0: 1.0
-      1: 1.0
-      2: 1.0
-    eval_accuracy: 1.0
-  inputs:
-    batch_size: 16
-    num_epochs: 10
-  training:
-    loss:
-    - 0.7802977863950497
-    - 0.4736495371038071
-    - 0.4408162122659987
-    - 0.38462256806439343
-    - 0.2753883281527978
-    - 0.1924491258485835
-    - 0.11263275718118987
-    - 0.07249000640082041
-    - 0.043517076016664005
-    - 0.03726826709666855
+api_count: 2167
+created_by: bluer_geo-5.15.1-bluer_flow-5.16.1-bluer_ai-12.136.1-bluer_objects-6.96.1-bluer_options-5.86.1-torch-2.2.2-Python
+  3.12.9-Darwin 23.6.0--Jupyter-Notebook
+creation_date: 23 April 2025, 10:33:49
+dataset:
+  class_count: 10
+  classes:
+    0: Apple 8
+    1: Apple Braeburn 1
+    2: Apple Golden 1
+    3: Apple hit 1
+    4: Cactus fruit red 1
+    5: Cherry 4
+    6: Nut 3
+    7: Pear Red 1
+    8: Tomato Cherry Orange 1
+    9: Zucchini 1
+  count: 10
+  ratios:
+    eval: 0.09999999999999998
+    test: 0.1
+    train: 0.8
+  source: fruits_360
+  subsets:
+    eval: 2
+    test: 0
+    train: 8
+description: Civilian Harm in Ukraine TimeMap
+failure_count: 0
+ingested_count: 2167
+range:
+- 2022-02-24
+- 2025-04-06
 
 ```
