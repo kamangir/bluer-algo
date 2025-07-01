@@ -1,6 +1,6 @@
 import torch
-import torch.nn as nn
-import torch.optim as optim
+from torch import nn
+from torch import optim
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from tqdm import tqdm, trange
