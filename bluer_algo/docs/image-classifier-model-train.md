@@ -7,7 +7,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 @select fruits-365-model-$(@@timestamp)
 
 @algo image_classifier model train \
-    ~download,upload .. .
+    upload .. .
 
 @upload public,zip .
 @assets publish \
