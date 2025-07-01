@@ -157,6 +157,12 @@ def train(
         object_name=model_object_name,
         key="model",
         value={
+            "dataset": {
+                "count": dataset.count,
+                "classes": dataset.dict_of_classes,
+                "class_count": dataset.class_count,
+                "shape": dataset.shape,
+            },
             "inputs": {
                 "batch_size": batch_size,
                 "num_epochs": num_epochs,
