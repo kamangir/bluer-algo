@@ -2,6 +2,7 @@ import copy
 import pandas as pd
 from typing import Dict, Tuple
 
+from bluer_options import string
 from bluer_objects import objects, file
 from bluer_objects.metadata import post_to_object
 from bluer_objects.logger.image import log_image_grid
@@ -31,17 +32,42 @@ class ImageClassifierDataset:
 
         self.object_name = object_name
 
+        self.shape = []
+
     def add(
         self,
         filename: str,
         class_index: int,
         subset: str,
-    ):
+    ) -> bool:
+        filename = file.name_and_extension(filename)
+
         self.df.loc[len(self.df)] = {
-            "filename": file.name_and_extension(filename),
+            "filename": filename,
             "class_index": class_index,
             "subset": subset,
         }
+
+        if self.shape:
+            return True
+
+        success, image = file.load_image(
+            objects.path_of(
+                object_name=self.object_name,
+                filename=filename,
+            )
+        )
+        if not success:
+            return False
+
+        self.shape = list(image.shape)
+        logger.info(
+            "shape: {}".format(
+                string.pretty_shape(self.shape),
+            )
+        )
+
+        return True
 
     def as_str(self, what="subsets") -> str:
         count = self.count
@@ -126,13 +152,21 @@ class ImageClassifierDataset:
             object_name=object_name,
             key="dataset",
         )
+
+        for thing in ["classes", "shape"]:
+            if thing not in metadata:
+                logger.error(f"{thing} not found.")
+                return False, dataset
+
         dataset.dict_of_classes = metadata["classes"]
+        dataset.shape = metadata["shape"]
 
         if not dataset.log_image_grid(log=log):
             return False, dataset
 
         logger.info(dataset.as_str("subsets"))
         logger.info(dataset.as_str("classes"))
+        logger.info("shape: {}".format(string.pretty_shape(dataset.shape)))
 
         return True, dataset
 
@@ -183,6 +217,7 @@ class ImageClassifierDataset:
         metadata_["class_count"] = self.class_count
         metadata_["count"] = self.count
         metadata_["subsets"] = self.dict_of_subsets
+        metadata_["shape"] = self.shape
 
         if not file.save_csv(
             objects.path_of(
@@ -204,6 +239,12 @@ class ImageClassifierDataset:
         if not self.log_image_grid(log=log):
             return False
 
-        logger.info(f"{self.count} record(s) -> {self.object_name}")
+        logger.info(
+            "{} {} record(s) -> {}".format(
+                self.count,
+                string.pretty_shape(self.shape),
+                self.object_name,
+            )
+        )
 
         return True

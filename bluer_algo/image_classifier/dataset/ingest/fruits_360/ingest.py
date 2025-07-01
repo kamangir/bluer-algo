@@ -86,11 +86,12 @@ def ingest(
                 k=1,
             )[0]
 
-            dataset.add(
+            if not dataset.add(
                 filename=destination_filename,
                 class_index=class_index,
                 subset=record_subset,
-            )
+            ):
+                return False
 
     return dataset.save(
         metadata={
