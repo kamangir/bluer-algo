@@ -260,6 +260,16 @@ def train(
     ):
         return False
 
+    if not file.save_matrix(
+        objects.path_of(
+            object_name=model_object_name,
+            filename="confusion_matrix.npy",
+        ),
+        confusion_matrix,
+        log=log,
+    ):
+        return False
+
     return post_to_object(
         object_name=model_object_name,
         key="model",

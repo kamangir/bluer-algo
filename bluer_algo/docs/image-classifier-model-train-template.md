@@ -20,6 +20,8 @@ assets:::get:::object_name/loss.png
 
 assets:::get:::object_name/evaluation.png
 
+assets:::get:::object_name/confusion_matrix.png
+
 object:::get:::object_name
 
 metadata:::get:::object_name

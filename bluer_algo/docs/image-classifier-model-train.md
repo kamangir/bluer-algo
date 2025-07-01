@@ -19,6 +19,8 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 
 ![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-ltzxw0/evaluation.png?raw=true)
 
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-ltzxw0/confusion_matrix.png?raw=true)
+
 [fruits-365-model-2025-07-01-ltzxw0](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-ltzxw0.tar.gz)
 
 ```yaml
