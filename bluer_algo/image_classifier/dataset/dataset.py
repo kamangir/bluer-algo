@@ -218,7 +218,7 @@ class ImageClassifierDataset:
             return success, 0, np.array([])
 
         class_index = test_row["class_index"].values[0]
-        return True, class_index, image
+        return True, int(class_index), image
 
     def save(
         self,
