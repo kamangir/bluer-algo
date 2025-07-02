@@ -33,5 +33,6 @@ def build():
             {"path": "docs/image-classifier-dataset-ingest.md"},
             {"path": "docs/image-classifier-dataset-review.md"},
             {"path": "docs/image-classifier-model-train.md"},
+            {"path": "docs/image-classifier-model-prediction.md"},
         ]
     )

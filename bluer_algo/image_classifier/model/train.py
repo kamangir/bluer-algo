@@ -280,7 +280,7 @@ def train(
     ):
         return False
 
-    return post_to_object(
+    if not post_to_object(
         object_name=model_object_name,
         key="model",
         value={
@@ -305,4 +305,21 @@ def train(
                 },
             },
         },
+    ):
+        return False
+
+    model_filename = objects.path_of(
+        object_name=model_object_name,
+        filename="model.pth",
     )
+    try:
+        torch.save(
+            model.state_dict(),
+            model_filename,
+        )
+    except Exception as e:
+        logger.error(e)
+        return False
+
+    logger.info(f"-> {model_filename}")
+    return True

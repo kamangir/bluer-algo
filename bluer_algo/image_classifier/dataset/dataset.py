@@ -1,6 +1,7 @@
 import copy
 import pandas as pd
 from typing import Dict, Tuple, List
+import numpy as np
 
 from bluer_options import string
 from bluer_objects import objects, file
@@ -203,6 +204,21 @@ class ImageClassifierDataset:
             verbose=verbose,
             relative_path=True,
         )
+
+    def sample(self, subset: str = "test") -> Tuple[bool, int, np.ndarray]:
+        test_row = self.df[self.df["subset"] == subset].sample(n=1)
+
+        success, image = file.load_image(
+            objects.path_of(
+                object_name=self.object_name,
+                filename=test_row["filename"].values[0],
+            )
+        )
+        if not success:
+            return success, 0, np.array([])
+
+        class_index = test_row["class_index"].values[0]
+        return True, int(class_index), image
 
     def save(
         self,
