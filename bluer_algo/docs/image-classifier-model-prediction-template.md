@@ -4,7 +4,7 @@ uses [train](./image-classifier-model-train.md).
 
 [image_classifier_prediction.ipynb](../../notebooks/image_classifier_prediction-v4.ipynb)
 
-set:::object_name image_classifier-prediction-2025-07-02-12-58-23-va6s88
+set:::object_name image_classifier-prediction-2025-07-02-13-03-22-dwobvk
 
 assets:::get:::object_name/prediction.png
 
