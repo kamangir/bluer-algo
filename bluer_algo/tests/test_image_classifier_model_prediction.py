@@ -50,17 +50,17 @@ def test_image_classifier_model_predict(
     )
     assert success
 
-    success, prediction_metadata = predictor.predict(
+    success, prediction = predictor.predict(
         image=image,
         class_index=class_index,
         object_name=prediction_object_name,
         log=True,
     )
     assert success
-    assert "predicted_class" in prediction_metadata
-    assert isinstance(prediction_metadata["predicted_class"], int)
-    assert "elapsed_time" in prediction_metadata
-    assert isinstance(prediction_metadata["elapsed_time"], float)
+    assert "predicted_class" in prediction
+    assert isinstance(prediction["predicted_class"], int)
+    assert "elapsed_time" in prediction
+    assert isinstance(prediction["elapsed_time"], float)
 
     assert isinstance(predictor.as_str(what="classes"), str)
     assert isinstance(predictor.as_str(what="void"), str)

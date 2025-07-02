@@ -213,7 +213,7 @@ class ImageClassifierPredictor:
             ):
                 return False, {}
 
-        metadata = {
+        prediction = {
             "elapsed_time": elapsed_time,
             "predicted_class": int(predicted_class),
         }
@@ -222,15 +222,15 @@ class ImageClassifierPredictor:
             if not post_to_object(
                 object_name=object_name,
                 key="prediction",
-                value=metadata,
+                value=prediction,
             ):
                 return False, {}
 
-        return True, metadata
+        return True, prediction
 
     def signature(self) -> List[str]:
         return [
-            self.object_name,
+            f"model: {self.object_name}",
             self.as_str("classes"),
             "shape: {}".format(string.pretty_shape(self.shape)),
         ]
