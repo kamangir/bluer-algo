@@ -23,6 +23,16 @@ parser.add_argument(
     "--model_object_name",
     type=str,
 )
+parser.add_argument(
+    "--batch_size",
+    type=int,
+    default=16,
+)
+parser.add_argument(
+    "--num_epochs",
+    type=int,
+    default=10,
+)
 args = parser.parse_args()
 
 success = False
@@ -30,6 +40,8 @@ if args.task == "train":
     success = train(
         dataset_object_name=args.dataset_object_name,
         model_object_name=args.model_object_name,
+        batch_size=args.batch_size,
+        num_epochs=args.num_epochs,
     )
 else:
     success = None

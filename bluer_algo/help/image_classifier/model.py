@@ -14,7 +14,10 @@ def help_train(
             xtra("~download,upload", mono=mono),
         ]
     )
-    args = []
+    args = [
+        "[--batch_size 16]",
+        "[--num_epochs 10]",
+    ]
 
     return show_usage(
         [
