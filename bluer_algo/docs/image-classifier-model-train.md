@@ -17,13 +17,13 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/loss.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-02-fvfomt/loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/evaluation.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-02-fvfomt/evaluation.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-01-g0ffa9/confusion_matrix.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-02-fvfomt/confusion_matrix.png?raw=true)
 
-[fruits-365-model-2025-07-01-g0ffa9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-01-g0ffa9.tar.gz)
+[fruits-365-model-2025-07-02-fvfomt](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-02-fvfomt.tar.gz)
 
 ```yaml
 model:
@@ -40,25 +40,25 @@ model:
     - 3
   evaluation:
     class_accuracy:
-      0: 0.6666666666666666
+      0: 1.0
       1: 1.0
-      2: 1.0
+      2: 0.75
     eval_accuracy: 0.9090909090909091
   inputs:
     batch_size: 16
     num_epochs: 10
   training:
     loss:
-    - 1.0955626404429057
-    - 1.065239673637482
-    - 1.0129518164209572
-    - 0.9348489347710667
-    - 0.8087216572589185
-    - 0.6532617714031633
-    - 0.5209052735064403
-    - 0.46322603038994664
-    - 0.4511759938245796
-    - 0.39809396468013164
+    - 1.1059847007314842
+    - 1.0944474734455707
+    - 1.081830551825374
+    - 1.0557171982454967
+    - 1.0102007518331688
+    - 0.9688218681209059
+    - 0.9016210835382162
+    - 0.7881300334470818
+    - 0.6774013846753592
+    - 0.5369924443313875
 
 ```
 
@@ -82,22 +82,22 @@ model:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/loss.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/evaluation.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/evaluation.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-01-0f5c3i/confusion_matrix.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/confusion_matrix.png?raw=true)
 
-[fruits-365-model-2000-2025-07-01-0f5c3i](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2000-2025-07-01-0f5c3i.tar.gz)
+[fruits-365-model-2000-2025-07-02-k318ju](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2000-2025-07-02-k318ju.tar.gz)
 
 ```yaml
 model:
   dataset:
     class_count: 3
     classes:
-      0: Apple Red Yellow 1
-      1: Dates 1
-      2: Fig 1
+      0: Lychee 1
+      1: Pear Forelle 1
+      2: Physalis with Husk 1
     count: 1684
     shape:
     - 100
@@ -114,15 +114,15 @@ model:
     num_epochs: 10
   training:
     loss:
-    - 0.7802977863950497
-    - 0.4736495371038071
-    - 0.4408162122659987
-    - 0.38462256806439343
-    - 0.2753883281527978
-    - 0.1924491258485835
-    - 0.11263275718118987
-    - 0.07249000640082041
-    - 0.043517076016664005
-    - 0.03726826709666855
+    - 0.7043376307912738
+    - 0.08943271208881286
+    - 0.008551867894572343
+    - 0.004447948475223993
+    - 0.0016600372687074743
+    - 0.0010692106054555244
+    - 0.0008688547763543214
+    - 0.0006009176277234873
+    - 0.0004981696757456296
+    - 0.0004295692094449789
 
 ```
