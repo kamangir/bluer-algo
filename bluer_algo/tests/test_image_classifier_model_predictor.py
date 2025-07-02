@@ -7,9 +7,9 @@ from bluer_algo import env
 
 
 @pytest.mark.parametrize(
-    ["dataset_object_name"],
+    ["model_object_name"],
     [
-        [env.BLUER_ALGO_FRUITS_360_TEST_DATASET],
+        [env.BLUER_ALGO_FRUITS_360_TEST_MODEL],
     ],
 )
 def test_image_classifier_model_predictor(
