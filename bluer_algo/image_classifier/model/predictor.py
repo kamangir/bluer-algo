@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from bluer_options import string
 from bluer_objects import objects, file
-from bluer_objects.metadata import get_from_object
+from bluer_objects.metadata import get_from_object, post_to_object
 
 from bluer_algo.image_classifier.model.model import TinyCNN
 from bluer_algo.logger import logger
@@ -100,15 +100,15 @@ class ImageClassifierPredictor:
         class_index: int = -1,
         object_name: str = "",
         log: bool = True,
-    ) -> Tuple[bool, int, Dict]:
+    ) -> Tuple[bool, Dict]:
         # np_img is shape (H, W, 3) in RGB
         if not isinstance(image, np.ndarray):
             logger.error(f"{image.__class__.__name__} not supported.")
-            return False, -1, {}
+            return False, {}
 
         if not (image.ndim == 3 and image.shape[2] == self.shape[2]):
             logger.error("color image expected.")
-            return False, -1, {}
+            return False, {}
 
         elapsed_time = time.time()
 
@@ -127,7 +127,7 @@ class ImageClassifierPredictor:
             elapsed_time = time.time() - elapsed_time
         except Exception as e:
             logger.error(e)
-            return False, -1, {}
+            return False, {}
 
         if log:
             logger.info(
@@ -187,12 +187,19 @@ class ImageClassifierPredictor:
                     filename="prediction.png",
                 )
             ):
-                return False, -1, {}
+                return False, {}
 
-        return (
-            True,
-            predicted_class,
-            {
-                "elapsed_time": elapsed_time,
-            },
-        )
+        metadata = {
+            "elapsed_time": elapsed_time,
+            "predicted_class": predicted_class,
+        }
+
+        if object_name:
+            if not post_to_object(
+                object_name=object_name,
+                key="prediction",
+                value=metadata,
+            ):
+                return False, {}
+
+        return True, metadata
