@@ -16,6 +16,7 @@ from bluer_algo.logger import logger
 
 class ImageClassifierPredictor:
     def __init__(self):
+        self.object_name = ""
         self.class_count = 0
         self.dict_of_classes = {}
         self.model = None
@@ -65,7 +66,7 @@ class ImageClassifierPredictor:
         predictor.shape = metadata["dataset"]["shape"]
         logger.info("shape: {}".format(predictor.shape))
 
-        predictor.filename = objects.path_of(
+        model_filename = objects.path_of(
             object_name=predictor.object_name,
             filename="model.pth",
         )
@@ -74,7 +75,7 @@ class ImageClassifierPredictor:
             predictor.model = TinyCNN(predictor.class_count)
             predictor.model.load_state_dict(
                 torch.load(
-                    predictor.filename,
+                    model_filename,
                     map_location="cpu",
                 )
             )
