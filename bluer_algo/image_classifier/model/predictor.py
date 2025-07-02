@@ -34,21 +34,21 @@ class ImageClassifierPredictor:
         )
         predictor.object_name = object_name
 
-        predictor.metadata = get_from_object(
+        metadata = get_from_object(
             object_name=predictor.object_name,
             key="model",
         )
 
-        if "dataset" not in predictor.metadata:
+        if "dataset" not in metadata:
             logger.error("dataset not found.")
             return False, predictor
         for thing in ["class_count", "classes", "shape"]:
-            if thing not in predictor.metadata["dataset"]:
+            if thing not in metadata["dataset"]:
                 logger.error(f"dataset.{thing} not found.")
                 return False, predictor
 
-        predictor.class_count = predictor.metadata["dataset"]["class_count"]
-        predictor.dict_of_classes = predictor.metadata["dataset"]["classes"]
+        predictor.class_count = metadata["dataset"]["class_count"]
+        predictor.dict_of_classes = metadata["dataset"]["classes"]
         logger.info(
             "{} class(es): {}".format(
                 predictor.class_count,
@@ -62,7 +62,7 @@ class ImageClassifierPredictor:
             )
         )
 
-        predictor.shape = predictor.metadata["dataset"]["shape"]
+        predictor.shape = metadata["dataset"]["shape"]
         logger.info("shape: {}".format(predictor.shape))
 
         predictor.filename = objects.path_of(
