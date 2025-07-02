@@ -36,6 +36,10 @@ def test_image_classifier_model_predict(
     )
     assert success
 
+    assert storage.download(
+        object_name=model_object_name,
+    )
+
     success, predictor = ImageClassifierPredictor.load(
         object_name=model_object_name,
     )
