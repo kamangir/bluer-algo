@@ -4,6 +4,7 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
+from bluer_algo.image_classifier.model.prediction_test import prediction_test
 from bluer_algo.image_classifier.model.train import train
 from bluer_algo.logger import logger
 
@@ -13,7 +14,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="train",
+    help="prediction_test|train",
 )
 parser.add_argument(
     "--dataset_object_name",
@@ -21,6 +22,10 @@ parser.add_argument(
 )
 parser.add_argument(
     "--model_object_name",
+    type=str,
+)
+parser.add_argument(
+    "--prediction_object_name",
     type=str,
 )
 parser.add_argument(
@@ -36,7 +41,13 @@ parser.add_argument(
 args = parser.parse_args()
 
 success = False
-if args.task == "train":
+if args.task == "prediction_test":
+    success, _ = prediction_test(
+        dataset_object_name=args.dataset_object_name,
+        model_object_name=args.model_object_name,
+        prediction_object_name=args.prediction_object_name,
+    )
+elif args.task == "train":
     success = train(
         dataset_object_name=args.dataset_object_name,
         model_object_name=args.model_object_name,
