@@ -1,4 +1,4 @@
-from typing import Tuple, Dict
+from typing import Tuple, Dict, List
 import torch
 import numpy as np
 import time
@@ -9,8 +9,10 @@ import matplotlib.pyplot as plt
 from bluer_options import string
 from bluer_objects import objects, file
 from bluer_objects.metadata import get_from_object, post_to_object
+from bluer_objects.graphics.signature import justify_text
 
 from bluer_algo.image_classifier.model.model import TinyCNN
+from bluer_algo.host import signature
 from bluer_algo.logger import logger
 
 
@@ -22,6 +24,21 @@ class ImageClassifierPredictor:
         self.model = None
         self.transform = None
         self.shape = []
+
+    def as_str(self, what: str = "classes") -> str:
+        if what == "classes":
+            return "{} class(es): {}".format(
+                self.class_count,
+                ", ".join(
+                    "#{}: {}".format(
+                        class_index,
+                        self.dict_of_classes[class_index],
+                    )
+                    for class_index in range(self.class_count)
+                ),
+            )
+
+        return f"{what} not found."
 
     @staticmethod
     def load(object_name: str) -> Tuple[bool, "ImageClassifierPredictor"]:
@@ -50,18 +67,7 @@ class ImageClassifierPredictor:
 
         predictor.class_count = metadata["dataset"]["class_count"]
         predictor.dict_of_classes = metadata["dataset"]["classes"]
-        logger.info(
-            "{} class(es): {}".format(
-                predictor.class_count,
-                ", ".join(
-                    "#{}: {}".format(
-                        class_index,
-                        predictor.dict_of_classes[class_index],
-                    )
-                    for class_index in range(predictor.class_count)
-                ),
-            )
-        )
+        logger.info(predictor.as_str(what="classes"))
 
         predictor.shape = metadata["dataset"]["shape"]
         logger.info("shape: {}".format(predictor.shape))
@@ -100,6 +106,7 @@ class ImageClassifierPredictor:
         class_index: int = -1,
         object_name: str = "",
         log: bool = True,
+        line_width: int = 80,
     ) -> Tuple[bool, Dict]:
         # np_img is shape (H, W, 3) in RGB
         if not isinstance(image, np.ndarray):
@@ -158,26 +165,43 @@ class ImageClassifierPredictor:
             plt.figure(figsize=(5, 5))
             plt.imshow(image)
             plt.title(
-                "prediction: {} [#{}] {}- took {}".format(
-                    self.dict_of_classes[predicted_class],
-                    predicted_class,
-                    (
-                        ""
-                        if class_index == -1
-                        else (
-                            " (correct) "
-                            if class_index == predicted_class
-                            else "<> {} [#{}] ".format(
-                                self.dict_of_classes[class_index],
-                                class_index,
+                justify_text(
+                    " | ".join(
+                        objects.signature(object_name=object_name)
+                        + self.signature()
+                        + [
+                            "prediction: {} [#{}]".format(
+                                self.dict_of_classes[predicted_class],
+                                predicted_class,
                             )
+                        ]
+                        + (
+                            []
+                            if class_index == -1
+                            else [
+                                (
+                                    "correct"
+                                    if class_index == predicted_class
+                                    else "! label: {} [#{}]".format(
+                                        self.dict_of_classes[class_index],
+                                        class_index,
+                                    )
+                                )
+                            ]
                         )
+                        + [
+                            "took {}".format(
+                                string.pretty_duration(
+                                    elapsed_time,
+                                    include_ms=True,
+                                    short=True,
+                                ),
+                            ),
+                        ]
+                        + signature()
                     ),
-                    string.pretty_duration(
-                        elapsed_time,
-                        include_ms=True,
-                        short=True,
-                    ),
+                    line_width=line_width,
+                    return_str=True,
                 )
             )
             plt.axis("off")
@@ -203,3 +227,10 @@ class ImageClassifierPredictor:
                 return False, {}
 
         return True, metadata
+
+    def signature(self) -> List[str]:
+        return [
+            self.object_name,
+            self.as_str("classes"),
+            "shape: {}".format(string.pretty_shape(self.shape)),
+        ]

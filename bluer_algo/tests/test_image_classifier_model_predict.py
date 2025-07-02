@@ -61,3 +61,9 @@ def test_image_classifier_model_predict(
     assert isinstance(prediction_metadata["predicted_class"], int)
     assert "elapsed_time" in prediction_metadata
     assert isinstance(prediction_metadata["elapsed_time"], float)
+
+    assert isinstance(predictor.as_str(what="classes"), str)
+    assert isinstance(predictor.as_str(what="void"), str)
+    assert predictor.as_str(what="void") == "void not found."
+
+    assert isinstance(predictor.signature(), list)
