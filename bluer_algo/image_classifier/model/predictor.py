@@ -191,7 +191,7 @@ class ImageClassifierPredictor:
 
         metadata = {
             "elapsed_time": elapsed_time,
-            "predicted_class": predicted_class,
+            "predicted_class": int(predicted_class),
         }
 
         if object_name:
