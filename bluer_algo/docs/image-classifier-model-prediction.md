@@ -10,7 +10,9 @@ uses [train](./image-classifier-model-train.md).
 ![image](https://github.com/kamangir/assets/blob/main/image_classifier-prediction-2025-07-02-13-33-50-lgr380/prediction.png?raw=true)
 
 ```yaml
-{}
+prediction:
+  elapsed_time: 0.015111207962036133
+  predicted_class: 0
 
 ```
 
@@ -25,6 +27,8 @@ uses [train](./image-classifier-model-train.md).
 ![image](https://github.com/kamangir/assets/blob/main/image_classifier-prediction-2025-07-02-16-11-03-0kb1d3/prediction.png?raw=true)
 
 ```yaml
-{}
+prediction:
+  elapsed_time: 0.08102989196777344
+  predicted_class: 0
 
 ```
