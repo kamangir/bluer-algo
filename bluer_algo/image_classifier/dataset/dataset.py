@@ -267,7 +267,7 @@ class ImageClassifierDataset:
             return False
 
         logger.info(
-            "{} {} record(s) -> {}".format(
+            "{} x {} record(s) -> {}".format(
                 self.count,
                 string.pretty_shape(self.shape),
                 self.object_name,
