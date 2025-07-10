@@ -39,7 +39,8 @@ class ImageClassifierDataset:
         self,
         filename: str,
         class_index: int,
-        subset: str,
+        subset: str = "train",
+        log: bool = False,
     ) -> bool:
         filename = file.name_and_extension(filename)
 
@@ -48,6 +49,16 @@ class ImageClassifierDataset:
             "class_index": class_index,
             "subset": subset,
         }
+
+        if log:
+            logger.info(
+                "{} += {} : {}/{}".format(
+                    self.__class__.__name__,
+                    filename,
+                    subset,
+                    self.dict_of_classes[class_index],
+                )
+            )
 
         if self.shape:
             return True
@@ -256,7 +267,7 @@ class ImageClassifierDataset:
             return False
 
         logger.info(
-            "{} {} record(s) -> {}".format(
+            "{} x {} record(s) -> {}".format(
                 self.count,
                 string.pretty_shape(self.shape),
                 self.object_name,
