@@ -25,7 +25,7 @@ def ingest(
     verbose: bool = False,
 ) -> bool:
     eval_ratio = 1 - test_ratio - train_ratio
-    if eval_ratio < 0:
+    if eval_ratio <= 0:
         logger.error(f"eval_ratio = {eval_ratio:.2f} < 0")
         return False
 
