@@ -2,6 +2,7 @@ import copy
 import pandas as pd
 from typing import Dict, Tuple, List
 import numpy as np
+from tqdm import tqdm, trange
 
 from bluer_options import string
 from bluer_objects import objects, file
@@ -118,6 +119,55 @@ class ImageClassifierDataset:
     def class_count(self) -> int:
         return len(self.dict_of_classes)
 
+    @staticmethod
+    def combine(
+        list_of_datasets: List["ImageClassifierDataset"],
+        object_name: str,
+    ) -> Tuple[bool, "ImageClassifierDataset"]:
+        if not list_of_datasets:
+            return False, None
+
+        dataset = ImageClassifierDataset(
+            dict_of_classes=list_of_datasets[0].dict_of_classes,
+            object_name=object_name,
+        )
+        dataset.shape = copy.deepcopy(list_of_datasets[0].shape)
+
+        for i in trange(1, len(list_of_datasets)):
+            if dataset.dict_of_classes != list_of_datasets[i].dict_of_classes:
+                logger.error(
+                    "different classes: {} <> {}".format(
+                        dataset.dict_of_classes,
+                        list_of_datasets[i].dict_of_classes,
+                    )
+                )
+                return False, dataset
+
+            if dataset.shape != list_of_datasets[i].shape:
+                logger.error(
+                    "different shapes: {} <> {}".format(
+                        dataset.shape,
+                        list_of_datasets[i].shape,
+                    )
+                )
+                return False, dataset
+
+            dataset.df = pd.concat(
+                [
+                    dataset.df,
+                    list_of_datasets[i].df,
+                ],
+                ignore_index=True,
+            )
+
+            logger.info("🪄 TODO: copy the files.")
+
+        dataset.df.reset_index(drop=True, inplace=True)
+
+        logger.info("🪄 TODO: combine grid.png's")
+
+        return True, dataset
+
     @property
     def count(self) -> int:
         return len(self.df)
@@ -140,6 +190,7 @@ class ImageClassifierDataset:
     def load(
         object_name: str,
         log: bool = True,
+        log_image_grid: bool = True,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         dataset = ImageClassifierDataset(object_name=object_name)
 
@@ -173,14 +224,35 @@ class ImageClassifierDataset:
         dataset.dict_of_classes = metadata["classes"]
         dataset.shape = metadata["shape"]
 
-        if not dataset.log_image_grid(log=log):
-            return False, dataset
+        if log_image_grid:
+            if not dataset.log_image_grid(log=log):
+                return False, dataset
 
         logger.info(dataset.as_str("subsets"))
         logger.info(dataset.as_str("classes"))
         logger.info("shape: {}".format(string.pretty_shape(dataset.shape)))
 
         return True, dataset
+
+    @staticmethod
+    def load_list(
+        list_of_object_names: List[str],
+        log: bool = True,
+    ) -> Tuple[bool, List["ImageClassifierDataset"]]:
+        output: List[ImageClassifierDataset] = []
+
+        for object_name in tqdm(list_of_object_names):
+            success, dataset = ImageClassifierDataset.load(
+                object_name=object_name,
+                log=log,
+                log_image_grid=False,
+            )
+            if not success:
+                return success, []
+
+            output.append(dataset)
+
+        return True, output
 
     def log_image_grid(
         self,
