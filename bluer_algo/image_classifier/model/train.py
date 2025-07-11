@@ -171,6 +171,21 @@ def train(
         ]
     )
 
+    # evaluation.png
+    if not log_image_grid(
+        items=log_items,
+        filename=objects.path_of(
+            object_name=model_object_name,
+            filename="evaluation.png",
+        ),
+        header=header,
+        footer=signature(),
+        log=log,
+    ):
+        return False
+
+    header.append(f"model: {model_object_name}")
+
     # confusion_matrix.png
     fig, ax = plt.subplots(figsize=(10, 10))
     cax = ax.imshow(
@@ -221,19 +236,6 @@ def train(
             object_name=model_object_name,
             filename="confusion_matrix.png",
         ),
-        log=log,
-    ):
-        return False
-
-    # evaluation.png
-    if not log_image_grid(
-        items=log_items,
-        filename=objects.path_of(
-            object_name=model_object_name,
-            filename="evaluation.png",
-        ),
-        header=header,
-        footer=signature(),
         log=log,
     ):
         return False
