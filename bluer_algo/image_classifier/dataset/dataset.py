@@ -107,7 +107,9 @@ class ImageClassifierDataset:
                 ", ".join(
                     [
                         "{}: {} [%{:.1f}]".format(
-                            subset, subset_count, subset_count / count * 100
+                            subset,
+                            subset_count,
+                            "none" if count == 0 else subset_count / count * 100,
                         )
                         for subset, subset_count in self.dict_of_subsets.items()
                     ]
