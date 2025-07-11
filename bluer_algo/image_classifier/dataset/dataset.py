@@ -171,7 +171,11 @@ class ImageClassifierDataset:
                 return False
 
             for _, row in tqdm(dataset_.df.iterrows()):
-                filename = "{}-{:03d}".format(row["filename"], i)
+                filename = "{}-{:03d}.{}".format(
+                    file.name(row["filename"]),
+                    i,
+                    file.extension(row["filename"]),
+                )
                 if not file.copy(
                     objects.path_of(
                         filename=row["filename"],
