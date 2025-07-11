@@ -313,14 +313,15 @@ class ImageClassifierDataset:
     ) -> bool:
         df = self.df.copy()
 
-        df["title"] = df.apply(
-            lambda row: "#{}: {} @ {}".format(
-                row["class_index"],
-                self.dict_of_classes[row["class_index"]],
-                row["subset"],
-            ),
-            axis=1,
-        )
+        if not df.empty:
+            df["title"] = df.apply(
+                lambda row: "#{}: {} @ {}".format(
+                    row["class_index"],
+                    self.dict_of_classes[row["class_index"]],
+                    row["subset"],
+                ),
+                axis=1,
+            )
 
         return log_image_grid(
             df,
