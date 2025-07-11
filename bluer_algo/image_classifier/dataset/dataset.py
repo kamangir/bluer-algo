@@ -94,7 +94,7 @@ class ImageClassifierDataset:
                         "{}: {} [%{:.1f}]".format(
                             self.dict_of_classes[class_index],
                             class_count,
-                            class_count / count * 100,
+                            0.0 if count == 0 else class_count / count * 100,
                         )
                         for class_index, class_count in self.dict_of_class_counts.items()
                     ]
