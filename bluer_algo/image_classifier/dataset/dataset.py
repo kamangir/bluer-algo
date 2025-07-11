@@ -2,7 +2,8 @@ import copy
 import pandas as pd
 from typing import Dict, Tuple, List
 import numpy as np
-from tqdm import tqdm, trange
+from tqdm import tqdm
+import random
 
 from bluer_options import string
 from bluer_objects import objects, file
@@ -123,11 +124,19 @@ class ImageClassifierDataset:
     def combine(
         list_of_datasets: List["ImageClassifierDataset"],
         object_name: str,
+        split: bool = True,
+        test_ratio: float = 0.1,
+        train_ratio: float = 0.8,
         log: bool = True,
         verbose: bool = False,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         if not list_of_datasets:
             return False, None
+
+        eval_ratio = 1 - train_ratio - test_ratio
+        if eval_ratio <= 0:
+            logger.error(f"eval_ratio = {eval_ratio:.2f} <= 0")
+            return False
 
         dataset = None
         for i, dataset_ in tqdm(enumerate(list_of_datasets)):
@@ -192,7 +201,15 @@ class ImageClassifierDataset:
                 if not dataset.add(
                     filename=filename,
                     class_index=row["class_index"],
-                    subset=row["subset"],
+                    subset=(
+                        random.choices(
+                            population=dataset.list_of_subsets,
+                            weights=[train_ratio, test_ratio, eval_ratio],
+                            k=1,
+                        )[0]
+                        if split
+                        else row["subset"]
+                    ),
                     log=verbose,
                 ):
                     return False
