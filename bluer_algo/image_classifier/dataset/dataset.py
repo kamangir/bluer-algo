@@ -123,48 +123,77 @@ class ImageClassifierDataset:
     def combine(
         list_of_datasets: List["ImageClassifierDataset"],
         object_name: str,
+        log: bool = True,
+        verbose: bool = False,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         if not list_of_datasets:
             return False, None
 
-        dataset = ImageClassifierDataset(
-            dict_of_classes=list_of_datasets[0].dict_of_classes,
-            object_name=object_name,
-        )
-        dataset.shape = copy.deepcopy(list_of_datasets[0].shape)
-
-        for i in trange(1, len(list_of_datasets)):
-            if dataset.dict_of_classes != list_of_datasets[i].dict_of_classes:
-                logger.error(
-                    "different classes: {} <> {}".format(
-                        dataset.dict_of_classes,
-                        list_of_datasets[i].dict_of_classes,
-                    )
+        dataset = None
+        for i, dataset_ in tqdm(enumerate(list_of_datasets)):
+            if not i:
+                dataset = ImageClassifierDataset(
+                    dict_of_classes=dataset_.dict_of_classes,
+                    object_name=object_name,
                 )
-                return False, dataset
 
-            if dataset.shape != list_of_datasets[i].shape:
-                logger.error(
-                    "different shapes: {} <> {}".format(
-                        dataset.shape,
-                        list_of_datasets[i].shape,
+                dataset.shape = copy.deepcopy(dataset_.shape)
+            else:
+                if dataset.dict_of_classes != dataset_.dict_of_classes:
+                    logger.error(
+                        "different classes: {} <> {}".format(
+                            dataset.dict_of_classes,
+                            dataset_.dict_of_classes,
+                        )
                     )
-                )
-                return False, dataset
+                    return False, dataset
 
-            dataset.df = pd.concat(
-                [
-                    dataset.df,
-                    list_of_datasets[i].df,
-                ],
-                ignore_index=True,
-            )
+                if dataset.shape != dataset_.shape:
+                    logger.error(
+                        "different shapes: {} <> {}".format(
+                            dataset.shape,
+                            dataset_.shape,
+                        )
+                    )
+                    return False, dataset
 
-            logger.info("🪄 TODO: copy the files.")
+            if not file.copy(
+                objects.path_of(
+                    filename="grid.png",
+                    object_name=dataset_.object_name,
+                ),
+                objects.path_of(
+                    filename=f"grid-{i:03d}.png",
+                    object_name=object_name,
+                ),
+                log=verbose,
+            ):
+                return False
+
+            for _, row in tqdm(dataset_.df.iterrows()):
+                filename = "{}-{:03d}".format(row["filename"], i)
+                if not file.copy(
+                    objects.path_of(
+                        filename=row["filename"],
+                        object_name=dataset_.object_name,
+                    ),
+                    objects.path_of(
+                        filename=filename,
+                        object_name=object_name,
+                    ),
+                    log=verbose,
+                ):
+                    return False
+
+                if not dataset.add(
+                    filename=filename,
+                    class_index=row["class_index"],
+                    subset=row["subset"],
+                    log=verbose,
+                ):
+                    return False
 
         dataset.df.reset_index(drop=True, inplace=True)
-
-        logger.info("🪄 TODO: combine grid.png's")
 
         return True, dataset
 
