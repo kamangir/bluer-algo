@@ -94,7 +94,7 @@ class ImageClassifierDataset:
                         "{}: {} [%{:.1f}]".format(
                             self.dict_of_classes[class_index],
                             class_count,
-                            class_count / count * 100,
+                            0.0 if count == 0 else class_count / count * 100,
                         )
                         for class_index, class_count in self.dict_of_class_counts.items()
                     ]
@@ -107,7 +107,9 @@ class ImageClassifierDataset:
                 ", ".join(
                     [
                         "{}: {} [%{:.1f}]".format(
-                            subset, subset_count, subset_count / count * 100
+                            subset,
+                            subset_count,
+                            0.0 if count == 0 else subset_count / count * 100,
                         )
                         for subset, subset_count in self.dict_of_subsets.items()
                     ]
@@ -311,14 +313,15 @@ class ImageClassifierDataset:
     ) -> bool:
         df = self.df.copy()
 
-        df["title"] = df.apply(
-            lambda row: "#{}: {} @ {}".format(
-                row["class_index"],
-                self.dict_of_classes[row["class_index"]],
-                row["subset"],
-            ),
-            axis=1,
-        )
+        if not df.empty:
+            df["title"] = df.apply(
+                lambda row: "#{}: {} @ {}".format(
+                    row["class_index"],
+                    self.dict_of_classes[row["class_index"]],
+                    row["subset"],
+                ),
+                axis=1,
+            )
 
         return log_image_grid(
             df,
