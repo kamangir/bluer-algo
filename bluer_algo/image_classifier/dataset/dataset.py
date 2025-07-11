@@ -2,6 +2,7 @@ import copy
 import pandas as pd
 from typing import Dict, Tuple, List
 import numpy as np
+from tqdm import tqdm, trange
 
 from bluer_options import string
 from bluer_objects import objects, file
@@ -118,6 +119,88 @@ class ImageClassifierDataset:
     def class_count(self) -> int:
         return len(self.dict_of_classes)
 
+    @staticmethod
+    def combine(
+        list_of_datasets: List["ImageClassifierDataset"],
+        object_name: str,
+        log: bool = True,
+        verbose: bool = False,
+    ) -> Tuple[bool, "ImageClassifierDataset"]:
+        if not list_of_datasets:
+            return False, None
+
+        dataset = None
+        for i, dataset_ in tqdm(enumerate(list_of_datasets)):
+            if not i:
+                dataset = ImageClassifierDataset(
+                    dict_of_classes=dataset_.dict_of_classes,
+                    object_name=object_name,
+                )
+
+                dataset.shape = copy.deepcopy(dataset_.shape)
+            else:
+                if dataset.dict_of_classes != dataset_.dict_of_classes:
+                    logger.error(
+                        "different classes: {} <> {}".format(
+                            dataset.dict_of_classes,
+                            dataset_.dict_of_classes,
+                        )
+                    )
+                    return False, dataset
+
+                if dataset.shape != dataset_.shape:
+                    logger.error(
+                        "different shapes: {} <> {}".format(
+                            dataset.shape,
+                            dataset_.shape,
+                        )
+                    )
+                    return False, dataset
+
+            if not file.copy(
+                objects.path_of(
+                    filename="grid.png",
+                    object_name=dataset_.object_name,
+                ),
+                objects.path_of(
+                    filename=f"grid-{i:03d}.png",
+                    object_name=object_name,
+                ),
+                log=verbose,
+            ):
+                return False
+
+            for _, row in tqdm(dataset_.df.iterrows()):
+                filename = "{}-{:03d}.{}".format(
+                    file.name(row["filename"]),
+                    i,
+                    file.extension(row["filename"]),
+                )
+                if not file.copy(
+                    objects.path_of(
+                        filename=row["filename"],
+                        object_name=dataset_.object_name,
+                    ),
+                    objects.path_of(
+                        filename=filename,
+                        object_name=object_name,
+                    ),
+                    log=verbose,
+                ):
+                    return False
+
+                if not dataset.add(
+                    filename=filename,
+                    class_index=row["class_index"],
+                    subset=row["subset"],
+                    log=verbose,
+                ):
+                    return False
+
+        dataset.df.reset_index(drop=True, inplace=True)
+
+        return True, dataset
+
     @property
     def count(self) -> int:
         return len(self.df)
@@ -140,6 +223,7 @@ class ImageClassifierDataset:
     def load(
         object_name: str,
         log: bool = True,
+        log_image_grid: bool = True,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         dataset = ImageClassifierDataset(object_name=object_name)
 
@@ -173,14 +257,35 @@ class ImageClassifierDataset:
         dataset.dict_of_classes = metadata["classes"]
         dataset.shape = metadata["shape"]
 
-        if not dataset.log_image_grid(log=log):
-            return False, dataset
+        if log_image_grid:
+            if not dataset.log_image_grid(log=log):
+                return False, dataset
 
         logger.info(dataset.as_str("subsets"))
         logger.info(dataset.as_str("classes"))
         logger.info("shape: {}".format(string.pretty_shape(dataset.shape)))
 
         return True, dataset
+
+    @staticmethod
+    def load_list(
+        list_of_object_names: List[str],
+        log: bool = True,
+    ) -> Tuple[bool, List["ImageClassifierDataset"]]:
+        output: List[ImageClassifierDataset] = []
+
+        for object_name in tqdm(list_of_object_names):
+            success, dataset = ImageClassifierDataset.load(
+                object_name=object_name,
+                log=log,
+                log_image_grid=False,
+            )
+            if not success:
+                return success, []
+
+            output.append(dataset)
+
+        return True, output
 
     def log_image_grid(
         self,
