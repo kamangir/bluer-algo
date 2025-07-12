@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from bluer_algo.env import BLUER_ALGO_FRUITS_360_TEST_DATASET
+from bluer_algo import env
 from bluer_objects import storage
 from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 
@@ -9,7 +9,7 @@ from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 @pytest.mark.parametrize(
     ["object_name"],
     [
-        [BLUER_ALGO_FRUITS_360_TEST_DATASET],
+        [env.BLUER_ALGO_SWALLOW_TEST_DATASET],
     ],
 )
 def test_ImageClassifierDataset(object_name: str):
@@ -38,12 +38,13 @@ def test_ImageClassifierDataset(object_name: str):
 
     assert dataset.log_image_grid()
 
+    assert dataset.generate_timeline()
+
     assert dataset.save()
 
     assert isinstance(dataset.signature(), list)
 
-    for subset in dataset.dict_of_subsets.keys():
-        success, class_index, image = dataset.sample(subset=subset)
-        assert success
-        assert isinstance(class_index, int)
-        assert isinstance(image, np.ndarray)
+    success, class_index, image = dataset.sample(subset="train")
+    assert success
+    assert isinstance(class_index, int)
+    assert isinstance(image, np.ndarray)

@@ -6,5 +6,5 @@ function test_bluer_algo_image_classifier_dataset_review() {
     bluer_ai_eval ,$options \
         bluer_algo_image_classifier_dataset_review \
         ,$options \
-        $BLUER_ALGO_FRUITS_360_TEST_DATASET
+        $BLUER_ALGO_SWALLOW_TEST_DATASET
 }

@@ -4,9 +4,13 @@ from typing import Dict, Tuple, List
 import numpy as np
 from tqdm import tqdm
 import random
+import re
+from datetime import datetime
+import matplotlib.pyplot as plt
 
 from bluer_options import string
 from bluer_objects import objects, file
+from bluer_objects.graphics.signature import justify_text
 from bluer_objects.metadata import post_to_object
 from bluer_objects.logger.image import log_image_grid
 from bluer_objects.metadata import get_from_object
@@ -238,11 +242,68 @@ class ImageClassifierDataset:
             for subset_name in self.list_of_subsets
         }
 
+    def generate_timeline(
+        self,
+        log: bool = True,
+        line_width: int = 80,
+    ) -> bool:
+        df = self.df.copy()
+
+        pattern = re.compile(r"(\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2})-[a-z0-9]+\.png")
+
+        if not df["filename"].apply(lambda x: bool(pattern.fullmatch(x))).all():
+            logger.warning("Not all filenames match the expected timestamp pattern.")
+            return True
+
+        df["datetime"] = df["filename"].apply(
+            lambda x: datetime.strptime(
+                pattern.match(x).group(1),
+                "%Y-%m-%d-%H-%M-%S",
+            )
+        )
+
+        df = df.sort_values(by="datetime")
+
+        plt.figure(figsize=(10, 4))
+        plt.plot(df["datetime"], df["class_index"], marker="o")
+        plt.title(
+            justify_text(
+                " | ".join(
+                    objects.signature(object_name=self.object_name) + self.signature()
+                ),
+                line_width=line_width,
+                return_str=True,
+            )
+        )
+        plt.xlabel(
+            justify_text(
+                " | ".join(["acquisition time"] + signature()),
+                line_width=line_width,
+                return_str=True,
+            )
+        )
+        plt.ylabel("label")
+        plt.xticks(rotation=45)
+        plt.yticks(
+            ticks=sorted(self.dict_of_classes.keys()),
+            labels=[
+                self.dict_of_classes[i] for i in sorted(self.dict_of_classes.keys())
+            ],
+        )
+        plt.tight_layout()
+        plt.grid(True)
+        return file.save_fig(
+            objects.path_of(
+                object_name=self.object_name,
+                filename="grid-timeline.png",
+            ),
+            log=log,
+        )
+
     @staticmethod
     def load(
         object_name: str,
         log: bool = True,
-        log_image_grid: bool = True,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         dataset = ImageClassifierDataset(object_name=object_name)
 
@@ -276,10 +337,6 @@ class ImageClassifierDataset:
         dataset.dict_of_classes = metadata["classes"]
         dataset.shape = metadata["shape"]
 
-        if log_image_grid:
-            if not dataset.log_image_grid(log=log):
-                return False, dataset
-
         logger.info(dataset.as_str("subsets"))
         logger.info(dataset.as_str("classes"))
         logger.info("shape: {}".format(string.pretty_shape(dataset.shape)))
@@ -297,7 +354,6 @@ class ImageClassifierDataset:
             success, dataset = ImageClassifierDataset.load(
                 object_name=object_name,
                 log=log,
-                log_image_grid=False,
             )
             if not success:
                 return success, []
@@ -389,6 +445,9 @@ class ImageClassifierDataset:
             return False
 
         if not self.log_image_grid(log=log):
+            return False
+
+        if not self.generate_timeline():
             return False
 
         logger.info(
