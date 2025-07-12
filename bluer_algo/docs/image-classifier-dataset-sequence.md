@@ -4,8 +4,9 @@
 @select 2025-07-09-11-16-52-4zo4zc
 @select sequence-$(@timestamp)
 
-@algo image_classifier dataset sequence - .. .
+@algo image_classifier dataset sequence ~download .. .
 
+@upload public,zip .
 @assets publish \
     extensions=png,push .
 ```

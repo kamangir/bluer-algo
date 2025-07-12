@@ -7,6 +7,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 
 @algo image_classifier dataset review - .
 
+@upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
