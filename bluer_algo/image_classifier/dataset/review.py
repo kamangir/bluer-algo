@@ -11,6 +11,11 @@ NAME = module.name(__file__, NAME)
 def review(object_name: str) -> bool:
     logger.info(f"{NAME}.review({object_name})")
 
-    success, _ = ImageClassifierDataset.load(object_name=object_name)
+    success, dataset = ImageClassifierDataset.load(object_name=object_name)
+    if not success:
+        return success
 
-    return success
+    return all[
+        dataset.log_image_grid(log=True),
+        dataset.generate_timeline(log=True),
+    ]

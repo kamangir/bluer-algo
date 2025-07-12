@@ -9,7 +9,7 @@ from bluer_algo.image_classifier.dataset.dataset import ImageClassifierDataset
 @pytest.mark.parametrize(
     ["object_name"],
     [
-        [BLUER_ALGO_FRUITS_360_TEST_DATASET],
+        ["2025-07-09-10-59-15-x9eemj"],
     ],
 )
 def test_ImageClassifierDataset(object_name: str):
@@ -37,6 +37,8 @@ def test_ImageClassifierDataset(object_name: str):
     assert isinstance(dataset.dict_of_subsets, dict)
 
     assert dataset.log_image_grid()
+
+    assert dataset.generate_timeline()
 
     assert dataset.save()
 
