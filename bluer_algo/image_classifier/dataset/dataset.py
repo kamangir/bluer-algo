@@ -495,23 +495,12 @@ class ImageClassifierDataset:
                 logger.error("buffer overflow - this must not happen.")
                 return False, dataset
 
-            source_filename = objects.path_of(
-                object_name=self.object_name,
-                filename=row["filename"],
-            )
             if not file.save_image(
-                source_filename,
-                np.hstack(buffer),
-                log=verbose,
-            ):
-                return False, dataset
-
-            if not file.copy(
-                source_filename,
                 objects.path_of(
                     object_name=object_name,
                     filename=row["filename"],
                 ),
+                np.hstack(buffer),
                 log=verbose,
             ):
                 return False, dataset
