@@ -76,7 +76,7 @@ def help_sequence(
             "[.|<source-object-name>]",
             "[-|<destination-object-name>]",
         ],
-        "<source-object-name> -> sequence <destination-object-name>.",
+        "<source-object-name> -sequence-> <destination-object-name>.",
         mono=mono,
     )
 

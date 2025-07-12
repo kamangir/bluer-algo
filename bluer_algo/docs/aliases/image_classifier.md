@@ -24,7 +24,7 @@
 	[~download,length=<2>,upload] \
 	[.|<source-object-name>] \
 	[-|<destination-object-name>]
- . <source-object-name> -> sequence <destination-object-name>.
+ . <source-object-name> -sequence-> <destination-object-name>.
 ```
 
 ## model
