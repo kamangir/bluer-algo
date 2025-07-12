@@ -23,10 +23,10 @@ uses [bluer-ugv/bluer-swallow/digital/dataset/combination](https://github.com/ka
 
 
 
-| | | |
-|-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid.png?raw=true) | -> | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid.png?raw=true) |
-| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid-timeline.png?raw=true) | -> | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid-timeline.png?raw=true) |
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid-timeline.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid-timeline.png?raw=true) |
 
 ---
 
