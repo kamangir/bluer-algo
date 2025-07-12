@@ -15,7 +15,9 @@ def review(object_name: str) -> bool:
     if not success:
         return success
 
-    return all[
-        dataset.log_image_grid(log=True),
-        dataset.generate_timeline(log=True),
-    ]
+    return all(
+        [
+            dataset.log_image_grid(log=True),
+            dataset.generate_timeline(log=True),
+        ]
+    )

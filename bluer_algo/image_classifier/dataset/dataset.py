@@ -5,7 +5,7 @@ import numpy as np
 from tqdm import tqdm
 import random
 import re
-import datetime
+from datetime import datetime
 import matplotlib.pyplot as plt
 
 from bluer_options import string
@@ -277,22 +277,25 @@ class ImageClassifierDataset:
         )
         plt.xlabel(
             justify_text(
-                " | ".join(["label"] + signature()),
+                " | ".join(["acquisition time"] + signature()),
                 line_width=line_width,
                 return_str=True,
             )
         )
         plt.ylabel("label")
-        plt.title("Class Index Over Time")
         plt.xticks(rotation=45)
+        plt.yticks(
+            ticks=sorted(self.dict_of_classes.keys()),
+            labels=[
+                self.dict_of_classes[i] for i in sorted(self.dict_of_classes.keys())
+            ],
+        )
         plt.tight_layout()
         plt.grid(True)
-        plt.show()
-
         return file.save_fig(
             objects.path_of(
                 object_name=self.object_name,
-                filename="timeline.png",
+                filename="grid-timeline.png",
             ),
             log=log,
         )
