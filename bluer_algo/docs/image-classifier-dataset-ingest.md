@@ -1,4 +1,4 @@
-# [image classifier](./image-classifier.md): dataset: ingest
+# [image classifier](./image-classifier.md): Dataset: Ingest
 
 - continues https://github.com/kamangir/image-classifier-2.
 - uses https://github.com/fruits-360/fruits-360-100x100

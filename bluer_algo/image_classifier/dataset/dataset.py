@@ -460,6 +460,21 @@ class ImageClassifierDataset:
 
         return True
 
+    def sequence(
+        self,
+        length: int,
+        object_name: str,
+        log: bool = True,
+    ) -> Tuple[bool, "ImageClassifierDataset"]:
+        dataset = ImageClassifierDataset(
+            dict_of_classes=self.dict_of_classes,
+            object_name=object_name,
+        )
+
+        logger.info("🪄")
+
+        return True, dataset
+
     def signature(self) -> List[str]:
         return [
             f"{self.count} record(s)",
