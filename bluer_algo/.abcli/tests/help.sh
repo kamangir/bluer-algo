@@ -21,6 +21,7 @@ function test_bluer_algo_help() {
         "@algo image_classifier dataset" \
         "@algo image_classifier dataset ingest" \
         "@algo image_classifier dataset review" \
+        "@algo image_classifier dataset sequence" \
         "@algo image_classifier model" \
         "@algo image_classifier model prediction_test" \
         "@algo image_classifier model train" \
@@ -29,6 +30,7 @@ function test_bluer_algo_help() {
         "@image_classifier dataset" \
         "@image_classifier dataset ingest" \
         "@image_classifier dataset review" \
+        "@image_classifier dataset sequence" \
         "@image_classifier model" \
         "@image_classifier model prediction_test" \
         "@image_classifier model train" \
