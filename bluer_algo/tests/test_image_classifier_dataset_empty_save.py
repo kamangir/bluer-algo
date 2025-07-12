@@ -7,7 +7,7 @@ def test_image_classifier_dataset_empty_save():
     object_name = objects.unique_object("test_image_classifier_dataset_empty_save")
 
     dataset = ImageClassifierDataset(
-        dict_of_classes={"this": 0, "that": 0},
+        dict_of_classes={0: "this", 1: "that"},
         object_name=object_name,
     )
 
