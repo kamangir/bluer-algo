@@ -23,17 +23,20 @@ uses [bluer-ugv/bluer-swallow/digital/dataset/combination](https://github.com/ka
 
 set:::source_object_name 2025-07-09-11-16-52-4zo4zc
 
-assets:::get:::source_object_name/grid.png
+set:::destination_object_name sequence-2025-07-12-21-58-04-0wmt6d
+
+| | | |
+|-|-|-|
+| assets:::get:::source_object_name/grid.png | -> | assets:::get:::destination_object_name/grid.png |
+| assets:::get:::source_object_name/grid-timeline.png | -> | assets:::get:::destination_object_name/grid-timeline.png |
+
+---
 
 object:::get:::source_object_name
 
 metadata:::get:::source_object_name
 
 ---
-
-set:::destination_object_name sequence-2025-07-12-21-58-04-0wmt6d
-
-assets:::get:::destination_object_name/grid.png
 
 object:::get:::destination_object_name
 
