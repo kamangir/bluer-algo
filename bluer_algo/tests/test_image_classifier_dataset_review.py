@@ -3,13 +3,13 @@ import pytest
 from bluer_objects import storage
 
 from bluer_algo.image_classifier.dataset.review import review
-from bluer_algo.env import BLUER_ALGO_FRUITS_360_TEST_DATASET
+from bluer_algo import env
 
 
 @pytest.mark.parametrize(
     ["object_name"],
     [
-        ["2025-07-09-10-59-15-x9eemj"],
+        [env.BLUER_ALGO_SWALLOW_TEST_DATASET],
     ],
 )
 def test_image_classifier_dataset_review(object_name: str):
