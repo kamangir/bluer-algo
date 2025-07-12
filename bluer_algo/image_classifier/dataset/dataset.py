@@ -238,11 +238,12 @@ class ImageClassifierDataset:
             for subset_name in self.list_of_subsets
         }
 
-    @staticmethod
+    @classmethod
     def load(
+        cls,
         object_name: str,
         log: bool = True,
-        log_image_grid: bool = True,
+        visual_log: bool = True,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
         dataset = ImageClassifierDataset(object_name=object_name)
 
@@ -276,7 +277,7 @@ class ImageClassifierDataset:
         dataset.dict_of_classes = metadata["classes"]
         dataset.shape = metadata["shape"]
 
-        if log_image_grid:
+        if visual_log:
             if not dataset.log_image_grid(log=log):
                 return False, dataset
 
@@ -286,8 +287,9 @@ class ImageClassifierDataset:
 
         return True, dataset
 
-    @staticmethod
+    @classmethod
     def load_list(
+        cls,
         list_of_object_names: List[str],
         log: bool = True,
     ) -> Tuple[bool, List["ImageClassifierDataset"]]:
@@ -297,7 +299,7 @@ class ImageClassifierDataset:
             success, dataset = ImageClassifierDataset.load(
                 object_name=object_name,
                 log=log,
-                log_image_grid=False,
+                visual_log=False,
             )
             if not success:
                 return success, []
