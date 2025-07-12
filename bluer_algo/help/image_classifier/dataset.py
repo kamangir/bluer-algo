@@ -55,7 +55,34 @@ def help_review(
     )
 
 
+def help_sequence(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "".join(
+        [
+            xtra("~download,", mono=mono),
+            "length=<2>",
+            xtra(",upload", mono=mono),
+        ]
+    )
+
+    return show_usage(
+        [
+            "@image_classifier",
+            "dataset",
+            "sequence",
+            f"[{options}]",
+            "[.|<source-object-name>]",
+            "[-|<destination-object-name>]",
+        ],
+        "<source-object-name> -> sequence <destination-object-name>.",
+        mono=mono,
+    )
+
+
 help_functions = {
     "ingest": help_ingest,
     "review": help_review,
+    "sequence": help_sequence,
 }

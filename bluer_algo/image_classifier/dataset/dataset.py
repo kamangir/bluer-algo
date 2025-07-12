@@ -460,6 +460,61 @@ class ImageClassifierDataset:
 
         return True
 
+    def sequence(
+        self,
+        length: int,
+        object_name: str,
+        log: bool = True,
+        verbose: bool = False,
+    ) -> Tuple[bool, "ImageClassifierDataset"]:
+        dataset = ImageClassifierDataset(
+            dict_of_classes=self.dict_of_classes,
+            object_name=object_name,
+        )
+
+        buffer: List[np.ndarray] = []
+        for _, row in tqdm(self.df.iterrows()):
+            success, image = file.load_image(
+                objects.path_of(
+                    object_name=self.object_name,
+                    filename=row["filename"],
+                ),
+                log=verbose,
+            )
+            if not success:
+                return False, dataset
+
+            buffer.append(image)
+            if len(buffer) > length:
+                buffer = buffer[1:]
+
+            if len(buffer) < length:
+                logger.info("buffering ...")
+                continue
+            if len(buffer) > length:
+                logger.error("buffer overflow - this must not happen.")
+                return False, dataset
+
+            if not file.save_image(
+                objects.path_of(
+                    object_name=object_name,
+                    filename=row["filename"],
+                ),
+                np.hstack(buffer),
+                log=verbose,
+            ):
+                return False, dataset
+
+            if not dataset.add(
+                filename=row["filename"],
+                class_index=row["class_index"],
+                subset=row["subset"],
+                log=verbose,
+            ):
+                return False, dataset
+
+        return True, dataset
+
     def signature(self) -> List[str]:
         return [
             f"{self.count} record(s)",

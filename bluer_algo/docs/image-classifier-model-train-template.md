@@ -1,4 +1,4 @@
-# [image classifier](./image-classifier.md): model: train
+# [image classifier](./image-classifier.md): Model: Train
 
 ## small dataset
 

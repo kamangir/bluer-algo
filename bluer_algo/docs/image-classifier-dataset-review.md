@@ -1,4 +1,4 @@
-# [image classifier](./image-classifier.md): dataset: review
+# [image classifier](./image-classifier.md): Dataset: Review
 
 uses [ingest](./image-classifier-dataset-ingest.md).
 
@@ -7,6 +7,7 @@ uses [ingest](./image-classifier-dataset-ingest.md).
 
 @algo image_classifier dataset review - .
 
+@upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
