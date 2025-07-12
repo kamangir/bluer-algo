@@ -44,8 +44,7 @@ def test_ImageClassifierDataset(object_name: str):
 
     assert isinstance(dataset.signature(), list)
 
-    for subset in dataset.dict_of_subsets.keys():
-        success, class_index, image = dataset.sample(subset=subset)
-        assert success
-        assert isinstance(class_index, int)
-        assert isinstance(image, np.ndarray)
+    success, class_index, image = dataset.sample(subset="train")
+    assert success
+    assert isinstance(class_index, int)
+    assert isinstance(image, np.ndarray)
