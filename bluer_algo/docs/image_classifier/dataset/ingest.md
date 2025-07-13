@@ -1,11 +1,14 @@
-# [image classifier](./image-classifier.md): Dataset: Review
+# Image_classifier: dataset: ingest
 
-uses [ingest](./image-classifier-dataset-ingest.md).
+- continues https://github.com/kamangir/image-classifier-2.
+- uses https://github.com/fruits-360/fruits-360-100x100
 
 ```bash
-@select $BLUER_ALGO_FRUITS_360_TEST_DATASET
+@select fruits-365-dataset-$(@@timestamp)
 
-@algo image_classifier dataset review - .
+@algo image_classifier dataset ingest \
+    clone,count=100,source=fruits_360,upload . \
+    --class_count 3
 
 @upload public,zip .
 @assets publish \

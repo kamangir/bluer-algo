@@ -1,4 +1,4 @@
-# [image classifier](./image-classifier.md): Dataset: Sequence
+# Image_classifier: dataset: sequence
 
 uses [bluer-ugv/bluer-swallow/digital/dataset/combination](https://github.com/kamangir/bluer-ugv/blob/main/bluer_ugv/docs/bluer-swallow-digital-dataset-combination.md).
 
