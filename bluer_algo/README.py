@@ -37,9 +37,11 @@ def build():
         for readme in [
             {"items": items, "path": ".."},
             {"path": "docs/image_classifier"},
+            {"path": "docs/image_classifier/dataset"},
             {"path": "docs/image_classifier/dataset/ingest.md"},
             {"path": "docs/image_classifier/dataset/review.md"},
             {"path": "docs/image_classifier/dataset/sequence.md"},
+            {"path": "docs/image_classifier/model"},
             {"path": "docs/image_classifier/model/train.md"},
             {"path": "docs/image_classifier/model/prediction.md"},
             # aliases
