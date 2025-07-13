@@ -1,4 +1,4 @@
-# [image classifier](../): Dataset: Review
+# Image Classifier: Dataset: Review
 
 uses [ingest](./ingest.md).
 
