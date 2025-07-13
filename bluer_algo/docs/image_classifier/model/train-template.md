@@ -2,7 +2,7 @@
 
 ## small dataset
 
-uses [ingest](./image_classifier/dataset/ingest.md).
+uses [ingest](./ingest.md).
 
 ```bash
 @select $BLUER_ALGO_FRUITS_360_TEST_DATASET
