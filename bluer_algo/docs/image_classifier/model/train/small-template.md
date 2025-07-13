@@ -1,4 +1,4 @@
-# image classifier: Model: Train: Small
+# Image Classifier: Model: Train: Small Dataset
 
 uses [ingest](../../dataset/ingest.md).
 

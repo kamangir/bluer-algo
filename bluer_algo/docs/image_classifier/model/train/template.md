@@ -1,4 +1,4 @@
 # Image Classifier: Model: Training
 
-- [small](./small.md)
-- [large](./large.md)
+- [small dataset](./small.md)
+- [large dataset](./large.md)
