@@ -42,8 +42,12 @@ def build():
             {"path": "docs/image_classifier/dataset/review.md"},
             {"path": "docs/image_classifier/dataset/sequence.md"},
             {"path": "docs/image_classifier/model"},
-            {"path": "docs/image_classifier/model/train.md"},
-            {"path": "docs/image_classifier/model/prediction.md"},
+            {"path": "docs/image_classifier/model/train"},
+            {"path": "docs/image_classifier/model/train/small.md"},
+            {"path": "docs/image_classifier/model/train/large.md"},
+            {"path": "docs/image_classifier/model/prediction"},
+            {"path": "docs/image_classifier/model/prediction/dev.md"},
+            {"path": "docs/image_classifier/model/prediction/rpi.md"},
             # aliases
             {"path": "docs/aliases/image_classifier.md"},
         ]

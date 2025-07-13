@@ -1,4 +1,4 @@
 # model
 
-- [train](./train.md)
-- [prediction](./prediction.md)
+- [train](./train)
+- [prediction](./prediction)
