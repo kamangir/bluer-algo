@@ -1,6 +1,6 @@
 # [image classifier](./image-classifier.md): Dataset: Review
 
-uses [ingest](./image-classifier-dataset-ingest.md).
+uses [ingest](./image_classifier/dataset/ingest.md).
 
 ```bash
 @select $BLUER_ALGO_FRUITS_360_TEST_DATASET

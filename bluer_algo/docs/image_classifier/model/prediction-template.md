@@ -1,6 +1,6 @@
 # [image classifier](./image-classifier.md): Model: Prediction
 
-uses [train](./image-classifier-model-train.md).
+uses [train](./image_classifier/model/train.md).
 
 ## dev
 
