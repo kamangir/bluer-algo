@@ -1,6 +1,6 @@
 # Image_classifier: dataset: sequence
 
-uses [bluer-ugv/bluer-swallow/digital/dataset/combination](https://github.com/kamangir/bluer-ugv/blob/main/bluer_ugv/docs/bluer-swallow-digital-dataset-combination.md).
+uses [bluer-ugv/bluer-swallow/digital/dataset/combination](https://github.com/kamangir/bluer-ugv/blob/main/bluer_ugv/docs/bluer_swallow/digital/dataset/combination.md).
 
 ```bash
 @select 2025-07-09-11-16-52-4zo4zc
