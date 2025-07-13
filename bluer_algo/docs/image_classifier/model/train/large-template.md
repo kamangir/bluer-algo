@@ -1,4 +1,4 @@
-# Image Classifier: Model: Train: Large Dataset
+# image_classifier: model: train: large dataset
 
 ```bash
 @select fruits-365-dataset-2000-$(@@timestamp)

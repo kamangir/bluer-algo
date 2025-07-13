@@ -1,4 +1,4 @@
-# dataset
+# image_classifier: dataset
 
 - [ingest](./ingest.md)
 - [review](./review.md)
