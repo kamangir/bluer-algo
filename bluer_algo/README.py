@@ -13,7 +13,7 @@ items = README.Items(
             "name": "image classifier",
             "marquee": "https://github.com/kamangir/assets/raw/main/swallow-model-2025-07-11-15-04-03-2glcch/evaluation.png?raw=true",
             "description": "an image classifier.",
-            "url": "./bluer_algo/docs/image-classifier",
+            "url": "./bluer_algo/docs/image_classifier",
         }
     ]
 )

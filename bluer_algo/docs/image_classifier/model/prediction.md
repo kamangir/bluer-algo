@@ -1,4 +1,4 @@
-# [image classifier](./image-classifier.md): Model: Prediction
+# [image classifier](./image_classifier.md): Model: Prediction
 
 uses [train](./image_classifier/model/train.md).
 
