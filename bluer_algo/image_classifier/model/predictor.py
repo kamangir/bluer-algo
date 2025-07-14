@@ -91,6 +91,12 @@ class ImageClassifierPredictor:
             return False, predictor
 
         # Apply same transform as training
+        logger.info(
+            "transforms: {} x {}".format(
+                predictor.shape[0],
+                predictor.shape[1],
+            )
+        )
         predictor.transform = transforms.Compose(
             [
                 transforms.Resize((predictor.shape[0], predictor.shape[1])),

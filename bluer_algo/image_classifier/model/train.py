@@ -59,6 +59,12 @@ def train(
     num_workers = 2 if torch.cuda.is_available() else 0
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+    logger.info(
+        "transforms: {} x {}".format(
+            dataset.shape[0],
+            dataset.shape[1],
+        )
+    )
     transform = transforms.Compose(
         [
             transforms.Resize((dataset.shape[0], dataset.shape[1])),
