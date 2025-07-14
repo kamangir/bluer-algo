@@ -13,15 +13,6 @@ def sequence(
     length: str,
     log: bool = True,
 ) -> bool:
-    logger.info(
-        "{}.sequence: {} -{}X-> {}".format(
-            NAME,
-            source_object_name,
-            length,
-            destination_object_name,
-        )
-    )
-
     success, dataset = ImageClassifierDataset.load(
         object_name=source_object_name,
         log=log,
@@ -29,18 +20,10 @@ def sequence(
     if not success:
         return success
 
-    success, sequenced_dataset = dataset.sequence(
+    success, _ = dataset.sequence(
         length=length,
         object_name=destination_object_name,
         log=log,
     )
-    if not success:
-        return success
 
-    return sequenced_dataset.save(
-        metadata={
-            "length": length,
-            "source": source_object_name,
-        },
-        log=log,
-    )
+    return success
