@@ -1,4 +1,4 @@
-# Image_classifier: model: predict: rpi
+# image_classifier: model: prediction: rpi
 
 uses [train](../train).
 
