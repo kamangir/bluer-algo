@@ -61,7 +61,7 @@ def train(
 
     transform = transforms.Compose(
         [
-            transforms.Resize((100, 100)),
+            transforms.Resize((dataset.shape[0], dataset.shape[1])),
             transforms.ToTensor(),
         ]
     )
