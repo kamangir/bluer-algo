@@ -8,6 +8,7 @@ import re
 from datetime import datetime
 import matplotlib.pyplot as plt
 
+from blueness import module
 from bluer_options import string
 from bluer_objects import objects, file
 from bluer_objects.graphics.signature import justify_text
@@ -15,8 +16,11 @@ from bluer_objects.metadata import post_to_object
 from bluer_objects.logger.image import log_image_grid
 from bluer_objects.metadata import get_from_object
 
+from bluer_algo import NAME
 from bluer_algo.host import signature
 from bluer_algo.logger import logger
+
+NAME = module.name(__file__, NAME)
 
 
 class ImageClassifierDataset:
@@ -142,7 +146,7 @@ class ImageClassifierDataset:
         eval_ratio = 1 - train_ratio - test_ratio
         if eval_ratio <= 0:
             logger.error(f"eval_ratio = {eval_ratio:.2f} <= 0")
-            return False
+            return False, dataset
 
         dataset = None
         for i, dataset_ in tqdm(enumerate(list_of_datasets)):
@@ -183,7 +187,7 @@ class ImageClassifierDataset:
                 ),
                 log=verbose,
             ):
-                return False
+                return False, dataset
 
             for _, row in tqdm(dataset_.df.iterrows()):
                 filename = "{}-{:03d}.{}".format(
@@ -202,7 +206,7 @@ class ImageClassifierDataset:
                     ),
                     log=verbose,
                 ):
-                    return False
+                    return False, dataset
 
                 if not dataset.add(
                     filename=filename,
@@ -218,7 +222,7 @@ class ImageClassifierDataset:
                     ),
                     log=verbose,
                 ):
-                    return False
+                    return False, dataset
 
         dataset.df.reset_index(drop=True, inplace=True)
 
@@ -467,6 +471,15 @@ class ImageClassifierDataset:
         log: bool = True,
         verbose: bool = False,
     ) -> Tuple[bool, "ImageClassifierDataset"]:
+        logger.info(
+            "{}.sequence: {} -{}X-> {}".format(
+                NAME,
+                self.object_name,
+                length,
+                object_name,
+            )
+        )
+
         dataset = ImageClassifierDataset(
             dict_of_classes=self.dict_of_classes,
             object_name=object_name,
@@ -513,7 +526,15 @@ class ImageClassifierDataset:
             ):
                 return False, dataset
 
-        return True, dataset
+        success = dataset.save(
+            metadata={
+                "length": length,
+                "source": self.object_name,
+            },
+            log=log,
+        )
+
+        return success, dataset
 
     def signature(self) -> List[str]:
         return [
