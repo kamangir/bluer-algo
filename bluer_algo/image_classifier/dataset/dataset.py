@@ -146,7 +146,7 @@ class ImageClassifierDataset:
         eval_ratio = 1 - train_ratio - test_ratio
         if eval_ratio <= 0:
             logger.error(f"eval_ratio = {eval_ratio:.2f} <= 0")
-            return False, dataset
+            return False, None
 
         dataset = None
         for i, dataset_ in tqdm(enumerate(list_of_datasets)):
