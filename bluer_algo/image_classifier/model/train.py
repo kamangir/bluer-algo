@@ -295,6 +295,7 @@ def train(
             "inputs": {
                 "batch_size": batch_size,
                 "num_epochs": num_epochs,
+                "object_name": dataset_object_name,
             },
             "training": {
                 "loss": epoch_loss_list,
