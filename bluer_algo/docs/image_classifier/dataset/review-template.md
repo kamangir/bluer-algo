@@ -1,4 +1,4 @@
-# Image_classifier: dataset: review
+title:::
 
 uses [ingest](./ingest.md).
 

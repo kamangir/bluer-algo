@@ -1,4 +1,4 @@
-# image_classifier: model: train
+title:::
 
 - [small dataset](./small.md)
 - [large dataset](./large.md)

@@ -1,4 +1,4 @@
-# image_classifier: model: predict: dev
+# image_classifier: model: prediction: dev
 
 uses [train](../train).
 
