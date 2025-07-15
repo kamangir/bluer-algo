@@ -7,5 +7,5 @@
 	[--frame_count <-1>] \
 	[--show_gui <0 | 1>] \
 	[--verbose <0 | 1>]
- . run sandbox/algo.
+ . run algo.
 ```

@@ -27,6 +27,6 @@ def help_tracker(
             f"[{options}]",
         ]
         + args,
-        "run sandbox/algo.",
+        "run algo.",
         mono=mono,
     )
