@@ -107,3 +107,9 @@ while 1:
                 break
     else:
         break
+
+if args.source == "camera":
+    cap.release()
+
+if args.show_gui == 1:
+    cv.destroyAllWindows()
