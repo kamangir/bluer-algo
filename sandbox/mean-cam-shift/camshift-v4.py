@@ -4,6 +4,7 @@ import argparse
 import sys
 
 from bluer_algo.tracker.classes.target import Target
+from bluer_algo.tracker.classes.camshift import CamShiftTracker
 from bluer_algo.logger import logger
 
 parser = argparse.ArgumentParser(
@@ -64,12 +65,11 @@ else:
     x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
 track_window = (x, y, w, h)
 
-# set up the ROI for tracking
-roi = frame[y : y + h, x : x + w]
-hsv_roi = cv.cvtColor(roi, cv.COLOR_BGR2HSV)
-mask = cv.inRange(hsv_roi, np.array((0.0, 60.0, 32.0)), np.array((180.0, 255.0, 255.0)))
-roi_hist = cv.calcHist([hsv_roi], [0], mask, [180], [0, 180])
-cv.normalize(roi_hist, roi_hist, 0, 255, cv.NORM_MINMAX)
+tracker = CamShiftTracker()
+tracker.start(
+    frame=frame,
+    track_window=track_window,
+)
 
 # Setup the termination criteria, either 10 iteration or move by at least 1 pt
 term_crit = (cv.TERM_CRITERIA_EPS | cv.TERM_CRITERIA_COUNT, 10, 1)
@@ -87,7 +87,7 @@ while 1:
 
     if ret == True:  # pylint: disable=C0121
         hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-        dst = cv.calcBackProject([hsv], [0], roi_hist, [0, 180], 1)
+        dst = cv.calcBackProject([hsv], [0], tracker.roi_hist, [0, 180], 1)
 
         # apply camshift to get the new location
         ret, track_window = cv.CamShift(dst, track_window, term_crit)
