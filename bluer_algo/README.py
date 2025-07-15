@@ -11,7 +11,7 @@ items = README.Items(
     [
         {
             "name": "tracker",
-            "marquee": "https://raw.githubusercontent.com/kamangir/assets/refs/heads/main/tracker/camshift.png",
+            "marquee": "https://github.com/kamangir/assets/raw/main/tracker/camshift-tracker.png?raw=true",
             "description": "a visual tracker.",
             "url": "./bluer_algo/docs/tracker",
         },
