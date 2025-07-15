@@ -1,10 +1,10 @@
-# tracker: sandbox: meanshift
+# tracker: meanshift
 
 # on a video file
 
 ```bash
-@algo tracker sandbox \
-	algo=meanshift
+@algo tracker \
+    algo=meanshift
 ```
 
 ![image](https://github.com/kamangir/assets/blob/main/tracker/meanshift.png?raw=true)
@@ -12,8 +12,8 @@
 # on camera feed
 
 ```bash
-@algo tracker sandbox \
-	algo=meanshift,camera
+@algo tracker \
+    algo=meanshift,camera
 ```
 
 | | |

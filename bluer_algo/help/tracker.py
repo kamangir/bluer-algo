@@ -16,8 +16,8 @@ def help_tracker(
 
     args = [
         "[--frame_count <-1>]",
-        "[--log <0 | 1>]",
         "[--show_gui <0 | 1>]",
+        "[--verbose <0 | 1>]",
     ]
 
     return show_usage(
@@ -27,6 +27,6 @@ def help_tracker(
             f"[{options}]",
         ]
         + args,
-        "run sandbox/algo.",
+        "run algo.",
         mono=mono,
     )

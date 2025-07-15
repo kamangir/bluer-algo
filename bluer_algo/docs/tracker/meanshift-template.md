@@ -3,8 +3,8 @@ title:::
 # on a video file
 
 ```bash
-@algo tracker sandbox \
-	algo=meanshift
+@algo tracker \
+    algo=meanshift
 ```
 
 assets:::tracker/meanshift.png
@@ -12,8 +12,8 @@ assets:::tracker/meanshift.png
 # on camera feed
 
 ```bash
-@algo tracker sandbox \
-	algo=meanshift,camera
+@algo tracker \
+    algo=meanshift,camera
 ```
 
 | | |

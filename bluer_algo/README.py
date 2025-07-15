@@ -11,7 +11,7 @@ items = README.Items(
     [
         {
             "name": "tracker",
-            "marquee": "https://raw.githubusercontent.com/kamangir/assets/refs/heads/main/tracker/camshift.png",
+            "marquee": "https://github.com/kamangir/assets/raw/main/tracker/camshift-tracker.png?raw=true",
             "description": "a visual tracker.",
             "url": "./bluer_algo/docs/tracker",
         },
@@ -56,8 +56,8 @@ def build():
             {"path": "docs/image_classifier/model/prediction/rpi.md"},
             #
             {"path": "docs/tracker"},
-            {"path": "docs/tracker/sandbox/camshift.md"},
-            {"path": "docs/tracker/sandbox/meanshift.md"},
+            {"path": "docs/tracker/camshift.md"},
+            {"path": "docs/tracker/meanshift.md"},
             # aliases
             {"path": "docs/aliases/image_classifier.md"},
             {"path": "docs/aliases/tracker.md"},

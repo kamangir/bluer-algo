@@ -3,8 +3,8 @@ title:::
 # on a video file
 
 ```bash
-@algo tracker sandbox \
-	algo=camshift
+@algo tracker \
+    algo=camshift
 ```
 
 assets:::tracker/camshift.png
@@ -12,8 +12,8 @@ assets:::tracker/camshift.png
 # on camera feed
 
 ```bash
-@algo tracker sandbox \
-	algo=camshift,camera
+@algo tracker \
+    algo=camshift,camera
 ```
 
 | | |

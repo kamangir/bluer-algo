@@ -1,10 +1,10 @@
-# tracker: sandbox: camshift
+# tracker: camshift
 
 # on a video file
 
 ```bash
-@algo tracker sandbox \
-	algo=camshift
+@algo tracker \
+    algo=camshift
 ```
 
 ![image](https://github.com/kamangir/assets/blob/main/tracker/camshift.png?raw=true)
@@ -12,8 +12,8 @@
 # on camera feed
 
 ```bash
-@algo tracker sandbox \
-	algo=camshift,camera
+@algo tracker \
+    algo=camshift,camera
 ```
 
 | | |
