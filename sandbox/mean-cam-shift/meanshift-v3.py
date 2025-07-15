@@ -41,7 +41,7 @@ ret, frame = cap.read()
 if args.source == "camera" and not ret:
     logger.error("failed to grab initial frame from camera.")
     cap.release()
-    exit(1)
+    sys.exit(1)
 
 # setup initial location of window
 x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values

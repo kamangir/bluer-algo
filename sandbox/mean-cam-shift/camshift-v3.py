@@ -1,6 +1,7 @@
 import numpy as np
 import cv2 as cv
 import argparse
+import sys
 
 from bluer_algo.logger import logger
 
@@ -41,7 +42,7 @@ ret, frame = cap.read()
 if args.source == "camera" and not ret:
     logger.error("failed to grab initial frame from camera.")
     cap.release()
-    exit(1)
+    sys.exit(1)
 
 # setup initial location of window
 x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
