@@ -4,7 +4,7 @@
 
 ```bash
 @algo tracker \
-	algo=camshift
+    algo=camshift
 ```
 
 ![image](https://github.com/kamangir/assets/blob/main/tracker/camshift.png?raw=true)
@@ -13,7 +13,7 @@
 
 ```bash
 @algo tracker \
-	algo=camshift,camera
+    algo=camshift,camera
 ```
 
 | | |

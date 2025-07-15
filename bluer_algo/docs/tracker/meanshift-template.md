@@ -4,7 +4,7 @@ title:::
 
 ```bash
 @algo tracker \
-	algo=meanshift
+    algo=meanshift
 ```
 
 assets:::tracker/meanshift.png
@@ -13,7 +13,7 @@ assets:::tracker/meanshift.png
 
 ```bash
 @algo tracker \
-	algo=meanshift,camera
+    algo=meanshift,camera
 ```
 
 | | |

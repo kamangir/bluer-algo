@@ -4,7 +4,7 @@ title:::
 
 ```bash
 @algo tracker \
-	algo=camshift
+    algo=camshift
 ```
 
 assets:::tracker/camshift.png
@@ -13,7 +13,7 @@ assets:::tracker/camshift.png
 
 ```bash
 @algo tracker \
-	algo=camshift,camera
+    algo=camshift,camera
 ```
 
 | | |

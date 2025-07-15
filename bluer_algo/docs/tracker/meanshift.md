@@ -4,7 +4,7 @@
 
 ```bash
 @algo tracker \
-	algo=meanshift
+    algo=meanshift
 ```
 
 ![image](https://github.com/kamangir/assets/blob/main/tracker/meanshift.png?raw=true)
@@ -13,7 +13,7 @@
 
 ```bash
 @algo tracker \
-	algo=meanshift,camera
+    algo=meanshift,camera
 ```
 
 | | |
