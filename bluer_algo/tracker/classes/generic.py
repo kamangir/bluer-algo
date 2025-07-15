@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Any
 import numpy as np
 import cv2
 
@@ -8,9 +8,22 @@ from bluer_algo.logger import logger
 
 
 class GenericTracker:
-    def __init__(self):
+    def __init__(
+        self,
+        with_gui: bool = False,
+    ):
         self.roi_hist = None
-        logger.info(f"{self.__class__.__name__} initialized.")
+        self.with_gui = with_gui
+
+        # Setup the termination criteria, either 10 iteration or move by at least 1 pt
+        self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
+
+        logger.info(
+            "{} initialized{}.".format(
+                self.__class__.__name__,
+                " with gui" if with_gui else "",
+            )
+        )
 
     def start(
         self,
@@ -52,3 +65,14 @@ class GenericTracker:
             255,
             cv2.NORM_MINMAX,
         )
+
+    def track(
+        self,
+        frame: np.ndarray,
+        track_window: Tuple[int, int, int, int],
+    ) -> Tuple[
+        Any,
+        Tuple[int, int, int, int],
+        np.ndarray,
+    ]:
+        return None, [0, 0, 0, 0], np.array([])

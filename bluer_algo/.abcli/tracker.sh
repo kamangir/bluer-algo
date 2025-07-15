@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v4,meanshift=v4"
+export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v5,meanshift=v5"
 
 function bluer_algo_tracker() {
     local options=$1
