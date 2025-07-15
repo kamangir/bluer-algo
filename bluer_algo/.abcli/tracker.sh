@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v5,meanshift=v5"
+export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v6,meanshift=v6"
 
 function bluer_algo_tracker() {
     local options=$1
@@ -8,7 +8,7 @@ function bluer_algo_tracker() {
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
     local use_sandbox=$(bluer_ai_option_int "$options" sandbox 0)
 
-    local callable="python3 -m bluer_algo.tracker"
+    local callable="python3 -m bluer_algo.tracker track --algo $algo"
     local title=$algo
     if [[ "$use_sandbox" == 1 ]]; then
         local version=$(bluer_ai_option $BLUER_ALGO_TRACKER_ALGO_VERSIONS $algo)
