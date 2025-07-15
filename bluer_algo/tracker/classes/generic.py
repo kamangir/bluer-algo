@@ -66,7 +66,11 @@ class GenericTracker:
             cv2.NORM_MINMAX,
         )
 
-    def track(self, frame: np.ndarray) -> Tuple[
+    def track(
+        self,
+        frame: np.ndarray,
+        track_window: Tuple[int, int, int, int],
+    ) -> Tuple[
         Any,
         Tuple[int, int, int, int],
         np.ndarray,
