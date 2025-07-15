@@ -3,14 +3,14 @@ from typing import List
 from bluer_options.terminal import show_usage, xtra
 
 
-def help_sandbox(
+def help_tracker(
     tokens: List[str],
     mono: bool,
 ) -> str:
     options = "".join(
         [
             "algo=camshift|meanshift,camera",
-            xtra(",~download", mono=mono),
+            xtra(",~download,dryrun,sandbox", mono=mono),
         ]
     )
 
@@ -24,7 +24,6 @@ def help_sandbox(
         [
             "@algo",
             "tracker",
-            "sandbox",
             f"[{options}]",
         ]
         + args,
