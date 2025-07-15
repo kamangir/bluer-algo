@@ -49,6 +49,6 @@ function bluer_algo_tracker() {
     bluer_ai_eval dryrun=$do_dryrun \
         $callable \
         --source $video_source \
-        --title $algo \
+        --title $title \
         "${@:2}"
 }
