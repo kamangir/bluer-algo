@@ -10,7 +10,8 @@ items:::
 
 # aliases
 
-[@image_classifier](./bluer_algo/docs/aliases/image_classifier.md).
+[@image_classifier](./bluer_algo/docs/aliases/image_classifier.md), 
+[@tracker](./bluer_algo/docs/aliases/tracker.md).
 
 ---
 
