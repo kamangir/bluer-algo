@@ -55,6 +55,7 @@ def build():
             {"path": "docs/image_classifier/model/prediction/dev.md"},
             {"path": "docs/image_classifier/model/prediction/rpi.md"},
             #
+            {"path": "docs/tracker"},
             {"path": "docs/tracker/sandbox/camshift.md"},
             {"path": "docs/tracker/sandbox/meanshift.md"},
             # aliases
