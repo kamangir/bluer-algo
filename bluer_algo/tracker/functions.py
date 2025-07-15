@@ -6,7 +6,7 @@ from bluer_algo import NAME
 from bluer_algo.tracker.classes.target import Target
 from bluer_algo.tracker.classes.camshift import CamShiftTracker
 from bluer_algo.tracker.classes.meanshift import MeanShiftTracker
-from bluer_plugin.logger import logger
+from bluer_algo.logger import logger
 
 
 NAME = module.name(__file__, NAME)
