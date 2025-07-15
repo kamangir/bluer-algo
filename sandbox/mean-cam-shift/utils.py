@@ -25,9 +25,9 @@ def select_roi(frame):
             cv.rectangle(temp_frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         cv.imshow("Select ROI", temp_frame)
         key = cv.waitKey(1) & 0xFF
-        if key == 13 or key == 32:  # ENTER or SPACE to confirm
+        if key in [13, 32]:  # ENTER or SPACE to confirm
             break
-        elif key == 27:  # ESC to cancel
+        if key == 27:  # ESC to cancel
             cv.destroyWindow("Select ROI")
             return None
 
