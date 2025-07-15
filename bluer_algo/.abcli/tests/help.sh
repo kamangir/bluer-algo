@@ -35,6 +35,8 @@ function test_bluer_algo_help() {
         "@image_classifier model prediction_test" \
         "@image_classifier model train" \
         \
+        "@algo tracker" \
+        \
         "bluer_algo"; do
         bluer_ai_eval ,$options \
             bluer_ai_help $module
