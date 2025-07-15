@@ -1,9 +1,9 @@
-# tracker: sandbox: camshift
+# tracker: camshift
 
 # on a video file
 
 ```bash
-@algo tracker sandbox \
+@algo tracker \
 	algo=camshift
 ```
 
@@ -12,7 +12,7 @@
 # on camera feed
 
 ```bash
-@algo tracker sandbox \
+@algo tracker \
 	algo=camshift,camera
 ```
 
