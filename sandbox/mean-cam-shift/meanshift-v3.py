@@ -3,6 +3,8 @@ import cv2 as cv
 import argparse
 import sys
 
+from utils import select_roi
+
 from bluer_algo.logger import logger
 
 parser = argparse.ArgumentParser(
@@ -33,6 +35,11 @@ parser.add_argument(
     default=1,
     help="0 | 1",
 )
+parser.add_argument(
+    "--title",
+    type=str,
+    default="tracker",
+)
 args = parser.parse_args()
 
 cap = cv.VideoCapture(0 if args.source == "camera" else args.source)
@@ -45,7 +52,17 @@ if args.source == "camera" and not ret:
     sys.exit(1)
 
 # setup initial location of window
-x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
+if args.source == "camera":
+    ret, frame = cap.read()
+    roi = select_roi(frame)
+    if roi is None:
+        cap.release()
+        cv.destroyAllWindows()
+        sys.exit(1)
+
+    x, y, w, h = roi
+else:
+    x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
 track_window = (x, y, w, h)
 
 # set up the ROI for tracking
@@ -84,7 +101,7 @@ while 1:
         img2 = cv.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
 
         if args.show_gui == 1:
-            cv.imshow("img2", img2)
+            cv.imshow(args.title, img2)
 
             k = cv.waitKey(30) & 0xFF
             if k == 27:

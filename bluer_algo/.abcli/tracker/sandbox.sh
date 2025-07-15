@@ -38,5 +38,6 @@ function bluer_algo_tracker_sandbox() {
     bluer_ai_eval - \
         python3 $abcli_path_git/bluer-algo/sandbox/mean-cam-shift/$algo-$version.py \
         --source $video_source \
+        --title $algo-$version \
         "${@:2}"
 }
