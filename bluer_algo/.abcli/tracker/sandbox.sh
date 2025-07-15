@@ -1,8 +1,16 @@
 #! /usr/bin/env bash
 
+export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v2,meanshift=v2"
+
 function bluer_algo_tracker_sandbox() {
     local options=$1
     local algo=$(bluer_ai_option "$options" algo camshift)
+
+    local version=$(bluer_ai_option $BLUER_ALGO_TRACKER_ALGO_VERSIONS $algo)
+    if [[ -z "$version" ]]; then
+        bluer_ai_log_error "algo: $algo not found."
+        return 1
+    fi
 
     local object_name="mean-cam-shift-data-v1"
     local url="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
@@ -21,7 +29,7 @@ function bluer_algo_tracker_sandbox() {
     fi
 
     bluer_ai_eval - \
-        python3 $abcli_path_git/bluer-algo/sandbox/mean-cam-shift/$algo.py \
-        $ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4 \
-        "${@:3}"
+        python3 $abcli_path_git/bluer-algo/sandbox/mean-cam-shift/$algo-$version.py \
+        --filename $ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4 \
+        "${@:2}"
 }

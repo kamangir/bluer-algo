@@ -14,13 +14,20 @@ def help_sandbox(
         ]
     )
 
+    args = [
+        "[--frame_count <-1>]",
+        "[--log <0 | 1>]",
+        "[--show_gui <0 | 1>]",
+    ]
+
     return show_usage(
         [
             "@algo",
             "tracker",
             "sandbox",
             f"[{options}]",
-        ],
+        ]
+        + args,
         "run sandbox/algo.",
         mono=mono,
     )
