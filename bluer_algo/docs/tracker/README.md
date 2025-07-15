@@ -6,3 +6,5 @@
 - code: [sandbox/mean-cam-shift](../../../sandbox/mean-cam-shift)
 - [sandbox: camshift](./sandbox/camshift.md)
 - [sandbox: meanshift](./sandbox/meanshift.md)
+
+> ℹ️ conclusion: `camshift` tracks distinct colors robustly and adjust to object size.
