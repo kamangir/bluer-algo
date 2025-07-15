@@ -3,8 +3,7 @@ import cv2 as cv
 import argparse
 import sys
 
-from utils import select_roi
-
+from bluer_algo.tracker.classes.target import Target
 from bluer_algo.logger import logger
 
 parser = argparse.ArgumentParser(
@@ -54,8 +53,8 @@ if args.source == "camera" and not ret:
 # setup initial location of window
 if args.source == "camera":
     ret, frame = cap.read()
-    roi = select_roi(frame)
-    if roi is None:
+    success, roi = Target.select(frame)
+    if not success:
         cap.release()
         cv.destroyAllWindows()
         sys.exit(1)

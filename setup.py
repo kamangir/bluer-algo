@@ -18,6 +18,7 @@ setup(
         f"{NAME}.image_classifier.dataset.ingest.fruits_360",
         f"{NAME}.image_classifier.model",
         f"{NAME}.tracker",
+        f"{NAME}.tracker.classes",
     ],
     include_package_data=True,
     package_data={
