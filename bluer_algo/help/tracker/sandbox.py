@@ -9,7 +9,7 @@ def help_sandbox(
 ) -> str:
     options = "".join(
         [
-            "algo=camshift|meanshift",
+            "algo=camshift|meanshift,camera",
             xtra(",~download", mono=mono),
         ]
     )
