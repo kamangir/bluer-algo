@@ -4,6 +4,7 @@ import argparse
 import sys
 
 from bluer_algo.tracker.classes.target import Target
+from bluer_algo.tracker.classes.meanshift import MeanShiftTracker
 from bluer_algo.logger import logger
 
 parser = argparse.ArgumentParser(
@@ -63,6 +64,8 @@ if args.source == "camera":
 else:
     x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
 track_window = (x, y, w, h)
+
+tracker = MeanShiftTracker()
 
 # set up the ROI for tracking
 roi = frame[y : y + h, x : x + w]
