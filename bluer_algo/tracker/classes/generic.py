@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Any
 import numpy as np
 import cv2
 
@@ -14,6 +14,9 @@ class GenericTracker:
     ):
         self.roi_hist = None
         self.with_gui = with_gui
+
+        # Setup the termination criteria, either 10 iteration or move by at least 1 pt
+        self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
 
         logger.info(
             "{} initialized{}.".format(
@@ -62,3 +65,10 @@ class GenericTracker:
             255,
             cv2.NORM_MINMAX,
         )
+
+    def track(self, frame: np.ndarray) -> Tuple[
+        Any,
+        Tuple[int, int, int, int],
+        np.ndarray,
+    ]:
+        return None, [0, 0, 0, 0], np.array([])

@@ -1,5 +1,4 @@
-import numpy as np
-import cv2 as cv
+import cv2
 import argparse
 import sys
 
@@ -42,7 +41,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-cap = cv.VideoCapture(0 if args.source == "camera" else args.source)
+cap = cv2.VideoCapture(0 if args.source == "camera" else args.source)
 
 # take first frame of the video
 ret, frame = cap.read()
@@ -57,7 +56,7 @@ if args.source == "camera":
     success, roi = Target.select(frame)
     if not success:
         cap.release()
-        cv.destroyAllWindows()
+        cv2.destroyAllWindows()
         sys.exit(1)
 
     x, y, w, h = roi
@@ -71,9 +70,6 @@ tracker.start(
     track_window=track_window,
 )
 
-# Setup the termination criteria, either 10 iteration or move by at least 1 pt
-term_crit = (cv.TERM_CRITERIA_EPS | cv.TERM_CRITERIA_COUNT, 10, 1)
-
 frame_count: int = 0
 while 1:
     success, frame = cap.read()
@@ -85,24 +81,18 @@ while 1:
         logger.info(f"frame_count={args.frame_count} reached.")
         break
 
-    hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-    dst = cv.calcBackProject([hsv], [0], tracker.roi_hist, [0, 180], 1)
-
-    # apply camshift to get the new location
-    ret, track_window = cv.CamShift(dst, track_window, term_crit)
-
-    # Draw it on image
-    pts = cv.boxPoints(ret)
-    pts = np.intp(pts)
-    output_image = cv.polylines(frame, [pts], True, 255, 2)
+    ret, track_window, output_image = tracker.track(
+        frame=frame,
+        track_window=track_window,
+    )
 
     if args.log == 1:
         logger.info(f"frame #{frame_count}: ret={ret}, track_window={track_window}")
 
     if args.show_gui == 1:
-        cv.imshow(args.title, output_image)
+        cv2.imshow(args.title, output_image)
 
-        k = cv.waitKey(30) & 0xFF
+        k = cv2.waitKey(30) & 0xFF
         if k == 27:
             break
 
@@ -110,4 +100,4 @@ if args.source == "camera":
     cap.release()
 
 if args.show_gui == 1:
-    cv.destroyAllWindows()
+    cv2.destroyAllWindows()
