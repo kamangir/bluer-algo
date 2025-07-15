@@ -65,7 +65,7 @@ else:
     x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
 track_window = (x, y, w, h)
 
-tracker = MeanShiftTracker()
+tracker = MeanShiftTracker(with_gui=args.show_gui == 1)
 tracker.start(
     frame=frame,
     track_window=track_window,
@@ -91,15 +91,15 @@ while 1:
     # apply meanshift to get the new location
     ret, track_window = cv.meanShift(dst, track_window, term_crit)
 
+    # Draw it on image
+    x, y, w, h = track_window
+    output_image = cv.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
+
     if args.log == 1:
         logger.info(f"frame #{frame_count}: ret={ret}, track_window={track_window}")
 
-    # Draw it on image
-    x, y, w, h = track_window
-    img2 = cv.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
-
     if args.show_gui == 1:
-        cv.imshow(args.title, img2)
+        cv.imshow(args.title, output_image)
 
         k = cv.waitKey(30) & 0xFF
         if k == 27:

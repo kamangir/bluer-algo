@@ -8,9 +8,19 @@ from bluer_algo.logger import logger
 
 
 class GenericTracker:
-    def __init__(self):
+    def __init__(
+        self,
+        with_gui: bool = False,
+    ):
         self.roi_hist = None
-        logger.info(f"{self.__class__.__name__} initialized.")
+        self.with_gui = with_gui
+
+        logger.info(
+            "{} initialized{}.".format(
+                self.__class__.__name__,
+                " with gui" if with_gui else "",
+            )
+        )
 
     def start(
         self,

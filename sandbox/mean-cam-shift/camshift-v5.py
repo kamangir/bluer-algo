@@ -65,7 +65,7 @@ else:
     x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
 track_window = (x, y, w, h)
 
-tracker = CamShiftTracker()
+tracker = CamShiftTracker(with_gui=args.show_gui == 1)
 tracker.start(
     frame=frame,
     track_window=track_window,
@@ -91,16 +91,16 @@ while 1:
     # apply camshift to get the new location
     ret, track_window = cv.CamShift(dst, track_window, term_crit)
 
-    if args.log == 1:
-        logger.info(f"frame #{frame_count}: ret={ret}, track_window={track_window}")
-
     # Draw it on image
     pts = cv.boxPoints(ret)
     pts = np.intp(pts)
-    img2 = cv.polylines(frame, [pts], True, 255, 2)
+    output_image = cv.polylines(frame, [pts], True, 255, 2)
+
+    if args.log == 1:
+        logger.info(f"frame #{frame_count}: ret={ret}, track_window={track_window}")
 
     if args.show_gui == 1:
-        cv.imshow(args.title, img2)
+        cv.imshow(args.title, output_image)
 
         k = cv.waitKey(30) & 0xFF
         if k == 27:
