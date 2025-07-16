@@ -14,7 +14,7 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-16-25-uz0u94/tracker.gif?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-20-49-58e83y/tracker.gif?raw=true)
 
 # on camera feed
 
