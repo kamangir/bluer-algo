@@ -78,20 +78,16 @@ class Target:
         frame: np.ndarray,
         title: str = "select target",
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
-        socket = SocketComm.connect_to(TARGETING_HOST)
-
         logger.info(
             'run "{}" on {}.'.format(
                 f"@swallow select_target --host {abcli_hostname}.local",
                 TARGETING_HOST,
             )
         )
+
+        socket = SocketComm.connect_to(TARGETING_HOST)
         if not socket.send_data(frame):
             return False, (0, 0, 0, 0)
 
-        import ipdb
-
-        ipdb.set_trace()
-
-        logger.error("not implemented")
-        return False, (0, 0, 0, 0)
+        socket = SocketComm.listen_on()
+        return socket.receive_data(tuple)
