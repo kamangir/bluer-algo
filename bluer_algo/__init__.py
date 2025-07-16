@@ -4,7 +4,7 @@ ICON = "🪄"
 
 DESCRIPTION = f"{ICON} AI Algo."
 
-VERSION = "4.319.1"
+VERSION = "4.320.1"
 
 REPO_NAME = "bluer-algo"
 

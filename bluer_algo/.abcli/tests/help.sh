@@ -35,6 +35,9 @@ function test_bluer_algo_help() {
         "@image_classifier model prediction_test" \
         "@image_classifier model train" \
         \
+        "@algo socket" \
+        "@algo socket test" \
+        \
         "@algo tracker" \
         \
         "bluer_algo"; do
