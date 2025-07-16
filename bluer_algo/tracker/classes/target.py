@@ -8,6 +8,7 @@ from bluer_algo.logger import logger
 
 
 class Target:
+
     @classmethod
     def select(
         cls,
@@ -73,5 +74,9 @@ class Target:
         frame: np.ndarray,
         title: str = "select target",
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
+        import ipdb
+
+        ipdb.set_trace()
+
         logger.error("not implemented")
         return False, (0, 0, 0, 0)
