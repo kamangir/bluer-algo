@@ -5,11 +5,13 @@ import numpy as np
 from blueness import module
 from bluer_objects import file, objects
 from bluer_objects.graphics.gif import generate_animated_gif
+from bluer_objects.graphics.signature import add_signature
 from bluer_options import string
 from bluer_options.timer import Timer
 
 from bluer_algo import NAME
 from bluer_algo import env
+from bluer_algo.host import signature
 from bluer_algo.tracker.classes.target import Target
 from bluer_algo.tracker.classes.camshift import CamShiftTracker
 from bluer_algo.tracker.classes.meanshift import MeanShiftTracker
@@ -28,6 +30,7 @@ def track(
     verbose: bool = False,
     show_gui: bool = True,
     title: str = "tracker",
+    line_width: int = 80,
 ) -> bool:
     logger.info(
         "{}.track({}){}{}{} on {}".format(
@@ -123,9 +126,22 @@ def track(
                 object_name=object_name,
             )
             log_image_list.append(filename)
+
             if not file.save_image(
                 filename,
-                np.flip(output_image, axis=2),
+                add_signature(
+                    np.flip(output_image, axis=2),
+                    header=[
+                        " | ".join(
+                            objects.signature(
+                                filename,
+                                object_name,
+                            )
+                        )
+                    ],
+                    footer=[" | ".join(signature())],
+                    line_width=line_width,
+                ),
                 log=verbose,
             ):
                 break
