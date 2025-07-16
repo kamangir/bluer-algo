@@ -10,12 +10,14 @@ def help_tracker(
     options = "".join(
         [
             "algo=camshift|meanshift,camera",
-            xtra(",~download,dryrun,sandbox", mono=mono),
+            xtra(",~download,dryrun,sandbox,", mono=mono),
+            "upload",
         ]
     )
 
     args = [
         "[--frame_count <-1>]",
+        "[--log <0 | 1>]",
         "[--show_gui <0 | 1>]",
         "[--verbose <0 | 1>]",
     ]
@@ -25,6 +27,7 @@ def help_tracker(
             "@algo",
             "tracker",
             f"[{options}]",
+            "[-|<object-name>]",
         ]
         + args,
         "run algo.",

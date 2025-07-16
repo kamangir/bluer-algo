@@ -10,6 +10,7 @@ class MeanShiftTracker(GenericTracker):
         self,
         frame: np.ndarray,
         track_window: Tuple[int, int, int, int],
+        log: bool = False,
     ) -> Tuple[
         Any,
         Tuple[int, int, int, int],
@@ -22,8 +23,10 @@ class MeanShiftTracker(GenericTracker):
         ret, track_window = cv2.meanShift(dst, track_window, self.term_crit)
 
         # Draw it on image
-        x, y, w, h = track_window
+        output_image = np.array([])
+        if self.with_gui or log:
+            x, y, w, h = track_window
 
-        output_image = cv2.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
+            output_image = cv2.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
 
         return ret, track_window, output_image

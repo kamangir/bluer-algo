@@ -7,8 +7,11 @@ function bluer_algo_tracker() {
     local algo=$(bluer_ai_option "$options" algo camshift)
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
     local use_sandbox=$(bluer_ai_option_int "$options" sandbox 0)
+    local do_upload=$(bluer_ai_option_int "$options" upload 0)
 
-    local callable="python3 -m bluer_algo.tracker track --algo $algo"
+    local object_name=$(bluer_ai_clarify_object $2 tracker-$(bluer_ai_string_timestamp))
+
+    local callable="python3 -m bluer_algo.tracker track --algo $algo --object_name $object_name"
     local title=$algo
     if [[ "$use_sandbox" == 1 ]]; then
         local version=$(bluer_ai_option $BLUER_ALGO_TRACKER_ALGO_VERSIONS $algo)
@@ -50,5 +53,11 @@ function bluer_algo_tracker() {
         $callable \
         --source $video_source \
         --title $title \
-        "${@:2}"
+        "${@:3}"
+    [[ $? -ne 0 ]] && return 1
+
+    [[ "$do_upload" == 1 ]] &&
+        bluer_objects_upload - $object_name
+
+    return 0
 }

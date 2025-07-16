@@ -10,6 +10,7 @@ class CamShiftTracker(GenericTracker):
         self,
         frame: np.ndarray,
         track_window: Tuple[int, int, int, int],
+        log: bool = False,
     ) -> Tuple[
         Any,
         Tuple[int, int, int, int],
@@ -23,7 +24,7 @@ class CamShiftTracker(GenericTracker):
 
         # Draw it on image
         output_image = np.array([])
-        if self.with_gui:
+        if self.with_gui or log:
             pts = cv2.boxPoints(ret)
             pts = np.intp(pts)
             output_image = cv2.polylines(frame, [pts], True, 255, 2)

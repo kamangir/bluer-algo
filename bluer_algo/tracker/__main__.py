@@ -33,6 +33,12 @@ parser.add_argument(
     help="-1: all",
 )
 parser.add_argument(
+    "--log",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
+parser.add_argument(
     "--verbose",
     type=int,
     default=0,
@@ -49,14 +55,20 @@ parser.add_argument(
     type=str,
     default="tracker",
 )
+parser.add_argument(
+    "--object_name",
+    type=str,
+)
 args = parser.parse_args()
 
 success = False
 if args.task == "track":
     success = track(
         source=args.source,
+        object_name=args.object_name,
         algo=args.algo,
         frame_count=args.frame_count,
+        log=args.log == 1,
         verbose=args.verbose == 1,
         show_gui=args.show_gui == 1,
         title=args.title,
