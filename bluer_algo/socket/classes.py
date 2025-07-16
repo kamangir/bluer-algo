@@ -63,6 +63,8 @@ class SocketComm:
 
     def receive_data(self, expected_class: Type) -> Tuple[bool, Any]:
         """Receive a pickled object and check its type."""
+        logger.info(f"waiting for a {expected_class.__name__} ...")
+
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.bind((self.host, self.port))

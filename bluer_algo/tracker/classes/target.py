@@ -3,8 +3,12 @@ import numpy as np
 import cv2
 
 from bluer_options import string
+from bluer_options.env import abcli_hostname
 
+from bluer_algo.socket.classes import SocketComm
 from bluer_algo.logger import logger
+
+TARGETING_HOST = "dev.local"
 
 
 class Target:
@@ -74,6 +78,17 @@ class Target:
         frame: np.ndarray,
         title: str = "select target",
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
+        socket = SocketComm.connect_to(TARGETING_HOST)
+
+        logger.info(
+            'run "{}" on {}.'.format(
+                f"@swallow select_target --host {abcli_hostname}.local",
+                TARGETING_HOST,
+            )
+        )
+        if not socket.send_data(frame):
+            return False, (0, 0, 0, 0)
+
         import ipdb
 
         ipdb.set_trace()
