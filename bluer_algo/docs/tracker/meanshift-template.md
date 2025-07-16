@@ -13,7 +13,7 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-camshift-2025-07-16-09-53-51-ga66os
+set:::video_object_name tracker-camshift-2025-07-16-10-16-25-uz0u94
 
 assets:::get:::video_object_name/tracker.gif
 
