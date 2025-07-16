@@ -133,14 +133,21 @@ def track(
                     np.flip(output_image, axis=2),
                     header=[
                         " | ".join(
-                            objects.signature(
+                            [f"frame #{frame_index:04d}"]
+                            + objects.signature(
                                 file.name_and_extension(filename),
                                 object_name,
                             )
                             + [
+                                f"algo: {algo}",
+                                "source: {}".format(
+                                    source
+                                    if source == "camera"
+                                    else file.name_and_extension(source)
+                                ),
                                 "({:04d},{:04d}) - ({:04d},{:04d})".format(
                                     *track_window
-                                )
+                                ),
                             ]
                         )
                     ],
