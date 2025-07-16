@@ -3,7 +3,7 @@
 # on a video file
 
 ```bash
-@select tracker-camshift-$(@timestamp)
+@select tracker-meanshift-$(@timestamp)
 
 @algo tracker \
     algo=meanshift . \
@@ -16,7 +16,7 @@
 # on camera feed
 
 ```bash
-@select tracker-camshift-$(@timestamp)
+@select tracker-meanshift-$(@timestamp)
 
 @algo tracker \
     algo=meanshift,camera . \
@@ -31,4 +31,4 @@
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-20-49-58e83y/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-32-14-ug1lr2/tracker.gif?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/tracker-meanshift-2025-07-16-10-43-31-v1u3k8/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-meanshift-2025-07-16-10-44-39-k9z4d7/tracker.gif?raw=true) |

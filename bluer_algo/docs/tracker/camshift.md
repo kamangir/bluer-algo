@@ -31,4 +31,4 @@
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-35-46-lttkot/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-36-48-o3rlnu/tracker.gif?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-40-26-e6cffi/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-42-06-0qskt6/tracker.gif?raw=true) |

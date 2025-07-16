@@ -27,9 +27,9 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-camshift-2025-07-16-10-35-46-lttkot
+set:::video_object_name tracker-camshift-2025-07-16-10-40-26-e6cffi
 
-set:::camera_object_name tracker-camshift-2025-07-16-10-36-48-o3rlnu
+set:::camera_object_name tracker-camshift-2025-07-16-10-42-06-0qskt6
 
 | | |
 |-|-|
