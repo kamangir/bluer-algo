@@ -7,8 +7,11 @@ function bluer_algo_tracker() {
     local algo=$(bluer_ai_option "$options" algo camshift)
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
     local use_sandbox=$(bluer_ai_option_int "$options" sandbox 0)
+    local do_upload=$(bluer_ai_option_int "$options" upload 0)
 
-    local callable="python3 -m bluer_algo.tracker track --algo $algo"
+    local object_name=$(bluer_ai_clarify_object $2 tracker-$(bluer_ai_string_timestamp))
+
+    local callable="python3 -m bluer_algo.tracker track --algo $algo --object_name $object_name"
     local title=$algo
     if [[ "$use_sandbox" == 1 ]]; then
         local version=$(bluer_ai_option $BLUER_ALGO_TRACKER_ALGO_VERSIONS $algo)
@@ -25,9 +28,9 @@ function bluer_algo_tracker() {
 
     local video_source="camera"
     if [[ "$use_camera" == 0 ]]; then
-        local object_name="mean-cam-shift-data-v1"
+        local source_object_name="mean-cam-shift-data-v1"
         local url="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
-        local filename="$ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4"
+        local filename="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
 
         local do_download=1
         [[ "$do_dryrun" == 1 ]] &&
@@ -37,18 +40,24 @@ function bluer_algo_tracker() {
         do_download=$(bluer_ai_option_int "$options" download $do_download)
 
         if [[ "$do_download" == 1 ]]; then
-            mkdir -pv $ABCLI_OBJECT_ROOT/$object_name
+            mkdir -pv $ABCLI_OBJECT_ROOT/$source_object_name
             bluer_ai_eval - \
                 wget -O $filename $url -v
             [[ $? -ne 0 ]] && return 1
         fi
 
-        video_source="$ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4"
+        video_source="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
     fi
 
     bluer_ai_eval dryrun=$do_dryrun \
         $callable \
         --source $video_source \
         --title $title \
-        "${@:2}"
+        "${@:3}"
+    [[ $? -ne 0 ]] && return 1
+
+    [[ "$do_upload" == 1 ]] &&
+        bluer_objects_upload - $object_name
+
+    return 0
 }

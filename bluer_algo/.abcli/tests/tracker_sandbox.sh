@@ -1,17 +1,18 @@
 #! /usr/bin/env bash
 
-function test_bluer_algo_tracker() {
+function test_bluer_algo_tracker_sandbox() {
     local options=$1
 
     bluer_ai_eval ,$options \
         bluer_algo_tracker \
-        algo=void
+        algo=void,sandbox,$options
     [[ $? -eq 0 ]] && return 1
     bluer_ai_hr
 
     bluer_ai_eval ,$options \
         bluer_algo_tracker \
-        algo=camshift,$options \
+        algo=camshift,sandbox,$options \
+        - \
         --frame_count 5 \
         --show_gui 0 \
         --verbose 1
@@ -20,7 +21,8 @@ function test_bluer_algo_tracker() {
 
     bluer_ai_eval ,$options \
         bluer_algo_tracker \
-        algo=meanshift,$options \
+        algo=meanshift,sandbox,$options \
+        - \
         --frame_count 5 \
         --show_gui 0 \
         --verbose 1

@@ -1,4 +1,4 @@
-from typing import Tuple, Any
+from typing import Tuple, Any, List
 import numpy as np
 import cv2
 
@@ -14,6 +14,8 @@ class GenericTracker:
     ):
         self.roi_hist = None
         self.with_gui = with_gui
+
+        self.history: List[Tuple[int, int]] = []
 
         # Setup the termination criteria, either 10 iteration or move by at least 1 pt
         self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
