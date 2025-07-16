@@ -31,4 +31,4 @@
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/tracker-meanshift-2025-07-16-11-07-28-va2m1b/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/abcli/tracker-meanshift-2025-07-16-11-08-44-jts0ho/tracker.gif?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/tracker-meanshift-2025-07-16-11-07-28-va2m1b/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-meanshift-2025-07-16-11-08-44-jts0ho/tracker.gif?raw=true) |

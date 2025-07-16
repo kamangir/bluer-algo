@@ -29,7 +29,7 @@ title:::
 
 set:::video_object_name tracker-meanshift-2025-07-16-11-07-28-va2m1b
 
-set:::camera_object_name abcli/tracker-meanshift-2025-07-16-11-08-44-jts0ho
+set:::camera_object_name tracker-meanshift-2025-07-16-11-08-44-jts0ho
 
 | | |
 |-|-|
