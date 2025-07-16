@@ -13,17 +13,24 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-camshift-2025-07-16-10-20-49-58e83y
-
-assets:::get:::video_object_name/tracker.gif
-
 # on camera feed
 
 ```bash
+@select tracker-camshift-$(@timestamp)
+
 @algo tracker \
-    algo=meanshift,camera
+    algo=meanshift,camera . \
+    --log 1 \
+    --show_gui 1
+
+@assets publish \
+    extensions=gif,push .
 ```
+
+set:::video_object_name tracker-camshift-2025-07-16-10-20-49-58e83y
+
+set:::camera_object_name tracker-camshift-2025-07-16-10-32-14-ug1lr2
 
 | | |
 |-|-|
-| assets:::tracker/meanshift-roi.png | assets:::tracker/meanshift-tracker.png |
+| assets:::get:::video_object_name/tracker.gif | assets:::get:::camera_object_name/tracker.gif |

@@ -13,16 +13,22 @@
     extensions=gif,push .
 ```
 
-
-![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-20-49-58e83y/tracker.gif?raw=true)
-
 # on camera feed
 
 ```bash
+@select tracker-camshift-$(@timestamp)
+
 @algo tracker \
-    algo=meanshift,camera
+    algo=meanshift,camera . \
+    --log 1 \
+    --show_gui 1
+
+@assets publish \
+    extensions=gif,push .
 ```
+
+
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/tracker/meanshift-roi.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker/meanshift-tracker.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-20-49-58e83y/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-camshift-2025-07-16-10-32-14-ug1lr2/tracker.gif?raw=true) |
