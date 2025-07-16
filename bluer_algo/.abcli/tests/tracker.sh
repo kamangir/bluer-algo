@@ -7,7 +7,7 @@ function test_bluer_algo_tracker() {
 
     bluer_ai_eval ,$options \
         bluer_algo_tracker \
-        algo=void
+        algo=void,$options
     [[ $? -eq 0 ]] && return 1
     bluer_ai_hr
 

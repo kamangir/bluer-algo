@@ -5,7 +5,7 @@ function test_bluer_algo_tracker_sandbox() {
 
     bluer_ai_eval ,$options \
         bluer_algo_tracker \
-        algo=void,sandbox
+        algo=void,sandbox,$options
     [[ $? -eq 0 ]] && return 1
     bluer_ai_hr
 
