@@ -3,19 +3,34 @@ title:::
 # on a video file
 
 ```bash
-@algo tracker \
-    algo=camshift
-```
+@select tracker-camshift-$(@timestamp)
 
-assets:::tracker/camshift.png
+@algo tracker \
+    algo=camshift . \
+    --log 1
+
+@assets publish \
+    extensions=gif,push .
+```
 
 # on camera feed
 
 ```bash
+@select tracker-camshift-$(@timestamp)
+
 @algo tracker \
-    algo=camshift,camera
+    algo=camshift,camera . \
+    --log 1 \
+    --show_gui 1
+
+@assets publish \
+    extensions=gif,push .
 ```
+
+set:::video_object_name tracker-camshift-2025-07-16-10-35-46-lttkot
+
+set:::camera_object_name tracker-camshift-2025-07-16-10-36-48-o3rlnu
 
 | | |
 |-|-|
-| assets:::tracker/camshift-roi.png | assets:::tracker/camshift-tracker.png |
+| assets:::get:::video_object_name/tracker.gif | assets:::get:::camera_object_name/tracker.gif |
