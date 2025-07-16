@@ -28,7 +28,7 @@ class Target:
         if local:
             return cls.select_local(frame, title)
 
-        return cls.select_remote
+        return cls.select_remote(frame, title)
 
     @classmethod
     def select_local(
