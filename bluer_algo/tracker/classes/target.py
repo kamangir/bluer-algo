@@ -3,11 +3,16 @@ import numpy as np
 import cv2
 
 from bluer_options import string
+from bluer_options.env import abcli_hostname
 
+from bluer_algo.socket.classes import SocketComm
 from bluer_algo.logger import logger
+
+TARGETING_HOST = "dev.local"
 
 
 class Target:
+
     @classmethod
     def select(
         cls,
@@ -27,7 +32,7 @@ class Target:
         if local:
             return cls.select_local(frame, title)
 
-        return cls.select_remote
+        return cls.select_remote(frame, title)
 
     @classmethod
     def select_local(
@@ -73,5 +78,16 @@ class Target:
         frame: np.ndarray,
         title: str = "select target",
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
-        logger.error("not implemented")
-        return False, (0, 0, 0, 0)
+        logger.info(
+            'run "{}" on {}.'.format(
+                f"@swallow select_target --host {abcli_hostname}.local",
+                TARGETING_HOST,
+            )
+        )
+
+        socket = SocketComm.connect_to(TARGETING_HOST)
+        if not socket.send_data(frame):
+            return False, (0, 0, 0, 0)
+
+        socket = SocketComm.listen_on()
+        return socket.receive_data(tuple)

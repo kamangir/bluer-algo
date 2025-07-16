@@ -41,6 +41,8 @@ def build():
             ),
         )
         for readme in [
+            {"path": "docs"},
+            #
             {"items": items, "path": ".."},
             {"path": "docs/image_classifier"},
             {"path": "docs/image_classifier/dataset"},
@@ -59,7 +61,11 @@ def build():
             {"path": "docs/tracker/camshift.md"},
             {"path": "docs/tracker/meanshift.md"},
             # aliases
+            {"path": "docs/aliases"},
             {"path": "docs/aliases/image_classifier.md"},
             {"path": "docs/aliases/tracker.md"},
+            {"path": "docs/aliases/socket.md"},
+            #
+            {"path": "docs/socket.md"},
         ]
     )
