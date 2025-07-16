@@ -134,9 +134,14 @@ def track(
                     header=[
                         " | ".join(
                             objects.signature(
-                                filename,
+                                file.name_and_extension(filename),
                                 object_name,
                             )
+                            + [
+                                "({:04d},{:04d}) - ({:04d},{:04d})".format(
+                                    *track_window
+                                )
+                            ]
                         )
                     ],
                     footer=[" | ".join(signature())],
