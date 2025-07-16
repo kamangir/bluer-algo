@@ -126,7 +126,7 @@ def track(
             if not file.save_image(
                 filename,
                 np.flip(output_image, axis=2),
-                log=log,
+                log=verbose,
             ):
                 break
 

@@ -16,10 +16,10 @@ def help_tracker(
     )
 
     args = [
-        "[--frame_count <-1>]",
-        "[--log <0 | 1>]",
-        "[--show_gui <0 | 1>]",
-        "[--verbose <0 | 1>]",
+        "[--frame_count <10>]",
+        "[--log 1]",
+        "[--show_gui 1]",
+        "[--verbose 1]",
     ]
 
     return show_usage(

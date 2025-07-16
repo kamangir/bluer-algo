@@ -3,11 +3,19 @@ title:::
 # on a video file
 
 ```bash
+@select tracker-camshift-$(@timestamp)
+
 @algo tracker \
-    algo=meanshift
+    algo=meanshift . \
+    --log 1
+
+@assets publish \
+    extensions=gif,push .
 ```
 
-assets:::tracker/meanshift.png
+set:::video_object_name tracker-camshift-2025-07-16-09-53-51-ga66os
+
+assets:::get:::video_object_name/tracker.gif
 
 # on camera feed
 

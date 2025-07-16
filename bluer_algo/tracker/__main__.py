@@ -47,7 +47,7 @@ parser.add_argument(
 parser.add_argument(
     "--show_gui",
     type=int,
-    default=1,
+    default=0,
     help="0 | 1",
 )
 parser.add_argument(

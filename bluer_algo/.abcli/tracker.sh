@@ -28,9 +28,9 @@ function bluer_algo_tracker() {
 
     local video_source="camera"
     if [[ "$use_camera" == 0 ]]; then
-        local object_name="mean-cam-shift-data-v1"
+        local source_object_name="mean-cam-shift-data-v1"
         local url="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
-        local filename="$ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4"
+        local filename="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
 
         local do_download=1
         [[ "$do_dryrun" == 1 ]] &&
@@ -40,13 +40,13 @@ function bluer_algo_tracker() {
         do_download=$(bluer_ai_option_int "$options" download $do_download)
 
         if [[ "$do_download" == 1 ]]; then
-            mkdir -pv $ABCLI_OBJECT_ROOT/$object_name
+            mkdir -pv $ABCLI_OBJECT_ROOT/$source_object_name
             bluer_ai_eval - \
                 wget -O $filename $url -v
             [[ $? -ne 0 ]] && return 1
         fi
 
-        video_source="$ABCLI_OBJECT_ROOT/$object_name/slow_traffic_small.mp4"
+        video_source="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
     fi
 
     bluer_ai_eval dryrun=$do_dryrun \
