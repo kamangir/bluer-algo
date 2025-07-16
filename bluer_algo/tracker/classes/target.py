@@ -70,6 +70,7 @@ class Target:
                 return False, (0, 0, 0, 0)
 
         cv2.destroyWindow(title)
+        cv2.waitKey(1)
         return True, tuple(roi_box)
 
     @classmethod
