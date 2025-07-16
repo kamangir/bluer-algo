@@ -27,9 +27,9 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-meanshift-2025-07-16-10-43-31-v1u3k8
+set:::video_object_name tracker-meanshift-2025-07-16-11-07-28-va2m1b
 
-set:::camera_object_name tracker-meanshift-2025-07-16-10-44-39-k9z4d7
+set:::camera_object_name tracker-meanshift-2025-07-16-11-07-28-va2m1b
 
 | | |
 |-|-|
