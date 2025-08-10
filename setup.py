@@ -17,6 +17,7 @@ setup(
         f"{NAME}.image_classifier.dataset.ingest",
         f"{NAME}.image_classifier.dataset.ingest.fruits_360",
         f"{NAME}.image_classifier.model",
+        f"{NAME}.README",
         f"{NAME}.tracker",
         f"{NAME}.tracker.classes",
     ],

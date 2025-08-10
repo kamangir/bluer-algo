@@ -11,7 +11,8 @@ items:::
 # aliases
 
 [@image_classifier](./bluer_algo/docs/aliases/image_classifier.md), 
-[@tracker](./bluer_algo/docs/aliases/tracker.md).
+[@tracker](./bluer_algo/docs/aliases/tracker.md), 
+[@yolo](./bluer_algo/docs/aliases/yolo.md).
 
 ---
 
