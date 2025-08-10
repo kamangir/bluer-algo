@@ -12,6 +12,7 @@ setup(
         NAME,
         f"{NAME}.help",
         f"{NAME}.help.image_classifier",
+        f"{NAME}.help.yolo",
         f"{NAME}.image_classifier",
         f"{NAME}.image_classifier.dataset",
         f"{NAME}.image_classifier.dataset.ingest",
@@ -20,6 +21,10 @@ setup(
         f"{NAME}.README",
         f"{NAME}.tracker",
         f"{NAME}.tracker.classes",
+        f"{NAME}.yolo",
+        f"{NAME}.yolo.dataset",
+        f"{NAME}.yolo.dataset.ingest",
+        f"{NAME}.yolo.dataset.ingest.coco_128",
     ],
     include_package_data=True,
     package_data={

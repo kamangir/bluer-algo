@@ -26,6 +26,15 @@ function test_bluer_algo_help() {
         "@algo image_classifier model prediction_test" \
         "@algo image_classifier model train" \
         \
+        "@algo yolo" \
+        "@algo yolo dataset" \
+        "@algo yolo dataset ingest" \
+        \
+        "@algo socket" \
+        "@algo socket test" \
+        \
+        "@algo tracker" \
+        \
         "@image_classifier" \
         "@image_classifier dataset" \
         "@image_classifier dataset ingest" \
@@ -35,10 +44,9 @@ function test_bluer_algo_help() {
         "@image_classifier model prediction_test" \
         "@image_classifier model train" \
         \
-        "@algo socket" \
-        "@algo socket test" \
-        \
-        "@algo tracker" \
+        "@yolo" \
+        "@yolo dataset" \
+        "@yolo dataset ingest" \
         \
         "bluer_algo"; do
         bluer_ai_eval ,$options \

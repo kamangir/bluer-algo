@@ -1,9 +1,12 @@
 # aliases: yolo
 
+## dataset
+
 ```bash
-@plugin \
-	node \
-	[dryrun] \
-	[.|<object-name>]
- . bluer-plugin node <object-name>.
+@yolo \
+	dataset \
+	ingest \
+	[dryrun,source=coco_128,upload] \
+	[-|<object-name>]
+ . ingest -> <object-name>.
 ```

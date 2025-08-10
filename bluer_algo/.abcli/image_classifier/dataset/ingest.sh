@@ -10,6 +10,8 @@ function bluer_algo_image_classifier_dataset_ingest() {
 
     local object_name=$(bluer_ai_clarify_object $2 image_classifier-dataset-$(bluer_ai_string_timestamp))
 
+    bluer_ai_log "ingesting $ingest_source -> $object_name ..."
+
     [[ "$do_clone" == 1 ]] &&
         bluer_ai_git_clone \
             $BLUER_ALGO_FRUITS_360_REPO_ADDRESS
