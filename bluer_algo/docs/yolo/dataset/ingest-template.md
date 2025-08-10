@@ -9,10 +9,14 @@ title:::
     ~upload . \
     --verbose 1
 
+🔥
+
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
+
+~upload -> upload 🚧
 
 set:::object_name env:::BLUER_ALGO_COCO128_TEST_DATASET
 

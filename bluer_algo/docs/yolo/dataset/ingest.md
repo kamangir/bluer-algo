@@ -9,10 +9,14 @@
     ~upload . \
     --verbose 1
 
+🔥
+
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
+
+~upload -> upload 🚧
 
 
 ![image](https://github.com/kamangir/assets/blob/main//grid.png?raw=true)
