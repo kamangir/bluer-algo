@@ -5,10 +5,12 @@
 ```bash
 @select coco128-$(@@timestamp)
 
-@algo yolo dataset ingest \
+@yolo dataset ingest \
     ~upload . \
     --verbose 1
 
+@yolo dataset review \
+	~download .
 🔥
 
 @upload public,zip .

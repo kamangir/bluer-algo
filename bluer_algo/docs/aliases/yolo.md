@@ -11,8 +11,8 @@
  . ingest -> <object-name>.
 @yolo \
 	dataset \
-	ingest \
-	[dryrun,source=coco_128,upload] \
-	[-|<object-name>]
- . ingest -> <object-name>.
+	review \
+	[~download,upload] \
+	[.|<object-name>]
+ . review <object-name>.
 ```

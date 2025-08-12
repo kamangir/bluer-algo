@@ -50,5 +50,5 @@ def help_review(
 
 help_functions = {
     "ingest": help_ingest,
-    "review": help_ingest,
+    "review": help_review,
 }
