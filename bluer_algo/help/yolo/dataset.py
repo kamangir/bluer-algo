@@ -29,6 +29,26 @@ def help_ingest(
     )
 
 
+def help_review(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = xtra("~download,upload", mono=mono)
+
+    return show_usage(
+        [
+            "@yolo",
+            "dataset",
+            "review",
+            f"[{options}]",
+            "[.|<object-name>]",
+        ],
+        "review <object-name>.",
+        mono=mono,
+    )
+
+
 help_functions = {
     "ingest": help_ingest,
+    "review": help_ingest,
 }
