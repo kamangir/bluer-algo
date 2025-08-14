@@ -23,7 +23,7 @@ title:::
 
 set:::object_name env:::BLUER_ALGO_COCO128_TEST_DATASET
 
-assets:::get:::object_name/grid.png
+assets:::get:::object_name/review.png
 
 object:::get:::object_name
 
