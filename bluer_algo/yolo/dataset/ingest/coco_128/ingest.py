@@ -1,7 +1,9 @@
 from blueness import module
 from bluer_objects import file, objects
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
+from bluer_algo.yolo.dataset.classes import YoloDataset
 from bluer_algo.logger import logger
 
 
@@ -20,14 +22,31 @@ def ingest(
         )
     )
 
-    return file.copy(
+    if not file.copy(
         file.absolute(
             "../../../../assets/coco_128.yaml",
             file.path(__file__),
         ),
         objects.path_of(
             object_name=object_name,
-            filename="data.yaml",
+            filename="metadata.yaml",
         ),
         log=log,
+    ):
+        return False
+
+    dataset = YoloDataset(
+        object_name=object_name,
+    )
+
+    if not dataset.valid:
+        return False
+
+    return post_to_object(
+        object_name,
+        "dataset",
+        {
+            "count": len(dataset.list_of_records),
+            "source": "coco_128",
+        },
     )

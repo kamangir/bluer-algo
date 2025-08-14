@@ -18,4 +18,7 @@ def review(
         object_name=object_name,
     )
 
+    if not dataset.valid:
+        return False
+
     return dataset.review(verbose=verbose)

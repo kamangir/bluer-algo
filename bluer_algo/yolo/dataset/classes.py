@@ -29,7 +29,7 @@ class YoloDataset:
         self.valid, self.metadata = file.load_yaml(
             objects.path_of(
                 object_name=object_name,
-                filename="data.yaml",
+                filename="metadata.yaml",
             )
         )
 
