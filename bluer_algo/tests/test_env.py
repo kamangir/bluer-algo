@@ -23,3 +23,5 @@ def test_bluer_algo_env():
 
     assert isinstance(env.BLUER_ALGO_TRACKER_LOG_FRAME, int)
     assert env.BLUER_ALGO_TRACKER_LOG_FRAME > 0
+
+    assert env.BLUER_ALGO_COCO128_TEST_DATASET
