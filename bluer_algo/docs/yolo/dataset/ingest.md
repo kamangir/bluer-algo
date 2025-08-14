@@ -6,7 +6,7 @@
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    ~upload . \
+    upload . \
     --verbose 1
 
 @yolo dataset review \
@@ -19,12 +19,12 @@
     extensions=png,push .
 ```
 
-~upload -> upload 🚧
+🔥
 
 
-![image](https://github.com/kamangir/assets/blob/main/TBA/grid.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-13-35rtxo/grid.png?raw=true)
 
-[TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz)
+[coco128-2025-08-13-35rtxo](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-13-35rtxo.tar.gz)
 
 ```yaml
 {}

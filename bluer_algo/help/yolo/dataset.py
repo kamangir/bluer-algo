@@ -16,6 +16,10 @@ def help_ingest(
         ]
     )
 
+    args = [
+        "[--verbose 1]",
+    ]
+
     return show_usage(
         [
             "@yolo",
@@ -23,7 +27,8 @@ def help_ingest(
             "ingest",
             f"[{options}]",
             "[-|<object-name>]",
-        ],
+        ]
+        + args,
         "ingest -> <object-name>.",
         mono=mono,
     )
@@ -35,6 +40,10 @@ def help_review(
 ) -> str:
     options = xtra("~download,upload", mono=mono)
 
+    args = [
+        "[--verbose 1]",
+    ]
+
     return show_usage(
         [
             "@yolo",
@@ -42,7 +51,8 @@ def help_review(
             "review",
             f"[{options}]",
             "[.|<object-name>]",
-        ],
+        ]
+        + args,
         "review <object-name>.",
         mono=mono,
     )
