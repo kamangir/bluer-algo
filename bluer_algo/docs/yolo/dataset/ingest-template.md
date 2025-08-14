@@ -1,7 +1,5 @@
 title:::
 
-🔥
-
 ```bash
 @select coco128-$(@@timestamp)
 
@@ -12,14 +10,10 @@ title:::
 @yolo dataset review \
 	~download .
 
-🔥
-
 @upload public,zip .
 @assets publish \
     extensions=png,push .
 ```
-
-🔥
 
 set:::object_name env:::BLUER_ALGO_COCO128_TEST_DATASET
 
