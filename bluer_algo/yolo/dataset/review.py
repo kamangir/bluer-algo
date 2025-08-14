@@ -17,7 +17,6 @@ def review(
     dataset = YoloDataset(
         object_name=object_name,
     )
-
     if not dataset.valid:
         return False
 
