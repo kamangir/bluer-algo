@@ -6,6 +6,7 @@ items = README.Items(
         {
             "name": "yolo",
             "description": "a yolo interface.",
+            "marquee": "https://github.com/kamangir/assets/raw/main/coco128-2025-08-14-myrsky/review.png?raw=true",
             "url": "./bluer_algo/docs/yolo",
         },
         {
