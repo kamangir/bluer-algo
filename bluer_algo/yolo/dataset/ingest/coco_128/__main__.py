@@ -25,6 +25,12 @@ parser.add_argument(
     "--object_name",
     type=str,
 )
+parser.add_argument(
+    "--classes",
+    type=str,
+    default="all",
+    help="<this>+<that>",
+)
 args = parser.parse_args()
 
 success = False
@@ -32,6 +38,8 @@ if args.task == "ingest":
     success = ingest(
         object_name=args.object_name,
         verbose=args.verbose == 1,
+        filter_classes=args.classes != "all",
+        classes=args.classes.split("+"),
     )
 else:
     success = None

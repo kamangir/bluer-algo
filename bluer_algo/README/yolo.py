@@ -2,4 +2,5 @@ docs = [
     {"path": "../docs/yolo"},
     {"path": "../docs/yolo/dataset"},
     {"path": "../docs/yolo/dataset/ingest-and-review.md"},
+    {"path": "../docs/yolo/dataset/train.md"},
 ]

@@ -1,3 +1,4 @@
+source: coco_128
 # data.yaml for COCO128
 path: ./coco128 # dataset root dir
 train: images/train2017 # relative to 'path'

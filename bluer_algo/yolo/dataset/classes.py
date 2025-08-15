@@ -4,12 +4,14 @@ import os
 import random
 from tqdm import tqdm
 import numpy as np
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple
+import pandas as pd
 
 from blueness import module
-from bluer_options.logger import log_list, log_list_as_str
+from bluer_options.logger import log_list, log_list_as_str, crash_report
 from bluer_objects import objects, file, path
 from bluer_objects.logger.image import log_image_grid
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
 from bluer_algo.host import signature
@@ -33,14 +35,12 @@ class YoloDataset:
             )
         )
 
-        object_path = objects.object_path(object_name)
-
         self.train_images_path = os.path.join(
             path.absolute(
-                self.metadata["path"],
-                object_path,
+                self.metadata.get("path", "void"),
+                objects.object_path(object_name),
             ),
-            self.metadata["train"],
+            self.metadata.get("train", "void"),
         )
 
         self.train_labels_path = self.train_images_path.replace(
@@ -51,7 +51,7 @@ class YoloDataset:
         list_of_images = [
             file.name(filename)
             for filename in file.list_of(
-                os.path.join(self.train_images_path, "*.jpg"),
+                self.path_of(what="image", suffix="*.jpg"),
                 recursive=False,
             )
         ]
@@ -61,7 +61,7 @@ class YoloDataset:
         list_of_labels = [
             file.name(filename)
             for filename in file.list_of(
-                os.path.join(self.train_labels_path, "*.txt"),
+                self.path_of(what="label", suffix="*.txt"),
                 recursive=False,
             )
         ]
@@ -89,24 +89,150 @@ class YoloDataset:
             log_list(logger, "missing", missing_labels, "label(s)", itemize=False)
 
         if log:
-            logger.info(
-                "{}: {} record(s)".format(
-                    NAME,
-                    len(self.list_of_records),
-                )
-            )
+            logger.info(", ".join(self.signature()))
 
-    def review(self, verbose: bool = False) -> bool:
-        object_path = objects.object_path(self.object_name)
-
-        output_dir = os.path.join(object_path, "review")
-        if not path.create(output_dir):
+    def filter(
+        self,
+        classes: List[str],
+        verbose: bool = False,
+    ) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
             return False
+
+        logger.info(
+            "{}.filter({})".format(
+                self.__class__.__name__,
+                "+".join(classes),
+            )
+        )
+
+        index_map: Dict[int, int] = {}
+        for index, class_name in enumerate(classes):
+            if class_name not in self.metadata["names"].values():
+                logger.error(f"{class_name} not found.")
+                return False
+
+            original_index = [
+                index_
+                for index_, class_name_ in self.metadata["names"].items()
+                if class_name == class_name_
+            ][0]
+            logger.info(f"{class_name}: {original_index} -> {index}")
+
+            index_map[original_index] = index
+
+        list_of_records: List[str] = []
+        for record_id in tqdm(self.list_of_records):
+            filename = self.path_of_record(
+                what="label",
+                record_id=record_id,
+            )
+            success, df = self.load_label(record_id)
+            if not success:
+                return False
+
+            df = df[df[0].isin(index_map.keys())]
+
+            if df.empty:
+                for what in ["image", "label"]:
+                    if not file.delete(
+                        self.path_of_record(
+                            what=what,
+                            record_id=record_id,
+                        ),
+                        log=verbose,
+                    ):
+                        return False
+                continue
+
+            list_of_records.append(record_id)
+
+            if not self.save_label(record_id, df):
+                crash_report(f"loading {filename}")
+                return False
+        self.list_of_records = list_of_records
+
+        self.metadata["names"] = {
+            index: class_name for index, class_name in zip(range(len(classes)), classes)
+        }
+        return self.save(verbose)
+
+    def load_label(
+        self,
+        record_id: str,
+    ) -> Tuple[bool, pd.DataFrame]:
+        try:
+            df = pd.read_csv(
+                self.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                ),
+                sep=" ",
+                header=None,
+            )
+        except:
+            crash_report(f"load_label({record_id})")
+            return False, pd.DataFrame()
+
+        return True, df
+
+    def path_of(
+        self,
+        suffix: str,
+        what: str = "filename",  # filename | dir | image | label
+        create: bool = True,
+    ) -> str:
+        if what in ["filename", "dir"]:
+            output = objects.path_of(
+                object_name=self.object_name,
+                filename=suffix,
+            )
+            if what == "dir" and create:
+                if not path.create(output):
+                    output = f"cannot-create-{what}"
+
+            return output
+
+        if what == "image":
+            return os.path.join(self.train_images_path, suffix)
+
+        if what == "label":
+            return os.path.join(self.train_labels_path, suffix)
+
+        logger.error(f"path_of: {what}: not found.")
+        return f"{what}-not-found"
+
+    def path_of_record(
+        self,
+        record_id: str,
+        what: str = "image",  # image | label
+    ) -> str:
+        return self.path_of(
+            suffix=(
+                f"{record_id}.jpg"
+                if what == "image"
+                else f"{record_id}.txt" if what == "label" else f"{what}-not-found"
+            ),
+            what=what,
+        )
+
+    def review(
+        self,
+        verbose: bool = False,
+        cols: int = 3,
+        rows: int = 2,
+    ) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
+            return False
+
+        output_dir = self.path_of(what="dir", suffix="review")
 
         list_of_records = random.sample(
             self.list_of_records,
             min(
-                3 * 4,
+                cols * rows,
                 len(self.list_of_records),
             ),
         )
@@ -114,9 +240,9 @@ class YoloDataset:
         items: List[Dict[str, Any]] = []
         for record_id in tqdm(list_of_records):
             success, image = file.load_image(
-                os.path.join(
-                    self.train_images_path,
-                    f"{record_id}.jpg",
+                self.path_of_record(
+                    what="image",
+                    record_id=record_id,
                 ),
                 log=verbose,
             )
@@ -125,10 +251,11 @@ class YoloDataset:
                 return success
 
             success, label_info = file.load_text(
-                os.path.join(
-                    self.train_labels_path,
-                    f"{record_id}.txt",
-                )
+                self.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                ),
+                log=verbose,
             )
             if not success:
                 return success
@@ -164,8 +291,9 @@ class YoloDataset:
 
         return log_image_grid(
             items,
-            cols=4,
-            rows=3,
+            cols=cols,
+            rows=rows,
+            scale=8,
             verbose=verbose,
             filename=objects.path_of(
                 object_name=self.object_name,
@@ -182,3 +310,69 @@ class YoloDataset:
             footer=signature(),
             log=verbose,
         )
+
+    def save(self, verbose: bool = False) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
+            return False
+
+        if not file.save_yaml(
+            self.path_of("metadata.yaml"),
+            self.metadata,
+            log=verbose,
+        ):
+            return False
+        if not post_to_object(
+            self.object_name,
+            "dataset",
+            {
+                "count": len(self.list_of_records),
+            },
+        ):
+            return False
+
+        logger.info(
+            "{} -> {}".format(
+                ", ".join(self.signature()),
+                self.object_name,
+            )
+        )
+
+        return True
+
+    def save_label(
+        self,
+        record_id: str,
+        df: pd.DataFrame,
+    ) -> bool:
+        try:
+            df.to_csv(
+                self.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                ),
+                sep=" ",
+                header=False,
+                index=False,
+                float_format="%.6f",
+            )
+        except:
+            crash_report(f"save_label({record_id})")
+            return False
+
+        return True
+
+    def signature(self) -> List[str]:
+        dict_of_classes = self.metadata.get("names", {})
+
+        return [
+            self.__class__.__name__,
+            "{} record(s)".format(
+                len(self.list_of_records),
+            ),
+            log_list_as_str(
+                "",
+                [dict_of_classes[index] for index in range(len(dict_of_classes))],
+                "class(es)",
+            ),
+        ]

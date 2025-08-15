@@ -8,6 +8,7 @@
 	ingest \
 	[dryrun,source=coco_128,upload] \
 	[-|<object-name>] \
+	[--classes all | person+boat] \
 	[--verbose 1]
  . ingest -> <object-name>.
 @yolo \

@@ -1,6 +1,7 @@
+from typing import List
+
 from blueness import module
 from bluer_objects import file, objects
-from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
 from bluer_algo.yolo.dataset.classes import YoloDataset
@@ -12,12 +13,15 @@ NAME = module.name(__file__, NAME)
 
 def ingest(
     object_name: str,
+    filter_classes: bool = False,
+    classes: List[str] = [],
     log: bool = True,
     verbose: bool = False,
 ) -> bool:
     logger.info(
-        "{}.ingest -> {}".format(
+        "{}.ingest -{}> {}".format(
             NAME,
+            "{}-".format("+".join(classes)) if filter_classes else "",
             object_name,
         )
     )
@@ -38,14 +42,13 @@ def ingest(
     dataset = YoloDataset(
         object_name=object_name,
     )
-    if not dataset.valid:
+    if not dataset.save(verbose):
         return False
 
-    return post_to_object(
-        object_name,
-        "dataset",
-        {
-            "count": len(dataset.list_of_records),
-            "source": "coco_128",
-        },
-    )
+    if filter_classes:
+        return dataset.filter(
+            classes=classes,
+            verbose=verbose,
+        )
+
+    return True
