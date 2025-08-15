@@ -6,8 +6,7 @@ title:::
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    upload . \
-    --verbose 1
+    ~upload .
 
 @yolo dataset review \
 	~download .
@@ -31,9 +30,8 @@ metadata:::get:::object_name
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    upload . \
-    --verbose 1 \
-    --classes person
+    ~upload . \
+    --classes person+boat
 
 @yolo dataset review \
 	~download .
@@ -43,7 +41,7 @@ metadata:::get:::object_name
     extensions=png,push .
 ```
 
-set:::object_name env:::BLUER_ALGO_COCO128_TEST_DATASET_PERSON
+set:::object_name TBA
 
 assets:::get:::object_name/review.png
 

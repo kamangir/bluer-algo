@@ -1,7 +1,7 @@
 import pytest
+import pandas as pd
 
-from bluer_objects import storage
-from bluer_objects import objects
+from bluer_objects import storage, file, objects
 from bluer_objects.storage.policies import DownloadPolicy
 
 from bluer_algo.yolo.dataset.classes import YoloDataset
@@ -50,6 +50,57 @@ def test_yolo_dataset(
             dataset.train_labels_path,
         ],  # startswith
     ):
-        filename = dataset.path_of(suffix=suffix, what=what)
-        assert filename.startswith(startswith)
-        assert filename.endswith(suffix)
+        thing = dataset.path_of(suffix=suffix, what=what)
+        assert thing.startswith(startswith)
+        assert thing.endswith(suffix)
+
+    assert dataset.list_of_records
+    record_id = dataset.list_of_records[0]
+
+    assert dataset.review()
+
+    assert isinstance(dataset.signature(), list)
+
+    for what, startswith in zip(
+        [
+            f"{record_id}.jpg",
+            f"{record_id}.txt",
+        ],  # suffix
+        [
+            "image",
+            "label",
+        ],  # what
+        [
+            dataset.train_images_path,
+            dataset.train_labels_path,
+        ],  # startswith
+    ):
+        thing = dataset.path_of_record(
+            what=what,
+            record_id=record_id,
+        )
+
+        assert thing.startswith(startswith)
+        assert thing.endswith(suffix)
+
+    for record_id_, expected_success in zip(
+        [record_id, "void"],
+        [True, False],
+    ):
+        success, df = dataset.load_label(record_id=record_id_)
+        assert success == expected_success
+
+        if expected_success:
+            assert isinstance(df, pd.DataFrame)
+
+            assert dataset.save_label(
+                df,
+                record_id=record_id,
+            )
+
+            assert file.delete(
+                dataset.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                )
+            )

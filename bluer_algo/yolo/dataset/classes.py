@@ -4,12 +4,14 @@ import os
 import random
 from tqdm import tqdm
 import numpy as np
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple
+import pandas as pd
 
 from blueness import module
-from bluer_options.logger import log_list, log_list_as_str
+from bluer_options.logger import log_list, log_list_as_str, crash_report
 from bluer_objects import objects, file, path
 from bluer_objects.logger.image import log_image_grid
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo import NAME
 from bluer_algo.host import signature
@@ -87,12 +89,93 @@ class YoloDataset:
             log_list(logger, "missing", missing_labels, "label(s)", itemize=False)
 
         if log:
-            logger.info(
-                "{}: {} record(s)".format(
-                    NAME,
-                    len(self.list_of_records),
-                )
+            logger.info(", ".join(self.signature()))
+
+    def filter(
+        self,
+        classes: List[str],
+        verbose: bool = False,
+    ) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
+            return False
+
+        logger.info(
+            "{}.filter({})".format(
+                self.__class__.__name__,
+                "+".join(classes),
             )
+        )
+
+        index_map: Dict[int, int] = {}
+        for index, class_name in enumerate(classes):
+            if class_name not in self.metadata["names"].values():
+                logger.error(f"{class_name} not found.")
+                return False
+
+            original_index = [
+                index_
+                for index_, class_name_ in self.metadata["names"].items()
+                if class_name == class_name_
+            ][0]
+            logger.info(f"{class_name}: {original_index} -> {index}")
+
+            index_map[original_index] = index
+
+        list_of_records: List[str] = []
+        for record_id in tqdm(self.list_of_records):
+            filename = self.path_of_record(
+                what="label",
+                record_id=record_id,
+            )
+            success, df = self.load_label(record_id)
+            if not success:
+                return False
+
+            df = df[df[0].isin(index_map.keys())]
+
+            if df.empty:
+                for what in ["image", "label"]:
+                    if not file.delete(
+                        self.path_of_record(
+                            what=what,
+                            record_id=record_id,
+                        ),
+                        log=verbose,
+                    ):
+                        return False
+                continue
+
+            list_of_records.append(record_id)
+
+            if not self.save_label(record_id, df):
+                crash_report(f"loading {filename}")
+                return False
+        self.list_of_records = list_of_records
+
+        self.metadata["names"] = {
+            index: class_name for index, class_name in zip(range(len(classes)), classes)
+        }
+        return self.save(verbose)
+
+    def load_label(
+        self,
+        record_id: str,
+    ) -> Tuple[bool, pd.DataFrame]:
+        try:
+            df = pd.read_csv(
+                self.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                ),
+                sep=" ",
+                header=None,
+            )
+        except Exception as e:
+            crash_report(f"load_label({record_id})")
+            return False, pd.DataFrame()
+
+        return True, df
 
     def path_of(
         self,
@@ -120,46 +203,19 @@ class YoloDataset:
         logger.error(f"path_of: {what}: not found.")
         return f"{what}-not-found"
 
-    def filter(self, classes: List[str]) -> bool:
-        if not self.valid:
-            logger.error("invalid dataset.")
-            return False
-
-        logger.info(
-            "{}.filter({})".format(
-                self.__class__.__name__,
-                "+".join(classes),
-            )
+    def path_of_record(
+        self,
+        record_id: str,
+        what: str = "image",  # image | label
+    ) -> str:
+        return self.path_of(
+            suffix=(
+                f"{record_id}.jpg"
+                if what == "image"
+                else f"{record_id}.txt" if what == "label" else f"{what}-not-found"
+            ),
+            what=what,
         )
-
-        index_map: Dict[int, int] = {}
-        for index, class_name in enumerate(classes):
-            if class_name not in self.metadata["names"].values():
-                logger.error(f"{class_name} not found.")
-                return False
-
-            original_index = [
-                index_
-                for index_, class_name_ in self.metadata["names"].items()
-                if class_name == class_name_
-            ][0]
-            logger.info(f"{class_name}: {original_index} -> {index}")
-
-            index_map[original_index] = index
-
-        for record_id in tqdm(self.list_of_records):
-            ...
-
-        self.metadata["names"] = {
-            index: class_name for index, class_name in zip(range(len(classes)), classes)
-        }
-        # if not file.save_yaml(
-        #    dataset.path_of("metadata.yaml"),
-        #    self.metadata,
-        # ):
-        #    return False
-
-        return True
 
     def review(
         self,
@@ -184,9 +240,9 @@ class YoloDataset:
         items: List[Dict[str, Any]] = []
         for record_id in tqdm(list_of_records):
             success, image = file.load_image(
-                self.path_of(
+                self.path_of_record(
                     what="image",
-                    suffix=f"{record_id}.jpg",
+                    record_id=record_id,
                 ),
                 log=verbose,
             )
@@ -195,9 +251,9 @@ class YoloDataset:
                 return success
 
             success, label_info = file.load_text(
-                self.path_of(
+                self.path_of_record(
                     what="label",
-                    suffix=f"{record_id}.txt",
+                    record_id=record_id,
                 ),
                 log=verbose,
             )
@@ -254,3 +310,70 @@ class YoloDataset:
             footer=signature(),
             log=verbose,
         )
+
+    def save(self, verbose: bool = False) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
+            return False
+
+        if not file.save_yaml(
+            self.path_of("metadata.yaml"),
+            self.metadata,
+            log=verbose,
+        ):
+            return False
+        if not post_to_object(
+            self.object_name,
+            "dataset",
+            {
+                "count": len(self.list_of_records),
+            },
+        ):
+            return False
+
+        logger.info(
+            "{} -> {}".format(
+                ", ".join(self.signature()),
+                self.object_name,
+            )
+        )
+
+        return True
+
+    def save_label(
+        self,
+        record_id: str,
+        df: pd.DataFrame,
+    ) -> bool:
+        try:
+            df.to_csv(
+                self.path_of_record(
+                    what="label",
+                    record_id=record_id,
+                ),
+                sep=" ",
+                header=False,
+                index=False,
+                float_format="%.6f",
+            )
+        except Exception as e:
+            crash_report(f"save_label({record_id})")
+            return False
+
+        return True
+
+    def signature(self) -> List[str]:
+        return [
+            self.__class__.__name__,
+            "{} record(s)".format(
+                len(self.list_of_records),
+            ),
+            log_list_as_str(
+                "",
+                [
+                    self.metadata["names"][index]
+                    for index in range(len(self.metadata["names"]))
+                ],
+                "class(es)",
+            ),
+        ]
