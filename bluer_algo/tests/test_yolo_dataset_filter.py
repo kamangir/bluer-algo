@@ -2,6 +2,7 @@ import pytest
 from typing import List
 
 from bluer_objects import storage
+from bluer_objects.storage.policies import DownloadPolicy
 
 from bluer_algo.yolo.dataset.classes import YoloDataset
 from bluer_algo import env
@@ -21,15 +22,15 @@ def test_yolo_dataset_filter(
     classes: List[str],
     expected_success: bool,
 ):
-    assert storage.download(object_name)
+    assert storage.download(
+        object_name,
+        policy=DownloadPolicy.DOESNT_EXIST,
+    )
 
     dataset = YoloDataset(object_name)
     assert dataset.valid
 
-    success = dataset.filter(
-        filter_classes=True,
-        classes=classes,
-    )
+    success = dataset.filter(classes=classes)
     success == expected_success
 
     if expected_success:
