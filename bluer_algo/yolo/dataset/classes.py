@@ -96,7 +96,12 @@ class YoloDataset:
                 )
             )
 
-    def review(self, verbose: bool = False) -> bool:
+    def review(
+        self,
+        verbose: bool = False,
+        cols: int = 3,
+        rows: int = 2,
+    ) -> bool:
         object_path = objects.object_path(self.object_name)
 
         output_dir = os.path.join(object_path, "review")
@@ -106,7 +111,7 @@ class YoloDataset:
         list_of_records = random.sample(
             self.list_of_records,
             min(
-                3 * 4,
+                cols * rows,
                 len(self.list_of_records),
             ),
         )
@@ -164,8 +169,9 @@ class YoloDataset:
 
         return log_image_grid(
             items,
-            cols=4,
-            rows=3,
+            cols=cols,
+            rows=rows,
+            scale=8,
             verbose=verbose,
             filename=objects.path_of(
                 object_name=self.object_name,

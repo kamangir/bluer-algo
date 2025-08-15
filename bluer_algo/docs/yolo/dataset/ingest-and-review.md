@@ -16,9 +16,9 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-14-myrsky/review.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-4nez2o/review.png?raw=true)
 
-[coco128-2025-08-14-myrsky](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-14-myrsky.tar.gz)
+[coco128-2025-08-15-4nez2o](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-4nez2o.tar.gz)
 
 ```yaml
 dataset:
