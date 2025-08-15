@@ -31,7 +31,7 @@ def test_yolo_dataset_filter(
     assert dataset.valid
 
     success = dataset.filter(classes=classes)
-    success == expected_success
+    assert success == expected_success
 
     if expected_success:
         dataset = YoloDataset(object_name)
