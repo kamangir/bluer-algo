@@ -6,7 +6,7 @@
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    ~upload .
+    upload .
 
 @yolo dataset review \
 	~download .
@@ -17,14 +17,13 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-4nez2o/review.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-unrc6c/review.png?raw=true)
 
-[coco128-2025-08-15-4nez2o](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-4nez2o.tar.gz)
+[coco128-2025-08-15-unrc6c](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-unrc6c.tar.gz)
 
 ```yaml
 dataset:
   count: 126
-  source: coco_128
 names:
   0: person
   1: bicycle
@@ -107,6 +106,7 @@ names:
   78: hair drier
   79: toothbrush
 path: ./coco128
+source: coco_128
 train: images/train2017
 val: images/train2017
 
@@ -118,7 +118,7 @@ val: images/train2017
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    ~upload . \
+    upload . \
     --classes person+boat
 
 @yolo dataset review \
@@ -130,11 +130,19 @@ val: images/train2017
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/TBA/review.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-78q4d5/review.png?raw=true)
 
-[TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz)
+[coco128-2025-08-15-78q4d5](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-78q4d5.tar.gz)
 
 ```yaml
-{}
+dataset:
+  count: 63
+names:
+  0: person
+  1: boat
+path: ./coco128
+source: coco_128
+train: images/train2017
+val: images/train2017
 
 ```

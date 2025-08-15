@@ -6,7 +6,7 @@ title:::
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    ~upload .
+    upload .
 
 @yolo dataset review \
 	~download .
@@ -30,7 +30,7 @@ metadata:::get:::object_name
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest \
-    ~upload . \
+    upload . \
     --classes person+boat
 
 @yolo dataset review \
@@ -41,7 +41,7 @@ metadata:::get:::object_name
     extensions=png,push .
 ```
 
-set:::object_name TBA
+set:::object_name coco128-2025-08-15-78q4d5
 
 assets:::get:::object_name/review.png
 
