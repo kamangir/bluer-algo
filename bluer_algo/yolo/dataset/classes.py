@@ -33,14 +33,12 @@ class YoloDataset:
             )
         )
 
-        object_path = objects.object_path(object_name)
-
         self.train_images_path = os.path.join(
             path.absolute(
-                self.metadata["path"],
-                object_path,
+                self.metadata.get("path", "void"),
+                objects.object_path(object_name),
             ),
-            self.metadata["train"],
+            self.metadata.get("train", "void"),
         )
 
         self.train_labels_path = self.train_images_path.replace(
@@ -51,7 +49,7 @@ class YoloDataset:
         list_of_images = [
             file.name(filename)
             for filename in file.list_of(
-                os.path.join(self.train_images_path, "*.jpg"),
+                self.path_of(what="image", suffix="*.jpg"),
                 recursive=False,
             )
         ]
@@ -61,7 +59,7 @@ class YoloDataset:
         list_of_labels = [
             file.name(filename)
             for filename in file.list_of(
-                os.path.join(self.train_labels_path, "*.txt"),
+                self.path_of(what="label", suffix="*.txt"),
                 recursive=False,
             )
         ]
@@ -96,7 +94,37 @@ class YoloDataset:
                 )
             )
 
+    def path_of(
+        self,
+        suffix: str,
+        what: str = "filename",  # filename | dir | image | label
+        create: bool = True,
+    ) -> str:
+        if what in ["filename", "dir"]:
+            output = objects.path_of(
+                object_name=self.object_name,
+                filename=suffix,
+            )
+            if what == "dir" and create:
+                if not path.create(output):
+                    output = f"cannot-create-{what}"
+
+            return output
+
+        if what == "image":
+            return os.path.join(self.train_images_path, suffix)
+
+        if what == "label":
+            return os.path.join(self.train_labels_path, suffix)
+
+        logger.error(f"path_of: {what}: not found.")
+        return f"{what}-not-found"
+
     def filter(self, classes: List[str]) -> bool:
+        if not self.valid:
+            logger.error("invalid dataset.")
+            return False
+
         logger.info(
             "{}.filter({})".format(
                 self.__class__.__name__,
@@ -119,17 +147,17 @@ class YoloDataset:
 
             index_map[original_index] = index
 
+        for record_id in tqdm(self.list_of_records):
+            ...
+
         self.metadata["names"] = {
             index: class_name for index, class_name in zip(range(len(classes)), classes)
         }
-        if not file.save_yaml(
-            objects.path_of(
-                object_name=self.object_name,
-                filename="metadata.yaml",
-            ),
-            self.metadata,
-        ):
-            return False
+        # if not file.save_yaml(
+        #    dataset.path_of("metadata.yaml"),
+        #    self.metadata,
+        # ):
+        #    return False
 
         return True
 
@@ -139,11 +167,11 @@ class YoloDataset:
         cols: int = 3,
         rows: int = 2,
     ) -> bool:
-        object_path = objects.object_path(self.object_name)
-
-        output_dir = os.path.join(object_path, "review")
-        if not path.create(output_dir):
+        if not self.valid:
+            logger.error("invalid dataset.")
             return False
+
+        output_dir = self.path_of(what="dir", suffix="review")
 
         list_of_records = random.sample(
             self.list_of_records,
@@ -156,9 +184,9 @@ class YoloDataset:
         items: List[Dict[str, Any]] = []
         for record_id in tqdm(list_of_records):
             success, image = file.load_image(
-                os.path.join(
-                    self.train_images_path,
-                    f"{record_id}.jpg",
+                self.path_of(
+                    what="image",
+                    suffix=f"{record_id}.jpg",
                 ),
                 log=verbose,
             )
@@ -167,10 +195,11 @@ class YoloDataset:
                 return success
 
             success, label_info = file.load_text(
-                os.path.join(
-                    self.train_labels_path,
-                    f"{record_id}.txt",
-                )
+                self.path_of(
+                    what="label",
+                    suffix=f"{record_id}.txt",
+                ),
+                log=verbose,
             )
             if not success:
                 return success
