@@ -171,7 +171,7 @@ class YoloDataset:
                 sep=" ",
                 header=None,
             )
-        except Exception as e:
+        except:
             crash_report(f"load_label({record_id})")
             return False, pd.DataFrame()
 
@@ -356,13 +356,15 @@ class YoloDataset:
                 index=False,
                 float_format="%.6f",
             )
-        except Exception as e:
+        except:
             crash_report(f"save_label({record_id})")
             return False
 
         return True
 
     def signature(self) -> List[str]:
+        dict_of_classes = self.metadata.get("names", {})
+
         return [
             self.__class__.__name__,
             "{} record(s)".format(
@@ -370,10 +372,7 @@ class YoloDataset:
             ),
             log_list_as_str(
                 "",
-                [
-                    self.metadata["names"][index]
-                    for index in range(len(self.metadata["names"]))
-                ],
+                [dict_of_classes[index] for index in range(len(dict_of_classes))],
                 "class(es)",
             ),
         ]

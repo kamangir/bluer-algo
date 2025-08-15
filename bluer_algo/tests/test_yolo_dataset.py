@@ -25,7 +25,7 @@ def test_yolo_dataset(
     )
 
     dataset = YoloDataset(object_name)
-    dataset.valid == expected_valid
+    assert dataset.valid == expected_valid
 
     if not expected_valid:
         return
@@ -61,7 +61,7 @@ def test_yolo_dataset(
 
     assert isinstance(dataset.signature(), list)
 
-    for what, startswith in zip(
+    for suffix, what, startswith in zip(
         [
             f"{record_id}.jpg",
             f"{record_id}.txt",
@@ -94,8 +94,8 @@ def test_yolo_dataset(
             assert isinstance(df, pd.DataFrame)
 
             assert dataset.save_label(
-                df,
                 record_id=record_id,
+                df=df,
             )
 
             assert file.delete(
