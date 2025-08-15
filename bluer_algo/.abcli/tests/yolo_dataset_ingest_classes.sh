@@ -1,15 +1,16 @@
 #! /usr/bin/env bash
 
-function test_bluer_algo_yolo_dataset_ingest() {
+function test_bluer_algo_yolo_dataset_ingest_classes() {
     local options=$1
 
-    local object_name=test_bluer_algo_yolo_dataset_ingest-$(bluer_ai_string_timestamp)
+    local object_name=test_bluer_algo_yolo_dataset_ingest_classes-$(bluer_ai_string_timestamp)
 
     bluer_ai_eval ,$options \
         bluer_algo_yolo_dataset_ingest \
         ,$options \
         $object_name \
-        --verbose 1
+        --verbose 1 \
+        --classes person+boat
     [[ $? -ne 0 ]] && return 1
     bluer_ai_hr
 

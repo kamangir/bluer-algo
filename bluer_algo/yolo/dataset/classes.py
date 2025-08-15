@@ -96,6 +96,43 @@ class YoloDataset:
                 )
             )
 
+    def filter(self, classes: List[str]) -> bool:
+        logger.info(
+            "{}.filter({})".format(
+                self.__class__.__name__,
+                "+".join(classes),
+            )
+        )
+
+        index_map: Dict[int, int] = {}
+        for index, class_name in enumerate(classes):
+            if class_name not in self.metadata["names"].values():
+                logger.error(f"{class_name} not found.")
+                return False
+
+            original_index = [
+                index_
+                for index_, class_name_ in self.metadata["names"].items()
+                if class_name == class_name_
+            ][0]
+            logger.info(f"{class_name}: {original_index} -> {index}")
+
+            index_map[original_index] = index
+
+        self.metadata["names"] = {
+            index: class_name for index, class_name in zip(range(len(classes)), classes)
+        }
+        if not file.save_yaml(
+            objects.path_of(
+                object_name=self.object_name,
+                filename="metadata.yaml",
+            ),
+            self.metadata,
+        ):
+            return False
+
+        return True
+
     def review(
         self,
         verbose: bool = False,

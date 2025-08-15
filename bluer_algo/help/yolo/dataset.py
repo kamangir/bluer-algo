@@ -17,6 +17,7 @@ def help_ingest(
     )
 
     args = [
+        "[--classes all | person+boat]",
         "[--verbose 1]",
     ]
 
