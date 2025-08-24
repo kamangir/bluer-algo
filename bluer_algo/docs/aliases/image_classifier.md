@@ -46,5 +46,5 @@
 	[-|<model-object-name>] \
 	[--batch_size 16] \
 	[--num_epochs 10]
- . <dataset-object-name> -train-> <model-object-name>.
+ . train.
 ```

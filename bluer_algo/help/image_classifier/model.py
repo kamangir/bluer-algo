@@ -34,11 +34,8 @@ def help_train(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "".join(
-        [
-            xtra("~download,upload", mono=mono),
-        ]
-    )
+    options = xtra("~download,upload", mono=mono)
+
     args = [
         "[--batch_size 16]",
         "[--num_epochs 10]",
@@ -54,7 +51,7 @@ def help_train(
             "[-|<model-object-name>]",
         ]
         + args,
-        "<dataset-object-name> -train-> <model-object-name>.",
+        "train.",
         mono=mono,
     )
 

@@ -13,6 +13,12 @@ title:::
 @assets publish \
     extensions=png,push .
 
+@select coco128-model-$(@@timestamp)
+
+🔥
+
+@yolo model train \
+	~download .. .
 🔥
 
 # train
