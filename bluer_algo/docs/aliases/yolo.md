@@ -19,3 +19,23 @@
 	[--verbose 1]
  . review <object-name>.
 ```
+
+## model
+
+```bash
+@yolo \
+	model \
+	train \
+	[~download,upload] \
+	[.|<dataset-object-name>] \
+	[-|<model-object-name>] \
+	[--batch 8] \
+	[--device cpu | 0 | 0,1] \
+	[--epochs 30] \
+	[--from_scratch 1] \
+	[--image_size 640] \
+	[--model_size nano | small | medium | large | xlarge] \
+	[--validate 0] \
+	[--workers 4]
+ . train.
+```
