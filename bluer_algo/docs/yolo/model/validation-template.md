@@ -15,10 +15,9 @@ title:::
 
 @select coco128-model-$(@@timestamp)
 
-🔥
-
 @yolo model train \
 	~download .. .
+
 🔥
 
 # train
