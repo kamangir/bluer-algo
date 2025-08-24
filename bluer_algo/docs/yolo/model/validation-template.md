@@ -8,7 +8,7 @@ title:::
     --classes person
 
 @yolo dataset review \
-	~download .
+    ~download .
 
 @upload public,zip .
 @assets publish \
@@ -18,7 +18,7 @@ title:::
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
-	~download .. .
+    ~download .. .
 
 🔥
 ```
