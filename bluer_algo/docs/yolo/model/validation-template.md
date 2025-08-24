@@ -1,6 +1,7 @@
 title:::
 
 ```bash
+# ingest
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest - . \
@@ -13,14 +14,13 @@ title:::
 @assets publish \
     extensions=png,push .
 
+# train
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
 	~download .. .
 
 🔥
-
-# train
 ```
 
 set:::dataset_object_name coco128-2025-08-15-vd3ev4

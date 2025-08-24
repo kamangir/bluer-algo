@@ -1,6 +1,7 @@
 # yolo: model: validation
 
 ```bash
+# ingest
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest - . \
@@ -13,14 +14,13 @@
 @assets publish \
     extensions=png,push .
 
+# train
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
 	~download .. .
 
 🔥
-
-# train
 ```
 
 
