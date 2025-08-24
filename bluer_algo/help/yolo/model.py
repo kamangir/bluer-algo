@@ -9,7 +9,13 @@ def help_train(
 ) -> str:
     options = xtra("~download,upload", mono=mono)
 
-    args = []
+    args = [
+        "--batch 8",
+        "--epochs 30",
+        "--from_scratch 1",
+        "--imgsz 640",
+        "--validate 0",
+    ]
 
     return show_usage(
         [
