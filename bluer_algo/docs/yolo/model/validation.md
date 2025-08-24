@@ -1,4 +1,4 @@
-# yolo: dataset: train
+# yolo: model: validation
 
 ```bash
 @select coco128-$(@@timestamp)
