@@ -1,7 +1,8 @@
 title:::
 
+## ingest
+
 ```bash
-# ingest
 @select coco128-$(@@timestamp)
 
 @yolo dataset ingest - . \
@@ -10,29 +11,67 @@ title:::
 @yolo dataset review \
     ~download .
 
-@upload public,zip .
 @assets publish \
     extensions=png,push .
-
-# train
-@select coco128-model-$(@@timestamp)
-
-@yolo model train \
-    ~download .. .
-
-🔥
 ```
 
-set:::dataset_object_name coco128-2025-08-15-vd3ev4
+set:::dataset_object_name coco128-2025-09-13-v7pmdb
 
 assets:::get:::dataset_object_name/review.png
 
-object:::get:::dataset_object_name
-
 metadata:::get:::dataset_object_name
 
----
+## train
 
-set:::model_object_name TBA
+```bash
+@select coco128-model-$(@@timestamp)
 
-🔥
+@yolo model train \
+    ~download .. . \
+    --epochs 20
+
+@upload public,zip .
+
+@assets publish \
+    extensions=jpg+png . \
+    --prefix train/
+
+@assets publish \
+    extensions=jpg+png,push . \
+    --prefix validation/
+```
+
+set:::model_object_name coco128-model-2025-09-13-byb8uq
+
+object:::get:::model_object_name
+
+| | |
+|-|-|
+| assets:::get:::model_object_name/labels.jpg | assets:::get:::model_object_name/results.png |
+
+| | | | |
+|-|-|-|-|
+| assets:::get:::model_object_name/BoxF1_curve.png | assets:::get:::model_object_name/BoxPR_curve.png | assets:::get:::model_object_name/BoxP_curve.png | assets:::get:::model_object_name/BoxR_curve.png |
+
+| | |
+|-|-|
+| assets:::get:::model_object_name/confusion_matrix.png | assets:::get:::model_object_name/confusion_matrix_normalized.png |
+
+| | | |
+|-|-|-|
+| assets:::get:::model_object_name/train_batch0.jpg | assets:::get:::model_object_name/train_batch1.jpg | assets:::get:::model_object_name/train_batch2.jpg |
+
+| | |
+|-|-|
+| assets:::get:::model_object_name/val_batch0_labels.jpg | assets:::get:::model_object_name/val_batch0_pred.jpg |
+| assets:::get:::model_object_name/val_batch1_labels.jpg | assets:::get:::model_object_name/val_batch1_pred.jpg |
+| assets:::get:::model_object_name/val_batch2_labels.jpg | assets:::get:::model_object_name/val_batch2_pred.jpg | 
+
+metadata:::get:::model_object_name
+
+
+## predict
+
+```bash
+🚧
+```

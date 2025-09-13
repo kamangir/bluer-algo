@@ -19,6 +19,7 @@ def help_train(
         "[--image_size 640]",
         f"[--model_size {ModelSize.choices()}]",
         "[--validate 0]",
+        "[--verbose 1]",
         "[--workers 4]",
     ]
 

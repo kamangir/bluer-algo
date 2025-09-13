@@ -72,7 +72,12 @@ parser.add_argument(
     default=1,
     help="0 | 1: run validation after training",
 )
-
+parser.add_argument(
+    "--verbose",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -88,6 +93,7 @@ if args.task == "train":
         model_size=ModelSize[args.model_size.upper()],
         from_scratch=args.from_scratch == 1,
         validate=args.validate == 1,
+        verbose=args.verbose == 1,
     )
 else:
     success = None

@@ -9,5 +9,6 @@ function test_bluer_algo_yolo_model_train() {
         bluer_algo_yolo_model_train \
         ,$options \
         $BLUER_ALGO_COCO128_TEST_DATASET \
-        $model_object_name
+        $model_object_name \
+        --verbose 1
 }

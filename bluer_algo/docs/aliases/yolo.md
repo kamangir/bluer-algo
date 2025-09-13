@@ -36,6 +36,7 @@
 	[--image_size 640] \
 	[--model_size nano | small | medium | large | xlarge] \
 	[--validate 0] \
+	[--verbose 1] \
 	[--workers 4]
  . train.
 ```

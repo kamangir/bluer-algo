@@ -25,6 +25,7 @@ def train(
     model_size: ModelSize = ModelSize.NANO,
     from_scratch: bool = False,
     validate: bool = True,
+    verbose: bool = False,
 ) -> bool:
     metadata: Dict[str, Any] = {}
 
@@ -68,16 +69,18 @@ def train(
         device=device,  # e.g., '0' for GPU 0 or 'cpu'
         workers=workers,
         project=objects.object_path(object_name=model_object_name),
-        name="model",
+        name="train",
         verbose=True,
         seed=0,  # reproducibility (as much as possible)
         close_mosaic=10,  # a small quality bump near the end
     )
-    logger.info(f"training complete, metrics: {train_metrics}")
+    logger.info(f"training complete.")
+    if verbose:
+        logger.info(f"training metrics: {train_metrics}")
     metadata["train"] = train_metrics
 
     if validate:
-        logger.info("validation the best checkpoint...")
+        logger.info("validating the best checkpoint...")
 
         # gives mAP, precision/recall, etc.
         val_metrics = model.val(
@@ -87,10 +90,12 @@ def train(
             ),
             imgsz=image_size,
             device=device,
+            name="validation",
         )
-        logger.info(
-            f"validation metrics: {val_metrics}",
-        )
+        if verbose:
+            logger.info(
+                f"validation metrics: {val_metrics}",
+            )
         metadata["validation"] = val_metrics
 
     return post_to_object(

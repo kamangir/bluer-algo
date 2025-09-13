@@ -1,4 +1,4 @@
-# aliases: image_classifier
+# aliases: image-classifier
 
 ## dataset
 
