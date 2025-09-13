@@ -74,7 +74,7 @@ def train(
         seed=0,  # reproducibility (as much as possible)
         close_mosaic=10,  # a small quality bump near the end
     )
-    logger.info(f"training complete.")
+    logger.info("training complete.")
     if verbose:
         logger.info(f"training metrics: {train_metrics}")
     metadata["train"] = train_metrics
