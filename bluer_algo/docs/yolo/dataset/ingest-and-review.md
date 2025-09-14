@@ -17,9 +17,9 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-unrc6c/review.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-09-14-q6oxj4/review.png?raw=true)
 
-[coco128-2025-08-15-unrc6c](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-unrc6c.tar.gz)
+[coco128-2025-09-14-q6oxj4](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-q6oxj4.tar.gz)
 
 ```yaml
 dataset:
@@ -105,10 +105,9 @@ names:
   77: teddy bear
   78: hair drier
   79: toothbrush
-path: ./coco128
 source: coco_128
-train: images/train2017
-val: images/train2017
+train: coco128/images/train2017
+val: coco128/images/train2017
 
 ```
 
