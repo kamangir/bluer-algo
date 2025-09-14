@@ -129,9 +129,9 @@ val: coco128/images/train2017
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/coco128-2025-08-15-78q4d5/review.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/coco128-2025-09-14-tub72c/review.png?raw=true)
 
-[coco128-2025-08-15-78q4d5](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-08-15-78q4d5.tar.gz)
+[coco128-2025-09-14-tub72c](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-tub72c.tar.gz)
 
 ```yaml
 dataset:
@@ -139,9 +139,8 @@ dataset:
 names:
   0: person
   1: boat
-path: ./coco128
 source: coco_128
-train: images/train2017
-val: images/train2017
+train: coco128/images/train2017
+val: coco128/images/train2017
 
 ```

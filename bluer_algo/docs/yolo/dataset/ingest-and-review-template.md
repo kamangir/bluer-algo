@@ -41,7 +41,7 @@ metadata:::get:::object_name
     extensions=png,push .
 ```
 
-set:::object_name coco128-2025-08-15-78q4d5
+set:::object_name coco128-2025-09-14-tub72c
 
 assets:::get:::object_name/review.png
 
