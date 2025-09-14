@@ -1,6 +1,5 @@
 from typing import Dict, Any
 from ultralytics import YOLO
-from ultralytics.utils import SETTINGS
 
 from blueness import module
 from bluer_objects import objects
@@ -51,12 +50,6 @@ def train(
     else:
         logger.info(f"transfer learning, from {model_size.pretrained}")
         model = YOLO(model_size.pretrained)
-
-    SETTINGS.update(
-        {
-            "datasets_dir": objects.object_path(object_name=dataset_object_name),
-        }
-    )
 
     train_metrics = model.train(
         data=objects.path_of(

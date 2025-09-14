@@ -36,10 +36,7 @@ class YoloDataset:
         )
 
         self.train_images_path = os.path.join(
-            path.absolute(
-                self.metadata.get("path", "void"),
-                objects.object_path(object_name),
-            ),
+            objects.object_path(object_name),
             self.metadata.get("train", "void"),
         )
 
