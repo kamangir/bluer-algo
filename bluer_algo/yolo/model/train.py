@@ -4,7 +4,7 @@ from ultralytics.utils import SETTINGS
 
 from blueness import module
 from bluer_objects import objects
-from bluer_objects.metadata import post_to_object
+from bluer_objects.metadata import post_to_object, flatten
 
 from bluer_algo import NAME
 from bluer_algo.yolo.model.size import ModelSize
@@ -101,5 +101,5 @@ def train(
     return post_to_object(
         model_object_name,
         "train",
-        metadata,
+        flatten(metadata),
     )

@@ -41,7 +41,7 @@ metadata:::get:::dataset_object_name
     --prefix validation/
 ```
 
-set:::model_object_name coco128-model-2025-09-13-byb8uq
+set:::model_object_name 2025-09-14-6iodao
 
 object:::get:::model_object_name
 
@@ -67,8 +67,9 @@ object:::get:::model_object_name
 | assets:::get:::model_object_name/val_batch1_labels.jpg | assets:::get:::model_object_name/val_batch1_pred.jpg |
 | assets:::get:::model_object_name/val_batch2_labels.jpg | assets:::get:::model_object_name/val_batch2_pred.jpg | 
 
+details:::metadata
 metadata:::get:::model_object_name
-
+details:::
 
 ## predict
 
