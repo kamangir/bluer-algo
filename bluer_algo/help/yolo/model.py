@@ -5,6 +5,30 @@ from bluer_options.terminal import show_usage, xtra
 from bluer_algo.yolo.model.size import ModelSize
 
 
+def help_prediction_test(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = (xtra("~download,upload", mono=mono),)
+
+    args = ["[--record_index 0]"]
+
+    return show_usage(
+        [
+            "@yolo",
+            "model",
+            "prediction_test",
+            f"[{options}]",
+            "[..|<dataset-object-name>]",
+            "[.|<model-object-name>]",
+            "[-|<prediction-object-name>]",
+        ]
+        + args,
+        "test prediction.",
+        mono=mono,
+    )
+
+
 def help_train(
     tokens: List[str],
     mono: bool,
@@ -39,5 +63,6 @@ def help_train(
 
 
 help_functions = {
+    "prediction_test": help_prediction_test,
     "train": help_train,
 }

@@ -31,7 +31,7 @@ metadata:::get:::dataset_object_name
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
-    ~download .. . \
+    ~download,upload .. . \
     --epochs 20
 
 @upload public,zip
@@ -45,7 +45,7 @@ metadata:::get:::dataset_object_name
     --prefix validation/
 ```
 
-set:::model_object_name coco128-model-2025-09-15-3m0mmj
+set:::model_object_name env:::BLUER_ALGO_COCO128_TEST_MODEL
 
 object:::get:::model_object_name
 
@@ -75,8 +75,46 @@ details:::metadata
 metadata:::get:::model_object_name
 details:::
 
+## predict (dev)
+
+[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction-v3.ipynb)
+
 ## predict
 
 ```bash
-🚧
+@select yolo-prediction-test-$(@timestamp)
+
+@yolo model prediction_test \
+    upload \
+    $BLUER_ALGO_COCO128_TEST_DATASET \
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
+
+@assets publish extensions=png,push
 ```
+
+set:::object_name yolo-prediction-test-2025-09-15-17-07-37-z8vn4m
+
+assets:::get:::object_name/000000000389.png
+
+metadata:::get:::object_name
+
+## predict (rpi)
+
+```bash
+@select yolo-prediction-test-$(@timestamp)
+
+@yolo model prediction_test \
+    upload \
+    $BLUER_ALGO_COCO128_TEST_DATASET \
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
+
+@assets publish extensions=png,push
+```
+
+set:::object_rpi_name yolo-prediction-test-2025-09-15-17-29-12-dwznal
+
+assets:::get:::object_rpi_name/000000000419.png
+
+metadata:::get:::object_rpi_name
