@@ -1,6 +1,7 @@
 title:::
 
-## mean-cam shift
+target tracking for a [ugv](https://github.com/kamangir/bluer-ugv/blob/main/bluer_ugv/docs/bluer_swallow) using mean/cam-shift.
+
 
 - using https://docs.opencv.org/4.11.0/d7/d00/tutorial_meanshift.html
 - sandbox: [sandbox/mean-cam-shift](../../../sandbox/mean-cam-shift)
