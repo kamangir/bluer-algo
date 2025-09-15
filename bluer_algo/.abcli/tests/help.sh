@@ -29,6 +29,9 @@ function test_bluer_algo_help() {
         "@algo yolo" \
         "@algo yolo dataset" \
         "@algo yolo dataset ingest" \
+        "@algo yolo model" \
+        "@algo yolo model prediction_test" \
+        "@algo yolo model train" \
         \
         "@algo socket" \
         "@algo socket test" \
@@ -49,6 +52,7 @@ function test_bluer_algo_help() {
         "@yolo dataset ingest" \
         "@yolo dataset review" \
         "@yolo model" \
+        "@yolo model prediction_test" \
         "@yolo model train" \
         \
         "bluer_algo"; do

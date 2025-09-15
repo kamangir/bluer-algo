@@ -25,6 +25,14 @@
 ```bash
 @yolo \
 	model \
+	prediction_test \
+	[~download,upload] \
+	[..|<dataset-object-name>] \
+	[.|<model-object-name>] \
+	[-|<prediction-object-name>]
+ . test prediction.
+@yolo \
+	model \
 	train \
 	[~download,upload] \
 	[.|<dataset-object-name>] \

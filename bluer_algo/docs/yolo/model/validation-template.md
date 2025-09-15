@@ -75,7 +75,21 @@ details:::metadata
 metadata:::get:::model_object_name
 details:::
 
+## predict (dev)
+
+🔥
+
+[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction.ipynb)
+
+set:::object_name TBA
+
+assets:::get:::object_name/prediction.png
+
+metadata:::get:::object_name
+
 ## predict
+
+🚧
 
 ```bash
 🚧
