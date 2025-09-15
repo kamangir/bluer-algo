@@ -1,4 +1,4 @@
-# image_classifier: model: train: small
+# image-classifier: model: train: small
 
 uses [ingest](../../dataset/ingest.md).
 

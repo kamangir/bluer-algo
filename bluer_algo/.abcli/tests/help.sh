@@ -48,6 +48,8 @@ function test_bluer_algo_help() {
         "@yolo dataset" \
         "@yolo dataset ingest" \
         "@yolo dataset review" \
+        "@yolo model" \
+        "@yolo model train" \
         \
         "bluer_algo"; do
         bluer_ai_eval ,$options \

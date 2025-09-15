@@ -25,6 +25,7 @@ setup(
         f"{NAME}.yolo.dataset",
         f"{NAME}.yolo.dataset.ingest",
         f"{NAME}.yolo.dataset.ingest.coco_128",
+        f"{NAME}.yolo.model",
     ],
     include_package_data=True,
     package_data={

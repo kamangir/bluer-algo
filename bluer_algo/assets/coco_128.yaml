@@ -1,8 +1,6 @@
 source: coco_128
-# data.yaml for COCO128
-path: ./coco128 # dataset root dir
-train: images/train2017 # relative to 'path'
-val: images/train2017 # we use the same set for val in this example
+train: coco128/images/train2017
+val: coco128/images/train2017 # we use the same set for val in this example
 
 names:
   0: person
