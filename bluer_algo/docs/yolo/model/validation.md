@@ -10223,7 +10223,7 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-04-49-x54keo/000000000389.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-07-37-z8vn4m/000000000389.png?raw=true)
 
 ```yaml
 000000000389:
@@ -10268,7 +10268,7 @@ train:
     class_id: 0
     confidence: 0.31127116084098816
     label: person
-  elapsed_time: 0.9452779293060303
+  elapsed_time: 0.9667267799377441
   image_size:
   - 480
   - 640

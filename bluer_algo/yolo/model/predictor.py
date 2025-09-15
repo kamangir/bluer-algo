@@ -67,7 +67,14 @@ class YoloPredictor:
             logger.error(e)
             return False, {}
         elapsed_time = time.time() - elapsed_time
-        logger.info(f"took {string.pretty_duration(elapsed_time)}")
+        elapsed_time_as_str = "took {}".format(
+            string.pretty_duration(
+                elapsed_time,
+                include_ms=True,
+                short=True,
+            )
+        )
+        logger.info(elapsed_time_as_str)
 
         if not list_of_detections:
             logger.error("no detections.")
@@ -124,7 +131,7 @@ class YoloPredictor:
                     + [
                         f"model: {self.object_name}",
                         detections_as_str,
-                        f"took {string.pretty_duration(elapsed_time)}",
+                        elapsed_time_as_str,
                     ]
                 )
             ],
