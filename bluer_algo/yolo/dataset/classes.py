@@ -256,22 +256,25 @@ class YoloDataset:
             )
             if not success:
                 return success
-
-            h, w = image.shape[:2]
-            for line in label_info:
-                cls, x, y, bw, bh = map(float, line.strip().split())
-                x1, y1 = int((x - bw / 2) * w), int((y - bh / 2) * h)
-                x2, y2 = int((x + bw / 2) * w), int((y + bh / 2) * h)
-                cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                cv2.putText(
-                    image,
-                    self.metadata["names"][int(cls)],
-                    (x1, y1 - 5),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.5,
-                    (0, 255, 0),
-                    1,
-                )
+            try:
+                h, w = image.shape[:2]
+                for line in label_info:
+                    cls, x, y, bw, bh = map(float, line.strip().split())
+                    x1, y1 = int((x - bw / 2) * w), int((y - bh / 2) * h)
+                    x2, y2 = int((x + bw / 2) * w), int((y + bh / 2) * h)
+                    cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(
+                        image,
+                        self.metadata["names"][int(cls)],
+                        (x1, y1 - 5),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 255, 0),
+                        1,
+                    )
+            except Exception as e:
+                logger.error(f'error in line "{line}": {e}')
+                return False
 
             output_filename = os.path.join(
                 output_dir,
