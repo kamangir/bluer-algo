@@ -9,7 +9,7 @@ function bluer_algo_yolo() {
         return
     fi
 
-    bluer_ai_log_error "@plugin: yolo: $task: command not found."
+    bluer_ai_log_error "@algo: yolo: $task: command not found."
     return 1
 }
 

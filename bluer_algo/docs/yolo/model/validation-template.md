@@ -101,4 +101,20 @@ metadata:::get:::object_name
 
 ## predict (rpi)
 
-🚧
+```bash
+@select yolo-prediction-test-$(@timestamp)
+
+@yolo model prediction_test \
+    upload \
+    $BLUER_ALGO_COCO128_TEST_DATASET \
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
+
+@assets publish extensions=png,push
+```
+
+set:::object_rpi_name yolo-prediction-test-2025-09-15-17-29-12-dwznal
+
+assets:::get:::object_rpi_name/000000000419.png
+
+metadata:::get:::object_rpi_name

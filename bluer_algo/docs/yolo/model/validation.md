@@ -10277,4 +10277,43 @@ train:
 
 ## predict (rpi)
 
-🚧
+```bash
+@select yolo-prediction-test-$(@timestamp)
+
+@yolo model prediction_test \
+    upload \
+    $BLUER_ALGO_COCO128_TEST_DATASET \
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
+
+@assets publish extensions=png,push
+```
+
+
+![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-29-12-dwznal/000000000419.png?raw=true)
+
+```yaml
+000000000419:
+  detections:
+  - bbox_xyxy:
+    - 124.66294860839844
+    - 121.88188934326172
+    - 170.0297393798828
+    - 281.0235595703125
+    class_id: 0
+    confidence: 0.7116779088973999
+    label: person
+  - bbox_xyxy:
+    - 455.524658203125
+    - 231.17758178710938
+    - 635.5400390625
+    - 478.5752868652344
+    class_id: 0
+    confidence: 0.4342321455478668
+    label: person
+  elapsed_time: 13.924468755722046
+  image_size:
+  - 480
+  - 640
+
+```
