@@ -155,6 +155,24 @@ class YoloDataset:
         }
         return self.save(verbose)
 
+    def load_image(
+        self,
+        record_id: str,
+        verbose: bool = False,
+    ) -> Tuple[bool, np.ndarray]:
+        success, image = file.load_image(
+            self.path_of_record(
+                what="image",
+                record_id=record_id,
+            ),
+            log=verbose,
+        )
+
+        if success:
+            image = np.ascontiguousarray(image)
+
+        return success, image
+
     def load_label(
         self,
         record_id: str,
@@ -236,14 +254,7 @@ class YoloDataset:
 
         items: List[Dict[str, Any]] = []
         for record_id in tqdm(list_of_records):
-            success, image = file.load_image(
-                self.path_of_record(
-                    what="image",
-                    record_id=record_id,
-                ),
-                log=verbose,
-            )
-            image = np.ascontiguousarray(image)
+            success, image = self.load_image(record_id, verbose)
             if not success:
                 return success
 

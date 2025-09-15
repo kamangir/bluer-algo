@@ -1,5 +1,6 @@
 import pytest
 import pandas as pd
+import numpy as np
 
 from bluer_objects import storage, file, objects
 from bluer_objects.storage.policies import DownloadPolicy
@@ -90,17 +91,31 @@ def test_yolo_dataset(
         success, df = dataset.load_label(record_id=record_id_)
         assert success == expected_success
 
-        if expected_success:
-            assert isinstance(df, pd.DataFrame)
+        if not expected_success:
+            continue
 
-            assert dataset.save_label(
+        assert isinstance(df, pd.DataFrame)
+
+        assert dataset.save_label(
+            record_id=record_id,
+            df=df,
+        )
+
+        assert file.delete(
+            dataset.path_of_record(
+                what="label",
                 record_id=record_id,
-                df=df,
             )
+        )
 
-            assert file.delete(
-                dataset.path_of_record(
-                    what="label",
-                    record_id=record_id,
-                )
-            )
+    for record_id_, expected_success in zip(
+        [record_id, "void"],
+        [True, False],
+    ):
+        success, image = dataset.load_image(record_id=record_id_)
+        assert success == expected_success
+
+        if not expected_success:
+            continue
+
+        assert isinstance(image, np.ndarray)
