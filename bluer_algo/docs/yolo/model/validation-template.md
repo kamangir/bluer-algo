@@ -45,7 +45,7 @@ metadata:::get:::dataset_object_name
     --prefix validation/
 ```
 
-set:::model_object_name coco128-model-2025-09-15-3m0mmj
+set:::model_object_name BLUER_ALGO_COCO128_TEST_MODEL
 
 object:::get:::model_object_name
 
