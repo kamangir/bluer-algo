@@ -11,11 +11,15 @@ title:::
 @yolo dataset review \
     ~download .
 
+@upload public,zip
+
 @assets publish \
     extensions=png,push .
 ```
 
-set:::dataset_object_name coco128-2025-09-13-v7pmdb
+set:::dataset_object_name coco128-2025-09-15-6rpxu2
+
+object:::get:::dataset_object_name
 
 assets:::get:::dataset_object_name/review.png
 
@@ -30,7 +34,7 @@ metadata:::get:::dataset_object_name
     ~download .. . \
     --epochs 20
 
-@upload public,zip .
+@upload public,zip
 
 @assets publish \
     extensions=jpg+png . \
@@ -41,7 +45,7 @@ metadata:::get:::dataset_object_name
     --prefix validation/
 ```
 
-set:::model_object_name 2025-09-14-6iodao
+set:::model_object_name coco128-model-2025-09-15-3m0mmj
 
 object:::get:::model_object_name
 
