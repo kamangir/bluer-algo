@@ -42,6 +42,5 @@ def test_yolo_model_prediction_test(
     )
 
     assert success
-    # TODO: add more asserts
     assert "elapsed_time" in prediction
     assert isinstance(prediction["elapsed_time"], float)

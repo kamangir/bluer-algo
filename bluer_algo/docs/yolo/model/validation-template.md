@@ -77,19 +77,11 @@ details:::
 
 ## predict (dev)
 
-🔥
-
-[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction.ipynb)
-
-set:::object_name TBA
-
-assets:::get:::object_name/prediction.png
-
-metadata:::get:::object_name
+[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction-v3.ipynb)
 
 ## predict
 
-🚧
+🔥
 
 ```bash
 🚧

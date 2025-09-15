@@ -10206,21 +10206,11 @@ train:
 
 ## predict (dev)
 
-🔥
-
-[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction.ipynb)
-
-
-![image](https://github.com/kamangir/assets/blob/main/TBA/prediction.png?raw=true)
-
-```yaml
-{}
-
-```
+[yolo_prediction.ipynb](../../../../notebooks/yolo_prediction-v3.ipynb)
 
 ## predict
 
-🚧
+🔥
 
 ```bash
 🚧
