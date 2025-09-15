@@ -81,8 +81,23 @@ details:::
 
 ## predict
 
-🔥
-
 ```bash
-🚧
+@select yolo-prediction-test-$(@timestamp)
+
+@yolo model prediction_test \
+    upload \
+    $BLUER_ALGO_COCO128_TEST_DATASET \
+    $BLUER_ALGO_COCO128_TEST_MODEL .
+
+@assets publish extensions=png,push
 ```
+
+set:::object_name yolo-prediction-test-2025-09-15-13-42-36-hpe2dc
+
+assets:::get:::object_name/000000000612.png
+
+metadata:::get:::object_name
+
+## predict (rpi)
+
+🚧

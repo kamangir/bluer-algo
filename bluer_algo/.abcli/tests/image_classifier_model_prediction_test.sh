@@ -10,5 +10,5 @@ function test_bluer_algo_image_classifier_model_prediction_test() {
         ,$options \
         $BLUER_ALGO_FRUITS_360_TEST_DATASET \
         $BLUER_ALGO_FRUITS_360_TEST_MODEL \
-        $model_object_name
+        $prediction_object_name
 }
