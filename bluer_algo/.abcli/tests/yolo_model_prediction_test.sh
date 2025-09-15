@@ -11,5 +11,5 @@ function test_bluer_algo_yolo_model_prediction_test() {
         $BLUER_ALGO_COCO128_TEST_DATASET \
         $BLUER_ALGO_COCO128_TEST_MODEL \
         $prediction_object_name \
-        --record_index 1
+        --record_index 3
 }
