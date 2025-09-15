@@ -87,14 +87,15 @@ details:::
 @yolo model prediction_test \
     upload \
     $BLUER_ALGO_COCO128_TEST_DATASET \
-    $BLUER_ALGO_COCO128_TEST_MODEL .
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
 
 @assets publish extensions=png,push
 ```
 
-set:::object_name yolo-prediction-test-2025-09-15-13-42-36-hpe2dc
+set:::object_name yolo-prediction-test-2025-09-15-17-04-49-x54keo
 
-assets:::get:::object_name/000000000612.png
+assets:::get:::object_name/000000000389.png
 
 metadata:::get:::object_name
 

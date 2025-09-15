@@ -9,11 +9,9 @@ def help_prediction_test(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "".join(
-        [
-            xtra("~download,upload", mono=mono),
-        ]
-    )
+    options = (xtra("~download,upload", mono=mono),)
+
+    args = ["[--record_index 0]"]
 
     return show_usage(
         [
@@ -24,7 +22,8 @@ def help_prediction_test(
             "[..|<dataset-object-name>]",
             "[.|<model-object-name>]",
             "[-|<prediction-object-name>]",
-        ],
+        ]
+        + args,
         "test prediction.",
         mono=mono,
     )

@@ -83,6 +83,11 @@ parser.add_argument(
     default=0,
     help="0 | 1",
 )
+parser.add_argument(
+    "--record_index",
+    type=int,
+    default=0,
+)
 args = parser.parse_args()
 
 success = False
@@ -90,6 +95,7 @@ if args.task == "prediction_test":
     success, _ = prediction_test(
         dataset_object_name=args.dataset_object_name,
         model_object_name=args.model_object_name,
+        record_index=args.record_index,
         prediction_object_name=args.prediction_object_name,
     )
 elif args.task == "train":

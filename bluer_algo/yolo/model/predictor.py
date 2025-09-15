@@ -124,6 +124,7 @@ class YoloPredictor:
                     + [
                         f"model: {self.object_name}",
                         detections_as_str,
+                        f"took {string.pretty_duration(elapsed_time)}",
                     ]
                 )
             ],

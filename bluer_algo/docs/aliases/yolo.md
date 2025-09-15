@@ -26,10 +26,11 @@
 @yolo \
 	model \
 	prediction_test \
-	[~download,upload] \
+	[('~download,upload',)] \
 	[..|<dataset-object-name>] \
 	[.|<model-object-name>] \
-	[-|<prediction-object-name>]
+	[-|<prediction-object-name>] \
+	[--record_index 0]
  . test prediction.
 @yolo \
 	model \

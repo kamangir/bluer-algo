@@ -10216,26 +10216,59 @@ train:
 @yolo model prediction_test \
     upload \
     $BLUER_ALGO_COCO128_TEST_DATASET \
-    $BLUER_ALGO_COCO128_TEST_MODEL .
+    $BLUER_ALGO_COCO128_TEST_MODEL . \
+    --record_index 3
 
 @assets publish extensions=png,push
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-13-42-36-hpe2dc/000000000612.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-04-49-x54keo/000000000389.png?raw=true)
 
 ```yaml
-'000000000612':
+000000000389:
   detections:
   - bbox_xyxy:
-    - 322.4268798828125
-    - 21.145965576171875
-    - 381.7052001953125
-    - 204.44866943359375
+    - 167.85377502441406
+    - 283.70269775390625
+    - 217.58558654785156
+    - 334.81072998046875
     class_id: 0
-    confidence: 0.296539843082428
+    confidence: 0.8922585248947144
     label: person
-  elapsed_time: 0.9036648273468018
+  - bbox_xyxy:
+    - 133.1409912109375
+    - 88.43701171875
+    - 540.6605834960938
+    - 477.65869140625
+    class_id: 0
+    confidence: 0.842871367931366
+    label: person
+  - bbox_xyxy:
+    - 469.0397644042969
+    - 291.564697265625
+    - 602.921875
+    - 480.0
+    class_id: 0
+    confidence: 0.49844595789909363
+    label: person
+  - bbox_xyxy:
+    - 0.58984375
+    - 254.95266723632812
+    - 139.97897338867188
+    - 480.0
+    class_id: 0
+    confidence: 0.33697929978370667
+    label: person
+  - bbox_xyxy:
+    - 425.3193359375
+    - 258.2589416503906
+    - 471.283935546875
+    - 314.4782409667969
+    class_id: 0
+    confidence: 0.31127116084098816
+    label: person
+  elapsed_time: 0.9452779293060303
   image_size:
   - 480
   - 640
