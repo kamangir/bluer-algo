@@ -39,7 +39,7 @@ val: coco128/images/train2017
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
-    ~download .. . \
+    ~download,upload .. . \
     --epochs 20
 
 @upload public,zip

@@ -31,7 +31,7 @@ metadata:::get:::dataset_object_name
 @select coco128-model-$(@@timestamp)
 
 @yolo model train \
-    ~download .. . \
+    ~download,upload .. . \
     --epochs 20
 
 @upload public,zip
