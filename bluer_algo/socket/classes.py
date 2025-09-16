@@ -7,6 +7,8 @@ from bluer_algo.logger import logger
 
 DEFAULT_PORT = 8001
 
+DEV_HOST = "dev.local"
+
 
 class SocketComm:
     def __init__(
