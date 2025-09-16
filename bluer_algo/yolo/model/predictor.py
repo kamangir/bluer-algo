@@ -59,6 +59,7 @@ class YoloPredictor:
         line_width: int = 80,
         prediction_object_name: str = "",
         record_id: str = "",
+        return_annotated_image: bool = False,
     ) -> Tuple[bool, Dict]:
         elapsed_time = time.time()
         try:
@@ -112,6 +113,12 @@ class YoloPredictor:
                 }
             )
 
+        if verbose or return_annotated_image:
+            annotated_image = detection.plot()
+
+        if return_annotated_image:
+            metadata["annotated_image"] = annotated_image
+
         if not verbose:
             return True, metadata
 
@@ -123,7 +130,7 @@ class YoloPredictor:
             return False, metadata
 
         annotated_image = add_signature(
-            detection.plot(),
+            annotated_image,
             header=[
                 " | ".join(
                     ["yolo"]
