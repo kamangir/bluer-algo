@@ -113,6 +113,12 @@ class YoloPredictor:
                 }
             )
 
+        metadata["detections"] = sorted(
+            metadata["detections"],
+            key=lambda detection: detection["confidence"],
+            reverse=True,
+        )
+
         if verbose or return_annotated_image:
             annotated_image = detection.plot()
 
