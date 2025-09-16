@@ -9,6 +9,7 @@ import pandas as pd
 
 from blueness import module
 from bluer_options.logger import log_list, log_list_as_str, crash_report
+from bluer_options import host
 from bluer_objects import objects, file, path
 from bluer_objects.logger.image import log_image_grid
 from bluer_objects.metadata import post_to_object
@@ -25,25 +26,53 @@ class YoloDataset:
         self,
         object_name: str,
         log: bool = True,
+        create: bool = False,
     ):
         self.object_name = object_name
 
-        self.valid, self.metadata = file.load_yaml(
-            objects.path_of(
-                object_name=object_name,
-                filename="metadata.yaml",
+        if create:
+            self.valid = True
+
+            self.metadata = {
+                "dataset": {
+                    "count": 0,
+                },
+                "names": {
+                    0: "target",
+                },
+                "source": host.get_name(),
+                "train": "images/train",
+                "val": "images/val",
+            }
+        else:
+            self.valid, self.metadata = file.load_yaml(
+                objects.path_of(
+                    object_name=object_name,
+                    filename="metadata.yaml",
+                )
             )
-        )
 
         self.train_images_path = os.path.join(
             objects.object_path(object_name),
             self.metadata.get("train", "void"),
         )
+        if create:
+            if not path.create(
+                self.train_images_path,
+                log=True,
+            ):
+                self.valid = False
 
         self.train_labels_path = self.train_images_path.replace(
             "images",
             "labels",
         )
+        if create:
+            if not path.create(
+                self.train_labels_path,
+                log=True,
+            ):
+                self.valid = False
 
         list_of_images = [
             file.name(filename)
@@ -349,6 +378,11 @@ class YoloDataset:
             )
         )
 
+        return True
+
+    def save(self) -> bool:
+        # TODO: dev
+        logger.info("🪄")
         return True
 
     def save_label(
