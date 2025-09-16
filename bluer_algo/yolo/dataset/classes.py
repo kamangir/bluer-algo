@@ -380,11 +380,6 @@ class YoloDataset:
 
         return True
 
-    def save(self) -> bool:
-        # TODO: dev
-        logger.info("🪄")
-        return True
-
     def save_label(
         self,
         record_id: str,
