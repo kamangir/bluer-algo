@@ -26,10 +26,11 @@
 @yolo \
 	model \
 	prediction_test \
-	[('~download,upload',)] \
+	[~download,upload] \
 	[..|<dataset-object-name>] \
 	[.|<model-object-name>] \
 	[-|<prediction-object-name>] \
+	[--image_size 640] \
 	[--record_index 0] \
 	[--warmup 0]
  . test prediction.

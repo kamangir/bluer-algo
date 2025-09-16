@@ -104,6 +104,7 @@ if args.task == "prediction_test":
         record_index=args.record_index,
         prediction_object_name=args.prediction_object_name,
         warmup=args.warmup == 1,
+        image_size=args.image_size,
     )
 elif args.task == "train":
     success = train(
