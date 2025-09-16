@@ -1,4 +1,6 @@
 from typing import Tuple, Dict
+from tqdm import tqdm
+
 from bluer_objects import objects
 
 from bluer_algo.yolo.model.predictor import YoloPredictor
@@ -11,6 +13,7 @@ def prediction_test(
     record_index: int = 0,
     prediction_object_name: str = "",
     verbose: bool = True,
+    warmup: bool = True,
 ) -> Tuple[bool, Dict]:
     dataset = YoloDataset(object_name=dataset_object_name)
     if not dataset.valid:
@@ -20,22 +23,34 @@ def prediction_test(
     if not success:
         return False, {}
 
-    record_id = dataset.list_of_records[record_index]
-
-    success, image = dataset.load_image(
-        record_id=record_id,
-        verbose=verbose,
+    list_of_record_id = (
+        [
+            dataset.list_of_records[0],
+            dataset.list_of_records[record_index],
+        ]
+        if warmup
+        else [dataset.list_of_records[record_index]]
     )
-    if not success:
-        return False, {}
 
-    return predictor.predict(
-        image=image,
-        header=objects.signature(
-            record_id,
-            object_name=dataset_object_name,
-        ),
-        verbose=verbose,
-        prediction_object_name=prediction_object_name,
-        record_id=record_id,
-    )
+    for record_id in tqdm(list_of_record_id):
+        success, image = dataset.load_image(
+            record_id=record_id,
+            verbose=verbose,
+        )
+        if not success:
+            return False, {}
+
+        success, output = predictor.predict(
+            image=image,
+            header=objects.signature(
+                record_id,
+                object_name=dataset_object_name,
+            ),
+            verbose=False if warmup else verbose,
+            prediction_object_name=prediction_object_name,
+            record_id=record_id,
+        )
+
+        warmup = False
+
+    return success, output

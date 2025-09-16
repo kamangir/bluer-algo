@@ -10223,7 +10223,7 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-07-37-z8vn4m/000000000389.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-16-09-02-16-8n1sud/000000000389.png?raw=true)
 
 ```yaml
 000000000389:
@@ -10268,7 +10268,7 @@ train:
     class_id: 0
     confidence: 0.31127116084098816
     label: person
-  elapsed_time: 0.9667267799377441
+  elapsed_time: 0.08387088775634766
   image_size:
   - 480
   - 640
@@ -10290,7 +10290,7 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-29-12-dwznal/000000000419.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-16-09-03-07-eqlzng/000000000419.png?raw=true)
 
 ```yaml
 000000000419:
@@ -10311,7 +10311,7 @@ train:
     class_id: 0
     confidence: 0.4342321455478668
     label: person
-  elapsed_time: 13.924468755722046
+  elapsed_time: 2.339571714401245
   image_size:
   - 480
   - 640

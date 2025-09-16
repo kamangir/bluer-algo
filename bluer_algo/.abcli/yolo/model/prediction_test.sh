@@ -13,7 +13,9 @@ function bluer_algo_yolo_model_prediction_test() {
         bluer_objects_download \
             policy=doesnt_exist \
             $dataset_object_name
-        bluer_objects_download - $model_object_name
+        bluer_objects_download \
+            policy=doesnt_exist \
+            $model_object_name
     fi
 
     local prediction_object_name=$(bluer_ai_clarify_object $4 yolo-prediction-$(bluer_ai_string_timestamp))

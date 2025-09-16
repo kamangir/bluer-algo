@@ -11,7 +11,10 @@ def help_prediction_test(
 ) -> str:
     options = (xtra("~download,upload", mono=mono),)
 
-    args = ["[--record_index 0]"]
+    args = [
+        "[--record_index 0]",
+        "[--warmup 0]",
+    ]
 
     return show_usage(
         [

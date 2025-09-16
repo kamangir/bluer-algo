@@ -5,10 +5,8 @@ import cv2
 from bluer_options import string
 from bluer_options.env import abcli_hostname
 
-from bluer_algo.socket.classes import SocketComm
+from bluer_algo.socket.classes import SocketComm, DEV_HOST
 from bluer_algo.logger import logger
-
-TARGETING_HOST = "dev.local"
 
 
 class Target:
@@ -82,11 +80,11 @@ class Target:
         logger.info(
             'run "{}" on {}.'.format(
                 f"@swallow select_target --host {abcli_hostname}.local",
-                TARGETING_HOST,
+                DEV_HOST,
             )
         )
 
-        socket = SocketComm.connect_to(TARGETING_HOST)
+        socket = SocketComm.connect_to(DEV_HOST)
         if not socket.send_data(frame):
             return False, (0, 0, 0, 0)
 

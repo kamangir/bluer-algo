@@ -59,6 +59,7 @@ class YoloPredictor:
         line_width: int = 80,
         prediction_object_name: str = "",
         record_id: str = "",
+        return_annotated_image: bool = False,
     ) -> Tuple[bool, Dict]:
         elapsed_time = time.time()
         try:
@@ -112,6 +113,20 @@ class YoloPredictor:
                 }
             )
 
+        metadata["detections"] = sorted(
+            metadata["detections"],
+            key=lambda detection: detection["confidence"],
+            reverse=True,
+        )
+
+        annotated_image = np.array([])
+
+        if verbose or return_annotated_image:
+            annotated_image = detection.plot()
+
+        if return_annotated_image:
+            metadata["annotated_image"] = annotated_image
+
         if not verbose:
             return True, metadata
 
@@ -123,13 +138,14 @@ class YoloPredictor:
             return False, metadata
 
         annotated_image = add_signature(
-            detection.plot(),
+            annotated_image,
             header=[
                 " | ".join(
                     ["yolo"]
                     + header
                     + [
                         f"model: {self.object_name}",
+                        f"size: {self.model_size}",
                         detections_as_str,
                         elapsed_time_as_str,
                     ]
@@ -149,3 +165,22 @@ class YoloPredictor:
         )
 
         return success, metadata
+
+    @property
+    def model_size(self) -> str:
+        depth = self.model.model.yaml["depth_multiple"]
+        width = self.model.model.yaml["width_multiple"]
+
+        model_size = "unknown"
+        if depth == 0.33 and width == 0.25:
+            model_size = "nano"
+        elif depth == 0.33 and width == 0.50:
+            model_size = "small"
+        elif depth == 0.67 and width == 0.75:
+            model_size = "medium"
+        elif depth == 1.0 and width == 1.0:
+            model_size = "large"
+        elif depth == 1.33 and width == 1.25:
+            model_size = "x-large"
+
+        return f"{model_size} ({depth}x{width})"
