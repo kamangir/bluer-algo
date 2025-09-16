@@ -18,19 +18,22 @@ class YoloPredictor:
     def __init__(self):
         self.object_name: str = ""
         self.model: YOLO = None
+        self.image_size: int = 640
 
     @staticmethod
     def load(
         object_name: str,
         what: str = "best",  # best | last
+        image_size: int = 640,
     ) -> Tuple[bool, "YoloPredictor"]:
         predictor = YoloPredictor()
 
         logger.info(
-            "loading {} from {}/{} ...".format(
+            "loading {} from {}/{} @ image-size={}".format(
                 predictor.__class__.__name__,
                 object_name,
                 what,
+                image_size,
             )
         )
         predictor.object_name = object_name
@@ -48,6 +51,8 @@ class YoloPredictor:
 
         logger.info(predictor.model)
 
+        predictor.image_size = image_size
+
         return True, predictor
 
     def predict(
@@ -63,7 +68,10 @@ class YoloPredictor:
     ) -> Tuple[bool, Dict]:
         elapsed_time = time.time()
         try:
-            list_of_detections = self.model.predict(source=image)
+            list_of_detections = self.model.predict(
+                source=image,
+                imgsz=self.image_size,
+            )
         except Exception as e:
             logger.error(e)
             return False, {}
@@ -146,6 +154,7 @@ class YoloPredictor:
                     + [
                         f"model: {self.object_name}",
                         f"size: {self.model_size}",
+                        f"image size: {self.image_size}",
                         detections_as_str,
                         elapsed_time_as_str,
                     ]

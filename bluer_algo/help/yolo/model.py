@@ -9,9 +9,10 @@ def help_prediction_test(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = (xtra("~download,upload", mono=mono),)
+    options = xtra("~download,upload", mono=mono)
 
     args = [
+        "[--image_size 640]",
         "[--record_index 0]",
         "[--warmup 0]",
     ]

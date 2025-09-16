@@ -14,12 +14,16 @@ def prediction_test(
     prediction_object_name: str = "",
     verbose: bool = True,
     warmup: bool = True,
+    image_size: int = 640,
 ) -> Tuple[bool, Dict]:
     dataset = YoloDataset(object_name=dataset_object_name)
     if not dataset.valid:
         return False, {}
 
-    success, predictor = YoloPredictor.load(object_name=model_object_name)
+    success, predictor = YoloPredictor.load(
+        object_name=model_object_name,
+        image_size=image_size,
+    )
     if not success:
         return False, {}
 
