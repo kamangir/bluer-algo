@@ -88,6 +88,12 @@ parser.add_argument(
     type=int,
     default=0,
 )
+parser.add_argument(
+    "--warmup",
+    type=int,
+    default=1,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -97,6 +103,7 @@ if args.task == "prediction_test":
         model_object_name=args.model_object_name,
         record_index=args.record_index,
         prediction_object_name=args.prediction_object_name,
+        warmup=args.warmup == 1,
     )
 elif args.task == "train":
     success = train(

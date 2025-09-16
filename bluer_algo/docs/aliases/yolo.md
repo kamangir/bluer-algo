@@ -30,7 +30,8 @@
 	[..|<dataset-object-name>] \
 	[.|<model-object-name>] \
 	[-|<prediction-object-name>] \
-	[--record_index 0]
+	[--record_index 0] \
+	[--warmup 0]
  . test prediction.
 @yolo \
 	model \
