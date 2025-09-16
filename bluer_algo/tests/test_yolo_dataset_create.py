@@ -11,5 +11,5 @@ def test_yolo_dataset_create():
         create=True,
     )
 
-    assert dataset.valid == True
+    assert dataset.valid
     assert dataset.empty

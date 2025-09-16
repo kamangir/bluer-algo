@@ -119,6 +119,8 @@ class YoloPredictor:
             reverse=True,
         )
 
+        annotated_image = np.array([])
+
         if verbose or return_annotated_image:
             annotated_image = detection.plot()
 
