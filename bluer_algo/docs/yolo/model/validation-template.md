@@ -93,7 +93,7 @@ details:::
 @assets publish extensions=png,push
 ```
 
-set:::object_name TBA
+set:::object_name yolo-prediction-test-2025-09-16-09-02-16-8n1sud
 
 assets:::get:::object_name/000000000389.png
 
@@ -113,7 +113,7 @@ metadata:::get:::object_name
 @assets publish extensions=png,push
 ```
 
-set:::object_rpi_name TBA
+set:::object_rpi_name yolo-prediction-test-2025-09-16-09-03-07-eqlzng
 
 assets:::get:::object_rpi_name/000000000419.png
 
