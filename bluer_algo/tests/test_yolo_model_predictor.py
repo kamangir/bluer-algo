@@ -26,3 +26,4 @@ def test_yolo_model_predictor(
     assert success
 
     assert isinstance(predictor, YoloPredictor)
+    assert isinstance(predictor.model_size, str)

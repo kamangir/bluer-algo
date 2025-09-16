@@ -10223,55 +10223,10 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-07-37-z8vn4m/000000000389.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/TBA/000000000389.png?raw=true)
 
 ```yaml
-000000000389:
-  detections:
-  - bbox_xyxy:
-    - 167.85377502441406
-    - 283.70269775390625
-    - 217.58558654785156
-    - 334.81072998046875
-    class_id: 0
-    confidence: 0.8922585248947144
-    label: person
-  - bbox_xyxy:
-    - 133.1409912109375
-    - 88.43701171875
-    - 540.6605834960938
-    - 477.65869140625
-    class_id: 0
-    confidence: 0.842871367931366
-    label: person
-  - bbox_xyxy:
-    - 469.0397644042969
-    - 291.564697265625
-    - 602.921875
-    - 480.0
-    class_id: 0
-    confidence: 0.49844595789909363
-    label: person
-  - bbox_xyxy:
-    - 0.58984375
-    - 254.95266723632812
-    - 139.97897338867188
-    - 480.0
-    class_id: 0
-    confidence: 0.33697929978370667
-    label: person
-  - bbox_xyxy:
-    - 425.3193359375
-    - 258.2589416503906
-    - 471.283935546875
-    - 314.4782409667969
-    class_id: 0
-    confidence: 0.31127116084098816
-    label: person
-  elapsed_time: 0.9667267799377441
-  image_size:
-  - 480
-  - 640
+{}
 
 ```
 
@@ -10290,30 +10245,9 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-15-17-29-12-dwznal/000000000419.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/TBA/000000000419.png?raw=true)
 
 ```yaml
-000000000419:
-  detections:
-  - bbox_xyxy:
-    - 124.66294860839844
-    - 121.88188934326172
-    - 170.0297393798828
-    - 281.0235595703125
-    class_id: 0
-    confidence: 0.7116779088973999
-    label: person
-  - bbox_xyxy:
-    - 455.524658203125
-    - 231.17758178710938
-    - 635.5400390625
-    - 478.5752868652344
-    class_id: 0
-    confidence: 0.4342321455478668
-    label: person
-  elapsed_time: 13.924468755722046
-  image_size:
-  - 480
-  - 640
+{}
 
 ```
