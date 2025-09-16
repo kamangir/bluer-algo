@@ -10,4 +10,6 @@ def test_yolo_dataset_create():
         object_name=object_name,
         create=True,
     )
+
     assert dataset.valid == True
+    assert dataset.empty

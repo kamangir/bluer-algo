@@ -58,6 +58,8 @@ def test_yolo_dataset(
     assert dataset.list_of_records
     record_id = dataset.list_of_records[0]
 
+    assert not dataset.empty
+
     assert dataset.review()
 
     assert isinstance(dataset.signature(), list)

@@ -117,6 +117,10 @@ class YoloDataset:
         if log:
             logger.info(", ".join(self.signature()))
 
+    @property
+    def empty(self) -> bool:
+        return len(self.list_of_records) == 0
+
     def filter(
         self,
         classes: List[str],
