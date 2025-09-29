@@ -154,8 +154,8 @@ class YoloPredictor:
                             f"model: {self.object_name}",
                             f"size: {self.model_size}",
                             f"image size: {self.image_size}",
-                            detections_as_str,
                             elapsed_time_as_str,
+                            detections_as_str,
                         ]
                     )
                 ],
