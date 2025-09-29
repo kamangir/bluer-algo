@@ -132,6 +132,25 @@ class YoloPredictor:
         if verbose or return_annotated_image:
             annotated_image = detection.plot()
 
+            annotated_image = add_signature(
+                annotated_image,
+                header=[
+                    " | ".join(
+                        ["yolo"]
+                        + header
+                        + [
+                            f"model: {self.object_name}",
+                            f"size: {self.model_size}",
+                            f"image size: {self.image_size}",
+                            detections_as_str,
+                            elapsed_time_as_str,
+                        ]
+                    )
+                ],
+                footer=[" | ".join(signature())],
+                line_width=line_width,
+            )
+
         if return_annotated_image:
             metadata["annotated_image"] = annotated_image
 
@@ -144,25 +163,6 @@ class YoloPredictor:
             metadata,
         ):
             return False, metadata
-
-        annotated_image = add_signature(
-            annotated_image,
-            header=[
-                " | ".join(
-                    ["yolo"]
-                    + header
-                    + [
-                        f"model: {self.object_name}",
-                        f"size: {self.model_size}",
-                        f"image size: {self.image_size}",
-                        detections_as_str,
-                        elapsed_time_as_str,
-                    ]
-                )
-            ],
-            footer=[" | ".join(signature())],
-            line_width=line_width,
-        )
 
         success = file.save_image(
             objects.path_of(
