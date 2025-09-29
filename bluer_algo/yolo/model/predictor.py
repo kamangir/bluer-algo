@@ -2,6 +2,7 @@ from ultralytics import YOLO
 import numpy as np
 from typing import Tuple, Dict, List
 from collections import Counter
+import cv2
 import time
 
 from bluer_options import string
@@ -65,6 +66,7 @@ class YoloPredictor:
         prediction_object_name: str = "",
         record_id: str = "",
         return_annotated_image: bool = False,
+        annotated_image_scale: int = 1,
     ) -> Tuple[bool, Dict]:
         elapsed_time = time.time()
         try:
@@ -132,6 +134,35 @@ class YoloPredictor:
         if verbose or return_annotated_image:
             annotated_image = detection.plot()
 
+            if annotated_image_scale != 1:
+                annotated_image = cv2.resize(
+                    annotated_image,
+                    (
+                        int(annotated_image_scale * annotated_image.shape[1]),
+                        int(annotated_image_scale * annotated_image.shape[0]),
+                    ),
+                    interpolation=cv2.INTER_NEAREST_EXACT,
+                )
+
+            annotated_image = add_signature(
+                annotated_image,
+                header=[
+                    " | ".join(
+                        ["yolo"]
+                        + header
+                        + [
+                            f"model: {self.object_name}",
+                            f"size: {self.model_size}",
+                            f"image size: {self.image_size}",
+                            elapsed_time_as_str,
+                            detections_as_str,
+                        ]
+                    )
+                ],
+                footer=[" | ".join(signature())],
+                line_width=line_width,
+            )
+
         if return_annotated_image:
             metadata["annotated_image"] = annotated_image
 
@@ -144,25 +175,6 @@ class YoloPredictor:
             metadata,
         ):
             return False, metadata
-
-        annotated_image = add_signature(
-            annotated_image,
-            header=[
-                " | ".join(
-                    ["yolo"]
-                    + header
-                    + [
-                        f"model: {self.object_name}",
-                        f"size: {self.model_size}",
-                        f"image size: {self.image_size}",
-                        detections_as_str,
-                        elapsed_time_as_str,
-                    ]
-                )
-            ],
-            footer=[" | ".join(signature())],
-            line_width=line_width,
-        )
 
         success = file.save_image(
             objects.path_of(
