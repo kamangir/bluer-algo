@@ -10,7 +10,7 @@ DEFAULT_PORT = 8001
 DEV_HOST = "dev.local"
 
 
-class SocketComm:
+class SocketConnection:
     def __init__(
         self,
         host: str,
@@ -32,7 +32,7 @@ class SocketComm:
         cls,
         target_host: str,
         port: int = DEFAULT_PORT,
-    ) -> "SocketComm":
+    ) -> "SocketConnection":
         return cls(
             host=target_host,
             port=port,
@@ -42,7 +42,7 @@ class SocketComm:
     def listen_on(
         cls,
         port: int = DEFAULT_PORT,
-    ) -> "SocketComm":
+    ) -> "SocketConnection":
         return cls(
             host="0.0.0.0",
             port=port,

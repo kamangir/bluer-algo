@@ -3,7 +3,7 @@ from typing import Any, Type
 from blueness import module
 
 from bluer_algo import NAME
-from bluer_algo.socket.classes import SocketComm
+from bluer_algo.socket.connection import SocketConnection
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -12,7 +12,7 @@ NAME = module.name(__file__, NAME)
 def test_receiving(expected_class: Type = str) -> bool:
     logger.info(f"{NAME}: testing receiving ...")
 
-    socket = SocketComm.listen_on()
+    socket = SocketConnection.listen_on()
 
     success, data = socket.receive_data(expected_class)
     if not success:
@@ -29,6 +29,6 @@ def test_sending(
 ) -> bool:
     logger.info(f"{NAME}: testing sending ...")
 
-    socket = SocketComm.connect_to(target_host)
+    socket = SocketConnection.connect_to(target_host)
 
     return socket.send_data(data)
