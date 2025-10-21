@@ -8,6 +8,6 @@ class SocketMessage:
         self,
         payload: Dict[str, Any] = {},
     ):
-        self.payload: Dict[str, Any] = payload.copy()
+        self.payload: Dict[str, Any] = payload
 
         self.hostname = abcli_hostname
