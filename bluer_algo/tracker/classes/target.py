@@ -5,7 +5,7 @@ import cv2
 from bluer_options import string
 from bluer_options.env import abcli_hostname
 
-from bluer_algo.socket.classes import SocketComm, DEV_HOST
+from bluer_algo.socket.connection import SocketConnection, DEV_HOST
 from bluer_algo.logger import logger
 
 
@@ -84,9 +84,9 @@ class Target:
             )
         )
 
-        socket = SocketComm.connect_to(DEV_HOST)
+        socket = SocketConnection.connect_to(DEV_HOST)
         if not socket.send_data(frame):
             return False, (0, 0, 0, 0)
 
-        socket = SocketComm.listen_on()
+        socket = SocketConnection.listen_on()
         return socket.receive_data(tuple)
