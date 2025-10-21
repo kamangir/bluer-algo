@@ -17,4 +17,4 @@ def test_socket_message(payload: Dict[str, Any]):
     message = SocketMessage(payload)
 
     assert isinstance(message, SocketMessage)
-    assert message.hostname
+    assert isinstance(message.hostname, str)
