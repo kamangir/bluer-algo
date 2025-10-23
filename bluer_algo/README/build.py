@@ -12,8 +12,9 @@ from bluer_algo.README.items import items
 def build():
     return all(
         README.build(
-            items=readme.get("items", []),
-            path=os.path.join(file.path(__file__), readme["path"]),
+            items=doc.get("items", []),
+            path=os.path.join(file.path(__file__), doc["path"]),
+            cols=doc.get("cols", 3),
             ICON=ICON,
             NAME=NAME,
             VERSION=VERSION,
@@ -24,9 +25,15 @@ def build():
                 mono=True,
             ),
         )
-        for readme in [
-            {"path": "../docs"},
-            {"path": "../..", "items": items},
+        for doc in [
+            {
+                "path": "../docs",
+            },
+            {
+                "path": "../..",
+                "cols": 2,
+                "items": items,
+            },
         ]
         + image_classifier.docs
         + socket.docs
