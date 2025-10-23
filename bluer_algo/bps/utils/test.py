@@ -7,8 +7,9 @@ from dbus_next.service import ServiceInterface, method
 from dbus_next import BusType
 
 from blueness import module
-from bluer_sandbox import NAME
-from bluer_sandbox.logger import logger
+
+from bluer_algo import NAME
+from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
 

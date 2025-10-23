@@ -9,7 +9,7 @@
 ```
 
 ```text
-🌀  bluer_sandbox.bps.utils.test: connected to system bus with unique name: :1.56
+🌀  bluer_algo.bps.utils.test: connected to system bus with unique name: :1.56
 🌀  exported org.example.Hello at /org/example/Hello
 🌀  run in another terminal: "@bps introspect unique_bus_name=:1.56"
 ```
@@ -27,7 +27,7 @@ s "Pong"
 validate in the first window,
 
 ```text
-🌀  bluer_sandbox.bps.utils.test.ping() called by busctl!
+🌀  bluer_algo.bps.utils.test.ping() called by busctl!
 ```
 
 tested on 2 rpis.

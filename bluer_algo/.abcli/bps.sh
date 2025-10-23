@@ -2,7 +2,7 @@
 
 # continues sandbox/bps/v1
 
-function bluer_sandbox_bps() {
+function bluer_algo_bps() {
     local task=${1:-test}
 
     if [[ "$abcli_is_rpi" == false ]]; then
@@ -17,11 +17,11 @@ function bluer_sandbox_bps() {
     do_start_bluetooth=$(bluer_ai_option_int "$options" start_bluetooth $do_start_bluetooth)
 
     if [[ "$do_start_bluetooth" == 1 ]]; then
-        bluer_sandbox_bps_start_bluetooth $options
+        bluer_algo_bps_start_bluetooth $options
         [[ $? -ne 0 ]] && return 1
     fi
 
-    local function_name=bluer_sandbox_bps_$task
+    local function_name=bluer_algo_bps_$task
     if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
         return

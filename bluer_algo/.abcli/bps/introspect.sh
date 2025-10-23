@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function bluer_sandbox_bps_introspect() {
+function bluer_algo_bps_introspect() {
     local options=$1
     local unique_bus_name=$(bluer_ai_option "$options" unique_bus_name)
 

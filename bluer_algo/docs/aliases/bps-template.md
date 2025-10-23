@@ -1,3 +1,3 @@
 title:::
 
-help::: bluer_sandbox bps
+help::: bluer_algo bps

@@ -18,8 +18,8 @@ starting bluetooth...
 Changing power on succeeded
 ⚙️  sudo bluetoothctl discoverable on
 AdvertisementMonitor path registered
-⚙️  sudo -E /home/pi/venv/bluer_ai/bin/python3 -m bluer_sandbox.bps.utils.beacon --x 27.061946406295068 --y 39.12480033661038 --z 70.45884193445569 --sigma 70.31657557675341 --timeout 10
-🌀  bluer_sandbox.bps.utils.beacon: every 2 s for 10 s.
+⚙️  sudo -E /home/pi/venv/bluer_ai/bin/python3 -m bluer_algo.bps.utils.beacon --x 27.061946406295068 --y 39.12480033661038 --z 70.45884193445569 --sigma 70.31657557675341 --timeout 10
+🌀  bluer_algo.bps.utils.beacon: every 2 s for 10 s.
 🌀  connected to system bus as :1.31
 ⚠️  🌀  unknown tx_power reply.message_type: MessageType.ERROR
 🌀  adapter TxPower=-1.0 dBm
@@ -48,7 +48,7 @@ starting bluetooth...
 Changing power on succeeded
 ⚙️  sudo bluetoothctl discoverable on
 Changing discoverable on succeeded
-🌀  bluer_sandbox.bps.utils.receiver: LE Scan for 10 s (Ctrl+C to stop) ...
+🌀  bluer_algo.bps.utils.receiver: LE Scan for 10 s (Ctrl+C to stop) ...
 🌀  scanning started...
 🌀  . .. ... .. . .. ... .. . .. .
 🌀  device name: sparrow2

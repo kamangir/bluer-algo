@@ -10,8 +10,9 @@ import struct
 from blueness import module
 from bluer_options import string
 from bluer_options.terminal.functions import hr
-from bluer_sandbox import NAME
-from bluer_sandbox.logger import logger
+
+from bluer_algo import NAME
+from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
 

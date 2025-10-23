@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
-function bluer_sandbox_bps_install() {
+function bluer_algo_bps_install() {
     bluer_ai_log "installing bps ..."
 
-    local asset_path=$(python3 -m bluer_sandbox locate)/assets/bps
+    local asset_path=$(python3 -m bluer_algo locate)/assets/bps
     bluer_ai_log "asset path: $asset_path"
 
     sudo apt update
