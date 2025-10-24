@@ -10,6 +10,8 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
+        f"{NAME}.bps",
+        f"{NAME}.bps.utils",
         f"{NAME}.help",
         f"{NAME}.help.image_classifier",
         f"{NAME}.help.yolo",

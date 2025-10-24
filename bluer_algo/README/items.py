@@ -1,8 +1,15 @@
 from bluer_objects import README
+from bluer_objects.README.consts import assets2
 
 
 items = README.Items(
     [
+        {
+            "name": "bps",
+            "description": "bluer-positioning system.",
+            "marquee": f"{assets2}/bps/02.png?raw=true",
+            "url": "./bluer_algo/docs/bps",
+        },
         {
             "name": "yolo",
             "description": "a yolo interface.",

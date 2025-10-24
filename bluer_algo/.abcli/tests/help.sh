@@ -38,6 +38,14 @@ function test_bluer_algo_help() {
         \
         "@algo tracker" \
         \
+        "@algo bps" \
+        "@bps" \
+        "@bps beacon" \
+        "@bps install" \
+        "@bps introspect" \
+        "@bps receiver" \
+        "@bps test_bluetooth" \
+        \
         "@image_classifier" \
         "@image_classifier dataset" \
         "@image_classifier dataset ingest" \

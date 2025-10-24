@@ -1,7 +1,13 @@
 docs = [
-    {"path": "../docs/aliases"},
-    {"path": "../docs/aliases/image_classifier.md"},
-    {"path": "../docs/aliases/socket.md"},
-    {"path": "../docs/aliases/tracker.md"},
-    {"path": "../docs/aliases/yolo.md"},
+    {
+        "path": f"../docs/aliases/{doc}",
+    }
+    for doc in [
+        "",
+        "bps.md",
+        "image_classifier.md",
+        "socket.md",
+        "tracker.md",
+        "yolo.md",
+    ]
 ]
