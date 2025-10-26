@@ -12,6 +12,8 @@ from bluer_options import string
 from bluer_options.terminal.functions import hr
 
 from bluer_algo import NAME
+from bluer_algo.bps.stream import Stream
+from bluer_algo.bps.stream import Ping
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -32,6 +34,7 @@ def to_dict(obj):
 
 
 async def main(
+    stream: Stream,
     grep: str = "",
     timeout: float = 10.0,
 ):
@@ -66,17 +69,19 @@ async def main(
                 x_, y_, z_, sigma_, tx_power = struct.unpack(
                     "<fffff", advertisement_data.manufacturer_data[0xFFFF]
                 )
-                logger.info(
-                    ", ".join(
-                        [
-                            f"x: {x_:.2f}",
-                            f"y: {y_:.2f}",
-                            f"z: {z_:.2f}",
-                            f"sigma: {sigma_:.2f}",
-                            f"tx_power: {tx_power:.2f}",
-                        ]
-                    )
+                logger.info(f"tx_power: {tx_power:.2f}")
+
+                ping = Ping(
+                    {
+                        "x": x_,
+                        "y": y_,
+                        "z": z_,
+                        "sigma": sigma_,
+                    }
                 )
+                logger.info(ping.as_str())
+
+                stream.history.append(ping)
             except:
                 logger.info(advertisement_data)
 
@@ -109,6 +114,8 @@ async def main(
     await scanner.stop()
     logger.info("scan stopped.")
 
+    stream.save(args.object_name)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(NAME)
@@ -118,6 +125,10 @@ if __name__ == "__main__":
         default="",
     )
     parser.add_argument(
+        "--object_name",
+        type=str,
+    )
+    parser.add_argument(
         "--timeout",
         type=float,
         default=10.0,
@@ -125,8 +136,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    stream = Stream.load(args.object_name)
+
     asyncio.run(
         main(
+            stream=stream,
             grep=args.grep,
             timeout=args.timeout,
         )

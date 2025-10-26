@@ -11,10 +11,13 @@ from dbus_next.service import ServiceInterface, method, dbus_property
 from dbus_next import Variant, BusType, Message, MessageType
 
 from blueness import module
+from blueness.argparse.generic import sys_exit
 from bluer_options import string
 from bluer_options.env import abcli_hostname
 
 from bluer_algo import NAME
+from bluer_algo.bps.ping import Ping
+from bluer_algo.bps.stream import Stream
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -64,10 +67,7 @@ class Advertisement(ServiceInterface):
     def __init__(
         self,
         name: str,
-        x=0.0,
-        y=0.0,
-        z=0.0,
-        sigma=1.0,
+        ping: Ping,
         tx_power=0.0,
     ):
         super().__init__(AD_IFACE)
@@ -75,7 +75,16 @@ class Advertisement(ServiceInterface):
         self._type = "peripheral"
         self._include_tx_power = True
         self._service_uuids = []  # keep empty for raw ADV + manufacturer payload
-        self._mfg = {0xFFFF: struct.pack("<fffff", x, y, z, sigma, tx_power)}
+        self._mfg = {
+            0xFFFF: struct.pack(
+                "<fffff",
+                ping.x,
+                ping.y,
+                ping.z,
+                ping.sigma,
+                tx_power,
+            )
+        }
 
     # ---- Required properties (older dbus-next may treat them as writable; add no-op setters)
 
@@ -128,20 +137,14 @@ class Advertisement(ServiceInterface):
 
 async def register_advertisement(
     bus: MessageBus,
-    x: float,
-    y: float,
-    z: float,
-    sigma: float,
+    ping: Ping,
     tx_power: float,
 ):
     logger.info(
-        "registering advertisement: {}".format(
+        "registering advertisement: {} | {}".format(
             ", ".join(
                 [
-                    f"x: {x:.2f}",
-                    f"y: {y:.2f}",
-                    f"z: {z:.2f}",
-                    f"sigma: {sigma:.2f}",
+                    ping.as_str(),
                     f"tx_power: {tx_power:.1f} dBm",
                 ]
             )
@@ -151,10 +154,7 @@ async def register_advertisement(
     # Export our advertisement object on the system bus
     adv = Advertisement(
         name=abcli_hostname,
-        x=x,
-        y=y,
-        z=z,
-        sigma=sigma,
+        ping=ping,
         tx_power=tx_power,
     )
     bus.export(AD_OBJECT_PATH, adv)
@@ -191,10 +191,7 @@ async def unregister_advertisement(bus: MessageBus):
 
 
 async def main(
-    x: float,
-    y: float,
-    z: float,
-    sigma: float,
+    ping: Ping,
     spacing: float = 2.0,
 ):
     # Connect to the SYSTEM bus (the one BlueZ uses)
@@ -212,10 +209,7 @@ async def main(
     try:
         await register_advertisement(
             bus=bus,
-            x=x,
-            y=y,
-            z=z,
-            sigma=sigma,
+            ping=ping,
             tx_power=tx_power,
         )
     except Exception as e:
@@ -256,6 +250,39 @@ async def main(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(NAME)
     parser.add_argument(
+        "--generate",
+        type=int,
+        default=0,
+        help="0 | 1",
+    )
+    parser.add_argument(
+        "--object_name",
+        type=str,
+    )
+    parser.add_argument(
+        "--sigma",
+        type=float,
+        default=4.0,
+    )
+    parser.add_argument(
+        "--simulate",
+        type=int,
+        default=0,
+        help="0 | 1",
+    )
+    parser.add_argument(
+        "--spacing",
+        type=float,
+        default=2.0,
+        help="in seconds.",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=10,
+        help="in seconds, -1: infinite.",
+    )
+    parser.add_argument(
         "--x",
         type=float,
         default=1.0,
@@ -270,27 +297,28 @@ if __name__ == "__main__":
         type=float,
         default=3.0,
     )
-    parser.add_argument(
-        "--sigma",
-        type=float,
-        default=4.0,
-    )
-    parser.add_argument(
-        "--spacing",
-        type=float,
-        default=2.0,
-        help="in seconds.",
-    )
-    parser.add_argument(
-        "--timeout",
-        type=float,
-        default=10,
-        help="in seconds, -1: infinite.",
-    )
     args = parser.parse_args()
 
+    success = True
+    if args.generate == 1:
+        stream = Stream.generate(
+            simulate=args.simulate,
+            as_dict={
+                "x": args.x,
+                "y": args.y,
+                "z": args.z,
+                "sigma": args.sigma,
+            },
+        )
+
+        success = stream.save(args.object_name)
+    else:
+        success, stream = Stream.load(args.object_name)
+    if not success:
+        sys_exit(logger, NAME, "beacon", success)
+
     logger.info(
-        "{}: every {}{}.".format(
+        "{}: every {}{} -> {}".format(
             NAME,
             string.pretty_duration(
                 args.spacing,
@@ -306,16 +334,14 @@ if __name__ == "__main__":
                     )
                 )
             ),
+            args.object_name,
         )
     )
 
     async def runner():
         task = asyncio.create_task(
             main(
-                x=args.x,
-                y=args.y,
-                z=args.z,
-                sigma=args.sigma,
+                ping=stream.ping,
                 spacing=args.spacing,
             )
         )

@@ -4,12 +4,15 @@
 @bps \
 	beacon \
 	[~start_bluetooth,verbose] \
+	[-|<object-name>] \
+	[--generate 1] \
+	[--sigma <4.0>] \
+	[--simulate 1] \
+	[--spacing <2.0>] \
+	[--timeout <10.0 | -1>] \
 	[--x <1.0>] \
 	[--y <2.0>] \
-	[--z <3.0>] \
-	[--sigma <4.0>] \
-	[--spacing <2.0>] \
-	[--timeout <10.0 | -1>]
+	[--z <3.0>]
  . start beacon.
 @bps \
 	install
@@ -21,6 +24,7 @@
 @bps \
 	receiver \
 	[~start_bluetooth,verbose] \
+	[-|<object-name>] \
 	[--grep <sparrow>] \
 	[--timeout <10>]
  . start receiver.

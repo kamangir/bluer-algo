@@ -10,12 +10,14 @@ def help_beacon(
     options = xtra("~start_bluetooth,verbose", mono=mono)
 
     args = [
+        "[--generate 1]",
+        "[--sigma <4.0>]",
+        "[--simulate 1]",
+        "[--spacing <2.0>]",
+        "[--timeout <10.0 | -1>]",
         "[--x <1.0>]",
         "[--y <2.0>]",
         "[--z <3.0>]",
-        "[--sigma <4.0>]",
-        "[--spacing <2.0>]",
-        "[--timeout <10.0 | -1>]",
     ]
 
     return show_usage(
@@ -23,6 +25,7 @@ def help_beacon(
             "@bps",
             "beacon",
             f"[{options}]",
+            "[-|<object-name>]",
         ]
         + args,
         "start beacon.",
@@ -82,6 +85,7 @@ def help_receiver(
             "@bps",
             "receiver",
             f"[{options}]",
+            "[-|<object-name>]",
         ]
         + args,
         "start receiver.",
