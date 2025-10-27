@@ -18,8 +18,8 @@
 on another pi,
 
 ```bash
-@select bps-2025-10-27-09-14-52-hf0n1a
-@bps receiver - . \
+@select bps-2025-10-27-09-18-25-wy7y93
+@bps receiver upload . \
     --grep sparrow \
     --timeout 10
 ```
