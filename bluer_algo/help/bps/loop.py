@@ -31,11 +31,15 @@ def help_stop(
     tokens: List[str],
     mono: bool,
 ) -> str:
+    options = xtra("rpi", mono=mono)
+
     return show_usage(
         [
             "@bps",
             "loop",
             "stop",
+            f"[{options}]",
+            "[<machine-name>]",
         ],
         "stop bps loop.",
         mono=mono,

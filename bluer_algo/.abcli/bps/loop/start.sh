@@ -37,5 +37,5 @@ function bluer_algo_bps_loop_start() {
 
         bluer_ai_hr
     done
-    bluer_ai_log "lock was not detected."
+    bluer_ai_log "stop received."
 }

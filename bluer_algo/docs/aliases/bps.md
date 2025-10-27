@@ -29,7 +29,9 @@
  . start bps loop.
 @bps \
 	loop \
-	stop
+	stop \
+	[rpi] \
+	[<machine-name>]
  . stop bps loop.
 @bps \
 	receiver \
