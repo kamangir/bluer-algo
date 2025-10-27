@@ -11,6 +11,14 @@ def test_bps_stream():
 
     assert isinstance(stream.ping, Ping)
 
+    assert isinstance(stream.signature(), list)
+    for item in stream.signature():
+        assert isinstance(item, str)
+
+    assert isinstance(stream.list_of_hostnames(), list)
+    for hostname in stream.signature():
+        assert isinstance(hostname, str)
+
     # ---
 
     stream.generate()
@@ -29,6 +37,7 @@ def test_bps_stream():
 
     assert isinstance(stream.ping, Ping)
     assert stream.save(object_name)
+    assert stream.visualize(object_name)
 
     # ---
 
@@ -37,6 +46,7 @@ def test_bps_stream():
     assert isinstance(stream, Stream)
 
     # ---
+
     ping = Ping.simulate()
 
     assert stream.append(ping)
