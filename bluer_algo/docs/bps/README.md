@@ -18,6 +18,6 @@ bluer-positioning system.
 - [loop](./loop.md)
 - [mathematics](./mathematics-template.md)
 
-> ℹ️ only works on rpi.
+> ℹ️ works on rpi only.
 
 > ℹ️ tx-power is not implemented in rpi. nominal value: 10-12 dBm. -1: indicates unknown.
