@@ -8,7 +8,7 @@ from bluer_algo.logger import logger
 
 class Stream:
     def __init__(self):
-        self.ping: Ping = Ping()
+        self.ping: Ping = Ping(log=False)
         self.history: List[Ping] = []
 
     def filename(self, object_name: str) -> str:
