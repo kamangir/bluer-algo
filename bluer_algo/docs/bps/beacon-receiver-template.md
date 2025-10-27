@@ -20,6 +20,6 @@ on another rpi,
     --timeout 10
 ```
 
-set:::object_name TBA
+set:::object_name bps-receiver-2025-10-27-13-13-32-9kjzvb
 
 metadata:::get:::object_name:::bps

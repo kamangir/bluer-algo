@@ -11,6 +11,7 @@ function bluer_algo_bps_loop_start() {
 
     local options=$1
     local do_upload=$(bluer_ai_option_int "$options" upload 1)
+    local do_simulate=$(bluer_ai_option_int "$options" simulate 1)
 
     local object_name=$(bluer_ai_clarify_object $2 bps-loop-$(bluer_ai_string_timestamp))
 
@@ -18,7 +19,8 @@ function bluer_algo_bps_loop_start() {
 
         bluer_algo_bps_beacon - \
             $object_name \
-            --timeout $BLUER_AI_BPS_LOOP_BEACON_LENGTH
+            --timeout $BLUER_AI_BPS_LOOP_BEACON_LENGTH \
+            --simulate $do_simulate
         [[ $? -ne 0 ]] && return 1
 
         local receiver_timeout=$(bluer_ai_string_random \

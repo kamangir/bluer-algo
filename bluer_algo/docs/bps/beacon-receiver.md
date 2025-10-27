@@ -22,6 +22,28 @@ on another rpi,
 
 
 ```yaml
-{}
+history:
+- hostname: sparrow3-back
+  rssi: -52
+  sigma: 88.34217834472656
+  tx_power: -1.0
+  x: 33.44688415527344
+  y: 45.99796676635742
+  z: 94.80066680908203
+- hostname: sparrow3-back
+  rssi: -51
+  sigma: 88.34217834472656
+  tx_power: -1.0
+  x: 33.44688415527344
+  y: 45.99796676635742
+  z: 94.80066680908203
+ping:
+  hostname: sparrow2
+  rssi: -1.0
+  sigma: 1000.0
+  tx_power: -1.0
+  x: 0.0
+  y: 0.0
+  z: 0.0
 
 ```

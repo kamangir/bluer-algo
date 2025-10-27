@@ -7,7 +7,12 @@ def help_start(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "upload"
+    options = "".join(
+        [
+            xtra("simulate,", mono=mono),
+            "upload",
+        ]
+    )
 
     return show_usage(
         [

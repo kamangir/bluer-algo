@@ -24,7 +24,7 @@
 @bps \
 	loop \
 	start \
-	[upload] \
+	[simulate,upload] \
 	[.|<object-name>]
  . start bps loop.
 @bps \
