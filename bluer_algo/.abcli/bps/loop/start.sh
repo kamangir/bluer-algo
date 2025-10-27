@@ -26,7 +26,7 @@ function bluer_algo_bps_loop_start() {
         bluer_ai_hr
 
         [[ ! -f "$BPS_FILE_LOCK" ]] &&
-            return 0
+            break
 
         local receiver_timeout=$(bluer_ai_string_random \
             --int 1 \
