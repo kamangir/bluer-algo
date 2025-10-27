@@ -76,12 +76,13 @@ class Advertisement(ServiceInterface):
         self._service_uuids = []  # keep empty for raw ADV + manufacturer payload
         self._mfg = {
             0xFFFF: struct.pack(
-                "<fffff",
+                "<fffff6s",
                 ping.x,
                 ping.y,
                 ping.z,
                 ping.sigma,
                 ping.tx_power,
+                ping.id,
             )
         }
 

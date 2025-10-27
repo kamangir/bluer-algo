@@ -12,7 +12,9 @@ class Ping:
         as_dict: Dict[str, float] = {},
         log: bool = True,
     ):
-        self.id = as_dict.get("id", string.timestamp(unique_length=12))
+        self.id = as_dict.get(
+            "id", string.timestamp(unique_length=6)
+        )  # limited by advertisement packet size limits - can use 7.
 
         self.x = as_dict.get("x", 0.0)
         self.y = as_dict.get("y", 0.0)
