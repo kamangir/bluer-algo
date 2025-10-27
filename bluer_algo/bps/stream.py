@@ -56,6 +56,9 @@ class Stream:
             default=Stream(),
             ignore_error=True,
         )
+        assert isinstance(stream, Stream)
+
+        logger.info(f"loaded {len(stream.history)} ping(s)")
 
         return stream
 
