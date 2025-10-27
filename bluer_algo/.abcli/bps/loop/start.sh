@@ -16,7 +16,7 @@ function bluer_algo_bps_loop_start() {
     local object_name=$(bluer_ai_clarify_object $2 bps-loop-$(bluer_ai_string_timestamp))
 
     while [[ -f "$BPS_FILE_LOCK" ]]; do
-        bluer_algo_bps_beacon - \
+        bluer_algo_bps beacon - \
             $object_name \
             --timeout $BLUER_AI_BPS_LOOP_BEACON_LENGTH \
             --simulate $do_simulate
@@ -32,7 +32,7 @@ function bluer_algo_bps_loop_start() {
             --max $BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MAX)
         bluer_ai_log "receiver timeout: $receiver_timeout s"
 
-        @bps receiver - \
+        bluer_algo_bps receiver - \
             $object_name \
             --grep $BLUER_AI_BPS_LOOP_GREP \
             --timeout $receiver_timeout
