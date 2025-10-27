@@ -132,7 +132,7 @@ class Stream:
             for hostname, color in zip(list_of_hostnames, list_of_colors)
         }
 
-        plt.figure(figsize=(10, 4))
+        plt.figure(figsize=(10, 10))
         plt.plot(
             [ping.x for ping in self.history],
             [ping.y for ping in self.history],
