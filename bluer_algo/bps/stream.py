@@ -181,7 +181,7 @@ class Stream:
         plt.ylabel("y (m)")
 
         plt.tight_layout()
-        ax.set_aspect("equal")
+        ax.set_aspect("equal", "box")
         plt.grid(True)
         return file.save_fig(
             objects.path_of(
