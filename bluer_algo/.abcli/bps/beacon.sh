@@ -2,15 +2,11 @@
 
 function bluer_algo_bps_beacon() {
     local options=$1
-    local do_download=$(bluer_ai_option_int "$options" download 1)
     local do_upload=$(bluer_ai_option_int "$options" upload 0)
 
     local object_name=$(bluer_ai_clarify_object $2 bps-beacon-$(bluer_ai_string_timestamp))
 
     bluer_ai_log "starting bps beacon -> $object_name ..."
-
-    [[ "$do_download" == 1 ]] &&
-        bluer_objects_download - $object_name
 
     bluer_ai_eval ,$options \
         sudo -E \

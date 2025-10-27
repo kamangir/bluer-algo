@@ -3,7 +3,7 @@
 ```bash
 @bps \
 	beacon \
-	[~start_bluetooth,verbose] \
+	[~start_bluetooth,upload,verbose] \
 	[-|<object-name>] \
 	[--generate 1] \
 	[--sigma <4.0>] \
@@ -35,7 +35,7 @@
  . stop bps loop.
 @bps \
 	receiver \
-	[~start_bluetooth,verbose] \
+	[~start_bluetooth,upload,verbose] \
 	[-|<object-name>] \
 	[--grep <sparrow+swallow>] \
 	[--timeout <10>]
