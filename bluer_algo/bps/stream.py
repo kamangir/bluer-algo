@@ -1,6 +1,7 @@
-from typing import List, Tuple
+from typing import List
 
-from bluer_objects import file, objects
+from bluer_objects import file
+from bluer_objects.metadata import get_from_object, post_to_object
 
 from bluer_algo.bps.ping import Ping
 from bluer_algo.logger import logger
@@ -10,12 +11,6 @@ class Stream:
     def __init__(self):
         self.ping: Ping = Ping(log=False)
         self.history: List[Ping] = []
-
-    def filename(self, object_name: str) -> str:
-        return objects.path_of(
-            object_name=object_name,
-            filename="bps.yaml",
-        )
 
     @classmethod
     def generate(
@@ -40,11 +35,7 @@ class Stream:
 
         logger.info(f"loading stream from {object_name}...")
 
-        _, metadata = file.load_yaml(
-            stream.filename(object_name),
-            ignore_error=True,
-        )
-
+        metadata = get_from_object(object_name, "bps", {})
         assert isinstance(metadata, dict)
 
         stream.ping = Ping(metadata.get("ping", Ping().as_dict()))
@@ -57,11 +48,11 @@ class Stream:
         object_name: str,
         log: bool = True,
     ) -> bool:
-        return file.save_yaml(
-            self.filename(object_name),
+        return post_to_object(
+            object_name,
+            "bps",
             {
                 "ping": self.ping.as_dict(),
                 "history": [ping.as_dict() for ping in self.history],
             },
-            log=log,
         )

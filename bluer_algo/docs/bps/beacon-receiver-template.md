@@ -26,4 +26,4 @@ on another pi,
 
 set:::object_name bps-2025-10-27-09-18-25-wy7y93
 
-metadata:::get:::object_name
+metadata:::get:::object_name:::bps

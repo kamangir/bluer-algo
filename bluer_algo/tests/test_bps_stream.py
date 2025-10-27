@@ -9,7 +9,6 @@ def test_bps_stream():
 
     stream = Stream()
 
-    assert isinstance(stream.filename(object_name), str)
     assert isinstance(stream.ping, Ping)
 
     # ---
