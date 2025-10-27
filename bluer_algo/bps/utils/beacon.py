@@ -142,12 +142,8 @@ async def register_advertisement(
 ):
     logger.info(
         "registering advertisement: {} | {}".format(
-            ", ".join(
-                [
-                    ping.as_str(),
-                    f"tx_power: {tx_power:.1f} dBm",
-                ]
-            )
+            ping.as_str(),
+            f"tx_power: {tx_power:.1f} dBm",
         )
     )
 
@@ -300,7 +296,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     success = True
-    if args.generate == 1:
+    if args.generate == 1 or args.simulate == 1:
         stream = Stream.generate(
             simulate=args.simulate,
             as_dict={

@@ -114,8 +114,6 @@ async def main(
     await scanner.stop()
     logger.info("scan stopped.")
 
-    stream.save(args.object_name)
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(NAME)
@@ -145,3 +143,5 @@ if __name__ == "__main__":
             timeout=args.timeout,
         )
     )
+
+    stream.save(args.object_name)

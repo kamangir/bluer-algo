@@ -6,11 +6,12 @@
 
 ```bash
 @select bps-$(@@timestamp)
-@bps beacon simulate,upload . \
+@bps beacon upload . \
+    --generate 1 \
+    --sigma $(@random --float 1)
     --x $(@random --float 1) \
     --y $(@random --float 1) \
     --z $(@random --float 1) \
-    --sigma $(@random --float 1)
     --timeout 10
 ```
 
