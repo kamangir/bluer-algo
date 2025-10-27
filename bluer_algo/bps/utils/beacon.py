@@ -82,7 +82,7 @@ class Advertisement(ServiceInterface):
                 ping.z,
                 ping.sigma,
                 ping.tx_power,
-                ping.id,
+                ping.id.encode("ascii")[:6],  # ✅ ensure bytes, max length 6
             )
         }
 
