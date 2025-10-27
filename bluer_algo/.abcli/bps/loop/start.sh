@@ -16,12 +16,12 @@ function bluer_algo_bps_loop_start() {
     local object_name=$(bluer_ai_clarify_object $2 bps-loop-$(bluer_ai_string_timestamp))
 
     while [[ -f "$BPS_FILE_LOCK" ]]; do
-
         bluer_algo_bps_beacon - \
             $object_name \
             --timeout $BLUER_AI_BPS_LOOP_BEACON_LENGTH \
             --simulate $do_simulate
         [[ $? -ne 0 ]] && return 1
+        bluer_ai_hr
 
         local receiver_timeout=$(bluer_ai_string_random \
             --int 1 \
@@ -34,6 +34,8 @@ function bluer_algo_bps_loop_start() {
             --grep $BLUER_AI_BPS_LOOP_GREP \
             --timeout $receiver_timeout
         [[ $? -ne 0 ]] && return 1
+
+        bluer_ai_hr
     done
     bluer_ai_log "lock was not detected."
 }

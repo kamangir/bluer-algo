@@ -10,6 +10,8 @@ function bluer_algo_bps_receiver() {
 
         local object_name=$(bluer_ai_clarify_object $2 bps-receiver-$(bluer_ai_string_timestamp))
 
+        bluer_ai_log "starting bps receiver -> $object_name ..."
+
         [[ "$do_download" == 1 ]] &&
             bluer_objects_download - $object_name
 

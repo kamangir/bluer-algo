@@ -2,16 +2,16 @@
 
 # bps: loop
 
-on multiple rpis.
+on multiple rpis,
 
 ```bash
-@bps beacon loop start simulate,upload
+@bps loop start simulate,upload
 ``
 
-in another terminal after a few minutes
+in another terminal after a few minutes,
 
 ```bash
-@bps beacon loop stop
+@bps loop stop
 ```
 
 ```yaml

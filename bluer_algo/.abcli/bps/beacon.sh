@@ -7,6 +7,8 @@ function bluer_algo_bps_beacon() {
 
     local object_name=$(bluer_ai_clarify_object $2 bps-beacon-$(bluer_ai_string_timestamp))
 
+    bluer_ai_log "starting bps beacon -> $object_name ..."
+
     [[ "$do_download" == 1 ]] &&
         bluer_objects_download - $object_name
 

@@ -20,7 +20,7 @@ def help_start(
             "loop",
             "start",
             f"[{options}]",
-            "[.|<object-name>]",
+            "[-|<object-name>]",
         ],
         "start bps loop.",
         mono=mono,
