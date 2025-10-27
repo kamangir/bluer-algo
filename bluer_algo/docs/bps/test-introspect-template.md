@@ -9,15 +9,15 @@ title:::
 ```
 
 ```text
-🪄  bluer_algo.bps.utils.test: connected to system bus with unique name: :1.29
+🪄  bluer_algo.bps.utils.test: connected to system bus with unique name: :1.19
 🪄  exported org.example.Hello at /org/example/Hello
-🪄  run in another terminal: "@bps introspect unique_bus_name=:1.29"
+🪄  run in another terminal: "@bps introspect unique_bus_name=:1.19"
 ```
 
 in another terminal,
 
 ```bash
-@bps introspect unique_bus_name=:1.29
+@bps introspect unique_bus_name=:1.19
 ```
 
 ```text

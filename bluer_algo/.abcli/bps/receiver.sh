@@ -17,6 +17,7 @@ function bluer_algo_bps_receiver() {
             sudo -E \
             $(which python) -m \
             bluer_algo.bps.utils.receiver \
+            --object_name $object_name \
             "${@:3}"
 
         [[ $? -ne 0 ]] && return 1

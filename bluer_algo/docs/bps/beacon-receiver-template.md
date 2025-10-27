@@ -8,22 +8,22 @@ title:::
 @select bps-$(@@timestamp)
 @bps beacon upload . \
     --generate 1 \
-    --sigma $(@random --float 1)
+    --sigma $(@random --float 1) \
     --x $(@random --float 1) \
     --y $(@random --float 1) \
     --z $(@random --float 1) \
-    --timeout 10
+    --timeout 60
 ```
 
 on another pi,
 
 ```bash
-@select TBA
+@select bps-2025-10-27-pmwvxj
 @bps receiver - . \
     --grep sparrow \
     --timeout 10
 ```
 
-set:::object_name TBA
+set:::object_name bps-2025-10-27-pmwvxj
 
 metadata:::get:::object_name
