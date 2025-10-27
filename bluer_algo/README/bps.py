@@ -31,5 +31,7 @@ docs = [
         "beacon-receiver",
         "loop",
         "mathematics",
+        "mathematics-timing",
+        "mathematics-localization",
     ]
 ]
