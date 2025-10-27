@@ -138,7 +138,8 @@ class Stream:
                 label=hostname,
             )
 
-        plt.legend()
+        if self.history:
+            plt.legend()
 
         ax = plt.gca()
 

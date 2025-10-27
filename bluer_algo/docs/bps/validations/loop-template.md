@@ -12,8 +12,8 @@ in another terminal after a few minutes,
 @bps loop stop
 ```
 
-set:::object_1_name bps-loop-2025-10-27-19-37-55-w1yp6r
-set:::object_2_name bps-loop-2025-10-27-19-38-52-i0jent
+set:::object_1_name bps-loop-2025-10-27-19-44-19-2orply
+set:::object_2_name bps-loop-2025-10-27-19-44-52-sf78j1
 
 ```bash
 @assets publish \
