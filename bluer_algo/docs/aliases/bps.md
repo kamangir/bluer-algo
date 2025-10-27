@@ -3,7 +3,7 @@
 ```bash
 @bps \
 	beacon \
-	[~start_bluetooth,upload,verbose] \
+	[~start_bluetooth,verbose] \
 	[-|<object-name>] \
 	[--generate 1] \
 	[--sigma <4.0>] \

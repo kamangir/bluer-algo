@@ -9,7 +9,7 @@ def help_beacon(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~start_bluetooth,upload,verbose", mono=mono)
+    options = xtra("~start_bluetooth,verbose", mono=mono)
 
     args = [
         "[--generate 1]",

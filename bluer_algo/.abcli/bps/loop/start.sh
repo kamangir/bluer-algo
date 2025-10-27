@@ -32,7 +32,7 @@ function bluer_algo_bps_loop_start() {
             --max $BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MAX)
         bluer_ai_log "receiver timeout: $receiver_timeout s"
 
-        @bps receiver upload=$do_upload \
+        @bps receiver - \
             $object_name \
             --grep $BLUER_AI_BPS_LOOP_GREP \
             --timeout $receiver_timeout
@@ -41,4 +41,9 @@ function bluer_algo_bps_loop_start() {
         bluer_ai_hr
     done
     bluer_ai_log "stop received."
+
+    [[ "$do_upload" == 1 ]] &&
+        bluer_objects_upload - $object_name
+
+    return 0
 }

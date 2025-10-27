@@ -299,8 +299,6 @@ if __name__ == "__main__":
             },
         )
 
-        stream.save(args.object_name)
-
     logger.info(
         "{}: every {}{} -> {}".format(
             NAME,
