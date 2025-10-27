@@ -112,13 +112,6 @@ class Stream:
         line_width: int = 80,
     ) -> bool:
         list_of_hostnames = self.list_of_hostnames()
-        logger.info(
-            "{} hostname(s): {}".format(
-                len(list_of_hostnames),
-                ", ".join(list_of_hostnames),
-            ),
-        )
-
         list_of_colors = [
             color
             for color in list(matplotlib.colors.BASE_COLORS.keys())
