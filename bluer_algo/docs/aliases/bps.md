@@ -24,7 +24,7 @@
 @bps \
 	loop \
 	start \
-	[dryrun] \
+	[upload] \
 	[.|<object-name>]
  . start bps loop.
 @bps \

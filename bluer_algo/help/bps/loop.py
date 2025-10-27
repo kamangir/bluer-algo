@@ -7,7 +7,7 @@ def help_start(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun", mono=mono)
+    options = "upload"
 
     return show_usage(
         [
@@ -26,8 +26,6 @@ def help_stop(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun", mono=mono)
-
     return show_usage(
         [
             "@bps",
