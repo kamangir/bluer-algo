@@ -12,7 +12,14 @@ docs = [
     {
         "path": "../docs/bps",
         "cols": 2,
-        "items": ImageItems({f"{assets2}/{index+1:02}.png": "" for index in range(4)}),
+        "items": ImageItems(
+            {
+                f"{assets2}/1.png": "",
+                f"{assets2}/2.png": "",
+                f"{assets2}/0.png": "",
+                f"{assets2}/3.png": "",
+            }
+        ),
     }
 ] + [
     {
