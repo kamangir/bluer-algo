@@ -18,12 +18,12 @@ title:::
 on another pi,
 
 ```bash
-@select bps-2025-10-27-09-18-25-wy7y93
+@select bps-2025-10-27-09-23-57-93cqeh
 @bps receiver upload . \
     --grep sparrow \
     --timeout 10
 ```
 
-set:::object_name bps-2025-10-27-09-18-25-wy7y93
+set:::object_name bps-2025-10-27-09-23-57-93cqeh
 
 metadata:::get:::object_name:::bps
