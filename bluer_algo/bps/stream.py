@@ -126,12 +126,17 @@ class Stream:
         }
 
         plt.figure(figsize=(10, 10))
-        plt.plot(
-            [ping.x for ping in self.history],
-            [ping.y for ping in self.history],
-            "o",
-            color="gray",
-        )
+
+        for hostname in list_of_hostnames:
+            plt.plot(
+                [ping.x for ping in self.history if ping.hostname == hostname],
+                [ping.y for ping in self.history if ping.hostname == hostname],
+                "o",
+                color=host_color[hostname],
+                label=hostname,
+            )
+
+        plt.legend()
 
         ax = plt.gca()
 

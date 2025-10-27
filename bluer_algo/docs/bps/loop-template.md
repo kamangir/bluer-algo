@@ -15,6 +15,16 @@ in another terminal after a few minutes,
 set:::object_1_name bps-loop-2025-10-27-18-25-19-uz2ss3
 set:::object_2_name bps-loop-2025-10-27-18-50-39-9riyjz
 
+```bash
+@assets publish \
+	download,extensions=png,push \
+	get:::object_1_name
+
+@assets publish \
+	download,extensions=png,push \
+	get:::object_2_name
+```
+
 | | |
 |-|-|
 | assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png |

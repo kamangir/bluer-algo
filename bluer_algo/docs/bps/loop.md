@@ -13,6 +13,16 @@ in another terminal after a few minutes,
 ```
 
 
+```bash
+@assets publish \
+	download,extensions=png,push \
+	bps-loop-2025-10-27-18-25-19-uz2ss3
+
+@assets publish \
+	download,extensions=png,push \
+	bps-loop-2025-10-27-18-50-39-9riyjz
+```
+
 | | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-27-18-25-19-uz2ss3/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-27-18-50-39-9riyjz/bps.png?raw=true) |
@@ -306,11 +316,11 @@ history:
 ping:
   hostname: sparrow3-back
   rssi: -1.0
-  sigma: 30.928285559314304
+  sigma: 55.4936079170735
   tx_power: -1.0
-  x: 58.474565163041746
-  y: 11.377681916330829
-  z: 61.20365993775947
+  x: 18.11286421370093
+  y: 50.11976330731815
+  z: 90.64402614125939
 
 ```
 
@@ -340,11 +350,11 @@ history:
 ping:
   hostname: sparrow2
   rssi: -1.0
-  sigma: 94.71171137456658
+  sigma: 91.34165595117071
   tx_power: -1.0
-  x: 58.549320512994264
-  y: 51.96989582975711
-  z: 35.78989546635203
+  x: 72.82104278337367
+  y: 95.77787485756927
+  z: 81.48924830719334
 
 ```
 
