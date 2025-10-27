@@ -32,3 +32,5 @@ def test_bluer_algo_env():
     assert isinstance(env.BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MAX, int)
 
     assert isinstance(env.BLUER_AI_BPS_LOOP_GREP, str)
+
+    assert isinstance(env.BLUER_ALGO_BPS_REVIEW_TEST_OBJECT, str)

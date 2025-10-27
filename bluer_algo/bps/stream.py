@@ -35,48 +35,12 @@ class Stream:
 
         return True
 
-    def generate(
-        self,
-        simulate: bool = False,
-        as_dict: dict = {},
-    ):
-        if simulate:
-            logger.info("simulating stream...")
-            self.ping = Ping.simulate()
-        else:
-            logger.info("generating stream...")
-            self.ping = Ping(as_dict)
-
-    def list_of_hostnames(self) -> List[str]:
-        return list({ping.hostname for ping in self.history})
-
-    @classmethod
-    def load(cls, object_name: str) -> "Stream":
-        _, stream = file.load(
-            objects.path_of(
-                object_name=object_name,
-                filename="bps-stream.dill",
-            ),
-            default=Stream(),
-            ignore_error=True,
-        )
-        assert isinstance(stream, Stream)
-
-        logger.info(f"loaded {len(stream.history)} ping(s)")
-
-        return stream
-
-    def save(
+    def export(
         self,
         object_name: str,
         log: bool = True,
+        line_width: int = 80,
     ) -> bool:
-        if not self.visualize(
-            object_name=object_name,
-            log=log,
-        ):
-            return False
-
         if not post_to_object(
             object_name,
             "bps",
@@ -87,32 +51,6 @@ class Stream:
         ):
             return False
 
-        return file.save(
-            objects.path_of(
-                object_name=object_name,
-                filename="bps-stream.dill",
-            ),
-            self,
-            log=log,
-        )
-
-    def signature(self) -> List[str]:
-        list_of_hostnames = self.list_of_hostnames()
-
-        return [
-            "{} ping(s)".format(len(self.history)),
-            "{} hostname(s): {}".format(
-                len(list_of_hostnames),
-                ", ".join(list_of_hostnames),
-            ),
-        ]
-
-    def visualize(
-        self,
-        object_name: str,
-        log: bool = True,
-        line_width: int = 80,
-    ) -> bool:
         list_of_hostnames = self.list_of_hostnames()
         list_of_colors = [
             color
@@ -209,3 +147,59 @@ class Stream:
             ),
             log=log,
         )
+
+    def generate(
+        self,
+        simulate: bool = False,
+        as_dict: dict = {},
+    ):
+        if simulate:
+            logger.info("simulating stream...")
+            self.ping = Ping.simulate()
+        else:
+            logger.info("generating stream...")
+            self.ping = Ping(as_dict)
+
+    def list_of_hostnames(self) -> List[str]:
+        return list({ping.hostname for ping in self.history})
+
+    @classmethod
+    def load(cls, object_name: str) -> "Stream":
+        _, stream = file.load(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps-stream.dill",
+            ),
+            default=Stream(),
+            ignore_error=True,
+        )
+        assert isinstance(stream, Stream)
+
+        logger.info(f"loaded {len(stream.history)} ping(s)")
+
+        return stream
+
+    def save(
+        self,
+        object_name: str,
+        log: bool = True,
+    ) -> bool:
+        return file.save(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps-stream.dill",
+            ),
+            self,
+            log=log,
+        )
+
+    def signature(self) -> List[str]:
+        list_of_hostnames = self.list_of_hostnames()
+
+        return [
+            "{} ping(s)".format(len(self.history)),
+            "{} hostname(s): {}".format(
+                len(list_of_hostnames),
+                ", ".join(list_of_hostnames),
+            ),
+        ]

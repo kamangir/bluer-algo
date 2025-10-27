@@ -37,7 +37,7 @@ def test_bps_stream():
 
     assert isinstance(stream.ping, Ping)
     assert stream.save(object_name)
-    assert stream.visualize(object_name)
+    assert stream.export(object_name)
 
     # ---
 

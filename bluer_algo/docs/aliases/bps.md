@@ -45,6 +45,11 @@
 	[~python,~start_bluetooth,verbose]
  . start receiver.
 @bps \
+	review \
+	[~download,upload] \
+	[.|<object-name>]
+ . review <object-name>.
+@bps \
 	start_bluetooth \
 	[verbose]
  . start bluetooth.

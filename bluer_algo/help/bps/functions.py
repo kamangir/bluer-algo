@@ -115,6 +115,24 @@ def help_receiver(
     )
 
 
+def help_review(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "~download,upload"
+
+    return show_usage(
+        [
+            "@bps",
+            "review",
+            f"[{options}]",
+            "[.|<object-name>]",
+        ],
+        "review <object-name>.",
+        mono=mono,
+    )
+
+
 def help_start_bluetooth(
     tokens: List[str],
     mono: bool,
@@ -155,6 +173,7 @@ help_functions = {
     "introspect": help_introspect,
     "loop": help_loop,
     "receiver": help_receiver,
+    "review": help_review,
     "start_bluetooth": help_start_bluetooth,
     "test": help_test,
 }
