@@ -140,7 +140,7 @@ class Stream:
                 (ping.x, ping.y),
                 radius=ping.sigma,
                 fill=False,
-                color=host_color(ping.hostname),
+                color=host_color[ping.hostname],
             )
             ax.add_artist(circle)
 
@@ -154,7 +154,7 @@ class Stream:
                 ha="center",
                 va="center",
                 fontsize=12,
-                color=host_color(ping.hostname),
+                color=host_color[ping.hostname],
             )
 
         plt.title(
