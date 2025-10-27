@@ -11,7 +11,7 @@ assets2 = assets_url(
 docs = [
     {
         "path": "../docs/bps",
-        "items": ImageItems({f"{assets2}/{index+1:02}.png": "" for index in range(3)}),
+        "items": ImageItems({f"{assets2}/{index+1:02}.png": "" for index in range(4)}),
     }
 ] + [
     {
