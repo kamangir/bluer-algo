@@ -27,6 +27,7 @@ docs = [
     }
     for doc in [
         "literature",
+        "validations",
         "test-introspect",
         "beacon-receiver",
         "loop",

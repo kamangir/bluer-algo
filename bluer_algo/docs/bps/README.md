@@ -13,9 +13,7 @@ bluer-positioning system.
 - [literature](./literature.md)
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
-- [test -> introspect](./test-introspect.md)
-- [beacon -> receiver](./beacon-receiver.md)
-- [loop](./loop.md)
+- [validations](./validations.md)
 - [mathematics](./mathematics.md)
 
 > ℹ️ works on rpi only.
