@@ -152,8 +152,12 @@ class Stream:
             ax.text(
                 ping.x,
                 ping.y + ping.sigma,
-                "tx_power={:.2f} dBm, rssi={:.2f} dBm".format(
-                    ping.tx_power,
+                "{}rssi={:.2f} dBm".format(
+                    (
+                        "tx_power={:.2f} dBm, ".format(ping.tx_power)
+                        if ping.tx_power != -1
+                        else ""
+                    ),
                     ping.rssi,
                 ),
                 ha="center",
