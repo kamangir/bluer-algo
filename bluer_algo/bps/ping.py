@@ -15,14 +15,8 @@ class Ping:
         self.y = as_dict.get("y", 0.0)
         self.z = as_dict.get("z", 0.0)
         self.sigma = as_dict.get("sigma", 1000.0)
-        self.tx_power = as_dict.get("tx_power", -1)  # -1: unknown
-        self.rssi = as_dict.get("rssi", -1)  # -1: unknown
-
-        self.id = hashlib.sha256(
-            self.as_str(
-                short=True,
-            ).encode("utf-8")
-        ).hexdigest()[:16]
+        self.tx_power = as_dict.get("tx_power", -1.0)  # -1: unknown
+        self.rssi = as_dict.get("rssi", -1.0)  # -1: unknown
 
         if log:
             logger.info(self.as_str())
@@ -65,6 +59,14 @@ class Ping:
                 ]
             )
         )
+
+    @property
+    def id(self) -> str:
+        return hashlib.sha256(
+            self.as_str(
+                short=True,
+            ).encode("utf-8")
+        ).hexdigest()[:8]
 
     @classmethod
     def simulate(
