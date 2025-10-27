@@ -84,8 +84,7 @@ async def main(
                     }
                 )
 
-                stream.append(ping)
-                logger.info(f"# unique pings: {len(stream.history)}")
+                stream.append(ping, log=True)
             except:
                 logger.info(advertisement_data)
 

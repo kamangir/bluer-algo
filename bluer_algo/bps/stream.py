@@ -24,6 +24,9 @@ class Stream:
             return False
 
         self.history.append(ping)
+        if log:
+            logger.info(f"🏓 # unique pings: {len(self.history)}")
+
         return True
 
     @classmethod
