@@ -15,8 +15,8 @@ docs = [
         "items": ImageItems(
             {
                 f"{assets2}/01.png": "",
-                f"{assets2}/02.png": "",
                 f"{assets2}/03.png": "",
+                f"{assets2}/02.png": "",
                 f"{assets2}/05.png": "",
             }
         ),
