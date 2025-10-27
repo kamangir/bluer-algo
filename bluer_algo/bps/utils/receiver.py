@@ -68,13 +68,12 @@ async def main(
                 logger.warning("rssi not found.")
 
             try:
-                x_, y_, z_, sigma_, tx_power, id_ = struct.unpack(
-                    "<fffff6s", advertisement_data.manufacturer_data[0xFFFF]
+                x_, y_, z_, sigma_, tx_power = struct.unpack(
+                    "<fffff", advertisement_data.manufacturer_data[0xFFFF]
                 )
 
                 ping = Ping(
                     {
-                        "id": id_,
                         "x": x_,
                         "y": y_,
                         "z": z_,

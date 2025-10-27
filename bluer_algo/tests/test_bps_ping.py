@@ -15,6 +15,7 @@ def test_bps_ping():
     assert isinstance(ping.tx_power, float)
 
     assert isinstance(ping.as_str(), str)
+    assert isinstance(ping.as_str(short=True), str)
 
     as_dict = ping.as_dict()
     for keyword, value in as_dict.items():
@@ -29,7 +30,7 @@ def test_bps_ping_simulation():
 
 
 def test_bps_ping_id_uniqueness():
-    ping_1 = Ping()
-    ping_2 = Ping()
+    ping_1 = Ping.simulate()
+    ping_2 = Ping.simulate()
 
     assert ping_1.id != ping_2.id

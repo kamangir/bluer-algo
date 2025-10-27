@@ -1,7 +1,6 @@
 import random
 from typing import Dict
-
-from bluer_options import string
+import hashlib
 
 from bluer_algo.logger import logger
 
@@ -12,9 +11,6 @@ class Ping:
         as_dict: Dict[str, float] = {},
         log: bool = True,
     ):
-        # limited by advertisement packet size limits - must be < 7.
-        self.id = as_dict.get("id", string.random(length=6))
-
         self.x = as_dict.get("x", 0.0)
         self.y = as_dict.get("y", 0.0)
         self.z = as_dict.get("z", 0.0)
@@ -22,12 +18,17 @@ class Ping:
         self.tx_power = as_dict.get("tx_power", -1)  # -1: unknown
         self.rssi = as_dict.get("rssi", -1)  # -1: unknown
 
+        self.id = hashlib.sha256(
+            self.as_str(
+                short=True,
+            ).encode("utf-8")
+        ).hexdigest()[:16]
+
         if log:
             logger.info(self.as_str())
 
     def as_dict(self) -> dict:
         return {
-            "id": self.id,
             "x": self.x,
             "y": self.y,
             "z": self.z,
@@ -36,26 +37,33 @@ class Ping:
             "rssi": self.rssi,
         }
 
-    def as_str(self) -> str:
+    def as_str(
+        self,
+        short: str = False,
+    ) -> str:
         return ", ".join(
             [
-                "{}[{}] @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
+                "{}{} @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
                     self.__class__.__name__,
-                    self.id,
+                    "" if short else f"[{self.id}]",
                     self.x,
                     self.y,
                     self.z,
                     self.sigma,
                 )
             ]
-            + [
-                "{}: {:.2f} dBm".format(param_name, param_value)
-                for param_name, param_value in {
-                    "tx-power": self.tx_power,
-                    "rssi": self.rssi,
-                }.items()
-                if param_value != -1
-            ]
+            + (
+                []
+                if short
+                else [
+                    "{}: {:.2f} dBm".format(param_name, param_value)
+                    for param_name, param_value in {
+                        "tx-power": self.tx_power,
+                        "rssi": self.rssi,
+                    }.items()
+                    if param_value != -1
+                ]
+            )
         )
 
     @classmethod
