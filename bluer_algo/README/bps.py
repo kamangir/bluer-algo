@@ -14,10 +14,10 @@ docs = [
         "cols": 2,
         "items": ImageItems(
             {
-                f"{assets2}/2.png": "",
-                f"{assets2}/0.png": "",
-                f"{assets2}/1.png": "",
-                f"{assets2}/3.png": "",
+                f"{assets2}/03.png": "",
+                f"{assets2}/01.png": "",
+                f"{assets2}/02.png": "",
+                f"{assets2}/04.png": "",
             }
         ),
     }
