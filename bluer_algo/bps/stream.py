@@ -111,7 +111,7 @@ class Stream:
         log: bool = True,
         line_width: int = 80,
     ) -> bool:
-        list_of_hostnames = self.list_of_hostnames
+        list_of_hostnames = self.list_of_hostnames()
         logger.info(
             "{} hostname(s): {}".format(
                 len(list_of_hostnames),

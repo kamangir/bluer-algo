@@ -13,6 +13,14 @@ in another terminal after a few minutes,
 ```
 
 
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-27-16-22-48-cp76v1/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-27-16-23-06-sojk57/bps.png?raw=true) |
+
+
+<details>
+<summary>bps-loop-2025-10-27-16-22-48-cp76v1/metadata</summary>
+
 ```yaml
 history:
 - hostname: sparrow2
@@ -127,17 +135,30 @@ history:
   x: 79.17828369140625
   y: 2.313697099685669
   z: 52.358978271484375
+- hostname: sparrow2
+  rssi: -62
+  sigma: 66.56471252441406
+  tx_power: -1.0
+  x: 60.58334732055664
+  y: 90.86817169189453
+  z: 98.22496795654297
 ping:
   hostname: sparrow3-back
   rssi: -1.0
-  sigma: 63.32301272393524
+  sigma: 29.544767785678914
   tx_power: -1.0
-  x: 29.57798995456098
-  y: 48.45658363857643
-  z: 23.839798923724842
+  x: 42.83506457968127
+  y: 47.70054382851764
+  z: 57.52648535661813
 
 ```
 
+</details>
+
+
+
+<details>
+<summary>bps-loop-2025-10-27-16-23-06-sojk57/metadata</summary>
 
 ```yaml
 history:
@@ -400,13 +421,65 @@ history:
   x: 15.573005676269531
   y: 8.623244285583496
   z: 86.61691284179688
+- hostname: sparrow3-back
+  rssi: -45
+  sigma: 24.72462272644043
+  tx_power: -1.0
+  x: 90.72388458251953
+  y: 31.223926544189453
+  z: 3.4546027183532715
+- hostname: sparrow3-back
+  rssi: -46
+  sigma: 24.72462272644043
+  tx_power: -1.0
+  x: 90.72388458251953
+  y: 31.223926544189453
+  z: 3.4546027183532715
+- hostname: sparrow3-back
+  rssi: -45
+  sigma: 29.544767379760742
+  tx_power: -1.0
+  x: 42.83506393432617
+  y: 47.70054244995117
+  z: 57.526485443115234
+- hostname: sparrow3-back
+  rssi: -55
+  sigma: 29.544767379760742
+  tx_power: -1.0
+  x: 42.83506393432617
+  y: 47.70054244995117
+  z: 57.526485443115234
+- hostname: sparrow3-back
+  rssi: -43
+  sigma: 29.544767379760742
+  tx_power: -1.0
+  x: 42.83506393432617
+  y: 47.70054244995117
+  z: 57.526485443115234
+- hostname: sparrow3-back
+  rssi: -47
+  sigma: 60.44941329956055
+  tx_power: -1.0
+  x: 34.62800979614258
+  y: 71.76508331298828
+  z: 58.466609954833984
+- hostname: sparrow3-back
+  rssi: -44
+  sigma: 60.44941329956055
+  tx_power: -1.0
+  x: 34.62800979614258
+  y: 71.76508331298828
+  z: 58.466609954833984
 ping:
   hostname: sparrow2
   rssi: -1.0
-  sigma: 10.708265076840306
+  sigma: 79.22976789170391
   tx_power: -1.0
-  x: 17.282439522764825
-  y: 73.28961572606038
-  z: 72.02467378313023
+  x: 6.408460477228106
+  y: 13.889325318886836
+  z: 40.08893179937634
 
 ```
+
+</details>
+
