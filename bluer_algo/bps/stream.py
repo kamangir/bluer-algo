@@ -29,22 +29,17 @@ class Stream:
 
         return True
 
-    @classmethod
     def generate(
-        cls,
+        self,
         simulate: bool = False,
         as_dict: dict = {},
-    ) -> "Stream":
-        stream = cls()
-
+    ):
         if simulate:
             logger.info("simulating stream...")
-            stream.ping = Ping.simulate()
+            self.ping = Ping.simulate()
         else:
             logger.info("generating stream...")
-            stream.ping = Ping(as_dict)
-
-        return stream
+            self.ping = Ping(as_dict)
 
     @classmethod
     def load(cls, object_name: str) -> "Stream":
