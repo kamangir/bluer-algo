@@ -5,7 +5,7 @@
 # bps: beacon-receiver
 
 ```bash
-@select bps-$(@@timestamp)
+@select bps-$(@timestamp)
 @bps beacon upload . \
     --generate 1 \
     --sigma $(@random --float 1) \
@@ -18,7 +18,7 @@
 on another pi,
 
 ```bash
-@select bps-2025-10-27-pmwvxj
+@select bps-2025-10-27-09-10-15-g9krir
 @bps receiver - . \
     --grep sparrow \
     --timeout 10

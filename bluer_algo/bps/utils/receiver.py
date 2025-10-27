@@ -79,7 +79,6 @@ async def main(
                         "sigma": sigma_,
                     }
                 )
-                logger.info(ping.as_str())
 
                 stream.history.append(ping)
             except:
