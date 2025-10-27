@@ -22,6 +22,6 @@ on another pi,
     --timeout 10
 ```
 
-set:::object_name bps-receiver-2025-10-27-09-52-06-l3u3uy
+set:::object_name bps-receiver-2025-10-27-11-20-09-5e9kl1
 
 metadata:::get:::object_name:::bps
