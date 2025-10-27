@@ -14,13 +14,15 @@ def test_bps_ping():
     assert isinstance(ping.sigma, float)
     assert isinstance(ping.tx_power, float)
 
+    assert isinstance(ping.hostname, str)
+
     assert isinstance(ping.as_str(), str)
     assert isinstance(ping.as_str(include_id=True), str)
 
     as_dict = ping.as_dict()
     for keyword, value in as_dict.items():
         assert isinstance(keyword, str)
-        assert isinstance(value, float)
+        assert isinstance(value, str if keyword == "hostname" else float)
 
 
 def test_bps_ping_simulation():

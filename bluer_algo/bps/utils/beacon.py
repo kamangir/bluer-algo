@@ -11,7 +11,6 @@ from dbus_next.service import ServiceInterface, method, dbus_property
 from dbus_next import Variant, BusType, Message, MessageType
 
 from blueness import module
-from blueness.argparse.generic import sys_exit
 from bluer_options import string
 from bluer_options.env import abcli_hostname
 

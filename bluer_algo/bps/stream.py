@@ -1,6 +1,6 @@
 from typing import List
 
-from bluer_objects import file
+from bluer_objects import file, objects
 from bluer_objects.metadata import get_from_object, post_to_object
 
 from bluer_algo.bps.ping import Ping
@@ -45,15 +45,14 @@ class Stream:
 
     @classmethod
     def load(cls, object_name: str) -> "Stream":
-        stream = cls()
-
-        logger.info(f"loading stream from {object_name}...")
-
-        metadata = get_from_object(object_name, "bps", {})
-        assert isinstance(metadata, dict)
-
-        stream.ping = Ping(metadata.get("ping", Ping().as_dict()))
-        stream.history = [Ping(ping) for ping in metadata.get("history", [])]
+        _, stream = file.load(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps-stream.dill",
+            ),
+            default=Stream(),
+            ignore_error=True,
+        )
 
         return stream
 
@@ -62,11 +61,21 @@ class Stream:
         object_name: str,
         log: bool = True,
     ) -> bool:
-        return post_to_object(
+        if not post_to_object(
             object_name,
             "bps",
             {
                 "ping": self.ping.as_dict(),
                 "history": [ping.as_dict() for ping in self.history],
             },
+        ):
+            return False
+
+        return file.save(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps-stream.dill",
+            ),
+            self,
+            log=log,
         )

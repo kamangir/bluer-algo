@@ -2,6 +2,8 @@ import random
 from typing import Dict
 import hashlib
 
+from bluer_options.env import abcli_hostname
+
 from bluer_algo.logger import logger
 
 
@@ -18,11 +20,14 @@ class Ping:
         self.tx_power = as_dict.get("tx_power", -1.0)  # -1: unknown
         self.rssi = as_dict.get("rssi", -1.0)  # -1: unknown
 
+        self.hostname = as_dict.get("hostname", abcli_hostname)
+
         if log:
             logger.info(self.as_str())
 
     def as_dict(self) -> dict:
         return {
+            "hostname": self.hostname,
             "x": self.x,
             "y": self.y,
             "z": self.z,
@@ -37,9 +42,10 @@ class Ping:
     ) -> str:
         return ", ".join(
             [
-                "{}{} @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
+                "{}{} from {} @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
                     self.__class__.__name__,
                     f"[{self.id}]" if include_id else "",
+                    self.hostname,
                     self.x,
                     self.y,
                     self.z,

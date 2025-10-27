@@ -74,6 +74,7 @@ async def main(
 
                 ping = Ping(
                     {
+                        "hostname": device.name,
                         "x": x_,
                         "y": y_,
                         "z": z_,
