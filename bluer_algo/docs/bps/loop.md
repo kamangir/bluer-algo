@@ -1,12 +1,10 @@
 # bps: loop
 
-# bps: loop
-
 on multiple rpis,
 
 ```bash
 @bps loop start simulate,upload
-``
+```
 
 in another terminal after a few minutes,
 
@@ -62,11 +60,11 @@ history:
 ping:
   hostname: sparrow3-back
   rssi: -1.0
-  sigma: 91.53486446399629
+  sigma: 55.689812211095
   tx_power: -1.0
-  x: 46.99954797002279
-  y: 15.256898935156848
-  z: 2.413264620860023
+  x: 64.53836167773103
+  y: 43.23263059413113
+  z: 49.44300665577109
 
 ```
 
