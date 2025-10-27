@@ -47,14 +47,16 @@ class Ping:
                     self.z,
                     self.sigma,
                 )
-            ] + [
-            "{}: {:.2f} dBm".format(param_name, param_value)
-            for param_name, param_value in {
-                "tx-power": self.tx_power,
-                "rssi": self.rssi,
-            }.items()
-            if param_value != -1
-        ]
+            ]
+            + [
+                "{}: {:.2f} dBm".format(param_name, param_value)
+                for param_name, param_value in {
+                    "tx-power": self.tx_power,
+                    "rssi": self.rssi,
+                }.items()
+                if param_value != -1
+            ]
+        )
 
     @classmethod
     def simulate(
