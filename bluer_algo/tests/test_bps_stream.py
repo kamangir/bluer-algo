@@ -32,3 +32,16 @@ def test_bps_stream():
 
     stream = Stream.load(object_name)
     assert isinstance(stream, Stream)
+
+    # ---
+    ping = Ping()
+
+    assert stream.append(ping)
+    # no repeat ping
+    assert not stream.append(ping)
+
+    ping = Ping()
+
+    assert stream.append(ping)
+
+    # ---

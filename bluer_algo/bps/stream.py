@@ -12,6 +12,20 @@ class Stream:
         self.ping: Ping = Ping(log=False)
         self.history: List[Ping] = []
 
+    def append(
+        self,
+        ping: Ping,
+        log: bool = False,
+    ) -> bool:
+        if ping.id in [ping.id for ping in self.history]:
+            if log:
+                logger.info(f"repeat ping ignored: {ping.as_str()}")
+
+            return False
+
+        self.history.append(ping)
+        return True
+
     @classmethod
     def generate(
         cls,

@@ -68,7 +68,6 @@ class Advertisement(ServiceInterface):
         self,
         name: str,
         ping: Ping,
-        tx_power=0.0,
     ):
         super().__init__(AD_IFACE)
         self._name = name
@@ -82,7 +81,7 @@ class Advertisement(ServiceInterface):
                 ping.y,
                 ping.z,
                 ping.sigma,
-                tx_power,
+                ping.tx_power,
             )
         }
 
@@ -138,20 +137,13 @@ class Advertisement(ServiceInterface):
 async def register_advertisement(
     bus: MessageBus,
     ping: Ping,
-    tx_power: float,
 ):
-    logger.info(
-        "registering advertisement: {} | {}".format(
-            ping.as_str(),
-            f"tx_power: {tx_power:.1f} dBm",
-        )
-    )
+    logger.info(f"registering advertisement: {ping.as_str()}")
 
     # Export our advertisement object on the system bus
     adv = Advertisement(
         name=abcli_hostname,
         ping=ping,
-        tx_power=tx_power,
     )
     bus.export(AD_OBJECT_PATH, adv)
 
@@ -200,13 +192,13 @@ async def main(
     # get adapter tx_power
     tx_power = await get_adapter_tx_power(bus)
     logger.info(f"adapter TxPower={tx_power:.1f} dBm")
+    ping.tx_power = tx_power
 
     # Register with BlueZ
     try:
         await register_advertisement(
             bus=bus,
             ping=ping,
-            tx_power=tx_power,
         )
     except Exception as e:
         logger.error(f"failed to start advertising: {e}")

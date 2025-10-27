@@ -60,8 +60,10 @@ async def main(
         logger.info(f"device address: {device.address}")
 
         if advertisement_data:
+            rssi: float = -1.0
             try:
-                logger.info(f"rssi: {advertisement_data.rssi}")
+                rssi = advertisement_data.rssi
+                logger.info(f"rssi: {rssi} dBm")
             except:
                 logger.warning("rssi not found.")
 
@@ -69,7 +71,6 @@ async def main(
                 x_, y_, z_, sigma_, tx_power = struct.unpack(
                     "<fffff", advertisement_data.manufacturer_data[0xFFFF]
                 )
-                logger.info(f"tx_power: {tx_power:.2f}")
 
                 ping = Ping(
                     {
@@ -77,10 +78,13 @@ async def main(
                         "y": y_,
                         "z": z_,
                         "sigma": sigma_,
+                        "tx_power": tx_power,
+                        "rssi": rssi,
                     }
                 )
 
-                stream.history.append(ping)
+                stream.append(ping)
+                logger.info(f"# unique pings: {len(stream.history)}")
             except:
                 logger.info(advertisement_data)
 
