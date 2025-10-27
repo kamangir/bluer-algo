@@ -19,11 +19,12 @@ function bluer_algo_bps_receiver() {
             bluer_algo.bps.utils.receiver \
             --object_name $object_name \
             "${@:3}"
-
         [[ $? -ne 0 ]] && return 1
 
         [[ "$do_upload" == 1 ]] &&
-            bluer_objects_upload - $object_name
+            bluer_objects_upload \
+                filename=metadata.yaml \
+                $object_name
 
         return 0
     else

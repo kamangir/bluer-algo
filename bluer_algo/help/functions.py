@@ -1,7 +1,7 @@
 from bluer_ai.help.generic import help_functions as generic_help_functions
 
 from bluer_algo import ALIAS
-from bluer_algo.help.bps import help_functions as help_bps
+from bluer_algo.help.bps.functions import help_functions as help_bps
 from bluer_algo.help.image_classifier import help_functions as help_image_classifier
 from bluer_algo.help.socket import help_functions as help_socket
 from bluer_algo.help.tracker import help_tracker

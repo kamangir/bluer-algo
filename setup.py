@@ -13,6 +13,7 @@ setup(
         f"{NAME}.bps",
         f"{NAME}.bps.utils",
         f"{NAME}.help",
+        f"{NAME}.help.bps",
         f"{NAME}.help.image_classifier",
         f"{NAME}.help.yolo",
         f"{NAME}.image_classifier",

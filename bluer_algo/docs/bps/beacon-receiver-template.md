@@ -1,7 +1,5 @@
 title:::
 
-> ℹ️ tx-power is not implemented in rpi. nominal value: 10-12 dBm. -1: indicates unknown.
-
 title:::
 
 ```bash
@@ -14,14 +12,14 @@ title:::
     --timeout 60
 ```
 
-on another pi,
+on another rpi,
 
 ```bash
 @bps receiver upload - \
-    --grep sparrow \
+    --grep sparrow+swallow \
     --timeout 10
 ```
 
-set:::object_name bps-receiver-2025-10-27-11-20-09-5e9kl1
+set:::object_name TBA
 
 metadata:::get:::object_name:::bps

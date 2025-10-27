@@ -46,6 +46,10 @@ function test_bluer_algo_help() {
         "@bps receiver" \
         "@bps test_bluetooth" \
         \
+        "@bps loop" \
+        "@bps loop start" \
+        "@bps loop stop" \
+        \
         "@image_classifier" \
         "@image_classifier dataset" \
         "@image_classifier dataset ingest" \

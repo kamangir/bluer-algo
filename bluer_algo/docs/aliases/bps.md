@@ -22,10 +22,20 @@
 	[~start_bluetooth,verbose,unique_bus_name=<1:234>]
  . introspect <1:234>.
 @bps \
+	loop \
+	start \
+	[dryrun] \
+	[.|<object-name>]
+ . start bps loop.
+@bps \
+	loop \
+	stop
+ . stop bps loop.
+@bps \
 	receiver \
 	[~start_bluetooth,verbose] \
 	[-|<object-name>] \
-	[--grep <sparrow>] \
+	[--grep <sparrow+swallow>] \
 	[--timeout <10>]
  . start receiver.
 @bps \

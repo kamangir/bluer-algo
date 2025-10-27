@@ -29,6 +29,7 @@ docs = [
         "literature",
         "test-introspect",
         "beacon-receiver",
+        "loop",
         "mathematics",
     ]
 ]

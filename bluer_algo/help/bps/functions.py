@@ -2,6 +2,8 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
+from bluer_algo.help.bps.loop import help_functions as help_loop
+
 
 def help_beacon(
     tokens: List[str],
@@ -76,7 +78,7 @@ def help_receiver(
     options = xtra("~start_bluetooth,verbose", mono=mono)
 
     args = [
-        "[--grep <sparrow>]",
+        "[--grep <sparrow+swallow>]",
         "[--timeout <10>]",
     ]
 
@@ -151,6 +153,7 @@ help_functions = {
     "beacon": help_beacon,
     "install": help_install,
     "introspect": help_introspect,
+    "loop": help_loop,
     "receiver": help_receiver,
     "start_bluetooth": help_start_bluetooth,
     "test": help_test,
