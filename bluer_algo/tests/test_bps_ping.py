@@ -15,7 +15,7 @@ def test_bps_ping():
     assert isinstance(ping.tx_power, float)
 
     assert isinstance(ping.as_str(), str)
-    assert isinstance(ping.as_str(short=True), str)
+    assert isinstance(ping.as_str(include_id=True), str)
 
     as_dict = ping.as_dict()
     for keyword, value in as_dict.items():

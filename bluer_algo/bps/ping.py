@@ -33,39 +33,33 @@ class Ping:
 
     def as_str(
         self,
-        short: str = False,
+        include_id: str = False,
     ) -> str:
         return ", ".join(
             [
                 "{}{} @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
                     self.__class__.__name__,
-                    "" if short else f"[{self.id}]",
+                    f"[{self.id}]" if include_id else "",
                     self.x,
                     self.y,
                     self.z,
                     self.sigma,
                 )
             ]
-            + (
-                []
-                if short
-                else [
-                    "{}: {:.2f} dBm".format(param_name, param_value)
-                    for param_name, param_value in {
-                        "tx-power": self.tx_power,
-                        "rssi": self.rssi,
-                    }.items()
-                    if param_value != -1
-                ]
-            )
+            + [
+                "{}: {:.2f} dBm".format(param_name, param_value)
+                for param_name, param_value in {
+                    "tx-power": self.tx_power,
+                    "rssi": self.rssi,
+                }.items()
+                if param_value != -1
+            ]
         )
 
     @property
     def id(self) -> str:
         return hashlib.sha256(
-            self.as_str(
-                short=True,
-            ).encode("utf-8")
+            self.as_str(include_id=False).encode("utf-8")
         ).hexdigest()[:8]
 
     @classmethod
