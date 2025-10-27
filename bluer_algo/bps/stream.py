@@ -189,13 +189,14 @@ class Stream:
         )
         plt.ylabel("y (m)")
 
-        max_x = max(ping.x + ping.sigma for ping in self.history)
-        min_x = min(ping.x - ping.sigma for ping in self.history)
-        max_y = max(ping.y + ping.sigma for ping in self.history)
-        min_y = min(ping.y - ping.sigma for ping in self.history)
-        range = max(max_x - min_x, max_y - min_y)
-        plt.xlim(min_x - 0.1 * range, max_x + 0.1 * range)
-        plt.ylim(min_y - 0.1 * range, max_y + 0.1 * range)
+        if self.history:
+            max_x = max(ping.x + ping.sigma for ping in self.history)
+            min_x = min(ping.x - ping.sigma for ping in self.history)
+            max_y = max(ping.y + ping.sigma for ping in self.history)
+            min_y = min(ping.y - ping.sigma for ping in self.history)
+            range = max(max_x - min_x, max_y - min_y)
+            plt.xlim(min_x - 0.1 * range, max_x + 0.1 * range)
+            plt.ylim(min_y - 0.1 * range, max_y + 0.1 * range)
 
         plt.tight_layout()
         ax.set_aspect("equal", "box")

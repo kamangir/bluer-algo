@@ -1,4 +1,4 @@
-# bps: mathematics-timing
+# bps: mathematics: timing
 
 > Optimizing Advertise/Receive Cycle Timing
 

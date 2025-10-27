@@ -1,4 +1,4 @@
-# bps: test-introspect
+# bps: validations: test-introspect
 
 ```bash
 @bps install

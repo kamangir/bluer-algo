@@ -1,6 +1,4 @@
-# bps: beacon-receiver
-
-# bps: beacon-receiver
+# bps: validations: beacon-receiver
 
 ```bash
 @bps beacon - - \

@@ -1,7 +1,5 @@
 title:::
 
-title:::
-
 ```bash
 @bps beacon - - \
     --generate 1 \

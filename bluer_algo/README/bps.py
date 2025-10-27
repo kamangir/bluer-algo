@@ -23,16 +23,16 @@ docs = [
     }
 ] + [
     {
-        "path": f"../docs/bps/{doc}.md",
+        "path": f"../docs/bps/{doc}",
     }
     for doc in [
-        "literature",
+        "literature.md",
         "validations",
-        "test-introspect",
-        "beacon-receiver",
-        "loop",
+        "validations/test-introspect.md",
+        "validations/beacon-receiver.md",
+        "validations/loop.md",
         "mathematics",
-        "mathematics-timing",
-        "mathematics-localization",
+        "mathematics/timing.md",
+        "mathematics/localization.md",
     ]
 ]

@@ -1,6 +1,6 @@
 title:::
 
-> ℹ️ BLE Localization Cost Function with σ
+> BLE Localization Cost Function with σ
 
 This document defines the mathematical model used to estimate the position of a UGV based on BLE advertisements.  
 Each beacon advertises its position $(x_i, y_i, z_i)$ and uncertainty $\sigma_i$ along with its transmitted power.
