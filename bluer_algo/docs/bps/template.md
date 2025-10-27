@@ -13,7 +13,7 @@ items:::
 - [test -> introspect](./test-introspect.md)
 - [beacon -> receiver](./beacon-receiver.md)
 - [loop](./loop.md)
-- [mathematics](./mathematics-template.md)
+- [mathematics](./mathematics.md)
 
 > ℹ️ works on rpi only.
 
