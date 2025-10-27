@@ -1,6 +1,8 @@
 from typing import List
 import matplotlib
 import matplotlib.pyplot as plt
+import random
+import math
 
 from bluer_objects import file, objects
 from bluer_objects.graphics.signature import justify_text
@@ -149,9 +151,11 @@ class Stream:
             )
             ax.add_artist(circle)
 
+            theta = random.uniform(0, 360)
+
             ax.text(
-                ping.x,
-                ping.y + ping.sigma,
+                ping.x + ping.sigma * math.cos(theta),
+                ping.y + ping.sigma * math.sin(theta),
                 "{}rssi={:.2f} dBm".format(
                     (
                         "tx_power={:.2f} dBm, ".format(ping.tx_power)
