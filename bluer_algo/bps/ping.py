@@ -37,15 +37,31 @@ class Ping:
         }
 
     def as_str(self) -> str:
-        return "{}[{}] @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m - tx-power: {:.2f} dBm, rssi: {:.2f} dBm".format(
-            self.__class__.__name__,
-            self.id,
-            self.x,
-            self.y,
-            self.z,
-            self.sigma,
-            self.tx_power,
-            self.rssi,
+        return ", ".join(
+            [
+                "{}[{}] @ [{:.2f} {:.2f} {:.2f}] +- {:.2f} m".format(
+                    self.__class__.__name__,
+                    self.id,
+                    self.x,
+                    self.y,
+                    self.z,
+                    self.sigma,
+                ),
+                (
+                    [
+                        "tx-power: {:.2f} dBm".format(self.tx_power),
+                    ]
+                    if self.tx_power != -1
+                    else []
+                ),
+                (
+                    [
+                        "rssi: {:.2f} dBm".format(self.rssi),
+                    ]
+                    if self.rssi != -1
+                    else []
+                ),
+            ]
         )
 
     @classmethod
