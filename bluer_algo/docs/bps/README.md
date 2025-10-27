@@ -13,8 +13,8 @@ bluer-positioning system.
 - [literature](./literature.md)
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
-- [validations](./validations.md)
-- [mathematics](./mathematics.md)
+- [validations](./validations)
+- [mathematics](./mathematics)
 
 > ℹ️ works on rpi only.
 
