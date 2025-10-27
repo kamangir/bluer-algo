@@ -295,7 +295,6 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    success = True
     if args.generate == 1 or args.simulate == 1:
         stream = Stream.generate(
             simulate=args.simulate,
@@ -307,11 +306,9 @@ if __name__ == "__main__":
             },
         )
 
-        success = stream.save(args.object_name)
+        stream.save(args.object_name)
     else:
-        success, stream = Stream.load(args.object_name)
-    if not success:
-        sys_exit(logger, NAME, "beacon", success)
+        stream = Stream.load(args.object_name)
 
     logger.info(
         "{}: every {}{} -> {}".format(
