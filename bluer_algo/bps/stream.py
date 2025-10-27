@@ -148,6 +148,7 @@ class Stream:
                 radius=ping.sigma,
                 fill=False,
                 color=host_color[ping.hostname],
+                linestyle=":",
             )
             ax.add_artist(circle)
 
