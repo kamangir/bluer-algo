@@ -27,4 +27,4 @@ pip install bluer-algo
 
 [![pylint](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/bluer-algo/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/bluer-algo.svg)](https://pypi.org/project/bluer-algo/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/bluer-algo)](https://pypistats.org/packages/bluer-algo)
 
-built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.513.1`](https://github.com/kamangir/bluer-algo).
+built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 🪄 [`bluer_algo-4.514.1`](https://github.com/kamangir/bluer-algo).
