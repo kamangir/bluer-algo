@@ -286,8 +286,10 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    stream = Stream.load(args.object_name)
+
     if args.generate == 1 or args.simulate == 1:
-        stream = Stream.generate(
+        stream.generate(
             simulate=args.simulate,
             as_dict={
                 "x": args.x,
@@ -296,10 +298,6 @@ if __name__ == "__main__":
                 "sigma": args.sigma,
             },
         )
-
-        stream.save(args.object_name)
-    else:
-        stream = Stream.load(args.object_name)
 
     logger.info(
         "{}: every {}{} -> {}".format(

@@ -2,8 +2,6 @@
 
 bluer-positioning system.
 
-> ℹ️ only works on rpi.
-
 > A distributed, serverless positioning mesh where every Raspberry Pi acts as both a tag and a local estimator: each node continuously advertises a compact BLE packet containing its node ID, mobility flag, and its current best-estimate pose (x,y,σ,seq), and simultaneously scans for neighbor adverts to collect RSSI + neighbor poses. Anchors are marked static with known coordinates and low uncertainty; mobiles fuse anchors + neighbor pseudo-ranges (RSSI→distance, calibrated per site) with a lightweight weighted least-squares + EKF/Covariance-Intersection step, adapt advertising/scan rates when moving, and use short rolling HMAC tokens to prevent simple spoofing. The result is a gossiping swarm that converges locally to consistent positions, degrades gracefully to coarse proximity when RF is noisy, and can be migrated later to UWB without changing the peer-to-peer protocol.
 
 |   |   |
@@ -15,6 +13,9 @@ bluer-positioning system.
 - [literature](./literature.md)
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
-- [test -> introspect](./test-introspect.md)
-- [beacon -> receiver](./beacon-receiver.md)
-- [mathematics](./mathematics-template.md)
+- [validations](./validations)
+- [mathematics](./mathematics)
+
+> ℹ️ works on rpi only.
+
+> ℹ️ tx-power is not implemented in rpi. nominal value: 10-12 dBm. -1: indicates unknown.

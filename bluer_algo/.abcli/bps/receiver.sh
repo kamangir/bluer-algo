@@ -5,13 +5,11 @@ function bluer_algo_bps_receiver() {
     local use_python=$(bluer_ai_option_int "$options" python 1)
 
     if [[ "$use_python" == 1 ]]; then
-        local do_download=$(bluer_ai_option_int "$options" download 1)
         local do_upload=$(bluer_ai_option_int "$options" upload 0)
 
         local object_name=$(bluer_ai_clarify_object $2 bps-receiver-$(bluer_ai_string_timestamp))
 
-        [[ "$do_download" == 1 ]] &&
-            bluer_objects_download - $object_name
+        bluer_ai_log "starting bps receiver -> $object_name ..."
 
         bluer_ai_eval ,$options \
             sudo -E \
@@ -19,7 +17,6 @@ function bluer_algo_bps_receiver() {
             bluer_algo.bps.utils.receiver \
             --object_name $object_name \
             "${@:3}"
-
         [[ $? -ne 0 ]] && return 1
 
         [[ "$do_upload" == 1 ]] &&

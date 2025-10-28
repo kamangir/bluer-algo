@@ -1,9 +1,15 @@
 from typing import List
+import matplotlib
+import matplotlib.pyplot as plt
+import random
+import math
 
 from bluer_objects import file, objects
-from bluer_objects.metadata import get_from_object, post_to_object
+from bluer_objects.graphics.signature import justify_text
+from bluer_objects.metadata import post_to_object
 
 from bluer_algo.bps.ping import Ping
+from bluer_algo.host import signature
 from bluer_algo.logger import logger
 
 
@@ -29,40 +35,11 @@ class Stream:
 
         return True
 
-    @classmethod
-    def generate(
-        cls,
-        simulate: bool = False,
-        as_dict: dict = {},
-    ) -> "Stream":
-        stream = cls()
-
-        if simulate:
-            logger.info("simulating stream...")
-            stream.ping = Ping.simulate()
-        else:
-            logger.info("generating stream...")
-            stream.ping = Ping(as_dict)
-
-        return stream
-
-    @classmethod
-    def load(cls, object_name: str) -> "Stream":
-        _, stream = file.load(
-            objects.path_of(
-                object_name=object_name,
-                filename="bps-stream.dill",
-            ),
-            default=Stream(),
-            ignore_error=True,
-        )
-
-        return stream
-
-    def save(
+    def export(
         self,
         object_name: str,
         log: bool = True,
+        line_width: int = 80,
     ) -> bool:
         if not post_to_object(
             object_name,
@@ -74,6 +51,139 @@ class Stream:
         ):
             return False
 
+        list_of_hostnames = self.list_of_hostnames()
+        list_of_colors = [
+            color
+            for color in list(matplotlib.colors.BASE_COLORS.keys())
+            if color != "gray"
+        ]
+        while len(list_of_colors) < len(list_of_hostnames):
+            list_of_colors = list_of_colors + list_of_colors
+
+        host_color = {
+            hostname: color
+            for hostname, color in zip(list_of_hostnames, list_of_colors)
+        }
+
+        plt.figure(figsize=(10, 10))
+
+        for hostname in list_of_hostnames:
+            plt.plot(
+                [ping.x for ping in self.history if ping.hostname == hostname],
+                [ping.y for ping in self.history if ping.hostname == hostname],
+                "o",
+                color=host_color[hostname],
+                label=hostname,
+            )
+
+        if self.history:
+            plt.legend()
+
+        ax = plt.gca()
+
+        for ping in self.history:
+            circle = plt.Circle(
+                (ping.x, ping.y),
+                radius=ping.sigma,
+                fill=False,
+                color=host_color[ping.hostname],
+                linestyle=":",
+            )
+            ax.add_artist(circle)
+
+            theta = random.uniform(0, 360)
+
+            ax.text(
+                ping.x + ping.sigma * math.cos(theta),
+                ping.y + ping.sigma * math.sin(theta),
+                "{}rssi={:.2f} dBm".format(
+                    (
+                        "tx_power={:.2f} dBm, ".format(ping.tx_power)
+                        if ping.tx_power != -1
+                        else ""
+                    ),
+                    ping.rssi,
+                ),
+                ha="center",
+                va="center",
+                fontsize=12,
+                color=host_color[ping.hostname],
+            )
+
+        plt.title(
+            justify_text(
+                " | ".join(
+                    objects.signature(object_name=object_name) + self.signature()
+                ),
+                line_width=line_width,
+                return_str=True,
+            )
+        )
+        plt.xlabel(
+            justify_text(
+                " | ".join(["x (m)"] + signature()),
+                line_width=line_width,
+                return_str=True,
+            )
+        )
+        plt.ylabel("y (m)")
+
+        if self.history:
+            max_x = max(ping.x + ping.sigma for ping in self.history)
+            min_x = min(ping.x - ping.sigma for ping in self.history)
+            max_y = max(ping.y + ping.sigma for ping in self.history)
+            min_y = min(ping.y - ping.sigma for ping in self.history)
+            range = max(max_x - min_x, max_y - min_y)
+            plt.xlim(min_x - 0.1 * range, max_x + 0.1 * range)
+            plt.ylim(min_y - 0.1 * range, max_y + 0.1 * range)
+
+        plt.tight_layout()
+        ax.set_aspect("equal", "box")
+        plt.grid(True)
+        return file.save_fig(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps.png",
+            ),
+            log=log,
+        )
+
+    def generate(
+        self,
+        simulate: bool = False,
+        as_dict: dict = {},
+    ):
+        if simulate:
+            logger.info("simulating stream...")
+            self.ping = Ping.simulate()
+        else:
+            logger.info("generating stream...")
+            self.ping = Ping(as_dict)
+
+    def list_of_hostnames(self) -> List[str]:
+        return list({ping.hostname for ping in self.history})
+
+    @classmethod
+    def load(cls, object_name: str) -> "Stream":
+        _, stream = file.load(
+            objects.path_of(
+                object_name=object_name,
+                filename="bps-stream.dill",
+            ),
+            default=Stream(),
+            ignore_error=True,
+        )
+        assert isinstance(stream, Stream)
+
+        logger.info(f"loaded {len(stream.history)} ping(s)")
+
+        return stream
+
+    def save(
+        self,
+        object_name: str,
+        log: bool = True,
+    ) -> bool:
         return file.save(
             objects.path_of(
                 object_name=object_name,
@@ -82,3 +192,14 @@ class Stream:
             self,
             log=log,
         )
+
+    def signature(self) -> List[str]:
+        list_of_hostnames = self.list_of_hostnames()
+
+        return [
+            "{} ping(s)".format(len(self.history)),
+            "{} hostname(s): {}".format(
+                len(list_of_hostnames),
+                ", ".join(list_of_hostnames),
+            ),
+        ]

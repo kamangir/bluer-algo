@@ -52,7 +52,10 @@ async def main(
         device: BLEDevice,
         advertisement_data: AdvertisementData,
     ):
-        if grep and (device.name is None or grep not in device.name):
+        if grep and (
+            device.name is None
+            or not any(grep_ in device.name for grep_ in grep.split("+"))
+        ):
             return
 
         logger.info(hr(width=30))

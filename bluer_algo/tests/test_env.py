@@ -26,3 +26,11 @@ def test_bluer_algo_env():
 
     assert env.BLUER_ALGO_COCO128_TEST_DATASET
     assert env.BLUER_ALGO_COCO128_TEST_MODEL
+
+    assert isinstance(env.BLUER_AI_BPS_LOOP_BEACON_LENGTH, int)
+    assert isinstance(env.BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MIN, int)
+    assert isinstance(env.BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MAX, int)
+
+    assert isinstance(env.BLUER_AI_BPS_LOOP_GREP, str)
+
+    assert isinstance(env.BLUER_ALGO_BPS_REVIEW_TEST_OBJECT, str)

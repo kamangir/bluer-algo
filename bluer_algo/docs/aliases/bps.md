@@ -22,16 +22,33 @@
 	[~start_bluetooth,verbose,unique_bus_name=<1:234>]
  . introspect <1:234>.
 @bps \
+	loop \
+	start \
+	[simulate,upload] \
+	[-|<object-name>]
+ . start bps loop.
+@bps \
+	loop \
+	stop \
+	[rpi] \
+	[<machine-name>]
+ . stop bps loop.
+@bps \
 	receiver \
-	[~start_bluetooth,verbose] \
+	[~start_bluetooth,upload,verbose] \
 	[-|<object-name>] \
-	[--grep <sparrow>] \
+	[--grep <sparrow+swallow>] \
 	[--timeout <10>]
  . start receiver.
 @bps \
 	receiver \
 	[~python,~start_bluetooth,verbose]
  . start receiver.
+@bps \
+	review \
+	[~download,upload] \
+	[.|<object-name>]
+ . review <object-name>.
 @bps \
 	start_bluetooth \
 	[verbose]

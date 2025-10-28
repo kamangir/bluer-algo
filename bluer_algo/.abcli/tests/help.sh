@@ -43,7 +43,11 @@ function test_bluer_algo_help() {
         "@bps beacon" \
         "@bps install" \
         "@bps introspect" \
+        "@bps loop" \
+        "@bps loop start" \
+        "@bps loop stop" \
         "@bps receiver" \
+        "@bps review" \
         "@bps test_bluetooth" \
         \
         "@image_classifier" \
