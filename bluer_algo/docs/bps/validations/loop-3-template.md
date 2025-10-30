@@ -12,9 +12,9 @@ in another terminal after a few minutes,
 @bps loop stop
 ```
 
-set:::object_1_name TBA
-set:::object_2_name TBA
-set:::object_3_name TBA
+set:::object_1_name bps-loop-2025-10-30-18-03-01-l6ulkz
+set:::object_2_name bps-loop-2025-10-30-18-02-44-jajwbj
+set:::object_3_name bps-loop-2025-10-30-18-28-48-4e4g65
 
 details:::publication
 ```bash
