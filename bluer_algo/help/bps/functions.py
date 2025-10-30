@@ -4,23 +4,29 @@ from bluer_options.terminal import show_usage, xtra
 
 from bluer_algo.help.bps.loop import help_functions as help_loop
 
+generate_args = [
+    "[--sigma <4.0>]",
+    "[--simulate 1]",
+    "[--x <1.0>]",
+    "[--y <2.0>]",
+    "[--z <3.0>]",
+]
+
 
 def help_beacon(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~start_bluetooth,verbose", mono=mono)
+    options = xtra("~start_bluetooth", mono=mono)
 
-    args = [
-        "[--generate 1]",
-        "[--sigma <4.0>]",
-        "[--simulate 1]",
-        "[--spacing <2.0>]",
-        "[--timeout <10.0 | -1>]",
-        "[--x <1.0>]",
-        "[--y <2.0>]",
-        "[--z <3.0>]",
-    ]
+    args = sorted(
+        [
+            "[--generate 1]",
+            "[--spacing <2.0>]",
+            "[--timeout <10.0 | -1>]",
+        ]
+        + generate_args
+    )
 
     return show_usage(
         [
@@ -31,6 +37,27 @@ def help_beacon(
         ]
         + args,
         "start beacon.",
+        mono=mono,
+    )
+
+
+def help_generate(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "-"
+
+    args = generate_args
+
+    return show_usage(
+        [
+            "@bps",
+            "generate",
+            f"[{options}]",
+            "[-|<object-name>]",
+        ]
+        + args,
+        "generate a ping.",
         mono=mono,
     )
 
@@ -169,6 +196,7 @@ def help_test(
 
 help_functions = {
     "beacon": help_beacon,
+    "generate": help_generate,
     "install": help_install,
     "introspect": help_introspect,
     "loop": help_loop,

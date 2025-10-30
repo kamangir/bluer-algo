@@ -14,7 +14,7 @@ function bluer_algo_bps_loop_start() {
     local do_upload=$(bluer_ai_option_int "$options" upload 1)
     local do_simulate=$(bluer_ai_option_int "$options" simulate 0)
 
-    local object_name=$(bluer_ai_clarify_object $2 bps-loop-$(bluer_ai_string_timestamp))
+    local object_name=$(bluer_ai_clarify_object $2 bps-stream-$(bluer_ai_string_timestamp))
 
     bluer_algo_bps_start_bluetooth
 

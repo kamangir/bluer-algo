@@ -1,6 +1,18 @@
 title:::
 
-on 3 rpis,
+on 1 rpi:
+
+```
+@select bps-stream-$(@timestamp)
+@bps generate - . \
+	--sigma 1.0 \
+	--x 0 \
+	--y 0 \
+	--z 0
+@bps loop start upload .
+```
+
+on 2 rpis,
 
 ```bash
 @bps loop start upload
