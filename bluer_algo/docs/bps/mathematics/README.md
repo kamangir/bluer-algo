@@ -1,4 +1,4 @@
 # bps: mathematics
 
-- [timing](./timing.md)
+- [timing](./timing)
 - [localization](./localization.md)
