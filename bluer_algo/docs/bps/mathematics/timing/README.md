@@ -1,6 +1,6 @@
 # bps: mathematics: timing
 
-> Optimizing Advertise/Receive Cycle Timing
+> Optimizing Advertise/Receive Cycle Timing - continues [v1](v1.md).
 
 ## Problem Setup
 
@@ -94,6 +94,3 @@ Choose parameters so that $t ≥ 5s$ (i.e., at least 50 s) for good efficiency.
 - Keep both much longer than $t_o + t_c$  
 - Add 10–30% jitter to $t_1$/$t_2$ to avoid synchronization collisions  
 - This maximizes the overlap between advertising and receiving phases across all machines.
-
-
-also see: [v1](v1.md)
