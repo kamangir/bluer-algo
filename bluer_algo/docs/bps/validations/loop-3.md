@@ -18,17 +18,19 @@ in another terminal after a few minutes,
 <summary>publication</summary>
 
 ```bash
-@assets publish \
-	download,extensions=png,push \
-	TBA
+runme() {
+	local object_name
+	for object_name in \
+		TBA \
+		TBA \
+		TBA; do
+			@assets publish \
+				download,extensions=png,push \
+				$object_name
+	done
+}
 
-@assets publish \
-	download,extensions=png,push \
-	TBA
-
-@assets publish \
-	download,extensions=png,push \
-	TBA
+runme
 ```
 
 </details>

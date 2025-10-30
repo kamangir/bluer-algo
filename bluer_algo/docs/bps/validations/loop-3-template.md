@@ -18,17 +18,19 @@ set:::object_3_name TBA
 
 details:::publication
 ```bash
-@assets publish \
-	download,extensions=png,push \
-	get:::object_1_name
+runme() {
+	local object_name
+	for object_name in \
+		get:::object_1_name \
+		get:::object_2_name \
+		get:::object_3_name; do
+			@assets publish \
+				download,extensions=png,push \
+				$object_name
+	done
+}
 
-@assets publish \
-	download,extensions=png,push \
-	get:::object_2_name
-
-@assets publish \
-	download,extensions=png,push \
-	get:::object_3_name
+runme
 ```
 details:::
 
