@@ -18,7 +18,7 @@ on 2 rpis,
 @bps loop start upload
 ```
 
-in another terminal after a few minutes,
+after a few minutes,
 
 ```bash
 @bps loop stop [rpi <machine-name>]
