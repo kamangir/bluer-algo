@@ -1,6 +1,6 @@
-# bps: validations: loop
+# bps: validations: loop-2
 
-on multiple rpis,
+on 2 rpis,
 
 ```bash
 @bps loop start simulate,upload
@@ -13,6 +13,10 @@ in another terminal after a few minutes,
 ```
 
 
+
+<details>
+<summary>publication</summary>
+
 ```bash
 @assets publish \
 	download,extensions=png,push \
@@ -22,6 +26,9 @@ in another terminal after a few minutes,
 	download,extensions=png,push \
 	bps-loop-2025-10-27-21-31-48-5a79yu
 ```
+
+</details>
+
 
 | | |
 |-|-|
