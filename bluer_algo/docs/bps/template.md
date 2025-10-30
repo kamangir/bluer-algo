@@ -8,10 +8,10 @@ items:::
 
 - [AI convo](https://chatgpt.com/c/68e79d65-e938-8327-b1e1-2536f7b6fb41)
 - [literature](./literature.md)
+- [mathematics](./mathematics)
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
 - [validations](./validations)
-- [mathematics](./mathematics)
 
 > ℹ️ works on rpi only.
 

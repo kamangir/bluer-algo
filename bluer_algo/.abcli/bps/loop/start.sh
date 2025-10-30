@@ -8,12 +8,13 @@ function bluer_algo_bps_loop_start() {
 
     bluer_ai_log "starting bps loop..."
     bluer_ai_log "locked" >$BPS_FILE_LOCK
+    bluer_ai_log "started" >$BPS_IS_RUNNING
 
     local options=$1
     local do_upload=$(bluer_ai_option_int "$options" upload 1)
-    local do_simulate=$(bluer_ai_option_int "$options" simulate 1)
+    local do_simulate=$(bluer_ai_option_int "$options" simulate 0)
 
-    local object_name=$(bluer_ai_clarify_object $2 bps-loop-$(bluer_ai_string_timestamp))
+    local object_name=$(bluer_ai_clarify_object $2 bps-stream-$(bluer_ai_string_timestamp))
 
     bluer_algo_bps_start_bluetooth
 
@@ -46,4 +47,6 @@ function bluer_algo_bps_loop_start() {
 
     bluer_algo_bps_review ~download,upload=$do_upload \
         $object_name
+
+    rm -v $BPS_IS_RUNNING
 }

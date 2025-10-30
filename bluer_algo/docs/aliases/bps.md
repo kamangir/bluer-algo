@@ -3,7 +3,7 @@
 ```bash
 @bps \
 	beacon \
-	[~start_bluetooth,verbose] \
+	[~start_bluetooth] \
 	[-|<object-name>] \
 	[--generate 1] \
 	[--sigma <4.0>] \
@@ -14,6 +14,16 @@
 	[--y <2.0>] \
 	[--z <3.0>]
  . start beacon.
+@bps \
+	generate \
+	[-] \
+	[-|<object-name>] \
+	[--sigma <4.0>] \
+	[--simulate 1] \
+	[--x <1.0>] \
+	[--y <2.0>] \
+	[--z <3.0>]
+ . generate a ping.
 @bps \
 	install
  . install bps.
@@ -30,7 +40,7 @@
 @bps \
 	loop \
 	stop \
-	[rpi] \
+	[rpi,wait] \
 	[<machine-name>]
  . stop bps loop.
 @bps \

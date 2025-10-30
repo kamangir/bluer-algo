@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 export BPS_FILE_LOCK=$ABCLI_PATH_IGNORE/bps-lock
+export BPS_IS_RUNNING=$ABCLI_PATH_IGNORE/bps-is-running
 
 function bluer_algo_bps_loop() {
     local task=${1:-start}

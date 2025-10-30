@@ -30,10 +30,13 @@ docs = [
         "validations",
         "validations/test-introspect.md",
         "validations/beacon-receiver.md",
-        "validations/loop.md",
+        "validations/loop-2.md",
         "validations/review.md",
+        "validations/loop-3.md",
+        "validations/data-collection.md",
         "mathematics",
-        "mathematics/timing.md",
+        "mathematics/timing",
+        "mathematics/timing/v1.md",
         "mathematics/localization.md",
     ]
 ]

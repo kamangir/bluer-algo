@@ -1,20 +1,21 @@
 title:::
 
-on multiple rpis,
+on 2 rpis,
 
 ```bash
 @bps loop start simulate,upload
 ```
 
-in another terminal after a few minutes,
+after a few minutes,
 
 ```bash
-@bps loop stop
+@bps loop stop [rpi <machine-name>]
 ```
 
-set:::object_1_name bps-loop-2025-10-27-21-30-56-bsk8pr
-set:::object_2_name bps-loop-2025-10-27-21-31-48-5a79yu
+set:::object_1_name bps-loop-2025-10-30-17-47-34-tho6pk
+set:::object_2_name bps-loop-2025-10-30-17-47-56-zb5h4o
 
+details:::publication
 ```bash
 @assets publish \
 	download,extensions=png,push \
@@ -24,6 +25,7 @@ set:::object_2_name bps-loop-2025-10-27-21-31-48-5a79yu
 	download,extensions=png,push \
 	get:::object_2_name
 ```
+details:::
 
 | | |
 |-|-|

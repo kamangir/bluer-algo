@@ -41,6 +41,7 @@ function test_bluer_algo_help() {
         "@algo bps" \
         "@bps" \
         "@bps beacon" \
+        "@bps generate" \
         "@bps install" \
         "@bps introspect" \
         "@bps loop" \
