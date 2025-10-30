@@ -8,6 +8,7 @@ function bluer_algo_bps_loop_start() {
 
     bluer_ai_log "starting bps loop..."
     bluer_ai_log "locked" >$BPS_FILE_LOCK
+    bluer_ai_log "started" >$BPS_IS_RUNNING
 
     local options=$1
     local do_upload=$(bluer_ai_option_int "$options" upload 1)
@@ -46,4 +47,6 @@ function bluer_algo_bps_loop_start() {
 
     bluer_algo_bps_review ~download,upload=$do_upload \
         $object_name
+
+    rm -v $BPS_IS_RUNNING
 }

@@ -3,6 +3,7 @@
 function bluer_algo_bps_loop_stop() {
     local options=$1
     local rpi=$(bluer_ai_option_int "$options" rpi 0)
+    local wait_for_stop=$(bluer_ai_option_int "$options" wait 0)
 
     if [[ "$rpi" == 1 ]]; then
         local machine_name=$2
@@ -18,4 +19,12 @@ function bluer_algo_bps_loop_stop() {
     fi
 
     rm -v $BPS_FILE_LOCK
+
+    [[ "$wait_for_stop" == 0 ]] &&
+        return 0
+
+    while [[ -f "$BPS_IS_RUNNING" ]]; do
+        bluer_ai_log "waiting for bps to stop..."
+        bluer_ai_sleep 1.0
+    done
 }

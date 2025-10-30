@@ -31,7 +31,7 @@ def help_stop(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("rpi", mono=mono)
+    options = xtra("rpi,wait", mono=mono)
 
     return show_usage(
         [

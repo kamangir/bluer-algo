@@ -30,7 +30,7 @@
 @bps \
 	loop \
 	stop \
-	[rpi] \
+	[rpi,wait] \
 	[<machine-name>]
  . stop bps loop.
 @bps \
