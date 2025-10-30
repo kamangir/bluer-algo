@@ -33,12 +33,16 @@ in another terminal after a few minutes,
 runme() {
 	local object_name
 	for object_name in \
-		TBA \
-		TBA \
-		TBA; do
+		bps-stream-2025-10-30-19-27-48-vr7so6 \
+		bps-stream-2025-10-30-19-27-56-kqbt2z \
+		bps-stream-2025-10-30-19-27-58-pqxfee; do
 			@assets publish \
 				download,extensions=png,push \
 				$object_name
+
+			@upload public,zip \
+				$object_name
+
 	done
 }
 
@@ -48,13 +52,13 @@ runme
 </details>
 
 
-| | | |
+| [bps-stream-2025-10-30-19-27-48-vr7so6](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/bps-stream-2025-10-30-19-27-48-vr7so6.tar.gz) | [bps-stream-2025-10-30-19-27-56-kqbt2z](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/bps-stream-2025-10-30-19-27-56-kqbt2z.tar.gz) | [bps-stream-2025-10-30-19-27-58-pqxfee](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/bps-stream-2025-10-30-19-27-58-pqxfee.tar.gz) |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/bps-stream-2025-10-30-19-27-48-vr7so6/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-stream-2025-10-30-19-27-56-kqbt2z/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-stream-2025-10-30-19-27-58-pqxfee/bps.png?raw=true) |
 
 
 <details>
-<summary>TBA/metadata</summary>
+<summary>bps-stream-2025-10-30-19-27-48-vr7so6/metadata</summary>
 
 ```yaml
 {}
@@ -66,7 +70,7 @@ runme
 
 
 <details>
-<summary>TBA/metadata</summary>
+<summary>bps-stream-2025-10-30-19-27-56-kqbt2z/metadata</summary>
 
 ```yaml
 {}
@@ -78,7 +82,7 @@ runme
 
 
 <details>
-<summary>TBA/metadata</summary>
+<summary>bps-stream-2025-10-30-19-27-58-pqxfee/metadata</summary>
 
 ```yaml
 {}

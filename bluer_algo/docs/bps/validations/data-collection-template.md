@@ -24,9 +24,9 @@ in another terminal after a few minutes,
 @bps loop stop
 ```
 
-set:::object_1_name TBA
-set:::object_2_name TBA
-set:::object_3_name TBA
+set:::object_1_name bps-stream-2025-10-30-19-27-48-vr7so6
+set:::object_2_name bps-stream-2025-10-30-19-27-56-kqbt2z
+set:::object_3_name bps-stream-2025-10-30-19-27-58-pqxfee
 
 details:::publication
 ```bash
@@ -39,6 +39,10 @@ runme() {
 			@assets publish \
 				download,extensions=png,push \
 				$object_name
+
+			@upload public,zip \
+				$object_name
+
 	done
 }
 
@@ -46,7 +50,7 @@ runme
 ```
 details:::
 
-| | | |
+| object:::get:::object_1_name | object:::get:::object_2_name | object:::get:::object_3_name |
 |-|-|-|
 | assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png | assets:::get:::object_3_name/bps.png |
 
