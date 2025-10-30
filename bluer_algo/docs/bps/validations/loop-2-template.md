@@ -12,8 +12,8 @@ in another terminal after a few minutes,
 @bps loop stop
 ```
 
-set:::object_1_name bps-loop-2025-10-27-21-30-56-bsk8pr
-set:::object_2_name bps-loop-2025-10-27-21-31-48-5a79yu
+set:::object_1_name bps-loop-2025-10-30-17-47-34-tho6pk
+set:::object_2_name bps-loop-2025-10-30-17-47-56-zb5h4o
 
 details:::publication
 ```bash

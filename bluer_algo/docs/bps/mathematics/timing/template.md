@@ -1,96 +1,105 @@
 title:::
 
-> Optimizing Advertise/Receive Cycle Timing - continues [v1](v1.md).
+> optimizing advertise/receive cycle timing - continues [v1](v1.md).
 
-## Problem Setup
+## problem setup
 
-🔥
+each machine runs the following infinite loop:
 
-Each machine runs the following infinite loop:
+1. **advertise** for $t_a$ seconds  
+2. **receive** (scan) for a random duration $U(t_{r1}, t_{r2})$ seconds
 
-1. **Advertise** for $t$ seconds  
-2. **Receive** (scan) for a random duration $U(t_1, t_2)$ seconds
+each process, advertise ($x=a$) or receive ($x=r$), takes:
 
-Each process (advertise or receive) takes:
+- $t_{xo}$ seconds to open  
+- $t_{xc}$ seconds to close  
 
-- $t_o$ seconds to open  
-- $t_c$ seconds to close  
-
-Define the total per-phase overhead:
+define the total per-phase overhead:
 
 
 $$
-s = t_o + t_c
+t_{as} = t_{ao} + t_{ac}
 $$
 
-**Goal:** Choose $t$, $t_1$, and $t_2$ to maximize the expected number of advertisements received among all machines.
+$$
+t_{rs} = t_{ro} + t_{rc}
+$$
+
+
+**goal:** Choose $t_a$, $t_{r1}$, and $t_{r2}$ to maximize the expected number of advertisements received among all machines.
 
 ---
 
-## Derivation
+## derivation
 
-Useful (effective) durations:
-
-$$
-A = max(0, t - s) : \text{advertise}
-$$
+total cycle duration:
 
 $$
-R = max(0, m - s) : \text{receive}
+T = t_a + t_{as} + t_{rm} + t_{rs}
+$$
+
+where,
+
+$$
+t_{rm} = \frac{1}{2}(t_{r1} + t_{r2}) : \text{mean receive time}
+$$
+
+for many unsynchronized machines, the expected overlap fraction between “me listening” and “others advertising” is proportional to:
+
+$$
+P ∝ \frac{t_a}{T} * \frac{t_{rm}}{T}
+$$
+
+## optimal relationship
+
+for a fixed $T$,
+
+$$
+t_a + t_{rm} = T  - (t_{as} + t_{rs})
+$$
+
+is fixed and $P$ is maximized when,
+
+
+$$
+t_a = t_{rm} = \frac{1}{2}(T - t_{as} - t_{rs})
 $$
 
 $$
-m = (t_1 + t_2) / 2 : \text{mean receive time}
+P ∝ \frac{1}{4} \left(1 - \frac{t_{as} + t_{rs}}{T}\right)^2
 $$
 
-Total cycle duration:
+therefore larger $T$ is more optimal for higher overlap.
+
+the expected reaction time is,
 
 $$
-C = t + m + 2s
+R ∝ T - t_a = \frac{1}{2}(T + t_{as} + t_{rs})
 $$
 
-For many unsynchronized machines, the expected overlap fraction between “me listening” and “others advertising” is proportional to:
+therefore, smaller $T$ is more optimal for faster reaction.
 
-$$
-P ∝ (R / C) * (A / C)
-= ((m - s) * (t - s)) / (t + m + 2s)²
-$$
+## summary
 
-## Optimal Relationship
+- match advertise and mean receive times: $t_a = (t_{r1} + t_{r2}) / 2$  
+- keep both much longer than $t_{as} + t_{rs}$  
+- add 10–30% jitter to $t_{r1}/t_{r2}$ to avoid synchronization collisions  
+- choose smaller $t_a$ to for faster reaction.
 
-1. For fixed $(t + m)$, $P$ is maximized when $t = m$.  
-   → **The advertise time equals the mean receive time.**
+## practical choices
 
-2. With $t = m$, $P$ increases as $t$ grows relative to the overhead $s$.  
-   → **Make both durations much longer than the open/close time.**
+system parameters,
 
-Therefore, the optimal condition is:
+| $t_{ao}$ | $t_{ac}$ | $t_{as}$ | $t_{ro}$ | $t_{rc}$ | $t_{rs}$ |
+|-|-|-|-|-|-|
+| ~1 s | ~0 s | ~1 s| ~3 s | ~0.5 s | ~ 3s |
 
-$$
-t = (t_1 + t_2) / 2 - t, m >> s
-$$
+chose:
 
-## Practical Recommendation
-
-For:
-
-$$
-t_o = t_c = 5 s → s = 10 s
-$$
-
-Choose parameters so that $t ≥ 5s$ (i.e., at least 50 s) for good efficiency.
-
-| Mode | Parameters | Notes |
-|------|-------------|-------|
-| **Balanced** | $t = 60 s$, $t_1 = 48 s$, $t_2 = 72 s$ | Mean listen time = 60 s, ±20% jitter |
-| **High overlap (preferred)** | $t = 90 s$, $t_1 = 72 s$, $t_2 = 108 s$ | Best for throughput if latency allows |
-| **Low latency** | $t = 50 s$, $t_1 = 40 s$, $t_2 = 60 s$ | Minimum practical balance |
-
----
-
-## Summary
-
-- Match advertise and mean receive times: $t = (t_1 + t_2) / 2$  
-- Keep both much longer than $t_o + t_c$  
-- Add 10–30% jitter to $t_1$/$t_2$ to avoid synchronization collisions  
-- This maximizes the overlap between advertising and receiving phases across all machines.
+- $t_a$ = 30 s
+- $r_{r1}$ = 24 s
+- $r_{r2}$ = 36 s
+- jitter: 20 %
+- $T$: 64 s
+- $P$: ~ 22%
+- $R$: 34 s
