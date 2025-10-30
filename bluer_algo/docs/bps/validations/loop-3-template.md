@@ -1,6 +1,6 @@
 title:::
 
-on 2 rpis,
+on 3 rpis,
 
 ```bash
 @bps loop start simulate,upload

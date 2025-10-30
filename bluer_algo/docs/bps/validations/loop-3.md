@@ -1,6 +1,6 @@
 # bps: validations: loop-3
 
-on 2 rpis,
+on 3 rpis,
 
 ```bash
 @bps loop start simulate,upload
