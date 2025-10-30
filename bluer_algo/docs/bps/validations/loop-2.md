@@ -9,7 +9,7 @@ on 2 rpis,
 in another terminal after a few minutes,
 
 ```bash
-@bps loop stop
+@bps loop stop [rpi <machine-name>]
 ```
 
 

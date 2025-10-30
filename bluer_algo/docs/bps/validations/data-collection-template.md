@@ -21,7 +21,7 @@ on 2 rpis,
 in another terminal after a few minutes,
 
 ```bash
-@bps loop stop
+@bps loop stop [rpi <machine-name>]
 ```
 
 set:::object_1_name bps-stream-2025-10-30-19-27-48-vr7so6

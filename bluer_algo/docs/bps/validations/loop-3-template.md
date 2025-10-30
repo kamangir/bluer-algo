@@ -9,7 +9,7 @@ on 3 rpis,
 in another terminal after a few minutes,
 
 ```bash
-@bps loop stop
+@bps loop stop [rpi <machine-name>]
 ```
 
 set:::object_1_name bps-loop-2025-10-30-18-03-01-l6ulkz
