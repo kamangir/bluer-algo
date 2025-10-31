@@ -7,6 +7,7 @@ from bluer_options import string
 from bluer_objects import file, objects
 from bluer_objects.graphics.signature import add_signature
 from bluer_objects.metadata import post_to_object
+from bluer_objects.logger.confusion_matrix import log_confusion_matrix
 
 from bluer_algo import NAME
 from bluer_algo.host import signature
@@ -23,22 +24,35 @@ def simulate(
     object_name: str,
     length: int = 1200,
     nodes: int = 3,
+    anchors: int = 4,
     specs: Specs = Specs(),
     verbose: bool = False,
     line_width: int = 80,
 ) -> bool:
     logger.info(
-        "{}.simulating for {} on {} node(s): {} -> {}".format(
+        "{}.simulating for {} on {} node(s) + {} anchor(s): {} -> {}".format(
             NAME,
             string.pretty_minimal_duration(length),
             nodes,
+            anchors,
             specs.as_str(),
             object_name,
         )
     )
 
     logger.info("simulating...")
-    list_of_nodes = [Node(specs) for _ in range(nodes)]
+    list_of_nodes = [
+        Node(
+            specs,
+        )
+        for _ in range(nodes)
+    ] + [
+        Node(
+            specs,
+            anchor=True,
+        )
+        for _ in range(anchors)
+    ]
 
     for node in tqdm(list_of_nodes):
         if not node.simulate(
@@ -50,8 +64,8 @@ def simulate(
     # ---
 
     logger.info("estimating overlaps...")
-    overlap = np.zeros((nodes, nodes))
-    for node_index_a in range(nodes):
+    overlap = np.zeros((nodes + anchors, nodes))
+    for node_index_a in range(nodes + anchors):
         for node_index_r in range(nodes):
             if node_index_a == node_index_r:
                 continue
@@ -67,15 +81,59 @@ def simulate(
             )
 
             logger.info(
-                "node #{} -> node #{}: {:.2f} %".format(
-                    node_index_a,
+                "{} #{} -> node #{}: {:.2f} %".format(
+                    "node" if node_index_a <= nodes - 1 else "anchor",
+                    node_index_a if node_index_a <= nodes - 1 else node_index_a - nodes,
                     node_index_r,
                     100 * overlap[node_index_a, node_index_r],
                 )
             )
 
-    mean_overlap = round(np.sum(overlap) / nodes / (nodes - 1), 2)
+    mean_overlap = round(
+        np.sum(overlap) / (nodes * (nodes + anchors) - nodes),
+        2,
+    )
     logger.info("mean overlap: {:.2f} %".format(100 * mean_overlap))
+
+    # ---
+
+    header = " | ".join(
+        ["bps timing simulation"]
+        + objects.signature(object_name=object_name)
+        + [
+            f"{anchors} anchors(s)",
+            f"{nodes} node(s)",
+            "length: {}".format(string.pretty_minimal_duration(length)),
+            specs.as_str(),
+            "mean overlap: {:.2f} %".format(100 * mean_overlap),
+        ]
+    )
+
+    footer = " | ".join(signature())
+
+    # ---
+
+    if not log_confusion_matrix(
+        confusion_matrix=overlap.transpose(),
+        filename=objects.path_of(
+            object_name=object_name,
+            filename="bps-timing-simulation-overlap.png",
+        ),
+        x_name="node(s) and anchor(s)",
+        y_name="node(s)",
+        x_classes=[
+            "{} #{}".format(
+                "node" if index <= nodes - 1 else "anchor",
+                index if index <= nodes - 1 else index - nodes,
+            )
+            for index in range(nodes + anchors)
+        ],
+        y_classes=[f"node #{index}" for index in range(nodes)],
+        header=[f"overlaps | {header}"],
+        footer=[footer],
+        figsize=(2 * (nodes + anchors), 2 * nodes),
+    ):
+        return False
 
     # ---
 
@@ -94,22 +152,12 @@ def simulate(
         interpolation=cv2.INTER_NEAREST_EXACT,
     )
 
+    legend = np.flip(legend, axis=0)
+
     legend = add_signature(
         legend,
-        header=[
-            " | ".join(
-                ["bps timing simulation"]
-                + objects.signature(object_name)
-                + [
-                    f"{nodes} node(s)",
-                    "length: {}".format(string.pretty_minimal_duration(length)),
-                    "specs: {}".format(specs.as_str()),
-                    "green: advertising, blue: receiving",
-                    "mean overlap: {:.2f} %".format(100 * mean_overlap),
-                ]
-            )
-        ],
-        footer=[" | ".join(signature())],
+        header=[f"{header} | green: advertising, blue: receiving"],
+        footer=[footer],
         line_width=line_width,
     )
 
