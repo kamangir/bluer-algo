@@ -1,20 +1,14 @@
-from blueness import module
+from tqdm import tqdm
 
+from blueness import module
 from bluer_options import string
 
 from bluer_algo import NAME
+from bluer_algo.bps.utils.simulation.node import SimulatedBPSNode
 from bluer_algo.logger import logger
 
 
 NAME = module.name(__file__, NAME)
-
-
-def pretty_duration(duration: float) -> str:
-    return string.pretty_duration(
-        duration,
-        short=True,
-        largest=True,
-    )
 
 
 def simulate(
@@ -32,15 +26,29 @@ def simulate(
         "tr: {} - {} "
         "-> {}".format(
             NAME,
-            pretty_duration(length),
+            string.pretty_minimal_duration(length),
             nodes,
-            pretty_duration(ta1),
-            pretty_duration(ta2),
-            pretty_duration(tr1),
-            pretty_duration(tr2),
+            string.pretty_minimal_duration(ta1),
+            string.pretty_minimal_duration(ta2),
+            string.pretty_minimal_duration(tr1),
+            string.pretty_minimal_duration(tr2),
             object_name,
         )
     )
+
+    list_of_nodes = [
+        SimulatedBPSNode(
+            ta1=ta1,
+            ta2=ta2,
+            tr1=tr1,
+            tr2=tr2,
+        )
+        for _ in range(nodes)
+    ]
+
+    for node in tqdm(list_of_nodes):
+        if not node.simulate(length=length):
+            return False
 
     logger.info("🪄")
 
