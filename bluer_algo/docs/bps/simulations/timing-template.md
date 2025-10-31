@@ -1,6 +1,6 @@
 title:::
 
-> continues [v1](./timing-simulation-v1.md).
+> continues [v1](./timing-v1.md).
 
 ## 3 nodes
 
