@@ -30,7 +30,7 @@ details:::publication
 ```
 details:::
 
-objects:::get:::object_name
+object:::get:::object_name
 
 | | | |
 |-|-|-|
