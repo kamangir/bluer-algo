@@ -34,6 +34,7 @@ docs = [
         "validations/review.md",
         "validations/loop-3.md",
         "validations/data-collection.md",
+        "validations/bps-1.md",
         "mathematics",
         "mathematics/timing",
         "mathematics/timing/v1.md",
