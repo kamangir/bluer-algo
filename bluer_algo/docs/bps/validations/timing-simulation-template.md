@@ -40,3 +40,25 @@ metadata:::get:::object_name:::bps-timing-simulation
 details:::
 
 assets:::get:::object_name/bps-timing-simulation-legend.png
+
+## 3 nodes (variable ta)
+
+```bash
+@select bps-timing-simulation-$(@@timestamp)
+
+@bps simulate timing upload . \
+    --ta1 24 \
+    --ta2 36
+
+@assets publish extensions=png,push .
+```
+
+set:::object_name bps-timing-simulation-2025-10-31-z598po
+
+mean overlap: metadata:::get:::object_name:::bps-timing-simulation.mean-overlap
+
+details:::metadata
+metadata:::get:::object_name:::bps-timing-simulation
+details:::
+
+assets:::get:::object_name/bps-timing-simulation-legend.png
