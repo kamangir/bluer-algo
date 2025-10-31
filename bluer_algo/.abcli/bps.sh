@@ -6,9 +6,9 @@ function bluer_algo_bps() {
     local task=${1:-test}
 
     local options=$2
-    local do_start_bluetooth=1
-    [[ "|generate|install|loop|review|start|" == *"|$task|"* ]] &&
-        do_start_bluetooth=0
+    local do_start_bluetooth=0
+    [[ "|beacon|introspect|receiver|" == *"|$task|"* ]] &&
+        do_start_bluetooth=1
     do_start_bluetooth=$(bluer_ai_option_int "$options" start_bluetooth $do_start_bluetooth)
     if [[ "$do_start_bluetooth" == 1 ]]; then
         bluer_algo_bps_start_bluetooth $options

@@ -12,6 +12,7 @@ setup(
         NAME,
         f"{NAME}.bps",
         f"{NAME}.bps.utils",
+        f"{NAME}.bps.utils.simulation",
         f"{NAME}.help",
         f"{NAME}.help.bps",
         f"{NAME}.help.image_classifier",

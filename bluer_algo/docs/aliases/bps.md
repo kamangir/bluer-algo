@@ -60,6 +60,18 @@
 	[.|<object-name>]
  . review <object-name>.
 @bps \
+	simulate \
+	timing \
+	[upload] \
+	[-|<object-name>] \
+	[--length <120>] \
+	[--nodes <3>] \
+	[--ta1 <30>] \
+	[--ta2 <30>] \
+	[--tr1 <24>] \
+	[--tr2 <36>]
+ . simulate timing.
+@bps \
 	start_bluetooth \
 	[verbose]
  . start bluetooth.
