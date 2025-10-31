@@ -1,5 +1,7 @@
 title:::
 
+## 3 nodes
+
 ```bash
 @select bps-timing-simulation-$(@@timestamp)
 
@@ -8,7 +10,7 @@ title:::
 @assets publish extensions=png,push .
 ```
 
-set:::object_name bps-timing-simulation-2025-10-31-4shf7t
+set:::object_name bps-timing-simulation-2025-10-31-zi9675
 
 mean overlap: metadata:::get:::object_name:::bps-timing-simulation.mean-overlap
 

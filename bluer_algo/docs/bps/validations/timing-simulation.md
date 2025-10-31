@@ -1,5 +1,7 @@
 # bps: validations: timing-simulation
 
+## 3 nodes
+
 ```bash
 @select bps-timing-simulation-$(@@timestamp)
 
@@ -9,23 +11,23 @@
 ```
 
 
-mean overlap: 0.0963888888888889
+mean overlap: 0.09
 
 
 <details>
 <summary>metadata</summary>
 
 ```yaml
-mean-overlap: 0.0963888888888889
+mean-overlap: 0.09
 overlap:
 - - 0.0
-  - 0.0825
-  - 0.1225
-- - 0.07333333333333333
+  - 0.11
+  - 0.028333333333333332
+- - 0.1
   - 0.0
-  - 0.08583333333333333
-- - 0.12083333333333333
-  - 0.09333333333333334
+  - 0.13166666666666665
+- - 0.0375
+  - 0.14416666666666667
   - 0.0
 
 ```
@@ -33,4 +35,4 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-4shf7t/bps-timing-simulation-legend.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-zi9675/bps-timing-simulation-legend.png?raw=true)

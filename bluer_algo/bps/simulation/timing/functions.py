@@ -74,7 +74,7 @@ def simulate(
                 )
             )
 
-    mean_overlap = np.sum(overlap) / nodes / (nodes - 1)
+    mean_overlap = round(np.sum(overlap) / nodes / (nodes - 1), 2)
     logger.info("mean overlap: {:.2f} %".format(100 * mean_overlap))
 
     # ---
