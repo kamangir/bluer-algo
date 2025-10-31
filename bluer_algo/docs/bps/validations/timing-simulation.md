@@ -248,3 +248,44 @@ overlap:
 
 
 ![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-z598po/bps-timing-simulation-legend.png?raw=true)
+
+## 3 nodes (more variability)
+
+```bash
+@select bps-timing-simulation-$(@@timestamp)
+
+@bps simulate timing upload . \
+    --ta1 20 \
+    --ta2 40 \
+    --tr1 20 \
+    --tr2 40
+
+@assets publish extensions=png,push .
+```
+
+
+mean overlap: 0.17
+
+
+<details>
+<summary>metadata</summary>
+
+```yaml
+mean-overlap: 0.17
+overlap:
+- - 0.0
+  - 0.135
+  - 0.19666666666666666
+- - 0.16
+  - 0.0
+  - 0.15916666666666668
+- - 0.205
+  - 0.14416666666666667
+  - 0.0
+
+```
+
+</details>
+
+
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-9fomdv/bps-timing-simulation-legend.png?raw=true)

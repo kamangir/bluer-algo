@@ -62,3 +62,27 @@ metadata:::get:::object_name:::bps-timing-simulation
 details:::
 
 assets:::get:::object_name/bps-timing-simulation-legend.png
+
+## 3 nodes (more variability)
+
+```bash
+@select bps-timing-simulation-$(@@timestamp)
+
+@bps simulate timing upload . \
+    --ta1 20 \
+    --ta2 40 \
+    --tr1 20 \
+    --tr2 40
+
+@assets publish extensions=png,push .
+```
+
+set:::object_name bps-timing-simulation-2025-10-31-9fomdv
+
+mean overlap: metadata:::get:::object_name:::bps-timing-simulation.mean-overlap
+
+details:::metadata
+metadata:::get:::object_name:::bps-timing-simulation
+details:::
+
+assets:::get:::object_name/bps-timing-simulation-legend.png
