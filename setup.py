@@ -11,8 +11,9 @@ setup(
     packages=[
         NAME,
         f"{NAME}.bps",
+        f"{NAME}.bps.simulation",
+        f"{NAME}.bps.simulation.timing",
         f"{NAME}.bps.utils",
-        f"{NAME}.bps.utils.simulation",
         f"{NAME}.help",
         f"{NAME}.help.bps",
         f"{NAME}.help.image_classifier",

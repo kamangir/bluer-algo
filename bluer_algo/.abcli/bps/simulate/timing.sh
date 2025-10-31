@@ -6,7 +6,7 @@ function bluer_algo_bps_simulate_timing() {
 
     local object_name=$(bluer_ai_clarify_object $3 bps-timing-simulation-$(bluer_ai_string_timestamp_short))
 
-    python3 -m bluer_algo.bps.utils.simulate \
+    python3 -m bluer_algo.bps.utils.simulate timing \
         --object_name $object_name \
         "${@:3}"
     [[ $? -ne 0 ]] && return 1

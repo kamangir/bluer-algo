@@ -1,20 +1,15 @@
 from bluer_options import string
 
+from bluer_algo.bps.simulation.timing.specs import Specs
 from bluer_algo.logger import logger
 
 
-class SimulatedBPSNode:
+class Node:
     def __init__(
         self,
-        ta1: float = 30,
-        ta2: float = 30,
-        tr1: float = 24,
-        tr2: float = 36,
+        specs: Specs = Specs(),
     ):
-        self.ta1 = ta1
-        self.ta2 = ta2
-        self.tr1 = tr1
-        self.tr2 = tr2
+        self.specs = specs
 
     def simulate(
         self,

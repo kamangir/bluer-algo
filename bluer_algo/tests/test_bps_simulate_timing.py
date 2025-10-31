@@ -1,5 +1,5 @@
 from bluer_objects import objects
-from bluer_algo.bps.utils.simulation.functions import simulate
+from bluer_algo.bps.simulation.timing.functions import simulate
 
 
 def test_bps_simulate_timing():
