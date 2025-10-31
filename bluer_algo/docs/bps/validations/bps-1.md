@@ -23,7 +23,7 @@ BLUER_SBC_SWALLOW_HAS_BPS=1
 
 
 ```bash
-@select 2025-10-31-09-36-17-er5ay9
+@select 2025-10-31-11-47-47-c2b6d9
 
 @assets publish \
     download,extensions=png,push .
@@ -34,8 +34,8 @@ BLUER_SBC_SWALLOW_HAS_BPS=1
 </details>
 
 
-[2025-10-31-09-36-17-er5ay9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-09-36-17-er5ay9.tar.gz)
+[2025-10-31-11-47-47-c2b6d9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-11-47-47-c2b6d9.tar.gz)
 
 | | | |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-09-36-17-er5ay9/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-09-36-17-er5ay9/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-09-36-17-er5ay9/ultrasonic-sensor-state.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-state.png?raw=true) |
