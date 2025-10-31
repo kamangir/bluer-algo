@@ -2,7 +2,7 @@
 
 function bluer_algo_bps_review() {
     local options=$1
-    local do_download=$(bluer_ai_option_int "$options" upload 1)
+    local do_download=$(bluer_ai_option_int "$options" download 1)
     local do_upload=$(bluer_ai_option_int "$options" upload 0)
 
     local object_name=$(bluer_ai_clarify_object $2 .)
