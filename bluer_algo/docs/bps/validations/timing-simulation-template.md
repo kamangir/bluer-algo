@@ -8,7 +8,7 @@ title:::
 @assets publish extensions=png,push .
 ```
 
-set:::object_name bps-timing-simulation-2025-10-31-xl5qow
+set:::object_name bps-timing-simulation-2025-10-31-4shf7t
 
 mean overlap: metadata:::get:::object_name:::bps-timing-simulation.mean-overlap
 

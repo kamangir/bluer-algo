@@ -24,7 +24,7 @@ class Specs:
         self.tr2 = tr2
 
     def as_str(self) -> str:
-        return "ta:{} > {} - {} < {}, tr:{} > {} - {} < {}".format(
+        return "ta:{} > {} - {} < {} | tr:{} > {} - {} < {}".format(
             string.pretty_minimal_duration(self.tao),
             string.pretty_minimal_duration(self.ta1),
             string.pretty_minimal_duration(self.ta2),
