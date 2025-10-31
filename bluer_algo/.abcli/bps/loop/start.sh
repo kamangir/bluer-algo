@@ -19,9 +19,15 @@ function bluer_algo_bps_loop_start() {
     bluer_algo_bps_start_bluetooth
 
     while [[ -f "$BPS_FILE_LOCK" ]]; do
+        local advertisement_timeout=$(bluer_ai_string_random \
+            --int 1 \
+            --min $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MIN \
+            --max $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MAX)
+        bluer_ai_log "advertisement timeout: $advertisement_timeout s"
+
         bluer_algo_bps_beacon ~start_bluetooth \
             $object_name \
-            --timeout $BLUER_AI_BPS_LOOP_BEACON_LENGTH \
+            --timeout $advertisement_timeout \
             --simulate $do_simulate
         [[ $? -ne 0 ]] && return 1
         bluer_ai_hr
