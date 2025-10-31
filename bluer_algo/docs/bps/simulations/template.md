@@ -1,3 +1,3 @@
 title:::
 
-- [timing simulation](./timing.md)
+- [timing](./timing.md)

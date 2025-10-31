@@ -1,3 +1,3 @@
 # bps: simulations
 
-- [timing simulation](./timing.md)
+- [timing](./timing.md)
