@@ -36,6 +36,7 @@ docs = [
         "validations/data-collection.md",
         "validations/live-1.md",
         "validations/live-2.md",
+        "validations/live-2b.md",
         "validations/timing-simulation.md",
         "mathematics",
         "mathematics/timing",
