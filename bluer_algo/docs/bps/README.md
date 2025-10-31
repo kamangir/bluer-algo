@@ -15,6 +15,7 @@ bluer-positioning system.
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
 - [validations](./validations)
+- [simulations](./simulations)
 
 > ℹ️ works on rpi only.
 

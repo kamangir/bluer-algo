@@ -1,4 +1,4 @@
-# bps: validations: timing-simulation
+# bps: simulations: timing
 
 > continues [v1](./timing-simulation-v1.md).
 

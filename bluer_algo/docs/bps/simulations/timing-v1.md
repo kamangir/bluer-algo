@@ -1,4 +1,4 @@
-# bps: validations: timing-simulation-v1
+# bps: simulations: timing-v1
 
 ## 3 nodes
 
