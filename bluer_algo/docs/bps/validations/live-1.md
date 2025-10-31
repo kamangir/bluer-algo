@@ -1,4 +1,4 @@
-# bps: validations: bps-1
+# bps: validations: live-1
 
 on one rpi,
 

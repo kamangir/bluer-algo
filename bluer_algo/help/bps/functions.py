@@ -3,6 +3,7 @@ from typing import List
 from bluer_options.terminal import show_usage, xtra
 
 from bluer_algo.help.bps.loop import help_functions as help_loop
+from bluer_algo.help.bps.simulate import help_functions as help_simulate
 
 generate_args = [
     "[--sigma <4.0>]",
@@ -202,6 +203,7 @@ help_functions = {
     "loop": help_loop,
     "receiver": help_receiver,
     "review": help_review,
+    "simulate": help_simulate,
     "start_bluetooth": help_start_bluetooth,
     "test": help_test,
 }

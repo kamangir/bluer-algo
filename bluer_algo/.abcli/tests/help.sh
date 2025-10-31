@@ -49,6 +49,8 @@ function test_bluer_algo_help() {
         "@bps loop stop" \
         "@bps receiver" \
         "@bps review" \
+        "@bps simulate" \
+        "@bps simulate timing" \
         "@bps test_bluetooth" \
         \
         "@image_classifier" \
