@@ -10,12 +10,13 @@ def help_timing(
     options = "upload"
 
     args = [
-        "[--length <120>]",
+        "[--length <1200>]",
         "[--nodes <3>]",
         "[--ta1 <30>]",
         "[--ta2 <30>]",
         "[--tr1 <24>]",
         "[--tr2 <36>]",
+        "[--verbose 1]",
     ]
 
     return show_usage(

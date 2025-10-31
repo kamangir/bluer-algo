@@ -24,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     "--length",
     type=int,
-    default=120,
+    default=1200,
     help="in seconds",
 )
 parser.add_argument(
@@ -80,6 +80,12 @@ parser.add_argument(
     default=36,
     help="in seconds",
 )
+parser.add_argument(
+    "--verbose",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -98,6 +104,7 @@ if args.task == "timing":
             tr1=args.tr1,
             tr2=args.tr2,
         ),
+        verbose=args.verbose == 1,
     )
 else:
     success = None

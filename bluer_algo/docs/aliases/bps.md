@@ -64,12 +64,13 @@
 	timing \
 	[upload] \
 	[-|<object-name>] \
-	[--length <120>] \
+	[--length <1200>] \
 	[--nodes <3>] \
 	[--ta1 <30>] \
 	[--ta2 <30>] \
 	[--tr1 <24>] \
-	[--tr2 <36>]
+	[--tr2 <36>] \
+	[--verbose 1]
  . simulate timing.
 @bps \
 	start_bluetooth \
