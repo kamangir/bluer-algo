@@ -4,6 +4,7 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
+from bluer_algo import env
 from bluer_algo.bps.simulation.timing.specs import Specs as simulate_specs
 from bluer_algo.bps.simulation.timing.functions import simulate as simulate_timing
 from bluer_algo.logger import logger
@@ -28,6 +29,11 @@ parser.add_argument(
     help="in seconds",
 )
 parser.add_argument(
+    "--anchors",
+    type=int,
+    default=4,
+)
+parser.add_argument(
     "--nodes",
     type=int,
     default=3,
@@ -41,7 +47,7 @@ parser.add_argument(
 parser.add_argument(
     "--tac",
     type=int,
-    default=0,
+    default=1,
     help="in seconds",
 )
 parser.add_argument(
@@ -59,25 +65,25 @@ parser.add_argument(
 parser.add_argument(
     "--ta1",
     type=int,
-    default=30,
+    default=env.BLUER_AI_BPS_LOOP_BEACON_LENGTH_MIN,
     help="in seconds",
 )
 parser.add_argument(
     "--ta2",
     type=int,
-    default=30,
+    default=env.BLUER_AI_BPS_LOOP_BEACON_LENGTH_MAX,
     help="in seconds",
 )
 parser.add_argument(
     "--tr1",
     type=int,
-    default=24,
+    default=env.BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MIN,
     help="in seconds",
 )
 parser.add_argument(
     "--tr2",
     type=int,
-    default=36,
+    default=env.BLUER_AI_BPS_LOOP_RECEIVER_LENGTH_MAX,
     help="in seconds",
 )
 parser.add_argument(
@@ -93,6 +99,7 @@ if args.task == "timing":
     success = simulate_timing(
         object_name=args.object_name,
         length=args.length,
+        anchors=args.anchors,
         nodes=args.nodes,
         specs=simulate_specs(
             tao=args.tao,

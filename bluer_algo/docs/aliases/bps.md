@@ -65,11 +65,12 @@
 	[upload] \
 	[-|<object-name>] \
 	[--length <1200>] \
+	[--anchors <4>] \
 	[--nodes <3>] \
-	[--ta1 <30>] \
-	[--ta2 <30>] \
-	[--tr1 <24>] \
-	[--tr2 <36>] \
+	[--ta1 <20>] \
+	[--ta2 <40>] \
+	[--tr1 <20>] \
+	[--tr2 <40>] \
 	[--verbose 1]
  . simulate timing.
 @bps \

@@ -27,6 +27,7 @@ docs = [
     }
     for doc in [
         "literature.md",
+        #
         "validations",
         "validations/test-introspect.md",
         "validations/beacon-receiver.md",
@@ -37,7 +38,11 @@ docs = [
         "validations/live-1.md",
         "validations/live-2.md",
         "validations/live-2b.md",
-        "validations/timing-simulation.md",
+        #
+        "simulations",
+        "simulations/timing-v1.md",
+        "simulations/timing.md",
+        #
         "mathematics",
         "mathematics/timing",
         "mathematics/timing/v1.md",

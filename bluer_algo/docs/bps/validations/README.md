@@ -6,4 +6,3 @@
 - [review](./review.md)
 - [data collection](./data-collection.md)
 - live: [1 rpi](./live-1.md), [2 rpis](./live-2.md), [2 rpis](./live-2b.md)
-- [timing simulation](./timing-simulation.md)

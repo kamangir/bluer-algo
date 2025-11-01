@@ -111,3 +111,5 @@ metadata:::get:::object_name:::bps-timing-simulation
 details:::
 
 assets:::get:::object_name/bps-timing-simulation-legend.png
+
+> ℹ️ $t_{a1}$, $t_{a2}$, $t_{r1}$, $t_{r2}$ are adjusted to ⬆️
