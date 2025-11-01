@@ -60,6 +60,10 @@
 	[.|<object-name>]
  . review <object-name>.
 @bps \
+	set_anchor \
+	clear | <1.1,2.2,3.3,4.4>
+ . set bps anchor.
+@bps \
 	simulate \
 	timing \
 	[upload] \
