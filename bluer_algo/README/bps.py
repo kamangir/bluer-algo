@@ -38,6 +38,7 @@ docs = [
         "validations/live-1.md",
         "validations/live-2.md",
         "validations/live-2b.md",
+        "validations/live-3.md",
         #
         "simulations",
         "simulations/timing-v1.md",

@@ -2,6 +2,7 @@
 # beacon.py — BLE advertiser via BlueZ D-Bus (no Bluezero/Bleak)
 # Requires: dbus-next 0.2.x, bluetoothd --experimental, adapter powered on.
 
+import os
 import asyncio
 import argparse
 import struct
@@ -13,6 +14,7 @@ from dbus_next import Variant, BusType, Message, MessageType
 from blueness import module
 from bluer_options import string
 from bluer_options.env import abcli_hostname
+from bluer_objects import file
 
 from bluer_algo import NAME
 from bluer_algo.bps.ping import Ping
@@ -28,6 +30,8 @@ ADAPTER_IFACE = "org.bluez.Adapter1"
 ADVERTISING_MGR_IFACE = "org.bluez.LEAdvertisingManager1"
 AD_OBJECT_PATH = "/org/bluez/example/advertisement0"  # any unique path is fine
 AD_IFACE = "org.bluez.LEAdvertisement1"
+
+BPS_FILE_LOCK = os.getenv("BPS_FILE_LOCK")
 
 
 # --- helper: read current adapter TxPower ---
@@ -226,6 +230,10 @@ async def main(
         while not stop.is_set():
             logger.info(f"advertising {abcli_hostname} ...")
             await asyncio.sleep(spacing)
+
+            if not file.exists(BPS_FILE_LOCK):
+                logger.info("stop received.")
+                break
     finally:
         try:
             await unregister_advertisement(bus)

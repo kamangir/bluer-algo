@@ -161,6 +161,23 @@ def help_review(
     )
 
 
+def help_set_anchor(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "~download,upload"
+
+    return show_usage(
+        [
+            "@bps",
+            "set_anchor",
+            "clear | <1.1,2.2,3.3,4.4>",
+        ],
+        "set bps anchor.",
+        mono=mono,
+    )
+
+
 def help_start_bluetooth(
     tokens: List[str],
     mono: bool,
@@ -203,6 +220,7 @@ help_functions = {
     "loop": help_loop,
     "receiver": help_receiver,
     "review": help_review,
+    "set_anchor": help_set_anchor,
     "simulate": help_simulate,
     "start_bluetooth": help_start_bluetooth,
     "test": help_test,
