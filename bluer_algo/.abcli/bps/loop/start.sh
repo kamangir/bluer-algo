@@ -22,7 +22,8 @@ function bluer_algo_bps_loop_start() {
         bluer_ai_log "⚓️: $BLUER_SBC_BPS_ANCHORED_AT"
         bluer_algo_bps_generate - \
             $object_name \
-            --import $BLUER_SBC_BPS_ANCHORED_AT
+            --as_str $BLUER_SBC_BPS_ANCHORED_AT
+        [[ $? -ne 0 ]] && return 1
     fi
 
     local advertisement_timeout
