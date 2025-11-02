@@ -44,5 +44,5 @@ details:::
 | object:::get:::object_anchor_name | object:::get:::object_1_name | object:::get:::object_2_name |
 |-|-|-|
 | assets:::get:::object_anchor_name/bps.png | assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png |
-| assets:::get:::object_anchor_name/ultrasonic-sensor-pulse-ms.png | assets:::get:::object_1_name/ultrasonic-sensor-pulse-ms.png | assets:::get:::object_2_name/ultrasonic-sensor-pulse-ms.png | 
+| assets:::get:::object_anchor_name/ultrasonic-sensor-distance-mm.png | assets:::get:::object_1_name/ultrasonic-sensor-distance-mm.png | assets:::get:::object_2_name/ultrasonic-sensor-distance-mm.png | 
 | assets:::get:::object_anchor_name/ultrasonic-sensor-state.png | assets:::get:::object_1_name/ultrasonic-sensor-state.png | assets:::get:::object_2_name/ultrasonic-sensor-state.png |
