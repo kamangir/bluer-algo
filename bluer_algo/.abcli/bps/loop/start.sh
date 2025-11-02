@@ -48,7 +48,7 @@ function bluer_algo_bps_loop_start() {
         [[ ! -f "$BPS_FILE_LOCK" ]] &&
             break
 
-        [[ -z "$BLUER_SBC_BPS_ANCHORED_AT" ]] &&
+        [[ ! -z "$BLUER_SBC_BPS_ANCHORED_AT" ]] &&
             continue
 
         local receiver_timeout=$(bluer_ai_string_random \
