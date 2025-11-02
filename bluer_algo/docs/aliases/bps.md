@@ -18,6 +18,8 @@
 	generate \
 	[-] \
 	[-|<object-name>] \
+	[--as_str <x>,<y>,<z>,sigma] \
+	[--only_validate 1] \
 	[--sigma <4.0>] \
 	[--simulate 1] \
 	[--x <1.0>] \

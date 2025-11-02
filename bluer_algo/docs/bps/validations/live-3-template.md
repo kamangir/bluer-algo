@@ -1,19 +1,22 @@
 title:::
 
-on 2 rpis, continues [live-2b](./live-2.md) with an anchor.
+on 3 rpis (1 anchor), continues [live-2b](./live-2.md) with an anchor.
+
+on the anchor run,
 
 ```bash
 @bps set_anchor 0,0,0,1
 ```
 
-🔥
+on all run,
 
 ```bash
 @select; @session start
 ```
 
-set:::object_1_name TBA
-set:::object_2_name TBA
+set:::object_anchor_name 2025-11-02-20-53-41-gpl909
+set:::object_1_name 2025-11-02-20-53-13-45ycwm
+set:::object_2_name 2025-11-02-20-53-13-11qxlz
 
 details:::publication
 
@@ -21,6 +24,7 @@ details:::publication
 runme() {
 	local object_name
 	for object_name in \
+		get:::object_anchor_name \
 		get:::object_1_name \
 		get:::object_2_name; do
 			@assets publish \
@@ -37,8 +41,8 @@ runme
 ```
 details:::
 
-| object:::get:::object_1_name | object:::get:::object_2_name |
-|-|-|
-| assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png |
-| assets:::get:::object_1_name/ultrasonic-sensor-pulse-ms.png | assets:::get:::object_2_name/ultrasonic-sensor-pulse-ms.png | 
-| assets:::get:::object_1_name/ultrasonic-sensor-state.png | assets:::get:::object_2_name/ultrasonic-sensor-state.png |
+| object:::get:::object_anchor_name | object:::get:::object_1_name | object:::get:::object_2_name |
+|-|-|-|
+| assets:::get:::object_anchor_name/bps.png | assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png |
+| assets:::get:::object_anchor_name/ultrasonic-sensor-distance-mm.png | assets:::get:::object_1_name/ultrasonic-sensor-distance-mm.png | assets:::get:::object_2_name/ultrasonic-sensor-distance-mm.png | 
+| assets:::get:::object_anchor_name/ultrasonic-sensor-state.png | assets:::get:::object_1_name/ultrasonic-sensor-state.png | assets:::get:::object_2_name/ultrasonic-sensor-state.png |
