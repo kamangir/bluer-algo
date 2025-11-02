@@ -18,6 +18,8 @@
 	generate \
 	[-] \
 	[-|<object-name>] \
+	[--as_str <x>,<y>,<z>,sigma] \
+	[--only_validate 1] \
 	[--sigma <4.0>] \
 	[--simulate 1] \
 	[--x <1.0>] \
@@ -73,8 +75,8 @@
 	[--nodes <3>] \
 	[--ta1 <20>] \
 	[--ta2 <40>] \
-	[--tr1 <24>] \
-	[--tr2 <36>] \
+	[--tr1 <20>] \
+	[--tr2 <40>] \
 	[--verbose 1]
  . simulate timing.
 @bps \

@@ -48,7 +48,13 @@ def help_generate(
 ) -> str:
     options = "-"
 
-    args = generate_args
+    args = sorted(
+        [
+            "[--as_str <x>,<y>,<z>,sigma]",
+            "[--only_validate 1]",
+        ]
+        + generate_args
+    )
 
     return show_usage(
         [

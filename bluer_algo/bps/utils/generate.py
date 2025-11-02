@@ -12,6 +12,11 @@ NAME = module.name(__file__, NAME)
 
 parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
+    "--as_str",
+    type=str,
+    default="",
+)
+parser.add_argument(
     "--object_name",
     type=str,
 )
@@ -41,20 +46,49 @@ parser.add_argument(
     type=float,
     default=3.0,
 )
+parser.add_argument(
+    "--only_validate",
+    type=int,
+    default=0,
+    help="0|1",
+)
 args = parser.parse_args()
 
-stream = Stream.load(args.object_name)
+if args.only_validate:
+    stream = Stream()
+else:
+    stream = Stream.load(args.object_name)
 
-stream.generate(
-    simulate=args.simulate,
-    as_dict={
-        "x": args.x,
-        "y": args.y,
-        "z": args.z,
-        "sigma": args.sigma,
-    },
-)
+x = args.x
+y = args.y
+z = args.z
+sigma = args.sigma
 
-success = stream.save(args.object_name)
+success = True
+if args.as_str:
+    as_str_parts = args.as_str.split(",")
+    if len(as_str_parts) == 4:
+        try:
+            x, y, z, sigma = [float(part) for part in as_str_parts]
+        except Exception as e:
+            logger.error(e)
+            success = False
+    else:
+        logger.error("too few inputs, expected x,y,z,sigma (4).")
+        success = False
+
+if success:
+    stream.generate(
+        simulate=args.simulate,
+        as_dict={
+            "x": x,
+            "y": y,
+            "z": z,
+            "sigma": sigma,
+        },
+    )
+
+    if not args.only_validate:
+        success = stream.save(args.object_name)
 
 sys_exit(logger, NAME, "generate", success)
