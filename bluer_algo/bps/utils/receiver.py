@@ -1,4 +1,5 @@
 import asyncio
+import os
 from bleak import BleakScanner
 from bleak.backends.device import BLEDevice
 from bleak.backends.scanner import AdvertisementData
@@ -17,6 +18,8 @@ from bluer_algo.bps.stream import Ping
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
+
+BPS_FILE_LOCK = os.getenv("BPS_FILE_LOCK")
 
 
 def to_dict(obj):
@@ -104,9 +107,21 @@ async def main(
     loop = asyncio.get_event_loop()
     loop.add_signal_handler(signal.SIGINT, handle_sigint)
 
+    async def monitor_lock_file():
+        """Periodically check if the lock file still exists."""
+        while not stop_event.is_set():
+            if not os.path.exists(BPS_FILE_LOCK):
+                logger.warning(f"Lock file missing: {BPS_FILE_LOCK}, stopping scan ...")
+                stop_event.set()
+                break
+            await asyncio.sleep(1.0)  # check every second
+
+    # run both the wait and the file monitor
     try:
-        # wait either for timeout or Ctrl+C
-        await asyncio.wait_for(stop_event.wait(), timeout=timeout)
+        await asyncio.wait_for(
+            asyncio.gather(stop_event.wait(), monitor_lock_file()),
+            timeout=timeout,
+        )
     except asyncio.TimeoutError:
         logger.info(
             "timeout ({}) reached, stopping advertisement.".format(
