@@ -165,8 +165,6 @@ def help_set_anchor(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "~download,upload"
-
     return show_usage(
         [
             "@bps",
