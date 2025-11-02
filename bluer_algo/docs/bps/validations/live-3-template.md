@@ -14,9 +14,9 @@ on all run,
 @select; @session start
 ```
 
-set:::object_anchor_name 2025-11-02-20-22-29-9o4nca
-set:::object_1_name 2025-11-02-20-22-27-g3a833
-set:::object_2_name 2025-11-02-20-22-28-j8wwhs
+set:::object_anchor_name TBA
+set:::object_1_name TBA
+set:::object_2_name TBA
 
 details:::publication
 
@@ -42,7 +42,7 @@ runme
 details:::
 
 | object:::get:::object_anchor_name | object:::get:::object_1_name | object:::get:::object_2_name |
-|-|-|
+|-|-|-|
 | assets:::get:::object_anchor_name/bps.png | assets:::get:::object_1_name/bps.png | assets:::get:::object_2_name/bps.png |
 | assets:::get:::object_anchor_name/ultrasonic-sensor-pulse-ms.png | assets:::get:::object_1_name/ultrasonic-sensor-pulse-ms.png | assets:::get:::object_2_name/ultrasonic-sensor-pulse-ms.png | 
 | assets:::get:::object_anchor_name/ultrasonic-sensor-state.png | assets:::get:::object_1_name/ultrasonic-sensor-state.png | assets:::get:::object_2_name/ultrasonic-sensor-state.png |
