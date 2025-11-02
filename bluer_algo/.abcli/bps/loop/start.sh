@@ -18,11 +18,22 @@ function bluer_algo_bps_loop_start() {
 
     bluer_algo_bps_start_bluetooth
 
+    if [[ ! -z "$BLUER_SBC_BPS_ANCHORED_AT" ]]; then
+        bluer_ai_log "⚓️: $BLUER_SBC_BPS_ANCHORED_AT"
+        bluer_algo_bps_generate - \
+            --import $BLUER_SBC_BPS_ANCHORED_AT
+    fi
+
+    local advertisement_timeout
     while [[ -f "$BPS_FILE_LOCK" ]]; do
-        local advertisement_timeout=$(bluer_ai_string_random \
-            --int 1 \
-            --min $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MIN \
-            --max $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MAX)
+        if [[ -z "$BLUER_SBC_BPS_ANCHORED_AT" ]]; then
+            advertisement_timeout=$(bluer_ai_string_random \
+                --int 1 \
+                --min $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MIN \
+                --max $BLUER_AI_BPS_LOOP_BEACON_LENGTH_MAX)
+        else
+            advertisement_timeout=$BLUER_AI_BPS_LOOP_BEACON_LENGTH_MAX
+        fi
         bluer_ai_log "advertisement timeout: $advertisement_timeout s"
 
         bluer_algo_bps_beacon ~start_bluetooth \
@@ -34,6 +45,9 @@ function bluer_algo_bps_loop_start() {
 
         [[ ! -f "$BPS_FILE_LOCK" ]] &&
             break
+
+        [[ -z "$BLUER_SBC_BPS_ANCHORED_AT" ]] &&
+            continue
 
         local receiver_timeout=$(bluer_ai_string_random \
             --int 1 \

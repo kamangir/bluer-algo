@@ -1,12 +1,16 @@
 # bps: validations: live-3
 
-on 3 rpis, continues [live-2b](./live-2.md) with an anchor.
+on 3 rpis (1 anchor), continues [live-2b](./live-2.md) with an anchor.
+
+on the anchor run,
+
+🔥
 
 ```bash
 @bps set_anchor 0,0,0,1
 ```
 
-🔥
+on all run,
 
 ```bash
 @select; @session start
