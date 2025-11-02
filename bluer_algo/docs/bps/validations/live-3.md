@@ -24,9 +24,9 @@ on all run,
 runme() {
 	local object_name
 	for object_name in \
-		TBA \
-		TBA \
-		TBA; do
+		2025-11-02-20-53-41-gpl909 \
+		2025-11-02-20-53-13-45ycwm \
+		2025-11-02-20-53-13-11qxlz; do
 			@assets publish \
 				download,extensions=png,push \
 				$object_name
@@ -43,8 +43,8 @@ runme
 </details>
 
 
-| [TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz) | [TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz) | [TBA](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/TBA.tar.gz) |
+| [2025-11-02-20-53-41-gpl909](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-11-02-20-53-41-gpl909.tar.gz) | [2025-11-02-20-53-13-45ycwm](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-11-02-20-53-13-45ycwm.tar.gz) | [2025-11-02-20-53-13-11qxlz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-11-02-20-53-13-11qxlz.tar.gz) |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/bps.png?raw=true) |
-| ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-pulse-ms.png?raw=true) | 
-| ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-state.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-state.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/ultrasonic-sensor-state.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-41-gpl909/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-45ycwm/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-11qxlz/bps.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-41-gpl909/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-45ycwm/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-11qxlz/ultrasonic-sensor-pulse-ms.png?raw=true) | 
+| ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-41-gpl909/ultrasonic-sensor-state.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-45ycwm/ultrasonic-sensor-state.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-11-02-20-53-13-11qxlz/ultrasonic-sensor-state.png?raw=true) |

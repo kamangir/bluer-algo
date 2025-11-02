@@ -14,9 +14,9 @@ on all run,
 @select; @session start
 ```
 
-set:::object_anchor_name TBA
-set:::object_1_name TBA
-set:::object_2_name TBA
+set:::object_anchor_name 2025-11-02-20-53-41-gpl909
+set:::object_1_name 2025-11-02-20-53-13-45ycwm
+set:::object_2_name 2025-11-02-20-53-13-11qxlz
 
 details:::publication
 
