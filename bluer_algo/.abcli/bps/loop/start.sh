@@ -21,6 +21,7 @@ function bluer_algo_bps_loop_start() {
     if [[ ! -z "$BLUER_SBC_BPS_ANCHORED_AT" ]]; then
         bluer_ai_log "⚓️: $BLUER_SBC_BPS_ANCHORED_AT"
         bluer_algo_bps_generate - \
+            $object_name \
             --import $BLUER_SBC_BPS_ANCHORED_AT
     fi
 
