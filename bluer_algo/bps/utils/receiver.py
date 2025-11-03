@@ -11,6 +11,7 @@ import struct
 from blueness import module
 from bluer_options import string
 from bluer_options.terminal.functions import hr
+from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
 from bluer_algo.bps.stream import Stream
@@ -165,4 +166,9 @@ if __name__ == "__main__":
         )
     )
 
-    stream.save(args.object_name)
+    success = stream.save(args.object_name)
+
+    if success:
+        success, _ = stream.estimate_position(args.object_name)
+
+    sys_exit(logger, NAME, "receive", success)

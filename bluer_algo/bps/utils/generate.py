@@ -5,6 +5,7 @@ from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
 from bluer_algo.bps.stream import Stream
+from bluer_algo.bps.position import Position
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -77,18 +78,23 @@ if args.as_str:
         logger.error("too few inputs, expected x,y,z,sigma (4).")
         success = False
 
+position = Position(
+    x=x,
+    y=y,
+    z=z,
+    sigma=sigma,
+)
+
 if success:
     stream.generate(
         simulate=args.simulate,
-        as_dict={
-            "x": x,
-            "y": y,
-            "z": z,
-            "sigma": sigma,
-        },
+        as_dict=position.as_dict(),
     )
 
     if not args.only_validate:
         success = stream.save(args.object_name)
+
+if success and not args.only_validate:
+    success = position.save(args.object_name)
 
 sys_exit(logger, NAME, "generate", success)

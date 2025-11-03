@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 import matplotlib
 import matplotlib.pyplot as plt
 import random
@@ -7,6 +7,7 @@ import math
 from bluer_objects import file, objects
 from bluer_objects.graphics.signature import justify_text
 from bluer_objects.metadata import post_to_object
+from bluer_algo.bps.position import Position
 
 from bluer_algo.bps.ping import Ping
 from bluer_algo.host import signature
@@ -34,6 +35,21 @@ class Stream:
             logger.info(f"🏓 # unique pings: {len(self.history)}")
 
         return True
+
+    def estimate_position(self, object_name: str) -> Tuple[bool, Position]:
+        logger.info("estimating position from {} ping(s)...".format(len(self.history)))
+
+        logger.info("🪄")
+
+        position = Position(
+            x=0,
+            y=0,
+            z=0,
+            sigma=1000,
+        )
+        logger.info(f"position: {position.as_str()}")
+
+        return position.save(object_name), position
 
     def export(
         self,
