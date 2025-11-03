@@ -65,7 +65,7 @@ class Position:
             return False
 
         logger.info(
-            "loaded {} from {}".format(
+            "🎯 loaded {} from {}".format(
                 position.as_str(),
                 object_name,
             )
@@ -84,7 +84,7 @@ class Position:
         lock = FileLock(filename + ".lock")
 
         logger.info(
-            "{} -> {}".format(
+            "🎯 {} -> {}".format(
                 self.as_str(),
                 object_name,
             )
