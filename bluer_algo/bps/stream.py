@@ -37,7 +37,7 @@ class Stream:
         return True
 
     def estimate_position(self, object_name: str) -> Tuple[bool, Position]:
-        logger.info("estimating position...")
+        logger.info("estimating position from {} ping(s)...".format(len(self.history)))
 
         logger.info("🪄")
 
@@ -49,7 +49,7 @@ class Stream:
         )
         logger.info(f"position: {position.as_str()}")
 
-        return position.save(object_name)
+        return position.save(object_name), position
 
     def export(
         self,
