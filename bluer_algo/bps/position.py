@@ -5,7 +5,6 @@ from blueness import module
 from bluer_objects import file, objects
 
 from bluer_algo import NAME
-from bluer_algo.bps.stream import Stream
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)
