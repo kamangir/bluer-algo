@@ -26,3 +26,5 @@ It explains theoretical limitations of RSSI (path-loss variability, multipath fa
 > Focuses on the signal-processing side of BLE localization. It evaluates Kalman filters, moving averages, and histogram-based smoothing to mitigate RSSI noise.
 
 - [Indoor localization using radio beacon technology](https://www.researchgate.net/publication/329840131_Indoor_localization_using_radio_beacon_technology) - 2018
+
+- [Precise Realtime Indoor Localization With Raspberry Pi And Ultra-Wideband Technology (Decawave DWM1001 Developement Boards)](https://medium.com/@newforestberlin/precise-realtime-indoor-localization-with-raspberry-pi-and-ultra-wideband-technology-decawave-191e4e2daa8c)
