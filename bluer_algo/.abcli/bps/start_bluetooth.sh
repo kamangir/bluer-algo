@@ -6,7 +6,7 @@ function bluer_algo_bps_start_bluetooth() {
 
     bluer_ai_log "starting bluetooth..."
 
-    if [[ "$abcli_hardware_model" == *"Raspberry Pi 4"* ]]; then
+    if [[ "$abcli_is_rpi4" == true ]]; then
         bluer_ai_log "rpi4b detected."
         bluer_ai_eval - \
             sudo rfkill unblock bluetooth
