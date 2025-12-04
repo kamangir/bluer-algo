@@ -7,7 +7,7 @@ items = README.Items(
         {
             "name": "lora keyboard",
             "description": "a long-range keyboard for multiple robots.",
-            "marquee": f"{assets2}/bps/02.png?raw=true",
+            "marquee": f"{assets2}/anchor/03.png?raw=true",
             "url": "./bluer_algo/docs/lora-keyboard.md",
         },
         {
