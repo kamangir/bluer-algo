@@ -5,7 +5,15 @@ from bluer_objects import file, README
 
 from bluer_algo import NAME, VERSION, ICON, REPO_NAME
 from bluer_algo.help.functions import help_functions
-from bluer_algo.README import image_classifier, socket, tracker, yolo, alias, bps
+from bluer_algo.README import (
+    image_classifier,
+    lora_keyboard,
+    socket,
+    tracker,
+    yolo,
+    alias,
+    bps,
+)
 from bluer_algo.README.items import items
 
 
@@ -36,6 +44,7 @@ def build():
             },
         ]
         + image_classifier.docs
+        + lora_keyboard.docs
         + socket.docs
         + tracker.docs
         + yolo.docs
