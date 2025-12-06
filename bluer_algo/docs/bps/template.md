@@ -14,8 +14,8 @@ bluer-positioning system.
 > The mesh converges locally to consistent poses, degrades gracefully to coarse regional awareness under sparse connectivity, and remains forward-compatible with future UWB or GNSS integration without changing the core serverless protocol.
 
 
-- AI convo: [1️⃣](https://chatgpt.com/c/68e79d65-e938-8327-b1e1-2536f7b6fb41)
-- [literature](./literature.md) [2️⃣](https://chatgpt.com/c/693131aa-6448-8325-9e6e-4ed49035a5f9)
+- AI convo: [1️⃣](https://chatgpt.com/c/68e79d65-e938-8327-b1e1-2536f7b6fb41) [2️⃣](https://chatgpt.com/c/693131aa-6448-8325-9e6e-4ed49035a5f9)
+- [literature](./literature.md) 
 - [mathematics](./mathematics)
 - [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
 - [bluer_algo.bps](../../bps)
