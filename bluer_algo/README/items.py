@@ -5,15 +5,9 @@ from bluer_objects.README.consts import assets2
 items = README.Items(
     [
         {
-            "name": "lora keyboard",
-            "description": "a long-range keyboard for multiple robots.",
-            "marquee": f"{assets2}/anchor/03.png?raw=true",
-            "url": "./bluer_algo/docs/lora-keyboard.md",
-        },
-        {
             "name": "bps",
-            "description": "bluer-positioning system.",
-            "marquee": f"{assets2}/bps/02.png?raw=true",
+            "description": "ultra-low-bandwidth command and telemetry channel using BLE local sensing and LoRa extended range",
+            "marquee": f"{assets2}/anchor/03.png?raw=true",
             "url": "./bluer_algo/docs/bps",
         },
         {
