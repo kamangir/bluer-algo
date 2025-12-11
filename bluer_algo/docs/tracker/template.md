@@ -5,5 +5,8 @@ target tracking for a [ugv](https://github.com/kamangir/bluer-ugv/tree/main/blue
 - sandbox: [sandbox/mean-cam-shift](../../../sandbox/mean-cam-shift)
 - [camshift](./camshift.md)
 - [meanshift](./meanshift.md)
+- 
 
 > ℹ️ conclusion: `camshift` tracks distinct colors robustly and adjusts to object size.
+
+> ⚠️ neither `camshift` nor `meanshift` are operationally relevant.
