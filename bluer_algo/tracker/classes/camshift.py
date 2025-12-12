@@ -32,7 +32,7 @@ class CamShiftTracker(GenericTracker):
             )
         )
 
-        # Draw it on image
+        # draw track_window on image
         output_image = np.array([])
         if self.with_gui or log:
             pts = cv2.boxPoints(ret)

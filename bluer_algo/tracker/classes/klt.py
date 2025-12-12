@@ -80,9 +80,6 @@ class KLTTracker(GenericTracker):
         Draw bbox (and optionally points) on a copy of the frame
         if with_gui=True; otherwise just return the original frame.
         """
-        if not self.with_gui:
-            return frame
-
         x, y, w, h = bbox_int
         vis = frame.copy()
 
@@ -250,5 +247,9 @@ class KLTTracker(GenericTracker):
             f"points={len(self.points)}"
         )
 
-        out_frame = self._draw_on_frame(frame, (x_i, y_i, w_i, h_i))
-        return None, (x_i, y_i, w_i, h_i), out_frame
+        # draw track_window on image
+        output_image = np.array([])
+        if self.with_gui or log:
+            output_image = self._draw_on_frame(frame, (x_i, y_i, w_i, h_i))
+
+        return None, (x_i, y_i, w_i, h_i), output_image
