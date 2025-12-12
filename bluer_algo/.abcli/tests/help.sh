@@ -37,6 +37,7 @@ function test_bluer_algo_help() {
         "@algo socket test" \
         \
         "@algo tracker" \
+        "@algo tracker list" \
         \
         "@algo bps" \
         "@bps" \

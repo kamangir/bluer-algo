@@ -1,6 +1,7 @@
 from bluer_ai.tests.test_env import test_bluer_ai_env
 from bluer_objects.tests.test_env import test_bluer_objects_env
 
+from bluer_algo.tracker.factory import LIST_OF_TRACKER_ALGO
 from bluer_algo import env
 
 
@@ -35,3 +36,5 @@ def test_bluer_algo_env():
     assert isinstance(env.BLUER_AI_BPS_LOOP_GREP, str)
 
     assert isinstance(env.BLUER_ALGO_BPS_REVIEW_TEST_OBJECT, str)
+
+    assert env.BLUER_ALGO_TRACKER_DEFAULT_ALGO in LIST_OF_TRACKER_ALGO

@@ -2,8 +2,11 @@ import argparse
 
 from blueness import module
 from blueness.argparse.generic import sys_exit
+from bluer_options.logger import log_list
 
 from bluer_algo import NAME
+from bluer_algo import env
+from bluer_algo.tracker.factory import LIST_OF_TRACKER_ALGO
 from bluer_algo.tracker.functions import track
 from bluer_algo.logger import logger
 
@@ -13,13 +16,13 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="track",
+    help="list_algo | track",
 )
 parser.add_argument(
     "--algo",
     type=str,
-    help="camshift | meanshift.",
-    default="camshift",
+    help=" | ".join(LIST_OF_TRACKER_ALGO),
+    default=env.BLUER_ALGO_TRACKER_DEFAULT_ALGO,
 )
 parser.add_argument(
     "--source",
@@ -53,16 +56,30 @@ parser.add_argument(
 parser.add_argument(
     "--title",
     type=str,
-    default="tracker",
+    default="",
 )
 parser.add_argument(
     "--object_name",
     type=str,
 )
+parser.add_argument(
+    "--delim",
+    type=str,
+    default="+",
+)
 args = parser.parse_args()
 
+delim = " " if args.delim == "space" else args.delim
+
 success = False
-if args.task == "track":
+if args.task == "list_algo":
+    success = True
+
+    if args.log:
+        log_list(logger, "", LIST_OF_TRACKER_ALGO, "algo(s)", 999)
+    else:
+        print(delim.join(LIST_OF_TRACKER_ALGO))
+elif args.task == "track":
     success = track(
         source=args.source,
         object_name=args.object_name,

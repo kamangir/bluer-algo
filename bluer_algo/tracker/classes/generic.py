@@ -8,6 +8,8 @@ from bluer_algo.logger import logger
 
 
 class GenericTracker:
+    algo = "generic"
+
     def __init__(
         self,
         with_gui: bool = False,
@@ -72,6 +74,7 @@ class GenericTracker:
         self,
         frame: np.ndarray,
         track_window: Tuple[int, int, int, int],
+        log: bool = False,
     ) -> Tuple[
         Any,
         Tuple[int, int, int, int],

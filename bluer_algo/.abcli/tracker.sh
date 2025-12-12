@@ -4,7 +4,15 @@ export BLUER_ALGO_TRACKER_ALGO_VERSIONS="camshift=v6,meanshift=v6"
 
 function bluer_algo_tracker() {
     local options=$1
-    local algo=$(bluer_ai_option "$options" algo camshift)
+    local get_list_of_algo=$(bluer_ai_option_int "$options" list 0)
+    if [[ "$get_list_of_algo" == 1 ]]; then
+        python3 -m bluer_algo.tracker \
+            list_algo \
+            "${@:2}"
+        return
+    fi
+
+    local algo=$(bluer_ai_option "$options" algo $BLUER_ALGO_TRACKER_DEFAULT_ALGO)
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
     local use_sandbox=$(bluer_ai_option_int "$options" sandbox 0)
     local do_upload=$(bluer_ai_option_int "$options" upload 0)
@@ -31,6 +39,10 @@ function bluer_algo_tracker() {
         local source_object_name="mean-cam-shift-data-v1"
         local url="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
         local filename="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
+
+        bluer_objects_download \
+            policy=doesnt_exist \
+            $source_object_name
 
         local do_download=1
         [[ "$do_dryrun" == 1 ]] &&

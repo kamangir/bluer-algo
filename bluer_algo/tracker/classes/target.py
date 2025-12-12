@@ -5,7 +5,7 @@ import cv2
 from bluer_options import string
 from bluer_options.env import abcli_hostname
 
-from bluer_algo.socket.connection import SocketConnection, DEV_HOST
+from bluer_algo.socket.connection import SocketConnection, DEV_HOST, DEFAULT_PORT
 from bluer_algo.logger import logger
 
 
@@ -17,6 +17,7 @@ class Target:
         frame: np.ndarray,
         title: str = "select target",
         local: bool = True,
+        port: int = DEFAULT_PORT,
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
         logger.info(
             "{}: {} @ {} on {} ...".format(
@@ -30,7 +31,11 @@ class Target:
         if local:
             return cls.select_local(frame, title)
 
-        return cls.select_remote(frame, title)
+        return cls.select_remote(
+            frame=frame,
+            title=title,
+            port=port,
+        )
 
     @classmethod
     def select_local(
@@ -76,6 +81,7 @@ class Target:
         cls,
         frame: np.ndarray,
         title: str = "select target",
+        port: int = DEFAULT_PORT,
     ) -> Tuple[bool, Tuple[int, int, int, int]]:
         logger.info(
             'run "{}" on {}.'.format(
@@ -84,9 +90,12 @@ class Target:
             )
         )
 
-        socket = SocketConnection.connect_to(DEV_HOST)
+        socket = SocketConnection.connect_to(
+            target_host=DEV_HOST,
+            port=port,
+        )
         if not socket.send_data(frame):
             return False, (0, 0, 0, 0)
 
-        socket = SocketConnection.listen_on()
+        socket = SocketConnection.listen_on(port=port)
         return socket.receive_data(tuple)
