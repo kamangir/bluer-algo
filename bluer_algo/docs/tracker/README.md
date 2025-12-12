@@ -6,7 +6,12 @@ target tracking for a [ugv](https://github.com/kamangir/bluer-ugv/tree/main/blue
 - [camshift](./camshift.md)
 - [meanshift](./meanshift.md)
 - [KLT](./klt.md)
+- [KCF](./kcf.md)
 
-> ℹ️ conclusion: `camshift` tracks distinct colors robustly and adjusts to object size.
+> ℹ️ conclusion: `camshift` tracks distinct colors more robustly than `meanshift` and adjusts to object size.
 
 > ⚠️ neither `camshift` nor `meanshift` are operationally relevant.
+
+> ⚠️ `klt` loses a moving target on a busy background.
+
+> ✅ `kcf` looks promising. ✅
