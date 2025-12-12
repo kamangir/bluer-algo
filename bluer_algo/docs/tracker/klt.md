@@ -27,8 +27,6 @@
     extensions=gif,push .
 ```
 
-🔥
-
 
 
 | | |
