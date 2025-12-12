@@ -2,14 +2,8 @@ from typing import Tuple, Any, Optional
 import numpy as np
 import cv2
 
-from blueness import module
-
-from bluer_algo import NAME
 from bluer_algo.tracker.classes.generic import GenericTracker
 from bluer_algo.logger import logger
-
-
-NAME = module.name(__file__, NAME)
 
 
 class KLTTracker(GenericTracker):
@@ -93,7 +87,7 @@ class KLTTracker(GenericTracker):
         vis = frame.copy()
 
         # Draw bbox
-        cv2.rectangle(
+        vis = cv2.rectangle(
             vis,
             (x, y),
             (x + w, y + h),
@@ -105,7 +99,7 @@ class KLTTracker(GenericTracker):
         if self.points is not None and len(self.points) > 0:
             for pt in self.points.reshape(-1, 2):
                 cx, cy = int(pt[0]), int(pt[1])
-                cv2.circle(vis, (cx, cy), 2, (0, 0, 255), -1)
+                vis = cv2.circle(vis, (cx, cy), 2, (0, 0, 255), -1)
 
         return vis
 
@@ -175,8 +169,7 @@ class KLTTracker(GenericTracker):
 
         # If we have no points (e.g., init failed), attempt re-detect
         if self.points is None or len(self.points) == 0:
-            if log:
-                logger.info(f"{NAME}: no points; attempting re-detect.")
+            logger.info(f"{self.algo}: no points; attempting re-detect.")
             points = self._detect_points_in_bbox(gray, self.bbox)
             if points is None:
                 x, y, w, h = [int(v) for v in self.bbox]
@@ -199,7 +192,7 @@ class KLTTracker(GenericTracker):
         )
 
         if p1 is None or st is None:
-            logger.warning("KLTTracker.track: calcOpticalFlowPyrLK returned None.")
+            logger.warning(f"{self.algo}: calcOpticalFlowPyrLK returned None.")
             x, y, w, h = [int(v) for v in self.bbox]
             out_frame = self._draw_on_frame(frame, (x, y, w, h))
             return None, (x, y, w, h), out_frame
@@ -208,8 +201,7 @@ class KLTTracker(GenericTracker):
         valid_mask = st == 1
 
         if not np.any(valid_mask):
-            if log:
-                logger.info(f"{NAME}: no valid tracked points.")
+            logger.info(f"{self.algo}: no valid tracked points.")
             x, y, w, h = [int(v) for v in self.bbox]
             out_frame = self._draw_on_frame(frame, (x, y, w, h))
             return None, (x, y, w, h), out_frame
@@ -219,10 +211,7 @@ class KLTTracker(GenericTracker):
         good_old = self.points[valid_mask].reshape(-1, 2)
 
         if len(good_new) < self.min_points:
-            if log:
-                logger.info(
-                    f"KLTTracker.track: too few points ({len(good_new)}), re-detecting."
-                )
+            logger.info(f"{self.algo}: too few points ({len(good_new)}), re-detecting.")
             points = self._detect_points_in_bbox(gray, self.bbox)
             if points is None:
                 x, y, w, h = [int(v) for v in self.bbox]
@@ -256,11 +245,10 @@ class KLTTracker(GenericTracker):
 
         x_i, y_i, w_i, h_i = [int(v) for v in self.bbox]
 
-        if log:
-            logger.debug(
-                f"KLTTracker.track: bbox -> x={x_i}, y={y_i}, w={w_i}, h={h_i}, "
-                f"points={len(self.points)}"
-            )
+        logger.info(
+            f"{self.algo}: bbox -> x={x_i}, y={y_i}, w={w_i}, h={h_i}, "
+            f"points={len(self.points)}"
+        )
 
         out_frame = self._draw_on_frame(frame, (x_i, y_i, w_i, h_i))
         return None, (x_i, y_i, w_i, h_i), out_frame
