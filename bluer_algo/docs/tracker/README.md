@@ -14,4 +14,4 @@ target tracking for a [ugv](https://github.com/kamangir/bluer-ugv/tree/main/blue
 
 > ⚠️ `klt` loses a moving target on a busy background.
 
-> ✅ kcf looks promising. ✅
+> ✅ `kcf` looks promising. ✅
