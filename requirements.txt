@@ -3,5 +3,5 @@ bluer_ai
 kaggle
 torch
 torchvision
-opencv-python
+opencv-python-contrib
 ultralytics
