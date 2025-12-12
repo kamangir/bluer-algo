@@ -13,3 +13,5 @@ target tracking for a [ugv](https://github.com/kamangir/bluer-ugv/tree/main/blue
 > ⚠️ neither `camshift` nor `meanshift` are operationally relevant.
 
 > ⚠️ `klt` loses a moving target on a busy background.
+
+> ✅ kcf looks promising. ✅
