@@ -27,9 +27,9 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-klt-2025-12-12-10-44-45-tn1w78
+set:::video_object_name tracker-klt-2025-12-12-12-21-33-z7zg7x
 
-set:::camera_object_name tracker-klt-2025-12-12-10-47-11-1ijglf
+set:::camera_object_name tracker-klt-2025-12-12-12-25-01-8wl040
 
 | | |
 |-|-|
