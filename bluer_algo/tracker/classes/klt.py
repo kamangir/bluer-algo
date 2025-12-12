@@ -77,8 +77,7 @@ class KLTTracker(GenericTracker):
         bbox_int: Tuple[int, int, int, int],
     ) -> np.ndarray:
         """
-        Draw bbox (and optionally points) on a copy of the frame
-        if with_gui=True; otherwise just return the original frame.
+        Draw bbox (and optionally points + history) on a copy of the frame.
         """
         x, y, w, h = bbox_int
         vis = frame.copy()
@@ -93,7 +92,7 @@ class KLTTracker(GenericTracker):
             )
 
         # Draw bbox
-        vis = cv2.rectangle(
+        cv2.rectangle(
             vis,
             (x, y),
             (x + w, y + h),
@@ -105,7 +104,7 @@ class KLTTracker(GenericTracker):
         if self.points is not None and len(self.points) > 0:
             for pt in self.points.reshape(-1, 2):
                 cx, cy = int(pt[0]), int(pt[1])
-                vis = cv2.circle(vis, (cx, cy), 2, (0, 0, 255), -1)
+                cv2.circle(vis, (cx, cy), 2, (0, 0, 255), -1)
 
         return vis
 
@@ -159,7 +158,7 @@ class KLTTracker(GenericTracker):
         Returns:
             None                      -> placeholder for metadata
             track_window: (x, y, w, h)
-            image: full frame (BGR), with track_window rendered if with_gui=True
+            image: full frame (BGR), with track_window rendered if with_gui/log
         """
         if not self.initialized:
             # First call: initialize from given track_window
@@ -196,7 +195,11 @@ class KLTTracker(GenericTracker):
             None,
             **self.lk_params,
         )
-        logger.info(f"optical flow error: {err}")
+
+        if err is not None:
+            logger.info(
+                f"optical flow error: {float(err.min()):.2f} ... {float(err.max()):.2f}"
+            )
 
         if p1 is None or st is None:
             logger.warning(f"{self.algo}: calcOpticalFlowPyrLK returned None.")
@@ -231,10 +234,41 @@ class KLTTracker(GenericTracker):
             out_frame = self._draw_on_frame(frame, (x, y, w, h))
             return None, (x, y, w, h), out_frame
 
-        # Compute median motion
-        dx = float(np.median(good_new[:, 0] - good_old[:, 0]))
-        dy = float(np.median(good_new[:, 1] - good_old[:, 1]))
+        # --- robust motion estimation using RANSAC inliers, dx,dy from new-old ---
 
+        dx = 0.0
+        dy = 0.0
+        used_inliers = False
+
+        if len(good_new) >= 3:
+            # estimate affine transform: good_old -> good_new
+            M, inliers = cv2.estimateAffinePartial2D(
+                good_old,
+                good_new,
+                method=cv2.RANSAC,
+                ransacReprojThreshold=3.0,
+                maxIters=2000,
+                confidence=0.99,
+            )
+            if M is not None and inliers is not None and np.any(inliers):
+                inlier_mask = inliers.ravel().astype(bool)
+                good_new_in = good_new[inlier_mask]
+                good_old_in = good_old[inlier_mask]
+
+                if len(good_new_in) > 0:
+                    dx = float(np.median(good_new_in[:, 0] - good_old_in[:, 0]))
+                    dy = float(np.median(good_new_in[:, 1] - good_old_in[:, 1]))
+                    # keep only inlier points
+                    self.points = good_new_in.reshape(-1, 1, 2).astype(np.float32)
+                    used_inliers = True
+
+        if not used_inliers:
+            # fallback: simple median on all valid points
+            dx = float(np.median(good_new[:, 0] - good_old[:, 0]))
+            dy = float(np.median(good_new[:, 1] - good_old[:, 1]))
+            self.points = good_new.reshape(-1, 1, 2).astype(np.float32)
+
+        # Update bbox by dx, dy
         x, y, w, h = self.bbox
         x += dx
         y += dy
@@ -245,9 +279,6 @@ class KLTTracker(GenericTracker):
         y = float(max(0, min(y, h_img - h)))
 
         self.bbox = (x, y, w, h)
-
-        # Store updated points back in (N, 1, 2) format
-        self.points = good_new.reshape(-1, 1, 2).astype(np.float32)
         self.prev_gray = gray
 
         x_i, y_i, w_i, h_i = [int(v) for v in self.bbox]
