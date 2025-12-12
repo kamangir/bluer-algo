@@ -3,17 +3,15 @@ title:::
 # on a video file
 
 ```bash
-@select tracker-KLT-$(@timestamp)
+@select tracker-klt-$(@timestamp)
 
 @algo tracker \
-    algo=KLT . \
+    algo=klt . \
     --log 1
 
 @assets publish \
     extensions=gif,push .
 ```
-
-🚧
 
 # on camera feed
 
@@ -29,9 +27,9 @@ title:::
     extensions=gif,push .
 ```
 
-🚧
+🔥
 
-set:::video_object_name TBA
+set:::video_object_name tracker-klt-2025-12-12-10-44-45-tn1w78
 
 set:::camera_object_name TBA
 

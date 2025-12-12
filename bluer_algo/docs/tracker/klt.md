@@ -3,17 +3,15 @@
 # on a video file
 
 ```bash
-@select tracker-KLT-$(@timestamp)
+@select tracker-klt-$(@timestamp)
 
 @algo tracker \
-    algo=KLT . \
+    algo=klt . \
     --log 1
 
 @assets publish \
     extensions=gif,push .
 ```
-
-🚧
 
 # on camera feed
 
@@ -29,10 +27,10 @@
     extensions=gif,push .
 ```
 
-🚧
+🔥
 
 
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/TBA/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/tracker.gif?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/tracker-klt-2025-12-12-10-44-45-tn1w78/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/TBA/tracker.gif?raw=true) |
