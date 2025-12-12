@@ -32,6 +32,10 @@ function bluer_algo_tracker() {
         local url="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
         local filename="$ABCLI_OBJECT_ROOT/$source_object_name/slow_traffic_small.mp4"
 
+        bluer_objects_download \
+            policy=doesnt_exist \
+            $source_object_name
+
         local do_download=1
         [[ "$do_dryrun" == 1 ]] &&
             do_download=0
