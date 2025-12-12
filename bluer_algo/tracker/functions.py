@@ -28,7 +28,7 @@ def track(
     log: bool = False,
     verbose: bool = False,
     show_gui: bool = True,
-    title: str = "tracker",
+    title: str = "",
     line_width: int = 80,
 ) -> bool:
     logger.info(
@@ -50,6 +50,9 @@ def track(
         )
     )
 
+    if not title:
+        title = f"tracker: {algo} - Esc to exit"
+
     log_timer = Timer(
         env.BLUER_ALGO_TRACKER_LOG_PERIOD if (log and source == "camera") else -1,
         "log_timer",
@@ -69,7 +72,10 @@ def track(
     # setup initial location of window
     if source == "camera":
         ret, frame = cap.read()
-        success, roi = Target.select(frame)
+        success, roi = Target.select(
+            frame,
+            title="select target - Esc to exit",
+        )
         if not success:
             logger.error("target not found.")
             cap.release()

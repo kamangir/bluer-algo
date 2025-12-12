@@ -16,10 +16,10 @@ title:::
 # on camera feed
 
 ```bash
-@select tracker-KLT-$(@timestamp)
+@select tracker-klt-$(@timestamp)
 
 @algo tracker \
-    algo=KLT,camera . \
+    algo=klt,camera . \
     --log 1 \
     --show_gui 1
 
@@ -31,7 +31,7 @@ title:::
 
 set:::video_object_name tracker-klt-2025-12-12-10-44-45-tn1w78
 
-set:::camera_object_name TBA
+set:::camera_object_name tracker-klt-2025-12-12-10-47-11-1ijglf
 
 | | |
 |-|-|

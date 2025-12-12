@@ -83,6 +83,15 @@ class KLTTracker(GenericTracker):
         x, y, w, h = bbox_int
         vis = frame.copy()
 
+        for i in range(len(self.history) - 1):
+            cv2.line(
+                vis,
+                self.history[i],
+                self.history[i + 1],
+                color=(0, 255, 0),
+                thickness=2,
+            )
+
         # Draw bbox
         vis = cv2.rectangle(
             vis,
@@ -241,6 +250,13 @@ class KLTTracker(GenericTracker):
         self.prev_gray = gray
 
         x_i, y_i, w_i, h_i = [int(v) for v in self.bbox]
+
+        self.history.append(
+            (
+                x_i + w_i // 2,
+                y_i + h_i // 2,
+            )
+        )
 
         logger.info(
             f"{self.algo}: bbox -> x={x_i}, y={y_i}, w={w_i}, h={h_i}, "

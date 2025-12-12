@@ -56,7 +56,7 @@ parser.add_argument(
 parser.add_argument(
     "--title",
     type=str,
-    default="tracker",
+    default="",
 )
 parser.add_argument(
     "--object_name",
