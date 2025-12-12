@@ -3,7 +3,7 @@
 ```bash
 @algo \
 	tracker \
-	[algo=camshift|klt|meanshift,camera,~download,dryrun,sandbox,upload] \
+	[algo=camshift|kcf|klt|meanshift,camera,~download,dryrun,sandbox,upload] \
 	[-|<object-name>] \
 	[--frame_count <10>] \
 	[--log 1] \

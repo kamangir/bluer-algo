@@ -58,12 +58,12 @@ class KLTTracker(GenericTracker):
 
         roi = gray[y : y + h, x : x + w]
         if roi.size == 0:
-            logger.warning("KLTTracker: ROI has zero size in _detect_points_in_bbox.")
+            logger.warning(f"{self.algo}: ROI has zero size in _detect_points_in_bbox.")
             return None
 
         p = cv2.goodFeaturesToTrack(roi, mask=None, **self.feature_params)
         if p is None:
-            logger.warning("KLTTracker: goodFeaturesToTrack found no points.")
+            logger.warning(f"{self.algo}: goodFeaturesToTrack found no points.")
             return None
 
         # Shift ROI coordinates to full-frame coords
@@ -126,7 +126,9 @@ class KLTTracker(GenericTracker):
 
         points = self._detect_points_in_bbox(gray, bbox)
         if points is None:
-            logger.error("KLTTracker.start: could not find features in initial window.")
+            logger.error(
+                f"{self.algo}.start: could not find features in initial window."
+            )
             self.initialized = False
             self.bbox = bbox
             self.prev_gray = gray
@@ -139,7 +141,7 @@ class KLTTracker(GenericTracker):
         self.initialized = True
 
         logger.info(
-            f"KLTTracker.start: initialized with {len(points)} points in bbox {bbox}."
+            f"{self.algo}.start: initialized with {len(points)} points in bbox {bbox}."
         )
 
     def track(
