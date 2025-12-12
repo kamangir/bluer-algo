@@ -65,8 +65,7 @@ class KCFTracker(GenericTracker):
                     2,
                     cv2.LINE_AA,
                 )
-            if log:
-                logger.warning(f"{self.algo}.track: called before start().")
+            logger.warning(f"{self.algo}.track: called before start().")
             return None, tuple(map(int, track_window)), output_image
 
         ok, bbox = self.tracker.update(frame)
@@ -74,15 +73,11 @@ class KCFTracker(GenericTracker):
         if ok:
             x, y, w, h = (int(bbox[0]), int(bbox[1]), int(bbox[2]), int(bbox[3]))
             updated = (x, y, w, h)
-            if log:
-                logger.info(f"{self.algo}.track: ok bbox={updated}.")
+            logger.info(f"{self.algo}.track: ok bbox={updated}.")
         else:
             # If update fails, keep the previous bbox (caller’s track_window)
             updated = tuple(map(int, track_window))
-            if log:
-                logger.warning(
-                    f"{self.algo}.track: update failed; keeping bbox={updated}."
-                )
+            logger.warning(f"{self.algo}.track: update failed; keeping bbox={updated}.")
 
         if self.with_gui or log:
             x, y, w, h = updated
