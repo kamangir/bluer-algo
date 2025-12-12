@@ -196,6 +196,7 @@ class KLTTracker(GenericTracker):
             None,
             **self.lk_params,
         )
+        logger.info(f"optical flow error: {err}")
 
         if p1 is None or st is None:
             logger.warning(f"{self.algo}: calcOpticalFlowPyrLK returned None.")
