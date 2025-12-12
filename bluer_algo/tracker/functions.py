@@ -13,8 +13,7 @@ from bluer_algo import NAME
 from bluer_algo import env
 from bluer_algo.host import signature
 from bluer_algo.tracker.classes.target import Target
-from bluer_algo.tracker.classes.camshift import CamShiftTracker
-from bluer_algo.tracker.classes.meanshift import MeanShiftTracker
+from bluer_algo.tracker.factory import get_tracker_class
 from bluer_algo.logger import logger
 
 
@@ -24,7 +23,7 @@ NAME = module.name(__file__, NAME)
 def track(
     source: str,
     object_name: str = "",
-    algo: str = "camshift",
+    algo: str = env.BLUER_ALGO_TRACKER_DEFAULT_ALGO,
     frame_count: int = -1,
     log: bool = False,
     verbose: bool = False,
@@ -82,13 +81,8 @@ def track(
         x, y, w, h = 300, 200, 100, 50  # simply hardcoded the values
     track_window = (x, y, w, h)
 
-    tracker_class = (
-        CamShiftTracker
-        if algo == "camshift"
-        else MeanShiftTracker if algo == "meanshift" else None
-    )
-    if tracker_class is None:
-        logger.error(f"algo: {algo} not found.")
+    success, tracker_class = get_tracker_class(algo)
+    if not success:
         return False
 
     tracker = tracker_class(with_gui=show_gui)

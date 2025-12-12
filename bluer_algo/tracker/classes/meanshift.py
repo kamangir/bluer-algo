@@ -6,6 +6,8 @@ from bluer_algo.tracker.classes.generic import GenericTracker
 
 
 class MeanShiftTracker(GenericTracker):
+    algo = "meanshift"
+
     def track(
         self,
         frame: np.ndarray,
