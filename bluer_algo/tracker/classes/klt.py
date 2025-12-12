@@ -196,7 +196,7 @@ class KLTTracker(GenericTracker):
             None,
             **self.lk_params,
         )
-        logger.info(f"optical flow error: {err}")
+        logger.info(f"optical flow error: {err.min():2f} ... {err.max():.2f}")
 
         if p1 is None or st is None:
             logger.warning(f"{self.algo}: calcOpticalFlowPyrLK returned None.")
@@ -231,9 +231,39 @@ class KLTTracker(GenericTracker):
             out_frame = self._draw_on_frame(frame, (x, y, w, h))
             return None, (x, y, w, h), out_frame
 
-        # Compute median motion
-        dx = float(np.median(good_new[:, 0] - good_old[:, 0]))
-        dy = float(np.median(good_new[:, 1] - good_old[:, 1]))
+        # --- robust motion estimation instead of raw median ---
+
+        # good_old, good_new: (M, 2)
+        if len(good_new) >= 3:
+            # estimate affine transform: good_old -> good_new
+            M, inliers = cv2.estimateAffinePartial2D(
+                good_old,
+                good_new,
+                method=cv2.RANSAC,
+                ransacReprojThreshold=3.0,
+                maxIters=2000,
+                confidence=0.99,
+            )
+        else:
+            M, inliers = None, None
+
+        if M is not None and inliers is not None and np.any(inliers):
+            # translation from affine matrix
+            dx = float(M[0, 2])
+            dy = float(M[1, 2])
+
+            # keep only inlier points
+            inlier_mask = inliers.ravel().astype(bool)
+            good_new_inliers = good_new[inlier_mask]
+            if len(good_new_inliers) > 0:
+                self.points = good_new_inliers.reshape(-1, 1, 2).astype(np.float32)
+            else:
+                self.points = good_new.reshape(-1, 1, 2).astype(np.float32)
+        else:
+            # fallback: simple median if RANSAC fails
+            dx = float(np.median(good_new[:, 0] - good_old[:, 0]))
+            dy = float(np.median(good_new[:, 1] - good_old[:, 1]))
+            self.points = good_new.reshape(-1, 1, 2).astype(np.float32)
 
         x, y, w, h = self.bbox
         x += dx
