@@ -19,8 +19,11 @@ class GenericTracker:
 
         self.history: List[Tuple[int, int]] = []
 
+        # for camshift and meanshift
         # Setup the termination criteria, either 10 iteration or move by at least 1 pt
         self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
+
+        self.tracking: bool = True
 
         logger.info(
             "{} initialized{}.".format(

@@ -27,9 +27,9 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name TBA
+set:::video_object_name tracker-kcf-2025-12-12-14-04-37-vcuhwq
 
-set:::camera_object_name TBA
+set:::camera_object_name tracker-kcf-2025-12-12-14-02-23-90e2yt
 
 | | |
 |-|-|

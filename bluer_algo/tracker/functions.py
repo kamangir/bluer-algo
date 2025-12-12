@@ -145,8 +145,12 @@ def track(
                                     if source == "camera"
                                     else file.name_and_extension(source)
                                 ),
-                                "({:04d},{:04d}) - ({:04d},{:04d})".format(
-                                    *track_window
+                                (
+                                    "({:04d},{:04d}) - ({:04d},{:04d})".format(
+                                        *track_window
+                                    )
+                                    if tracker.tracking
+                                    else "lost"
                                 ),
                             ]
                         )

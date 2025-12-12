@@ -49,6 +49,15 @@ class KCFTracker(GenericTracker):
             raise ValueError(f"{self.algo}.track: frame must be a numpy ndarray.")
 
         output_image = frame.copy()
+        if self.with_gui or log:
+            for i in range(len(self.history) - 1):
+                cv2.line(
+                    output_image,
+                    self.history[i],
+                    self.history[i + 1],
+                    color=(0, 255, 0),
+                    thickness=2,
+                )
 
         if self.tracker is None or not self.is_started:
             # Not started yet: just render the provided bbox (if asked) and return it.
@@ -68,10 +77,18 @@ class KCFTracker(GenericTracker):
             logger.warning(f"{self.algo}.track: called before start().")
             return None, tuple(map(int, track_window)), output_image
 
-        ok, bbox = self.tracker.update(frame)
+        self.tracking, bbox = self.tracker.update(frame)
 
-        if ok:
+        if self.tracking:
             x, y, w, h = (int(bbox[0]), int(bbox[1]), int(bbox[2]), int(bbox[3]))
+
+            self.history.append(
+                (
+                    x + w // 2,
+                    y + h // 2,
+                )
+            )
+
             updated = (x, y, w, h)
             logger.info(f"{self.algo}.track: ok bbox={updated}.")
         else:
@@ -84,7 +101,7 @@ class KCFTracker(GenericTracker):
             cv2.rectangle(output_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
             cv2.putText(
                 output_image,
-                "KCF",
+                "KCF{}".format("" if self.tracking else ": lost"),
                 (max(0, x), max(20, y - 8)),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.6,
