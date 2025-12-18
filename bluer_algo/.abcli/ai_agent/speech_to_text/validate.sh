@@ -55,7 +55,7 @@ function bluer_algo_ai_agent_speech_to_text_validate() {
     # https://docs.arvancloud.ir/fa/aiaas/api-usage
     bluer_ai_log "processing..."
     curl --location "$BLUER_ALGO_AI_AGENT_S2T_ENDPOINT/audio/transcriptions" \
-        --header "Authorization: apikey $BLUER_ALGO_AI_AGENT_S2T_API_KEY" \
+        --header "Authorization: apikey $BLUER_ALGO_AI_AGENT_API_KEY" \
         --form "model=whisper-1" \
         --form "file=@$voice_filename" \
         --form "language=$language" >$transcript_filename
