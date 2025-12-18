@@ -1,3 +1,3 @@
-# ai-agent: speech-to-text
+# ai-agent: chat
 
 - [validation](./validation.md)

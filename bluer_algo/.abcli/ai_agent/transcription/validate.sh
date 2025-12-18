@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function bluer_algo_ai_agent_speech_to_text_validate() {
+function bluer_algo_ai_agent_transcription_validate() {
     local options=$1
     local do_download=$(bluer_ai_option_int "$options" download 1)
     local do_install=$(bluer_ai_option_int "$options" install 0)
@@ -54,7 +54,7 @@ function bluer_algo_ai_agent_speech_to_text_validate() {
 
     # https://docs.arvancloud.ir/fa/aiaas/api-usage
     bluer_ai_log "processing..."
-    curl --location "$BLUER_ALGO_AI_AGENT_S2T_ENDPOINT/audio/transcriptions" \
+    curl --location "$BLUER_ALGO_AI_AGENT_TRANSCRIPTION_ENDPOINT/audio/transcriptions" \
         --header "Authorization: apikey $BLUER_ALGO_AI_AGENT_API_KEY" \
         --form "model=whisper-1" \
         --form "file=@$voice_filename" \
@@ -65,7 +65,7 @@ function bluer_algo_ai_agent_speech_to_text_validate() {
         bluer_ai_cat $transcript_filename
 
     bluer_ai_eval - \
-        python3 -m bluer_algo.ai_agent.speech_to_text \
+        python3 -m bluer_algo.ai_agent.transcription \
         post_process \
         --object_name $object_name \
         --filename $voice_filename \

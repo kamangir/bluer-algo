@@ -34,7 +34,7 @@ def help_validate(
     return show_usage(
         [
             "@agent",
-            "speech_to_text",
+            "transcription",
             "validate",
             f"[{options}]",
             "[-|<object-name>]",

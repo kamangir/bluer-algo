@@ -4,7 +4,7 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 
 from bluer_algo import NAME
-from bluer_algo.ai_agent.speech_to_text.post_processing import post_process
+from bluer_algo.ai_agent.transcription.post_processing import post_process
 from bluer_algo.logger import logger
 
 NAME = module.name(__file__, NAME)

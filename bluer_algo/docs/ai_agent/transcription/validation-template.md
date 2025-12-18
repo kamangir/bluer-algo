@@ -1,15 +1,15 @@
 title:::
 
 ```bash
-@select ai-agent-speech-to-text-$(@@timestamp)
+@select ai-agent-transcription-$(@@timestamp)
 ```
 
-set:::object_name env:::BLUER_ALGO_AI_AGENT_S2T_TEST_OBJECT
+set:::object_name env:::BLUER_ALGO_AI_AGENT_TRANSCRIPTION_TEST_OBJECT
 
 # farsi
 
 ```bash
-@agent speech_to_text validate \
+@agent transcription validate \
 	filename=farsi.wav,language=fa,record,upload .
 ```
 
@@ -20,7 +20,7 @@ assets:::get:::object_name/farsi.wav
 # english
 
 ```bash
-@agent speech_to_text validate \
+@agent transcription validate \
 	filename=english.wav,language=en,record,upload .
 ```
 

@@ -1,14 +1,14 @@
-# ai-agent: speech-to-text: validation
+# ai-agent: transcription: validation
 
 ```bash
-@select ai-agent-speech-to-text-$(@@timestamp)
+@select ai-agent-transcription-$(@@timestamp)
 ```
 
 
 # farsi
 
 ```bash
-@agent speech_to_text validate \
+@agent transcription validate \
 	filename=farsi.wav,language=fa,record,upload .
 ```
 
@@ -25,7 +25,7 @@
 # english
 
 ```bash
-@agent speech_to_text validate \
+@agent transcription validate \
 	filename=english.wav,language=en,record,upload .
 ```
 
