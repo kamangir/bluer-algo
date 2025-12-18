@@ -10,7 +10,6 @@ items:::
 
 # aliases
 
-[@agent](./bluer_algo/docs/aliases/ai_agent.md), 
 [@bps](./bluer_algo/docs/aliases/bps.md), 
 [@image_classifier](./bluer_algo/docs/aliases/image_classifier.md), 
 [@tracker](./bluer_algo/docs/aliases/tracker.md), 

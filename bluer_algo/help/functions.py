@@ -1,7 +1,6 @@
 from bluer_ai.help.generic import help_functions as generic_help_functions
 
 from bluer_algo import ALIAS
-from bluer_algo.help.ai_agent.functions import help_functions as help_ai_agent
 from bluer_algo.help.bps.functions import help_functions as help_bps
 from bluer_algo.help.image_classifier import help_functions as help_image_classifier
 from bluer_algo.help.socket import help_functions as help_socket
@@ -13,7 +12,6 @@ help_functions = generic_help_functions(plugin_name=ALIAS)
 
 help_functions.update(
     {
-        "ai_agent": help_ai_agent,
         "bps": help_bps,
         "image_classifier": help_image_classifier,
         "socket": help_socket,

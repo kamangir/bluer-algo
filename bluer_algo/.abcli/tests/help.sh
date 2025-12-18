@@ -5,14 +5,6 @@ function test_bluer_algo_help() {
 
     local module
     for module in \
-        "@agent" \
-        "@agent chat" \
-        "@agent chat validate" \
-        "@agent transcription" \
-        "@agent transcription validate" \
-        \
-        "@ai_agent" \
-        \
         "@algo" \
         \
         "@algo pypi" \

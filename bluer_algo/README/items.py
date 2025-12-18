@@ -5,12 +5,6 @@ from bluer_objects.README.consts import assets2
 items = README.Items(
     [
         {
-            "name": "ai agent",
-            "description": "an AI agent.",
-            "marquee": f"{assets2}/ai_agent/logo2.jpg?raw=true",
-            "url": "./bluer_algo/docs/ai_agent",
-        },
-        {
             "name": "bps",
             "description": "ultra-low-bandwidth command and telemetry channel using BLE local sensing and LoRa extended range",
             "marquee": f"{assets2}/anchor/03.png?raw=true",

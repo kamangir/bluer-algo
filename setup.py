@@ -10,13 +10,11 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
-        f"{NAME}.ai_agent",
         f"{NAME}.bps",
         f"{NAME}.bps.simulation",
         f"{NAME}.bps.simulation.timing",
         f"{NAME}.bps.utils",
         f"{NAME}.help",
-        f"{NAME}.help.ai_agent",
         f"{NAME}.help.bps",
         f"{NAME}.help.image_classifier",
         f"{NAME}.help.yolo",
