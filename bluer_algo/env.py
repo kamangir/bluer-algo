@@ -1,6 +1,6 @@
 import os
 
-from bluer_options.env import load_config, load_env, get_env
+from bluer_options.env import load_config, get_env
 from bluer_objects.env import abcli_path_git
 
 load_config(__name__)
