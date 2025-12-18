@@ -7,11 +7,16 @@ def help_validate(
     tokens: List[str],
     mono: bool,
 ) -> str:
+    options = xtra(
+        "download,filename=<filename.wav>,install,~play,~record,upload", mono=mono
+    )
 
     return show_usage(
         [
             "@agent",
             "validate",
+            f"[{options}]",
+            "[-|<object-name>]",
         ],
         "validate agent.",
         mono=mono,
