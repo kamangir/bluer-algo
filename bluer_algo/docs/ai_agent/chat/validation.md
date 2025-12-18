@@ -6,5 +6,10 @@
 
 
 ```bash
-@agent chat validate
+@agent chat validate upload .
+```
+
+```yaml
+{}
+
 ```

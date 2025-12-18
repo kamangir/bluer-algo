@@ -15,7 +15,7 @@ function bluer_algo_ai_agent_transcription_validate() {
         brew install sox
     fi
 
-    local object_name=$(bluer_ai_clarify_object $2 convo-$(bluer_ai_string_timestamp))
+    local object_name=$(bluer_ai_clarify_object $2 transcription-$(bluer_ai_string_timestamp))
 
     [[ "$do_download" == 1 ]] &&
         bluer_objects_download \

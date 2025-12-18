@@ -3,7 +3,9 @@
 ```bash
 @agent \
 	chat \
-	validate
+	validate \
+	[upload,verbose] \
+	[-|<object-name>]
  . validate agent.
 @agent \
 	transcription \
