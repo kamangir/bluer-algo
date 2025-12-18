@@ -13,7 +13,7 @@ set:::object_name env:::BLUER_ALGO_AI_AGENT_TEST_OBJECT
 	filename=farsi.wav,language=fa,record,upload .
 ```
 
-metadata:::get:::object_name:::farsi.wav
+metadata:::get:::object_name:::farsi
 
 assets:::get:::object_name/farsi.wav
 
@@ -24,7 +24,7 @@ assets:::get:::object_name/farsi.wav
 	filename=english.wav,language=en,record,upload .
 ```
 
-metadata:::get:::object_name:::english.wav
+metadata:::get:::object_name:::english
 
 assets:::get:::object_name/english.wav
 
@@ -32,6 +32,7 @@ assets:::get:::object_name/english.wav
 
 details:::code
 ```bash
+@metadata upload
 @assets publish extensions=wav,push
 ```
 details:::

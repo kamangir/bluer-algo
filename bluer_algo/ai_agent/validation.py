@@ -14,13 +14,11 @@ def complete_transcription(
     filename: str,
     language: str = "fa",
 ) -> bool:
-    filename = file.name_and_extension(filename)
-
     logger.info(
         "{}.complete_transcription({}/{}) [{}]".format(
             NAME,
             object_name,
-            filename,
+            file.name_and_extension(filename),
             language,
         )
     )
@@ -47,6 +45,6 @@ def complete_transcription(
 
     return post_to_object(
         object_name,
-        filename,
+        file.name(filename),
         text,
     )
