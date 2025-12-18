@@ -38,8 +38,6 @@ def post_process(
         return False
 
     text = content.get("text", "")
-    if language == "fa":
-        text = text[::-1]
 
     logger.info(text)
 
