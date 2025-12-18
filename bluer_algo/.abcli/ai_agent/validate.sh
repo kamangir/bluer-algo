@@ -2,8 +2,8 @@
 
 function bluer_algo_ai_agent_validate() {
     # https://docs.arvancloud.ir/fa/aiaas/api-usage
-    curl --location '[Endpoint]/v1/chat/completions' \ 
-    --header 'Authorization: apikey ****' \ 
+    curl --location '$BLUER_ALGO_AI_AGENT_ENDPOINT/chat/completions' \ 
+    --header 'Authorization: apikey $BLUER_ALGO_AI_AGENT_API_KEY' \ 
     --header 'Content-Type: application/json' \ 
     --data '{  
     "model": "DeepSeek-R1-qwen-7b-awq",  
