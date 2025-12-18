@@ -40,4 +40,6 @@ def test_bluer_algo_env():
     assert env.BLUER_ALGO_TRACKER_DEFAULT_ALGO in LIST_OF_TRACKER_ALGO
 
     assert env.BLUER_ALGO_AI_AGENT_MACHINE_USER_NAME
+
     assert env.BLUER_ALGO_AI_AGENT_API_KEY
+    assert env.BLUER_ALGO_AI_AGENT_ENDPOINT
