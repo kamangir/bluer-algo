@@ -7,7 +7,7 @@ items = README.Items(
         {
             "name": "ai agent",
             "description": "an AI agent.",
-            "marquee": f"{assets2}/ai_agent/logo.jpeg?raw=true",
+            "marquee": f"{assets2}/ai_agent/logo2.jpg?raw=true",
             "url": "./bluer_algo/docs/ai_agent",
         },
         {
