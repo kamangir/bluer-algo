@@ -38,3 +38,6 @@ def test_bluer_algo_env():
     assert isinstance(env.BLUER_ALGO_BPS_REVIEW_TEST_OBJECT, str)
 
     assert env.BLUER_ALGO_TRACKER_DEFAULT_ALGO in LIST_OF_TRACKER_ALGO
+
+    assert env.BLUER_ALGO_ARVAN_MACHINE_USER_NAME
+    assert env.BLUER_ALGO_ARVAN_MACHINE_API_KEY

@@ -3,6 +3,7 @@ import os
 from bluer_options.env import load_config, load_env, get_env
 from bluer_objects.env import abcli_path_git
 
+load_env(__name__)
 load_config(__name__)
 
 
@@ -49,3 +50,6 @@ BLUER_AI_BPS_LOOP_GREP = get_env("BLUER_AI_BPS_LOOP_GREP")
 BLUER_ALGO_BPS_REVIEW_TEST_OBJECT = get_env("BLUER_ALGO_BPS_REVIEW_TEST_OBJECT")
 
 BLUER_ALGO_TRACKER_DEFAULT_ALGO = get_env("BLUER_ALGO_TRACKER_DEFAULT_ALGO", "camshift")
+
+BLUER_ALGO_ARVAN_MACHINE_USER_NAME = get_env("BLUER_ALGO_ARVAN_MACHINE_USER_NAME")
+BLUER_ALGO_ARVAN_MACHINE_API_KEY = get_env("BLUER_ALGO_ARVAN_MACHINE_API_KEY")
