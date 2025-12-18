@@ -19,11 +19,25 @@ parser.add_argument(
     "--object_name",
     type=str,
 )
+parser.add_argument(
+    "--filename",
+    type=str,
+)
+parser.add_argument(
+    "--language",
+    type=str,
+    default="fa",
+    help="en | fa",
+)
 args = parser.parse_args()
 
 success = False
 if args.task == "complete_transcription":
-    success = complete_transcription(args.object_name)
+    success = complete_transcription(
+        object_name=args.object_name,
+        filename=args.filename,
+        language=args.language,
+    )
 else:
     success = None
 

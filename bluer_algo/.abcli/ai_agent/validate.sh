@@ -4,9 +4,10 @@ function bluer_algo_ai_agent_validate() {
     local options=$1
     local do_download=$(bluer_ai_option_int "$options" download 1)
     local do_install=$(bluer_ai_option_int "$options" install 0)
-    local do_play=$(bluer_ai_option_int "$options" play 1)
-    local do_record=$(bluer_ai_option_int "$options" record 1)
+    local do_record=$(bluer_ai_option_int "$options" record 0)
+    local do_play=$(bluer_ai_option_int "$options" play $do_record)
     local do_upload=$(bluer_ai_option_int "$options" upload 0)
+    local language=$(bluer_ai_option "$options" language fa)
     local filename=$(bluer_ai_option "$options" filename audio-$(bluer_ai_string_timestamp).wav)
     local verbose=$(bluer_ai_option_int "$options" verbose 1)
 
@@ -52,7 +53,7 @@ function bluer_algo_ai_agent_validate() {
         --header "Authorization: apikey $BLUER_ALGO_AI_AGENT_API_KEY" \
         --form "model=whisper-1" \
         --form "file=@$voice_filename" \
-        --form "language=fa" >$transcript_filename
+        --form "language=$language" >$transcript_filename
     [[ $? -ne 0 ]] && return 1
 
     [[ "$verbose" == 1 ]] &&
@@ -60,5 +61,7 @@ function bluer_algo_ai_agent_validate() {
 
     python3 -m bluer_algo.ai_agent \
         complete_transcription \
-        --object_name $object_name
+        --object_name $object_name \
+        --filename $voice_filename \
+        --language $language
 }

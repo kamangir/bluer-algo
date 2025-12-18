@@ -7,9 +7,28 @@ def help_validate(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra(
-        "download,filename=<filename.wav>,install,~play,~record,upload,verbose",
-        mono=mono,
+    options = "".join(
+        [
+            xtra(
+                "download,",
+                mono=mono,
+            ),
+            "filename=<filename.wav>",
+            xtra(
+                ",install,",
+                mono=mono,
+            ),
+            "language=en|fa",
+            xtra(
+                ",~play,",
+                mono=mono,
+            ),
+            "record",
+            xtra(
+                ",upload,verbose",
+                mono=mono,
+            ),
+        ]
     )
 
     return show_usage(

@@ -6,12 +6,13 @@ from bluer_objects import file, README
 from bluer_algo import NAME, VERSION, ICON, REPO_NAME
 from bluer_algo.help.functions import help_functions
 from bluer_algo.README import (
+    ai_algo,
+    alias,
+    bps,
     image_classifier,
     socket,
     tracker,
     yolo,
-    alias,
-    bps,
 )
 from bluer_algo.README.items import items
 
@@ -42,10 +43,11 @@ def build():
                 "items": items,
             },
         ]
+        + ai_algo.docs
+        + alias.docs
+        + bps.docs
         + image_classifier.docs
         + socket.docs
         + tracker.docs
         + yolo.docs
-        + alias.docs
-        + bps.docs
     )
