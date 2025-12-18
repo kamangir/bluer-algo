@@ -15,7 +15,7 @@ set:::object_name env:::BLUER_ALGO_AI_AGENT_TEST_OBJECT
 
 metadata:::get:::object_name:::farsi.wav
 
-object:::get:::object_name/farsi.wav
+assets:::get:::object_name/farsi.wav
 
 # english
 
@@ -26,14 +26,13 @@ object:::get:::object_name/farsi.wav
 
 metadata:::get:::object_name:::english.wav
 
-object:::get:::object_name/english.wav
+assets:::get:::object_name/english.wav
 
 ---
 
 details:::code
 ```bash
-@upload filename=farsi.wav,public
-@upload filename=english.wav,public
+@assets publish extensions=wav,push
 ```
 details:::
 

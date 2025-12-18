@@ -17,7 +17,7 @@
 
 ```
 
-[ai-agent-speech-to-text-2025-12-18-r5hbwu/farsi.wav](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/ai-agent-speech-to-text-2025-12-18-r5hbwu/farsi.wav.tar.gz)
+[farsi.wav](https://github.com/kamangir/assets/blob/main/ai-agent-speech-to-text-2025-12-18-r5hbwu/farsi.wav)
 
 # english
 
@@ -31,7 +31,7 @@
 
 ```
 
-[ai-agent-speech-to-text-2025-12-18-r5hbwu/english.wav](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/ai-agent-speech-to-text-2025-12-18-r5hbwu/english.wav.tar.gz)
+[english.wav](https://github.com/kamangir/assets/blob/main/ai-agent-speech-to-text-2025-12-18-r5hbwu/english.wav)
 
 ---
 
@@ -40,8 +40,7 @@
 <summary>code</summary>
 
 ```bash
-@upload filename=farsi.wav,public
-@upload filename=english.wav,public
+@assets publish extensions=wav,push
 ```
 
 </details>
