@@ -34,7 +34,7 @@ def post_process(
     if len(content["choices"]) == 0:
         logger.error("choices is empty")
         return False
-    if len(content["choices"] > 1):
+    if len(content["choices"]) > 1:
         logger.warning(
             "{} choice(s), will use the first one.".format(content["choices"])
         )
