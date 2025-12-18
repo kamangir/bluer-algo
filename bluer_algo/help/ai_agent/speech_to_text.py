@@ -34,6 +34,7 @@ def help_validate(
     return show_usage(
         [
             "@agent",
+            "speech_to_text",
             "validate",
             f"[{options}]",
             "[-|<object-name>]",
@@ -41,3 +42,8 @@ def help_validate(
         "validate agent.",
         mono=mono,
     )
+
+
+help_functions = {
+    "validate": help_validate,
+}

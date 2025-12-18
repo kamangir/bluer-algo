@@ -6,7 +6,8 @@ function test_bluer_algo_help() {
     local module
     for module in \
         "@agent" \
-        "@agent validate" \
+        "@agent speech_to_text" \
+        "@agent speech_to_text validate" \
         \
         "@ai_agent" \
         \

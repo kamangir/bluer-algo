@@ -8,7 +8,7 @@
 # farsi
 
 ```bash
-@agent validate \
+@agent speech_to_text validate \
 	filename=farsi.wav,language=fa,record,upload .
 ```
 
@@ -25,7 +25,7 @@
 # english
 
 ```bash
-@agent validate \
+@agent speech_to_text validate \
 	filename=english.wav,language=en,record,upload .
 ```
 

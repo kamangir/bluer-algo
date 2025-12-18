@@ -9,13 +9,13 @@ from bluer_algo.logger import logger
 NAME = module.name(__file__, NAME)
 
 
-def complete_transcription(
+def post_process(
     object_name: str,
     filename: str,
     language: str = "fa",
 ) -> bool:
     logger.info(
-        "{}.complete_transcription({}/{}) [{}]".format(
+        "{}.post_process({}/{}) [{}]".format(
             NAME,
             object_name,
             file.name_and_extension(filename),
