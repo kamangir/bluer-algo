@@ -8,7 +8,8 @@ def help_validate(
     mono: bool,
 ) -> str:
     options = xtra(
-        "download,filename=<filename.wav>,install,~play,~record,upload", mono=mono
+        "download,filename=<filename.wav>,install,~play,~record,upload,verbose",
+        mono=mono,
     )
 
     return show_usage(
