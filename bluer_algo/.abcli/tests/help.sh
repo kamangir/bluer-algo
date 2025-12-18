@@ -5,6 +5,11 @@ function test_bluer_algo_help() {
 
     local module
     for module in \
+        "@agent" \
+        "@agent validate" \
+        \
+        "@ai_agent" \
+        \
         "@algo" \
         \
         "@algo pypi" \
