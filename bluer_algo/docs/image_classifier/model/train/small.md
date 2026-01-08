@@ -21,7 +21,7 @@ uses [ingest](../../dataset/ingest.md).
 
 ![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2025-07-02-fvfomt/confusion_matrix.png?raw=true)
 
-[fruits-365-model-2025-07-02-fvfomt](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-02-fvfomt.tar.gz)
+[fruits-365-model-2025-07-02-fvfomt.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2025-07-02-fvfomt.tar.gz)
 
 ```yaml
 model:

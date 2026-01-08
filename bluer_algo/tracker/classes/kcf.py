@@ -146,14 +146,21 @@ class KCFTracker(GenericTracker):
         # ---------- RENDER ----------
         if self.with_gui or log:
             x, y, w, h = updated
-            cv2.rectangle(output_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            color = (0, 255, 0) if self.tracking else (0, 0, 255)
+            cv2.rectangle(
+                output_image,
+                (x, y),
+                (x + w, y + h),
+                color,
+                2,
+            )
             cv2.putText(
                 output_image,
                 "KCF{}".format("" if self.tracking else ": lost"),
                 (max(0, x), max(20, y - 8)),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.6,
-                (0, 255, 0),
+                color,
                 2,
                 cv2.LINE_AA,
             )

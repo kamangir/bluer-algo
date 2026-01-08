@@ -27,7 +27,7 @@ title:::
     extensions=gif,push .
 ```
 
-set:::video_object_name tracker-kcf-2025-12-12-14-25-59-86f48h
+set:::video_object_name tracker-kcf-2026-01-08-13-41-34-v51e8d
 
 set:::camera_object_name tracker-kcf-2025-12-12-14-27-15-zuhu25
 
