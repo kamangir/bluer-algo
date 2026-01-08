@@ -19,7 +19,7 @@
 
 ![image](https://github.com/kamangir/assets/blob/main/coco128-2025-09-14-q6oxj4/review.png?raw=true)
 
-[coco128-2025-09-14-q6oxj4](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-q6oxj4.tar.gz)
+[coco128-2025-09-14-q6oxj4.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-q6oxj4.tar.gz)
 
 ```yaml
 dataset:
@@ -131,7 +131,7 @@ val: coco128/images/train2017
 
 ![image](https://github.com/kamangir/assets/blob/main/coco128-2025-09-14-tub72c/review.png?raw=true)
 
-[coco128-2025-09-14-tub72c](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-tub72c.tar.gz)
+[coco128-2025-09-14-tub72c.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-14-tub72c.tar.gz)
 
 ```yaml
 dataset:

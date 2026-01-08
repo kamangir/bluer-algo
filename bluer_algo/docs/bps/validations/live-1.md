@@ -36,7 +36,7 @@ BLUER_SBC_SWALLOW_HAS_BPS=1
 </details>
 
 
-[2025-10-31-11-47-47-c2b6d9](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-11-47-47-c2b6d9.tar.gz)
+[2025-10-31-11-47-47-c2b6d9.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-11-47-47-c2b6d9.tar.gz)
 
 | | | |
 |-|-|-|

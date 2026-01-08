@@ -30,7 +30,7 @@ uses [bluer-ugv/swallow/digital/dataset/combination](https://github.com/kamangir
 
 ---
 
-[2025-07-09-11-16-52-4zo4zc](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-07-09-11-16-52-4zo4zc.tar.gz)
+[2025-07-09-11-16-52-4zo4zc.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-07-09-11-16-52-4zo4zc.tar.gz)
 
 ```yaml
 dataset:
@@ -54,7 +54,7 @@ dataset:
 
 ---
 
-[sequence-2025-07-12-21-58-04-0wmt6d](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/sequence-2025-07-12-21-58-04-0wmt6d.tar.gz)
+[sequence-2025-07-12-21-58-04-0wmt6d.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/sequence-2025-07-12-21-58-04-0wmt6d.tar.gz)
 
 ```yaml
 dataset:

@@ -34,7 +34,7 @@ runme
 </details>
 
 
-| [2025-10-31-18-28-08-m702u0](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-18-28-08-m702u0.tar.gz) | [2025-10-31-18-28-24-mz7tk4](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-18-28-24-mz7tk4.tar.gz) |
+| [2025-10-31-18-28-08-m702u0.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-18-28-08-m702u0.tar.gz) | [2025-10-31-18-28-24-mz7tk4.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/2025-10-31-18-28-24-mz7tk4.tar.gz) |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-18-28-08-m702u0/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-18-28-24-mz7tk4/bps.png?raw=true) |
 | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-18-28-08-m702u0/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-18-28-24-mz7tk4/ultrasonic-sensor-pulse-ms.png?raw=true) | 
