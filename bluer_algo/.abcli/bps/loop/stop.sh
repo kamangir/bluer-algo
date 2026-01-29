@@ -25,6 +25,6 @@ function bluer_algo_bps_loop_stop() {
 
     while [[ -f "$BPS_IS_RUNNING" ]]; do
         bluer_ai_log "waiting for bps to stop..."
-        bluer_ai_sleep 1.0
+        bluer_ai_sleep seconds=3.0
     done
 }
