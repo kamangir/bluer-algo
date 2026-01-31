@@ -92,6 +92,7 @@ class KCFTracker(GenericTracker):
 
         self._extract_template(frame, track_window)
 
+        # pylint:disable=c-extension-no-member
         self.tracker = cv2.legacy.TrackerKCF_create()
         ok = self.tracker.init(frame, (x, y, w, h))
         self.is_started = bool(ok)

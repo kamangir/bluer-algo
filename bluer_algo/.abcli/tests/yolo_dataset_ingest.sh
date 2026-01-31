@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
 
 function test_bluer_algo_yolo_dataset_ingest() {
+    bluer_ai_log_warning "no arvan on github + repo not available on local"
+    return
+
     local options=$1
 
     local object_name=test_bluer_algo_yolo_dataset_ingest-$(bluer_ai_string_timestamp)
