@@ -1,5 +1,3 @@
-import pytest
-
 from bluer_objects.objects import unique_object
 
 from bluer_algo.image_classifier.dataset.ingest.fruits_360.ingest import ingest
@@ -7,7 +5,6 @@ from bluer_algo.image_classifier.dataset.review import review
 from bluer_algo.tests.fruits_360 import fruits_360_checkout
 
 
-@pytest.mark.skip(reason="no arvan on github + repo not available on local")
 def test_image_classifier_dataset_ingest_fruits_360(fruits_360_checkout):
     object_name = unique_object("test_image_classifier_dataset_ingest_fruits_360")
 
