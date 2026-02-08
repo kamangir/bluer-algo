@@ -17,7 +17,7 @@
 @bps \
 	bluetooth \
 	start \
-	[python,verbose]
+	[~python,verbose]
  . start bluetooth.
 @bps \
 	generate \

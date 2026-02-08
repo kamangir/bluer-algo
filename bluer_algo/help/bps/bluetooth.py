@@ -7,7 +7,7 @@ def help_start(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("python,verbose", mono=mono)
+    options = xtra("~python,verbose", mono=mono)
 
     return show_usage(
         [
