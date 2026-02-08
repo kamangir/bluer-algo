@@ -11,7 +11,10 @@ from bluer_algo.logger import logger
 NAME = module.name(__file__, NAME)
 
 
-def start(verbose: bool) -> bool:
+def start(
+    log: bool = True,
+    verbose: bool = False,
+) -> bool:
     logger.info(
         "{}.start{}".format(
             NAME,
@@ -43,4 +46,10 @@ def start(verbose: bool) -> bool:
     if verbose:
         list_of_commands += ["sudo bluetoothctl show"]
 
-    return all(shell(command=command) for command in list_of_commands)
+    return all(
+        shell(
+            command=command,
+            log=log,
+        )
+        for command in list_of_commands
+    )
