@@ -5,7 +5,7 @@ uses [train](../train).
 [image_classifier_prediction.ipynb](../../../../../notebooks/image_classifier_prediction-v4.ipynb)
 
 
-![image](../../../../../../assets/image_classifier-prediction-2025-07-02-13-33-50-lgr380/prediction.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/image_classifier-prediction-2025-07-02-13-33-50-lgr380/prediction.png?raw=true)
 
 ```yaml
 prediction:

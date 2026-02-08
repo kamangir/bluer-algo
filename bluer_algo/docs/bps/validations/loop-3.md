@@ -38,7 +38,7 @@ runme
 
 | | | |
 |-|-|-|
-| ![image](../../../../../assets/bps-loop-2025-10-30-18-03-01-l6ulkz/bps.png?raw=true) | ![image](../../../../../assets/bps-loop-2025-10-30-18-02-44-jajwbj/bps.png?raw=true) | ![image](../../../../../assets/bps-loop-2025-10-30-18-28-48-4e4g65/bps.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-30-18-03-01-l6ulkz/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-30-18-02-44-jajwbj/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-30-18-28-48-4e4g65/bps.png?raw=true) |
 
 
 <details>

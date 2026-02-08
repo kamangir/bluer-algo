@@ -32,7 +32,7 @@ after a few minutes,
 
 | | |
 |-|-|
-| ![image](../../../../../assets/bps-loop-2025-10-30-17-47-34-tho6pk/bps.png?raw=true) | ![image](../../../../../assets/bps-loop-2025-10-30-17-47-56-zb5h4o/bps.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-30-17-47-34-tho6pk/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/bps-loop-2025-10-30-17-47-56-zb5h4o/bps.png?raw=true) |
 
 
 <details>

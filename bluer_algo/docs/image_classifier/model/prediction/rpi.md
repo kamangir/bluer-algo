@@ -8,7 +8,7 @@ uses [train](../train).
 ```
 
 
-![image](../../../../../../assets/image_classifier-prediction-2025-07-02-16-11-03-0kb1d3/prediction.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/image_classifier-prediction-2025-07-02-16-11-03-0kb1d3/prediction.png?raw=true)
 
 ```yaml
 prediction:

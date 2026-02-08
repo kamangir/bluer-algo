@@ -49,9 +49,9 @@ overlap:
 </details>
 
 
-![image](../../../../../assets/bps-timing-simulation-2025-10-31-qae3gy/bps-timing-simulation-overlap.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-qae3gy/bps-timing-simulation-overlap.png?raw=true)
 
-![image](../../../../../assets/bps-timing-simulation-2025-10-31-qae3gy/bps-timing-simulation-legend.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-qae3gy/bps-timing-simulation-legend.png?raw=true)
 
 ## 12 nodes
 
@@ -272,6 +272,6 @@ overlap:
 </details>
 
 
-![image](../../../../../assets/bps-timing-simulation-2025-10-31-1kq018/bps-timing-simulation-overlap.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-1kq018/bps-timing-simulation-overlap.png?raw=true)
 
-![image](../../../../../assets/bps-timing-simulation-2025-10-31-1kq018/bps-timing-simulation-legend.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-1kq018/bps-timing-simulation-legend.png?raw=true)
