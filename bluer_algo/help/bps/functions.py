@@ -2,6 +2,7 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
+from bluer_algo.help.bps.bluetooth import help_functions as help_bluetooth
 from bluer_algo.help.bps.loop import help_functions as help_loop
 from bluer_algo.help.bps.simulate import help_functions as help_simulate
 
@@ -182,23 +183,6 @@ def help_set_anchor(
     )
 
 
-def help_start_bluetooth(
-    tokens: List[str],
-    mono: bool,
-) -> str:
-    options = xtra("verbose", mono=mono)
-
-    return show_usage(
-        [
-            "@bps",
-            "start_bluetooth",
-            f"[{options}]",
-        ],
-        "start bluetooth.",
-        mono=mono,
-    )
-
-
 def help_test(
     tokens: List[str],
     mono: bool,
@@ -218,6 +202,7 @@ def help_test(
 
 help_functions = {
     "beacon": help_beacon,
+    "bluetooth": help_bluetooth,
     "generate": help_generate,
     "install": help_install,
     "introspect": help_introspect,
@@ -226,6 +211,5 @@ help_functions = {
     "review": help_review,
     "set_anchor": help_set_anchor,
     "simulate": help_simulate,
-    "start_bluetooth": help_start_bluetooth,
     "test": help_test,
 }

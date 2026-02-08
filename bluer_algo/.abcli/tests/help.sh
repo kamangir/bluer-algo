@@ -42,6 +42,8 @@ function test_bluer_algo_help() {
         "@algo bps" \
         "@bps" \
         "@bps beacon" \
+        "@bps bluetooth" \
+        "@bps bluetooth start" \
         "@bps generate" \
         "@bps install" \
         "@bps introspect" \
@@ -53,7 +55,7 @@ function test_bluer_algo_help() {
         "@bps set_anchor" \
         "@bps simulate" \
         "@bps simulate timing" \
-        "@bps test_bluetooth" \
+        "@bps test" \
         \
         "@image_classifier" \
         "@image_classifier dataset" \

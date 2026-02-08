@@ -11,6 +11,7 @@ setup(
     packages=[
         NAME,
         f"{NAME}.bps",
+        f"{NAME}.bps.bluetooth",
         f"{NAME}.bps.simulation",
         f"{NAME}.bps.simulation.timing",
         f"{NAME}.bps.utils",
