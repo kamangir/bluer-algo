@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function bluer_algo_bps_start_bluetooth() {
+function bluer_algo_bps_bluetooth_start() {
     local options=$1
     local verbose=$(bluer_ai_option_int "$options" verbose 0)
 

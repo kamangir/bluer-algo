@@ -16,7 +16,7 @@ function bluer_algo_bps_loop_start() {
 
     local object_name=$(bluer_ai_clarify_object $2 bps-stream-$(bluer_ai_string_timestamp))
 
-    bluer_algo_bps_start_bluetooth
+    bluer_algo_bps_bluetooth_start
 
     if [[ ! -z "$BLUER_SBC_BPS_ANCHORED_AT" ]]; then
         bluer_ai_log "⚓️: $BLUER_SBC_BPS_ANCHORED_AT"

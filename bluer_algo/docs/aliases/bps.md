@@ -15,6 +15,11 @@
 	[--z <3.0>]
  . start beacon.
 @bps \
+	bluetooth \
+	start \
+	[python,verbose]
+ . start bluetooth.
+@bps \
 	generate \
 	[-] \
 	[-|<object-name>] \
@@ -79,10 +84,6 @@
 	[--tr2 <40>] \
 	[--verbose 1]
  . simulate timing.
-@bps \
-	start_bluetooth \
-	[verbose]
- . start bluetooth.
 @bps \
 	test \
 	[~start_bluetooth,verbose]
