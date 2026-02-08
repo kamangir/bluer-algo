@@ -7,6 +7,14 @@ from bluer_plugin.logger import logger
 NAME = module.name(__file__, NAME)
 
 
-def start() -> bool:
-    logger.info(f"{NAME}.start")
+def start(verbose: bool) -> bool:
+    logger.info(
+        "{}.start{}".format(
+            NAME,
+            " (verbose)" if verbose else "",
+        )
+    )
+
+    logger.info("🪄")
+
     return True

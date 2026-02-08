@@ -35,7 +35,7 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-zi9675/bps-timing-simulation-legend.png?raw=true)
+![image](../../../../../assets/bps-timing-simulation-2025-10-31-zi9675/bps-timing-simulation-legend.png?raw=true)
 
 ## 12 nodes
 
@@ -208,7 +208,7 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-gdy4m0/bps-timing-simulation-legend.png?raw=true)
+![image](../../../../../assets/bps-timing-simulation-2025-10-31-gdy4m0/bps-timing-simulation-legend.png?raw=true)
 
 ## 3 nodes (variable ta)
 
@@ -247,7 +247,7 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-z598po/bps-timing-simulation-legend.png?raw=true)
+![image](../../../../../assets/bps-timing-simulation-2025-10-31-z598po/bps-timing-simulation-legend.png?raw=true)
 
 ## 3 nodes (more variability)
 
@@ -288,7 +288,7 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-9fomdv/bps-timing-simulation-legend.png?raw=true)
+![image](../../../../../assets/bps-timing-simulation-2025-10-31-9fomdv/bps-timing-simulation-legend.png?raw=true)
 
 ## 12 nodes (more variability)
 
@@ -465,6 +465,6 @@ overlap:
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/bps-timing-simulation-2025-10-31-yabb4j/bps-timing-simulation-legend.png?raw=true)
+![image](../../../../../assets/bps-timing-simulation-2025-10-31-yabb4j/bps-timing-simulation-legend.png?raw=true)
 
 > ℹ️ $t_{a1}$, $t_{a2}$, $t_{r1}$, $t_{r2}$ are adjusted to ⬆️

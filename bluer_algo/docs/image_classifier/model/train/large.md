@@ -18,11 +18,11 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/loss.png?raw=true)
+![image](../../../../../../assets/fruits-365-model-2000-2025-07-02-k318ju/loss.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/evaluation.png?raw=true)
+![image](../../../../../../assets/fruits-365-model-2000-2025-07-02-k318ju/evaluation.png?raw=true)
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-model-2000-2025-07-02-k318ju/confusion_matrix.png?raw=true)
+![image](../../../../../../assets/fruits-365-model-2000-2025-07-02-k318ju/confusion_matrix.png?raw=true)
 
 [fruits-365-model-2000-2025-07-02-k318ju.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-model-2000-2025-07-02-k318ju.tar.gz)
 

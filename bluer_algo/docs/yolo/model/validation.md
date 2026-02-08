@@ -20,7 +20,7 @@
 
 [coco128-2025-09-15-6rpxu2.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/coco128-2025-09-15-6rpxu2.tar.gz)
 
-![image](https://github.com/kamangir/assets/blob/main/coco128-2025-09-15-6rpxu2/review.png?raw=true)
+![image](../../../../../assets/coco128-2025-09-15-6rpxu2/review.png?raw=true)
 
 ```yaml
 dataset:
@@ -58,25 +58,25 @@ val: coco128/images/train2017
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/labels.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/results.png?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/labels.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/results.png?raw=true) |
 
 | | | | |
 |-|-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/BoxF1_curve.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/BoxPR_curve.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/BoxP_curve.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/BoxR_curve.png?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/BoxF1_curve.png?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/BoxPR_curve.png?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/BoxP_curve.png?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/BoxR_curve.png?raw=true) |
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/confusion_matrix.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/confusion_matrix_normalized.png?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/confusion_matrix.png?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/confusion_matrix_normalized.png?raw=true) |
 
 | | | |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/train_batch0.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/train_batch1.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/train_batch2.jpg?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/train_batch0.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/train_batch1.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/train_batch2.jpg?raw=true) |
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch0_labels.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch0_pred.jpg?raw=true) |
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch1_labels.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch1_pred.jpg?raw=true) |
-| ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch2_labels.jpg?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/coco128-model-2025-09-15-3m0mmj/val_batch2_pred.jpg?raw=true) | 
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch0_labels.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch0_pred.jpg?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch1_labels.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch1_pred.jpg?raw=true) |
+| ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch2_labels.jpg?raw=true) | ![image](../../../../../assets/coco128-model-2025-09-15-3m0mmj/val_batch2_pred.jpg?raw=true) | 
 
 
 <details>
@@ -10223,7 +10223,7 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-16-09-02-16-8n1sud/000000000389.png?raw=true)
+![image](../../../../../assets/yolo-prediction-test-2025-09-16-09-02-16-8n1sud/000000000389.png?raw=true)
 
 ```yaml
 000000000389:
@@ -10290,7 +10290,7 @@ train:
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/yolo-prediction-test-2025-09-16-09-03-07-eqlzng/000000000419.png?raw=true)
+![image](../../../../../assets/yolo-prediction-test-2025-09-16-09-03-07-eqlzng/000000000419.png?raw=true)
 
 ```yaml
 000000000419:

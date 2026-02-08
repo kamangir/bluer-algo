@@ -40,4 +40,4 @@ BLUER_SBC_SWALLOW_HAS_BPS=1
 
 | | | |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/bps.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-state.png?raw=true) |
+| ![image](../../../../../assets/2025-10-31-11-47-47-c2b6d9/bps.png?raw=true) | ![image](../../../../../assets/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-pulse-ms.png?raw=true) | ![image](../../../../../assets/2025-10-31-11-47-47-c2b6d9/ultrasonic-sensor-state.png?raw=true) |

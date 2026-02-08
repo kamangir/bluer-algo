@@ -1,6 +1,6 @@
 # image-classifier: dataset: sequence
 
-uses [bluer-ugv/swallow/digital/dataset/combination](https://github.com/kamangir/bluer-ugv/blob/main/bluer_ugv/docs/swallow/digital/algo/navigation/dataset/combination).
+uses [bluer-ugv/swallow/digital/dataset/combination](../../../../../bluer-ugv/bluer_ugv/docs/swallow/digital/algo/navigation/dataset/combination).
 
 ```bash
 @select 2025-07-09-11-16-52-4zo4zc
@@ -25,8 +25,8 @@ uses [bluer-ugv/swallow/digital/dataset/combination](https://github.com/kamangir
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid.png?raw=true) |
-| ![image](https://github.com/kamangir/assets/blob/main/2025-07-09-11-16-52-4zo4zc/grid-timeline.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/sequence-2025-07-12-21-58-04-0wmt6d/grid-timeline.png?raw=true) |
+| ![image](../../../../../assets/2025-07-09-11-16-52-4zo4zc/grid.png?raw=true) | ![image](../../../../../assets/sequence-2025-07-12-21-58-04-0wmt6d/grid.png?raw=true) |
+| ![image](../../../../../assets/2025-07-09-11-16-52-4zo4zc/grid-timeline.png?raw=true) | ![image](../../../../../assets/sequence-2025-07-12-21-58-04-0wmt6d/grid-timeline.png?raw=true) |
 
 ---
 

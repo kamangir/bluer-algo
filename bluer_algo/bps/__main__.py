@@ -15,11 +15,17 @@ parser.add_argument(
     type=str,
     help="start",
 )
+parser.add_argument(
+    "--verbose",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
 if args.task == "start":
-    success = start()
+    success = start(verbose=args.verbose == 1)
 else:
     success = None
 

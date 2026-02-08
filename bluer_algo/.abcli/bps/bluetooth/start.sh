@@ -3,6 +3,15 @@
 function bluer_algo_bps_bluetooth_start() {
     local options=$1
     local verbose=$(bluer_ai_option_int "$options" verbose 0)
+    local use_python=$(bluer_ai_option_int "$options" python 0)
+
+    if [[ "$use_python" == 1 ]]; then
+        python3 -m bluer_algo.bps.bluetooth \
+            start \
+            --verbose $verbose \
+            "${@:2}"
+        return
+    fi
 
     bluer_ai_log "starting bluetooth..."
 

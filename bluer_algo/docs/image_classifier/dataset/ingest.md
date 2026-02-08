@@ -16,7 +16,7 @@
 ```
 
 
-![image](https://github.com/kamangir/assets/blob/main/fruits-365-dataset-2025-07-01-gn9up7/grid.png?raw=true)
+![image](../../../../../assets/fruits-365-dataset-2025-07-01-gn9up7/grid.png?raw=true)
 
 [fruits-365-dataset-2025-07-01-gn9up7.tar.gz](https://kamangir-public.s3.ir-thr-at1.arvanstorage.ir/fruits-365-dataset-2025-07-01-gn9up7.tar.gz)
 

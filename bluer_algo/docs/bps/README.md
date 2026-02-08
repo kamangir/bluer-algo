@@ -17,15 +17,15 @@ bluer-positioning system.
 - AI convo: [1️⃣](https://chatgpt.com/c/68e79d65-e938-8327-b1e1-2536f7b6fb41) [2️⃣](https://chatgpt.com/c/693131aa-6448-8325-9e6e-4ed49035a5f9)
 - [literature](./literature.md) 
 - [mathematics](./mathematics)
-- [sandbox](https://github.com/kamangir/bluer-sandbox/tree/main/sandbox/bps)
+- [sandbox](../../../../bluer-sandbox/sandbox/bps)
 - [bluer_algo.bps](../../bps)
 - [validations](./validations)
 - [simulations](./simulations)
 
 |   |   |
 | --- | --- |
-| [![image](https://github.com/kamangir/assets2/raw/main/bps/01.png?raw=true)](https://github.com/kamangir/assets2/raw/main/bps/01.png?raw=true) | [![image](https://github.com/kamangir/assets2/raw/main/bps/03.png?raw=true)](https://github.com/kamangir/assets2/raw/main/bps/03.png?raw=true) |
-| [![image](https://github.com/kamangir/assets2/raw/main/bps/02.png?raw=true)](https://github.com/kamangir/assets2/raw/main/bps/02.png?raw=true) | [![image](https://github.com/kamangir/assets2/raw/main/bps/05.png?raw=true)](https://github.com/kamangir/assets2/raw/main/bps/05.png?raw=true) |
+| [![image](../../../../assets2/bps/01.png?raw=true)](../../../../assets2/bps/01.png?raw=true) | [![image](../../../../assets2/bps/03.png?raw=true)](../../../../assets2/bps/03.png?raw=true) |
+| [![image](../../../../assets2/bps/02.png?raw=true)](../../../../assets2/bps/02.png?raw=true) | [![image](../../../../assets2/bps/05.png?raw=true)](../../../../assets2/bps/05.png?raw=true) |
 
 > ℹ️ works on rpi only.
 

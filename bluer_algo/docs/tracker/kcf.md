@@ -31,4 +31,4 @@
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/tracker-kcf-2026-01-08-13-41-34-v51e8d/tracker.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/tracker-kcf-2025-12-12-14-27-15-zuhu25/tracker.gif?raw=true) |
+| ![image](../../../../assets/tracker-kcf-2026-01-08-13-41-34-v51e8d/tracker.gif?raw=true) | ![image](../../../../assets/tracker-kcf-2025-12-12-14-27-15-zuhu25/tracker.gif?raw=true) |
