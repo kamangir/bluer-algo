@@ -25,6 +25,7 @@ setup(
         f"{NAME}.image_classifier.dataset.ingest.fruits_360",
         f"{NAME}.image_classifier.model",
         f"{NAME}.README",
+        f"{NAME}.socket",
         f"{NAME}.tracker",
         f"{NAME}.tracker.classes",
         f"{NAME}.yolo",

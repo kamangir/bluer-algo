@@ -16,9 +16,10 @@ from bluer_algo.README import (
 from bluer_algo.README.items import items
 
 
-def build():
+def build(args):
     return all(
         README.build(
+            args=args,
             items=doc.get("items", []),
             path=os.path.join(file.path(__file__), doc["path"]),
             cols=doc.get("cols", 3),
